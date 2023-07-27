@@ -1,0 +1,187 @@
+from django.db import models
+
+
+class Movie(models.Model):
+    title = models.CharField(max_length=255, verbose_name='Название')
+    original_title = models.CharField(max_length=255, verbose_name='Оригинальное название')
+    url = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
+    poster = models.ImageField(upload_to='movie/posters/', verbose_name='Постер')
+    year = models.IntegerField(max_length=4, verbose_name='Год')
+    director = models.CharField(max_length=255, verbose_name='Режиссёр')
+    genre = models.CharField(max_length=50, verbose_name='Жанр')
+    music = models.FileField(null=True, upload_to='movie/music/', verbose_name='Музыка')
+    link = models.CharField(max_length=500, verbose_name='Ссылка на трейлер', null=True)
+
+    class Meta:
+        verbose_name = "Фильм"
+        verbose_name_plural = "Фильмы"
+
+    def __str__(self):
+        return self.title
+    
+    # def save(self, *args, **kwargs): 
+    #     self.slug = slugify(self.name)
+    #     super(Project, self).save(*args, **kwargs) 
+    
+
+   
+    # rating imdb KinoPoisk api 
+
+class ST88rating(models.Model):
+    rating = models.SmallIntegerField(max_length=2, verbose_name="Рейтинг по версии ST88")
+    author = models.OneToOneField('User', on_delete=models.CASCADE, verbose_name='Автор')
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='ST88ratings', verbose_name='Фильм')
+
+    class Meta:
+        verbose_name = "СТ88 Рейтинг"
+        verbose_name_plural = "СТ88 Рейтинги"
+
+    
+
+class ST88description(models.Model):
+    description = models.TextField(verbose_name="Описание по версии ST88")
+    author = models.OneToOneField('User', on_delete=models.CASCADE, verbose_name='Автор')
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='ST88descriptions', verbose_name='Фильм')
+
+    class Meta:
+        verbose_name = "СТ88 описание"
+        verbose_name_plural = "СТ88 описания"
+
+   
+    
+
+class Frame(models.Model):
+    title = models.CharField(max_length=150, verbose_name='Название кадра')
+    image = models.ImageField(upload_to='movie/frames/', verbose_name='Кадр')
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, verbose_name='Фильм', related_name='frames')
+
+    class Meta:
+        verbose_name = "Кадр"
+        verbose_name_plural = "Кадры"
+
+    def __str__(self):
+        return self.title
+    
+    
+
+class Article(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Заголовок")
+    url = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
+    subtitle = models.CharField(max_length=100, verbose_name="Подзаголовок")
+    authors = models.ManyToManyField('User', related_name='articles', verbose_name='Авторы')
+    release_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата выпуска')
+    article_type = models.ManyToManyField('ArticleType', verbose_name="Тип статьи", related_name="articles")
+    poster = models.ImageField(upload_to='article/posters/', verbose_name='Постер')
+    # description (image, music)
+
+    class Meta:
+        verbose_name = "Статья"
+        verbose_name_plural = "Статьи"
+
+    def __str__(self):
+        return self.title
+    
+
+
+
+class ArticleType(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Название", unique=True)
+    url = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
+    description = models.TextField(null=True, verbose_name="Описание")
+    photo = models.ImageField(upload_to='article/types/', verbose_name='Фото типа статьи')
+
+    class Meta:
+        verbose_name = "Тип статьи"
+        verbose_name_plural = "Типы статей"
+
+    def __str__(self):
+        return self.title
+    
+
+
+class Scenario(models.Model):
+    title = models.CharField(max_length=150, verbose_name="Название")
+    synopsys = models.TextField(verbose_name="Синопсис")
+    text = models.FileField(upload_to='scenario/texts/', verbose_name='Текст')
+    authors = models.ManyToManyField("User", verbose_name='Авторы', related_name="scenarios")
+    poster = models.ImageField(upload_to='scenario/posters/', verbose_name='Постер')
+    ST88Project = models.OneToOneField('ST88Project', null=True, verbose_name='Проект ST88')
+
+    class Meta:
+        verbose_name = "Сценарий"
+        verbose_name_plural = "Сценарии"
+
+    def __str__(self):
+        return self.title
+    
+
+class ProjectPresentation(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Название")
+    synopsys = models.TextField()
+    presentation_file = models.FileField(null=True, upload_to='project/presentation/', verbose_name='Презентация проекта')
+    author = models.ManyToManyField()
+    poster = models.ImageField(upload_to='scenario/posters/', verbose_name='Постер')
+
+    class Meta:
+        verbose_name = "Презентация проекта"
+        verbose_name_plural = "Презентации проектов"
+
+    def __str__(self):
+        return self.title
+    
+
+class ST88project(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Название")
+    year = models.IntegerField(max_length=4, verbose_name="Год" )
+    synopsys = models.TextField(verbose_name="")
+    scenario = models.OneToOneField(Scenario, verbose_name="Сценарий", related_name="ST88_project")
+    # team = ArrayField(base_field=)
+    authors = models.ManyToManyField('User', verbose_name='Авторы', related_name='ST88_projects')
+    downloaded_film = models.FieldFile(upload_to='ST88/projects/', verbose_name='Загруженный фильм', null=True)
+    linked_film = models.CharField(max_length=500, verbose_name="Ссылка на фильм")
+    poster = models.ImageField(upload_to='scenario/posters/', verbose_name='Постер')
+
+    class Meta:
+        verbose_name = "СТ88 Проект"
+        verbose_name_plural = "СТ88 Проекты"
+
+    def __str__(self):
+        return self.title
+    
+class Review(models.Model):
+    email = models.EmailField(verbose_name='Email')
+    nickname = models.CharField(max_length=255, verbose_name='Имя', null=True)
+    user = models.ForeignKey('User', verbose_name='Пользователь', related_name='reviews', null=True)
+    text = models.TextField(verbose_name='Комментарий')
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name='Родительский комментарий', related_name='children', null=True)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, verbose_name='Фильм', related_name='comments', null=True)
+    scenario = models.ForeignKey(Scenario, on_delete=models.CASCADE, verbose_name='Сценарий', related_name='comments', null=True)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, verbose_name='Статья', related_name='comments', null=True)
+    ST88_project = models.ForeignKey(ST88project, on_delete=models.CASCADE, verbose_name='СТ88 Проект', related_name='comments', null=True)
+    project_presentation = models.ForeignKey(ProjectPresentation, on_delete=models.CASCADE, verbose_name='Презентация проекта', related_name='comments', null=True)
+    
+    class Meta:
+        verbose_name = "Комментарий"
+        verbose_name_plural = "Комментарии"
+
+    def __str__(self):
+        if self.user:
+            return f'{self.user}: {self.text}'
+        elif self.nickname:
+            return f'{self.nickname}: {self.text}'
+        else:
+            return f'{self.email}: {self.text}'
+
+#TODO: field description
+#TODO: team array
+#TODO: rating API KinoPoisk IMDB
+#TODO: slugify 
+
+
+
+
+
+
+
+
+    
