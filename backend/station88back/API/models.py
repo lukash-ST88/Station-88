@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Movie(models.Model):
@@ -6,7 +7,7 @@ class Movie(models.Model):
     original_title = models.CharField(max_length=255, verbose_name='Оригинальное название')
     url = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
     poster = models.ImageField(upload_to='movie/posters/', verbose_name='Постер')
-    year = models.IntegerField(max_length=4, verbose_name='Год')
+    year = models.IntegerField(verbose_name='Год')
     director = models.CharField(max_length=255, verbose_name='Режиссёр')
     genre = models.CharField(max_length=50, verbose_name='Жанр')
     music = models.FileField(null=True, upload_to='movie/music/', verbose_name='Музыка')
@@ -28,8 +29,8 @@ class Movie(models.Model):
     # rating imdb KinoPoisk api 
 
 class ST88rating(models.Model):
-    rating = models.SmallIntegerField(max_length=2, verbose_name="Рейтинг по версии ST88")
-    author = models.OneToOneField('User', on_delete=models.CASCADE, verbose_name='Автор')
+    rating = models.SmallIntegerField(verbose_name="Рейтинг по версии ST88")
+    author = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Автор')
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='ST88ratings', verbose_name='Фильм')
 
     class Meta:
@@ -40,7 +41,7 @@ class ST88rating(models.Model):
 
 class ST88description(models.Model):
     description = models.TextField(verbose_name="Описание по версии ST88")
-    author = models.OneToOneField('User', on_delete=models.CASCADE, verbose_name='Автор')
+    author = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Автор', null=True)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='ST88descriptions', verbose_name='Фильм')
 
     class Meta:
@@ -68,7 +69,7 @@ class Article(models.Model):
     title = models.CharField(max_length=100, verbose_name="Заголовок")
     url = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
     subtitle = models.CharField(max_length=100, verbose_name="Подзаголовок")
-    authors = models.ManyToManyField('User', related_name='articles', verbose_name='Авторы')
+    authors = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='articles', verbose_name='Авторы')
     release_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата выпуска')
     article_type = models.ManyToManyField('ArticleType', verbose_name="Тип статьи", related_name="articles")
     poster = models.ImageField(upload_to='article/posters/', verbose_name='Постер')
@@ -103,9 +104,9 @@ class Scenario(models.Model):
     title = models.CharField(max_length=150, verbose_name="Название")
     synopsys = models.TextField(verbose_name="Синопсис")
     text = models.FileField(upload_to='scenario/texts/', verbose_name='Текст')
-    authors = models.ManyToManyField("User", verbose_name='Авторы', related_name="scenarios")
+    authors = models.ManyToManyField(settings.AUTH_USER_MODEL, verbose_name='Авторы', related_name="scenarios")
     poster = models.ImageField(upload_to='scenario/posters/', verbose_name='Постер')
-    ST88Project = models.OneToOneField('ST88Project', null=True, verbose_name='Проект ST88')
+    
 
     class Meta:
         verbose_name = "Сценарий"
@@ -119,7 +120,7 @@ class ProjectPresentation(models.Model):
     title = models.CharField(max_length=100, verbose_name="Название")
     synopsys = models.TextField()
     presentation_file = models.FileField(null=True, upload_to='project/presentation/', verbose_name='Презентация проекта')
-    author = models.ManyToManyField()
+    author = models.ManyToManyField(settings.AUTH_USER_MODEL, verbose_name='Авторы', related_name='ProjectPrsentations')
     poster = models.ImageField(upload_to='scenario/posters/', verbose_name='Постер')
 
     class Meta:
@@ -132,12 +133,12 @@ class ProjectPresentation(models.Model):
 
 class ST88project(models.Model):
     title = models.CharField(max_length=100, verbose_name="Название")
-    year = models.IntegerField(max_length=4, verbose_name="Год" )
+    year = models.IntegerField(verbose_name="Год" )
     synopsys = models.TextField(verbose_name="")
-    scenario = models.OneToOneField(Scenario, verbose_name="Сценарий", related_name="ST88_project")
+    scenario = models.OneToOneField(Scenario, verbose_name="Сценарий", related_name="ST88_project", on_delete=models.SET_NULL, null=True)
     # team = ArrayField(base_field=)
-    authors = models.ManyToManyField('User', verbose_name='Авторы', related_name='ST88_projects')
-    downloaded_film = models.FieldFile(upload_to='ST88/projects/', verbose_name='Загруженный фильм', null=True)
+    authors = models.ManyToManyField(settings.AUTH_USER_MODEL, verbose_name='Авторы', related_name='ST88_projects')
+    downloaded_film = models.FileField(upload_to='ST88/projects/', verbose_name='Загруженный фильм', null=True)
     linked_film = models.CharField(max_length=500, verbose_name="Ссылка на фильм")
     poster = models.ImageField(upload_to='scenario/posters/', verbose_name='Постер')
 
@@ -151,7 +152,7 @@ class ST88project(models.Model):
 class Review(models.Model):
     email = models.EmailField(verbose_name='Email')
     nickname = models.CharField(max_length=255, verbose_name='Имя', null=True)
-    user = models.ForeignKey('User', verbose_name='Пользователь', related_name='reviews', null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь', related_name='reviews', null=True, on_delete=models.SET_NULL)
     text = models.TextField(verbose_name='Комментарий')
     parent = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name='Родительский комментарий', related_name='children', null=True)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, verbose_name='Фильм', related_name='comments', null=True)
@@ -172,10 +173,10 @@ class Review(models.Model):
         else:
             return f'{self.email}: {self.text}'
 
-#TODO: field description
-#TODO: team array
-#TODO: rating API KinoPoisk IMDB
-#TODO: slugify 
+# #TODO: field description
+# #TODO: team array
+# #TODO: rating API KinoPoisk IMDB
+# #TODO: slugify 
 
 
 

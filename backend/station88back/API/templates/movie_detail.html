@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div>{{movie.title}} </div>
+    <div>{{movie.original_title}} </div>
+    <img src="{{movie.poster.url}}"> 
+    <div>{{movie.director}} </div>
+    <audio controls src="{{movie.music.url}}"></audio>
+    <a href='{{movie.link}}'> Link </a>
+    
+{% endblock %}

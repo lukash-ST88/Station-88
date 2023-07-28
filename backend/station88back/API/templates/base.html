@@ -1,0 +1,15 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{title}}</title>
+    <link type="text/css" href="{% static 'countries/css/style.css' %}?20181215" rel='stylesheet' />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" href="{% static 'countries/images/unico.ico' %}" type="image/x-icaon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--set width and scale of page for any device-->
+</head>
+<body>
+    {% block  content%}
+    {% endblock  %}
+</body>
+</html>
