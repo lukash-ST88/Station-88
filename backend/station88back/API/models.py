@@ -73,8 +73,8 @@ class Article(models.Model):
     release_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата выпуска')
     article_type = models.ManyToManyField('ArticleType', verbose_name="Тип статьи", related_name="articles")
     poster = models.ImageField(upload_to='article/posters/', verbose_name='Постер')
-    # description (image, music)
-
+    content = models.TextField(verbose_name="Контент", null=True)
+    
     class Meta:
         verbose_name = "Статья"
         verbose_name_plural = "Статьи"

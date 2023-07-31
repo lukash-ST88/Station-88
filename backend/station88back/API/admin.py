@@ -1,8 +1,24 @@
 from django.contrib import admin
+from django import forms
 from .models import Movie, Article, ArticleType, Review, Scenario, ST88description, ST88project, ST88rating, ProjectPresentation
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
+
+# widget for CKeditor
+class ArticleContentAdminForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget)
+
+    class Meta:
+        model = Article
+        fields = '__all__'
+
+class ArticleAdmin(admin.ModelAdmin):
+    form = ArticleContentAdminForm
+
+
 
 admin.site.register(Movie)
-admin.site.register(Article)
+admin.site.register(Article, ArticleAdmin)
 admin.site.register(ArticleType)
 admin.site.register(Review)
 admin.site.register(Scenario)
