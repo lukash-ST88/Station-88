@@ -144,6 +144,13 @@ CORS_ORIGIN_WHITELIST = [
 'http://localhost:3000',
 ] # for allowed hosts for frontend
 
+# REST_FRAMEWORK = {
+# 'DEFAULT_AUTHENTICATION_CLASSES':[
+# 'rest_framework.authentication.TokenAuthentication',
+# ]
+# } # to specify which default authentication we pick up
+
+
 CKEDITOR_UPLOAD_PATH = "uploads/" # a relative path for uploaded files 
 CKEDITOR_CONFIGS = {
     'default': {
