@@ -4,6 +4,7 @@
 {% block content %}
     <div>{{movie.title}} </div>
     <div>{{movie.original_title}} </div>
+    <div>{{movie.poster.url}} </div>
     <img src="{{movie.poster.url}}"> 
     <div>{{movie.director}} </div>
     <audio controls src="{{movie.music.url}}"></audio>

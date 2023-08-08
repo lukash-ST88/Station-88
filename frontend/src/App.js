@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import MovieService from "./services/movies";
+import {useState, useEffect} from 'react'
+import axios from "axios";
+import React from "react";
 
 function App() {
+  const [movies, setMovies] = useState([])
+  
+  useEffect(()=>{
+    retriveMovies()
+    console.log('get it')
+    console.log(movies)
+  }, [])
+
+  const retriveMovies = ()=>{
+    MovieService.getAllMovies().then(response => setMovies(response.data)).catch(e => console.log(e))
+  }
+
+  const getMovies = ()=>{
+    axios.get('http://localhost:4000/API/movies').then(data => setMovies(data.data))
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div> {movies.map(movie => {
+       return  (<div> {movie.title} </div>)
+      })} </div>
+      <div> I am react</div>
+      <button onClick={()=> retriveMovies()}></button>
+      <button onClick={()=> console.log(movies)}> </button>
     </div>
   );
 }
+
+// class App extends React.Component {
+//   render()
+// }
 
 export default App;

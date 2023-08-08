@@ -6,7 +6,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = "__all__"
 
-class ST88rating88Serializer(serializers.ModelSerializer):
+class ST88ratingSerializer(serializers.ModelSerializer):
     class Meta:
         model = ST88rating
         fields = "__all__"
@@ -19,7 +19,7 @@ class ST88descriptionSerializer(serializers.ModelSerializer):
 
 class MovieSerializer(serializers.ModelSerializer):
     ST88descriptions = ST88descriptionSerializer(many=True, read_only=True)
-    ST88ratings = ST88rating88Serializer(many=True, read_only=True)
+    ST88ratings = ST88ratingSerializer(many=True, read_only=True)
     comments = ReviewSerializer(many=True, read_only=True)
 
     class Meta:
