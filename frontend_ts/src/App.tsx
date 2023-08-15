@@ -23,10 +23,11 @@ function App() {
         <div>{movie.url} </div>
         <div>{movie.director} </div>
         <img src={movie.poster}/>
-        <a href={movie.link}/>
+        <a href={movie.link}>{movie.link}</a>
         <div>{movie.genre} </div>
         <div> {movie.ST88descriptions.map(desc=>(<div>{desc?.description}</div>))}</div>
         <div>{movie.comments.map(comment=>(<div>{comment?.text}</div>))}</div>
+        
        </div>)
       })} </div>
       <div> I am react TS</div>
