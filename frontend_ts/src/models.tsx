@@ -49,3 +49,23 @@ export interface IMovie {
     ST88ratings: IST88rating[] | null[]
     comments: IReview[] | null[]
 }
+
+export interface IArticleType {
+    readonly id: number
+    title: string
+    url: string
+    description: string
+    photo: string
+}
+
+export interface IArticle {
+    readonly id: number
+    title: string
+    url: string
+    subtitle: string
+    authors: string[] | null
+    release_date: string
+    article_type: string[] | null
+    poster: string
+    content: string
+}
