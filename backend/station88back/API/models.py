@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 
-
+    
 class Movie(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
     original_title = models.CharField(max_length=255, verbose_name='Оригинальное название')
@@ -173,10 +173,11 @@ class Review(models.Model):
         else:
             return f'{self.email}: {self.text}'
 
-# #TODO: field description
+
 # #TODO: team array
 # #TODO: rating API KinoPoisk IMDB
 # #TODO: slugify 
+# TODO: custom user model
 
 
 

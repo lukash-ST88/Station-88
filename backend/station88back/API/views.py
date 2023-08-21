@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import Movie
+from .models import Movie, Article
 from rest_framework import generics
-from .serializers import MovieSerializer
+from .serializers import MovieSerializer, ArticleSerializer
 
 def get_list_movies(request):
     movies = Movie.objects.all()
@@ -15,5 +15,9 @@ def get_movie_detail(request, movie_slug):
 class MovieListView(generics.ListAPIView):
     serializer_class = MovieSerializer
     queryset = Movie.objects.prefetch_related('ST88descriptions').all()
+
+class ArticleListView(generics.ListAPIView):
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.prefetch_related('article_type').all()
 
     

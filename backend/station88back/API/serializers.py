@@ -28,3 +28,15 @@ class MovieSerializer(serializers.ModelSerializer):
                   'year','director', 'genre', 'music', 'link', 
                   'ST88descriptions', 'ST88ratings', 'comments']
         
+class ArticleTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ArticleType
+        fields = "__all__"
+
+class ArticleSerializer(serializers.ModelSerializer):
+    article_type = ArticleTypeSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Article
+        fields = ['id', 'title', 'url', 'subtitle', 'authors', 'release_date', 'article_type', 'poster', 'content']
+
