@@ -12,17 +12,17 @@ function App() {
   
   return (
     <div className="App">
-      <div className='container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8'>
+      <div className='container px-5 mx-auto xl:px-5 py-5 lg:py-8'>
         <Navigation/>
       </div>
-      <div className='container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8'> 
+      <div className='container px-5 mx-auto xl:px-5 py-5 lg:py-8'> 
      <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/articles' element={<Articles/>}/>
         <Route path='/movies' element={<Movies/>}/>
       </Routes>
       </div>
-      <div className='container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8 mt-10 border-t border-gray-100 dark:border-gray-800'>
+      <div className='container px-5 mx-auto xl:px-5 py-5 lg:py-8 mt-10 border-t border-gray-100 dark:border-gray-800'>
         Container 3
       </div>
     </div>

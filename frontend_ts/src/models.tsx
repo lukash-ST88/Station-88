@@ -40,7 +40,6 @@ export interface IMovie {
     url: string
     poster: string
     year: number  
-    description: string
     director: string
     genre: string
     music: string
