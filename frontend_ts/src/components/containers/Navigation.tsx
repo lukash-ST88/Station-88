@@ -9,7 +9,7 @@ function Navigation(){
                 <a href='#' className='nav-links'>О нас</a>
                 <Link to='/articles' className='nav-links'>Статьи</Link>
                 <Link to='/movies' className='nav-links'>Фильмы</Link>
-                <Link to='/' className='nav-links'> СТАНЦИЯ 88 </Link>
+                <Link to='/' className='station88'> STATION 88 </Link>
                 <a href='#' className='nav-links'>Образование</a>
                 <a href='#' className='nav-links'>Проекты</a>
                 <a href='#' className='nav-links'>Профиль</a>

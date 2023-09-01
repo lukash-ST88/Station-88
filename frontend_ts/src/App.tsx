@@ -8,14 +8,15 @@ import Movies from './pages/Movies';
 import Articles from './pages/Articles';
 import Home from './pages/Home';
 
+
 function App() {
   
   return (
-    <div className="App">
-      <div className='container px-5 mx-auto xl:px-5 py-5 lg:py-8'>
+    <div className="App container color-theme mx-auto my-0">
+      <div className='container py-5 mx-auto '>
         <Navigation/>
       </div>
-      <div className='container px-5 mx-auto xl:px-5 py-5 lg:py-8'> 
+      <div className='container px-5 mx-auto xl:px-5 py-5 lg:py-8 '> 
      <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/articles' element={<Articles/>}/>

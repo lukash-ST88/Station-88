@@ -13,6 +13,16 @@ body {
   color: white;
 }
 
+
+@font-face {
+    font-family: 'tupo_vyazregular';
+    src: url('css/tupo-vyaz_regular-webfont.woff2') format('woff2'),
+         url('css/tupo-vyaz_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -34,4 +44,52 @@ code {
   color: rgb(0 0 0 / var(--tw-text-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+
+.color-theme {
+  background-color: #181818;
+}
+
+
+
+.icons:hover {
+  fill: currentColor;
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity));
+}
+
+.color-test {
+  color: #e41111
+}
+
+.station88 {
+  font-family: 'tupo_vyazregular';
+  color: white;
+  font-weight: 500;
+  font-size: 3rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.0rem;
+  padding-bottom: 0.25rem;
+}
+
+.station88:hover {
+  color: #e41111
+}
+
+.text-on-image {
+  text-align: center;
+  font-size: 30px;;
+  width: 80%;
+  left: 10%;
+  top: 50%;
+  transform: translate(0, -50%)
+}
+
+.border-custom {
+  border-width: 1px;
+}
+
+.border-custom:hover {
+  border-width: 0px;
 }
