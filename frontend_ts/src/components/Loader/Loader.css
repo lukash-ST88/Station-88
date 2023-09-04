@@ -1,0 +1,33 @@
+.loader {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+}
+
+.loader-container {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.loader-container:after {
+    content: " ";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid rgb(34 197 94);
+    border-color: rgb(34 197 94) transparent rgb(34 197 94) transparent;
+    animation: loader-container 1.2s linear infinite;
+  }
+  @keyframes loader-container {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

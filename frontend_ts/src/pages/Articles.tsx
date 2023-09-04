@@ -10,10 +10,10 @@ function Articles() {
   const [articles, setArticles] = useState<IArticle[]>([]);
 
   useEffect(() => {
-    retriveArticles();
+    retrieveArticles();
   }, []);
 
-  const retriveArticles = () => {
+  const retrieveArticles = () => {
     ArticleService.getAllArticles()
       .then((response) => setArticles(response.data))
       .catch((e) => console.log(e));

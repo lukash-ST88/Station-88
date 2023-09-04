@@ -7,6 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 import Movies from './pages/Movies';
 import Articles from './pages/Articles';
 import Home from './pages/Home';
+import SliderContainer from './components/containers/Slider/SliderContainer';
 
 
 function App() {
@@ -16,12 +17,15 @@ function App() {
       <div className='container py-5 mx-auto '>
         <Navigation/>
       </div>
+      <div className='container px-5 mx-auto '>
+        <SliderContainer/>
+      </div>
       <div className='container px-5 mx-auto xl:px-5 py-5 lg:py-8 '> 
      <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/articles' element={<Articles/>}/>
         <Route path='/movies' element={<Movies/>}/>
-      </Routes>
+     </Routes>
       </div>
       <div className='container px-5 mx-auto xl:px-5 py-5 lg:py-8 mt-10 border-t border-gray-100 dark:border-gray-800'>
         Container 3

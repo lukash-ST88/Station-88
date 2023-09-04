@@ -7,11 +7,11 @@ function Movies (){
     const [movies, setMovies] = useState<IMovie[]>([])
 
     useEffect(()=>{
-        retriveMovies();
+        retrieveMovies();
         
       }, [])
 
-    const retriveMovies = () => {
+    const retrieveMovies = () => {
         MovieService.getAllMovies().then(response => setMovies(response.data)).catch(e => console.log(e))
     }
     
