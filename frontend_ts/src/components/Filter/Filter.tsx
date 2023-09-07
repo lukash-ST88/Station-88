@@ -1,0 +1,40 @@
+import MyInput from "../UI/MyInput/MyInput"
+import { useState } from "react"
+import MySelect from "../UI/MySelect/MySelect"
+import React from "react"
+import { IFilter } from "../../pages/Movies"
+
+
+interface FilterProps {
+    filter: IFilter,
+    setFilter(arg: IFilter): void
+}
+
+const Filter = (props: FilterProps) => {
+    
+
+    return (
+    <div>
+        <MyInput 
+        value={props.filter.query} 
+        onChange={(event: any) => props.setFilter({ ...props.filter, query: event.target.value })}
+        placeholder="поиск"
+        />
+        <MySelect
+        value={props.filter.sort}
+        onChange={(selectedSort) => {
+          console.log(selectedSort);
+          props.setFilter({ ...props.filter, sort: selectedSort });
+        }}
+        defaultValue="Сортиовка"
+        options={[
+          { value: "+release_date", name: "по дате - новые"},
+          { value: "+year", name: "по году - новые"},
+          { value: "-year", name: "по году - старые" },
+          { value: "=release_date", name: "по дате - старые" }
+        ]}
+      />
+    </div>)
+}
+
+export default Filter

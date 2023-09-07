@@ -47,6 +47,7 @@ export interface IMovie {
     ST88descriptions: IST88description[] | null[]
     ST88ratings: IST88rating[] | null[]
     comments: IReview[] | null[]
+    release_date: string
 }
 
 export interface IArticleType {

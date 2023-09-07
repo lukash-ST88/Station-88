@@ -2,7 +2,7 @@ import {useState, useEffect, useContext} from 'react'
 import './Slider.css'
 import { IBanners } from '../../../models'
 import Loader from '../../Loader/Loader'
-
+import { Link } from 'react-router-dom'
 
 interface SlidesProps {
     slides: IBanners[]
@@ -41,18 +41,21 @@ const Slider = (props: SlidesProps)=> {
     return (
         <div className='slider'>
         <div>
-          <div onClick={goToPrevious} className='arrow left'>
+          <div onClick={goToPrevious} className='arrow left hover:text-white'>
             ❰
           </div>
-          <div onClick={goToNext} className='arrow right'>
+          <div onClick={goToNext} className='arrow right hover:text-white'>
             ❱
           </div>
         </div>
-        {props.loading ? <Loader/> : <div className='slide' style={{backgroundImage: `url(${props.slides[currentIndex].banner})`}}/>}
+        {props.loading 
+        ? <Loader/> 
+        : <Link to={props.slides[currentIndex].link}><div className='text-slider transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-110'>{props.slides[currentIndex].title}</div><div className='slide' style={{backgroundImage: `url(${props.slides[currentIndex].banner})`}}></div></Link>
+        }
         <div className='dot-container'>
           {props.slides.map((slide, slideIndex) => (
             <div
-              className='dot'
+              className='dot hover:text-white transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-110'
               key={slideIndex}
               onClick={() => goToSlide(slideIndex)}
             >

@@ -10,7 +10,23 @@
     width: 100%;
     background-size: cover;
     background-position: center;
+    
 }
+
+.text-slider {
+    font-family: 'tupo_vyazregular';
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    text-transform: uppercase;
+    color: white;
+}
+
+
 
 
 .slider {
@@ -23,9 +39,9 @@
     top: 50%;
     transform: translate(0, -50%);
     font-size: 100px;
-    color: #fff;
+    color: #181818;
     z-index: 1;
-    cursor: pointer;
+    cursor:pointer;
 }
 
 .arrow.left {
@@ -42,16 +58,21 @@
     display: flex;
     position: absolute;
     bottom: 1%;
-    left: 30%;
+    align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .dot {
     margin: 0 3px;
     cursor: pointer;
     font-size: 30px;
-    color: #fff;
+    color: #181818;
+    border-radius: 25%;
+    
 }
+
+
 .slider.back {
     background-image: url(http://localhost:3000/Fifth_seal.jpg);
 }

@@ -13,7 +13,7 @@ const SliderContainer = () => {
     retrieveBanners();
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 500);
   }, []);
 
   function retrieveBanners() {

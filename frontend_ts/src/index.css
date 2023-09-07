@@ -16,11 +16,18 @@ body {
 
 @font-face {
     font-family: 'tupo_vyazregular';
-    src: url('css/tupo-vyaz_regular-webfont.woff2') format('woff2'),
-         url('css/tupo-vyaz_regular-webfont.woff') format('woff');
+        src: url('css/tupo_vyaz/tupo-vyaz_regular.ttf');
     font-weight: normal;
     font-style: normal;
 
+}
+@font-face {
+  font-family: 'Rubik_80s_fade';
+  src: url('css/Rubik_80s_fade/Rubik80sFade-Regular.ttf');
+}
+@font-face {
+  font-family: 'Terminator_genisys';
+  src: url('css/Termimator_genisys/TerminatorGenisys.ttf');
 }
 
 code {
@@ -92,4 +99,8 @@ code {
 
 .border-custom:hover {
   border-width: 0px;
+}
+
+.color-card {
+  background-color: #181818;
 }

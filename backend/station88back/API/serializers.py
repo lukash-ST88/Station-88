@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Movie, Article, ArticleType, Scenario, ST88description, ST88project, ST88rating, ProjectPresentation, Review
+from .models import Movie, Article, ArticleType, Scenario, ST88description, ST88project, ST88rating, ProjectPresentation, Review, Banners
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,7 +26,7 @@ class MovieSerializer(serializers.ModelSerializer):
         model = Movie
         fields = ['id', 'title', 'original_title', 'url', 'poster', 
                   'year','director', 'genre', 'music', 'link', 
-                  'ST88descriptions', 'ST88ratings', 'comments']
+                  'ST88descriptions', 'ST88ratings', 'comments', 'release_date']
         
 class ArticleTypeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,3 +40,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         model = Article
         fields = ['id', 'title', 'url', 'subtitle', 'authors', 'release_date', 'article_type', 'poster', 'content']
 
+class BannersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Banners
+        fields = "__all__"
