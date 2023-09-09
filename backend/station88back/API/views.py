@@ -2,6 +2,10 @@ from django.shortcuts import render
 from .models import Movie, Article, Banners
 from rest_framework import generics
 from .serializers import MovieSerializer, ArticleSerializer, BannersSerializer
+from django.db.models import Count
+from rest_framework.response import Response
+from rest_framework.pagination import LimitOffsetPagination
+
 
 def get_list_movies(request):
     movies = Movie.objects.all()
@@ -15,6 +19,13 @@ def get_movie_detail(request, movie_slug):
 class MovieListView(generics.ListAPIView):
     serializer_class = MovieSerializer
     queryset = Movie.objects.prefetch_related('ST88descriptions').all()
+    # pagination_class = None
+    # def list(self, request):
+    #     queryset = self.get_queryset()
+    #     serializer = MovieSerializer(queryset, many=True)
+    #     count = len(serializer.data)
+    #     return Response(self.serializer_class(queryset, many=True, headers={'x-total-count':count}).data)
+ 
 
 class ArticleListView(generics.ListAPIView):
     serializer_class = ArticleSerializer
@@ -23,4 +34,5 @@ class ArticleListView(generics.ListAPIView):
 class BannersListView(generics.ListAPIView):
     serializer_class = BannersSerializer
     queryset = Banners.objects.all()
+    pagination_class = None
     

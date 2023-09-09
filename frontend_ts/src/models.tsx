@@ -49,6 +49,12 @@ export interface IMovie {
     comments: IReview[] | null[]
     release_date: string
 }
+export interface IMovieRetrieve {
+    count: number,
+    next: string | null
+    previous: string | null
+    results: IMovie[] 
+}
 
 export interface IArticleType {
     readonly id: number

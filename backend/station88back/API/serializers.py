@@ -22,6 +22,7 @@ class MovieSerializer(serializers.ModelSerializer):
     ST88ratings = ST88ratingSerializer(many=True, read_only=True)
     comments = ReviewSerializer(many=True, read_only=True)
 
+
     class Meta:
         model = Movie
         fields = ['id', 'title', 'original_title', 'url', 'poster', 
