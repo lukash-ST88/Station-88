@@ -76,6 +76,13 @@ export interface IArticle {
     content: string
 }
 
+export interface IArticleRetrieve {
+    count: number,
+    next: string | null
+    previous: string | null
+    results: IArticle[] 
+}
+
 export interface IBanners {
     readonly id: number
     title: string

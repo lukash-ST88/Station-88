@@ -17,24 +17,17 @@ export interface IFilter {
 
 function Movies() {
   const [movies, setMovies] = useState<IMovie[]>([]);
-  const [filter, setFilter] = useState<IFilter>({
-    sort: "",
-    query: "",
-  });
-  const [totalPages, setTotalPages] = useState(0)
-  const sortedAndSearchedMovies: any = usePosts(
-    movies,
-    filter.sort,
-    filter.query
-  );
+  const [filter, setFilter] = useState<IFilter>({sort: "", query: "",});
+  const [totalPages, setTotalPages] = useState(0);
+  const sortedAndSearchedMovies: any = usePosts(movies, filter.sort, filter.query);
   const [limit, setLimit] = useState(6);
   const [offset, setOffset] = useState(0);
   const lastElement: any = useRef();
-  // let pagesArray = getPagesArray(totalPages)
+
 
   useEffect(() => {
     // retrieveMovies();
-    fetchMovies(limit, offset)
+    fetchMovies(limit, offset);
   }, [offset]);
 
   // const retrieveMovies = () => {
@@ -44,9 +37,8 @@ function Movies() {
   //       const totalCount = response.data.count
   //       setTotalPages(getPageCount(totalCount, limit))
   //     })
-  //     .catch((e) => console.log(e));  
+  //     .catch((e) => console.log(e));
   // };
-
 
   const [fetchMovies, isMovieLoading, movieError]: any = useFetching(
     async (limit: number, offset: number) => {
@@ -57,7 +49,12 @@ function Movies() {
     }
   );
 
-  useObserver(lastElement, offset/limit + 1 < totalPages, ()=> setOffset(offset + limit), isMovieLoading)
+  useObserver(
+    lastElement,
+    offset / limit + 1 < totalPages,
+    () => setOffset(offset + limit),
+    isMovieLoading
+  );
 
   return (
     <>
@@ -138,9 +135,8 @@ function Movies() {
               })}
             </div>
           </TransitionGroup>
-          <div ref={lastElement} style={{ height: 20, background: "green" }} />
-          {isMovieLoading && <Loader/>}
-          {/* <div>{pagesArray.map(page=>(<button onClick={()=>setOffset((page - 1) * limit)}>{page}</button>))}</div> */}
+          <div ref={lastElement} style={{ height: 10, background: "transperent" }} />
+          {isMovieLoading && <div className='flex justify-center'><Loader /></div>}
         </div>
         <div className="w-1/6 color-test ">
           <Filter filter={filter} setFilter={setFilter} />

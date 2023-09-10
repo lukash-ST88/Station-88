@@ -189,10 +189,11 @@ class Banners(models.Model):
         return self.title
 
 
-# #TODO: team array
-# #TODO: rating API KinoPoisk IMDB
-# #TODO: slugify 
-# TODO: custom user model
+#TODO: team array
+#TODO: rating API KinoPoisk IMDB
+#TODO: slugify 
+#TODO: custom user model
+#TODO: default release_date for articles
 
 
 

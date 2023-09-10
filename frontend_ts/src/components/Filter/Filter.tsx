@@ -14,11 +14,10 @@ const Filter = (props: FilterProps) => {
     
 
     return (
-    <div>
+    <div className="m-2">
         <MyInput 
         value={props.filter.query} 
         onChange={(event: any) => props.setFilter({ ...props.filter, query: event.target.value })}
-        placeholder="поиск"
         />
         <MySelect
         value={props.filter.sort}

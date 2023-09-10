@@ -49,7 +49,7 @@ const Slider = (props: SlidesProps)=> {
           </div>
         </div>
         {props.loading 
-        ? <Loader/> 
+        ? <div className='flex justify-center'><Loader/></div>
         : <Link to={props.slides[currentIndex].link}><div className='text-slider transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-110'>{props.slides[currentIndex].title}</div><div className='slide' style={{backgroundImage: `url(${props.slides[currentIndex].banner})`}}></div></Link>
         }
         <div className='dot-container'>
