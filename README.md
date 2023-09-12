@@ -86,6 +86,7 @@ cd frontend_ts
 npm install 
 ```
 <p> 8. Start the client side:</p>
+
 ```
 npm start
 ```
