@@ -35,9 +35,11 @@ Station-88 is a movie production project, which indludes movie reviews, cinema a
 
 <h4>Steps to activate the project on linux machine:</h4>
 <p> 1. Clone git repository to your machine:</p>
+
 ```
 git clone https://github.com/lukash-ST88/Station-88.git
 ```
+
 <p> 2. Setup backend - create and activate virtual environment: </p>
 
 ```
