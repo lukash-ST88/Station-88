@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { IArticle, IMovie } from "../models";
 import MovieService from "../services/movies";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Filter from "../components/Filter/Filter";
 import { usePosts } from "../hooks/usePosts";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -23,6 +23,7 @@ function Movies() {
   const [limit, setLimit] = useState(6);
   const [offset, setOffset] = useState(0);
   const lastElement: any = useRef();
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -65,8 +66,8 @@ function Movies() {
               {sortedAndSearchedMovies.map((movie: IMovie, index: number) => {
                 return (
                   <CSSTransition key={index} timeout={5000} classNames="post">
-                    <Link
-                      to="#"
+                    <div
+                      onClick={()=>navigate(`/movie/${movie.url}`)}
                       className="flex items-between md:flex-row md:max-w-xl border-custom bg-opacity-80 hover:ring-4 z-0 hover:z-10 hover:ring-green-600 hover:shadow-2xl transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-110 icons"
                     >
                       <img
@@ -129,7 +130,7 @@ function Movies() {
                 <div>{movie.genre} </div> */}
                       {/* <div> {movie.ST88descriptions.map(desc=>(<div>{desc?.description} {desc?.author}</div>))}</div>
                 <div>{movie.comments.map(comment=>(<div>{comment?.text}</div>))}</div> */}
-                    </Link>
+                    </div>
                   </CSSTransition>
                 );
               })}

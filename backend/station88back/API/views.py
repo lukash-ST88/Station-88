@@ -5,7 +5,8 @@ from .serializers import MovieSerializer, ArticleSerializer, BannersSerializer
 from django.db.models import Count
 from rest_framework.response import Response
 from rest_framework.pagination import LimitOffsetPagination
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 def get_list_movies(request):
     movies = Movie.objects.all()
@@ -36,3 +37,12 @@ class BannersListView(generics.ListAPIView):
     queryset = Banners.objects.all()
     pagination_class = None
     
+@api_view(['GET'])    
+def movie_detail(request, url):
+    try:
+        movie = Movie.objects.get(url=url)
+    except Movie.DoesNotExist:
+        return  Response({'massage': 'Фильм не найден'})
+    if request.method == 'GET':
+        movie_serializer = MovieSerializer(movie)
+        return Response(movie_serializer.data)
