@@ -1,8 +1,8 @@
-import MyInput from "../UI/MyInput/MyInput"
+import MyInput from "../../UI/MyInput/MyInput"
 import { useState } from "react"
-import MySelect from "../UI/MySelect/MySelect"
+import MySelect from "../../UI/MySelect/MySelect"
 import React from "react"
-import { IFilter } from "../../pages/Movies"
+import { IFilter } from "../../../pages/Movies"
 
 
 interface FilterProps {

@@ -2,13 +2,13 @@ import { useState, useEffect, useRef } from "react";
 import { IArticle, IMovie } from "../models";
 import MovieService from "../services/movies";
 import { Link, useNavigate } from "react-router-dom";
-import Filter from "../components/Filter/Filter";
+import Filter from "../components/components/Filter/Filter";
 import { usePosts } from "../hooks/usePosts";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { getPageCount, getPagesArray } from "../utils/pages";
 import { useObserver } from "../hooks/useObserver";
 import { useFetching } from "../hooks/useFetching";
-import Loader from "../components/Loader/Loader";
+import Loader from "../components/components/Loader/Loader";
 
 export interface IFilter {
   sort: string;
@@ -17,29 +17,23 @@ export interface IFilter {
 
 function Movies() {
   const [movies, setMovies] = useState<IMovie[]>([]);
-  const [filter, setFilter] = useState<IFilter>({sort: "", query: "",});
+  const [filter, setFilter] = useState<IFilter>({ sort: "", query: "" });
   const [totalPages, setTotalPages] = useState(0);
-  const sortedAndSearchedMovies: any = usePosts(movies, filter.sort, filter.query);
+  const sortedAndSearchedMovies: any = usePosts(
+    movies,
+    filter.sort,
+    filter.query
+  );
   const [limit, setLimit] = useState(6);
   const [offset, setOffset] = useState(0);
   const lastElement: any = useRef();
   const navigate = useNavigate();
 
-
   useEffect(() => {
-    // retrieveMovies();
     fetchMovies(limit, offset);
+    console.log(movies.map((movie) => console.log(movie.poster)));
   }, [offset]);
 
-  // const retrieveMovies = () => {
-  //   MovieService.getAllMovies(limit, offset)
-  //     .then((response) => {
-  //       setMovies([...movies, ...response.data.results])
-  //       const totalCount = response.data.count
-  //       setTotalPages(getPageCount(totalCount, limit))
-  //     })
-  //     .catch((e) => console.log(e));
-  // };
 
   const [fetchMovies, isMovieLoading, movieError]: any = useFetching(
     async (limit: number, offset: number) => {
@@ -67,7 +61,7 @@ function Movies() {
                 return (
                   <CSSTransition key={index} timeout={5000} classNames="post">
                     <div
-                      onClick={()=>navigate(`/movie/${movie.url}`)}
+                      onClick={() => navigate(`/movie/${movie.url}`)}
                       className="flex items-between md:flex-row md:max-w-xl border-custom bg-opacity-80 hover:ring-4 z-0 hover:z-10 hover:ring-green-600 hover:shadow-2xl transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-110 icons"
                     >
                       <img
@@ -113,31 +107,23 @@ function Movies() {
                           </svg>
                           <div>{movie.year}</div>
                         </div>
-                        <div className="flex flex-col justify-center items-center">
-                          {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
-                                </svg>
-                                <div>{movie.genre}</div> */}
-                        </div>
                         <h4>CT 10 imdb 8.5 КП 8.4</h4>
                       </div>
-                      {/* <div>{movie.title} </div>
-                <div>{movie.original_title} </div>
-                <div>{movie.url} </div>
-                <div>{movie.director} </div>
-                <img src={movie.poster}/>
-                <a href={movie.link}>{movie.link}</a>
-                <div>{movie.genre} </div> */}
-                      {/* <div> {movie.ST88descriptions.map(desc=>(<div>{desc?.description} {desc?.author}</div>))}</div>
-                <div>{movie.comments.map(comment=>(<div>{comment?.text}</div>))}</div> */}
                     </div>
                   </CSSTransition>
                 );
               })}
             </div>
           </TransitionGroup>
-          <div ref={lastElement} style={{ height: 10, background: "transperent" }} />
-          {isMovieLoading && <div className='flex justify-center'><Loader /></div>}
+          <div
+            ref={lastElement}
+            style={{ height: 10, background: "transperent" }}
+          />
+          {isMovieLoading && (
+            <div className="flex justify-center">
+              <Loader />
+            </div>
+          )}
         </div>
         <div className="w-1/6 color-test ">
           <Filter filter={filter} setFilter={setFilter} />

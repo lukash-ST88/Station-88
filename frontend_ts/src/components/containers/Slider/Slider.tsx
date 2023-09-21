@@ -1,7 +1,7 @@
 import {useState, useEffect, useContext} from 'react'
 import './Slider.css'
 import { IBanners } from '../../../models'
-import Loader from '../../Loader/Loader'
+import Loader from '../../components/Loader/Loader'
 import { Link } from 'react-router-dom'
 
 interface SlidesProps {

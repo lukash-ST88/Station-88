@@ -42,7 +42,17 @@ def movie_detail(request, url):
     try:
         movie = Movie.objects.get(url=url)
     except Movie.DoesNotExist:
-        return  Response({'massage': 'Фильм не найден'})
+        return  Response({'message': 'Фильм не найден'})
     if request.method == 'GET':
         movie_serializer = MovieSerializer(movie)
         return Response(movie_serializer.data)
+
+@api_view(['GET'])
+def article_detail(request, url):
+    try:
+        article = Article.objects.get(url=url)
+    except Article.DoesNotExist:
+        return Response({'message': 'Статья не нейдена'})
+    if request.method == 'GET':
+        article_serializer = ArticleSerializer(article)
+        return Response(article_serializer.data)

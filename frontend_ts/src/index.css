@@ -119,3 +119,14 @@ code {
   opacity: 0;
   transition: opacity 500ms ease-in;
 }
+
+.movie-title {
+  font-family: 'tupo_vyazregular';
+  color: white;
+  font-weight: 500;
+  font-size: 3rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.0rem;
+  padding-bottom: 0.25rem;
+}

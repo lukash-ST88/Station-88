@@ -1,19 +1,24 @@
-import axios from 'axios'
-import { IArticleRetrieve } from '../models';
+import axios from "axios";
+import { IArticle, IArticleRetrieve } from "../models";
 
-const API_URL = 'http://localhost:8000';
+const API_URL = "http://localhost:8000";
 
-class ArticleService{
-    getAllArticles(limit: number, offset: number = 0){
-        const url = `${API_URL}/API/articles`
-        const response = axios.get<IArticleRetrieve>(url, {
-            params: {
-                limit: limit, 
-                offset: offset,
-              },
-        });  
-        return response
-   }
+class ArticleService {
+  getAllArticles(limit: number, offset: number = 0) {
+    const url = `${API_URL}/API/articles`;
+    const response = axios.get<IArticleRetrieve>(url, {
+      params: {
+        limit: limit,
+        offset: offset,
+      },
+    });
+    return response;
+  }
+  getArticleByUrl(slug: string) {
+    const url = `${API_URL}/API/article/${slug}`;
+    const response = axios.get<IArticle>(url);
+    return response;
+  }
 }
 
-export default new ArticleService
+export default new ArticleService();

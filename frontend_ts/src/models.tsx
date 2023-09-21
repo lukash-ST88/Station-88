@@ -73,7 +73,7 @@ export interface IArticle {
     release_date: string
     article_type: string[] | null
     poster: string
-    content: string
+    content: string | TrustedHTML
 }
 
 export interface IArticleRetrieve {
