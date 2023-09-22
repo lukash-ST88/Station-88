@@ -46,7 +46,7 @@ const Movie = () => {
           <img src={`${API_URL}${movie?.poster}`} />
           <div>
             <audio controls>
-              <source src={movie?.music} type="audio/mpeg" />
+              <source src={`${API_URL}${movie?.music}`} type="audio/mpeg" />
             </audio>
           </div>
           <div className="text-2xl">Режиссёр: {movie?.director}</div>
@@ -54,9 +54,13 @@ const Movie = () => {
           <div className="text-2xl">Жанр: {movie?.genre}</div>
           <div>
             <video width="320" height="240" controls>
-              <source src={movie?.link} type="video/mp4" />
+              <source src={movie?.link}type="video/mp4" />
               <source src={movie?.link} type="video/ogg" />
             </video>
+            <iframe width="400" height="300" loading='lazy' src='https://www.youtube.com/embed/mS8YraEXC9c?si=DG92Kt4kaAXVKSFQ'>
+            </iframe>
+            {/* <iframe src="https://platform.twitter.com/widgets/tweet_button.html" style={{border: '0', width:'130px', height:'20px'}}></iframe> */}
+            {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/mS8YraEXC9c?si=DG92Kt4kaAXVKSFQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe> */}
           </div>
         </div>
         <div className="w-2/3">
