@@ -83,6 +83,7 @@ export interface IArticleRetrieve {
     results: IArticle[] 
 }
 
+
 export interface IBanners {
     readonly id: number
     title: string

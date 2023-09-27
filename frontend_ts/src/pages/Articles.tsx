@@ -10,6 +10,7 @@ import { useObserver } from "../hooks/useObserver";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Loader from "../components/components/Loader/Loader";
 import Filter from "../components/components/Filter/Filter";
+import ArticleCard from "../components/cards/ArticleCard";
 
 function Articles() {
   const [articles, setArticles] = useState<IArticle[]>([]);
@@ -52,30 +53,15 @@ function Articles() {
           <div className="grid md:grid-cols-3 gap-4 grid-cols-1">
             {sortedAndSearchedArticles.map(
               (article: IArticle, index: number) => {
-                return (
-                  <CSSTransition key={index} timeout={5000} classNames="post">
-                    <div
-                      onClick={() => navigate(`/article/${article.url}`)}
-                      className="relative border-custom z-0 hover:z-10 hover:text-green-600 hover:ring-4 hover: ring-green-600 transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-110"
-                    >
-                      <div className="text-center color-card">
-                        {article.title}
-                      </div>
-                      <img
-                        src={article.poster}
-                        className="object-cover h-48 w-full"
-                      />
-                      <div className="text-center italic text-sm color-card">
-                        {article.subtitle}
-                      </div>
-                    </div>
-                  </CSSTransition>
-                );
+                return <ArticleCard article={article} index={index} />;
               }
             )}
           </div>
         </TransitionGroup>
-        <div ref={lastElement} style={{ height: 20, background: "green" }} />
+        <div
+          ref={lastElement}
+          style={{ height: 10, background: "transperent" }}
+        />
         {isArticleLoading && (
           <div className="flex justify-center">
             <Loader />

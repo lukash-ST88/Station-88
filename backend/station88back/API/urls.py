@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import get_list_movies, get_movie_detail, MovieListView, ArticleListView, BannersListView, movie_detail, article_detail
+from .views import get_list_movies, get_movie_detail, MovieListView, ArticleListView, BannersListView, movie_detail, article_detail, PostsListView, get_posts
 
 
 urlpatterns = [
@@ -9,5 +9,7 @@ urlpatterns = [
     path('API/articles', ArticleListView.as_view(), name='articles'),
     path('API/banners', BannersListView.as_view(), name='banners'),
     path('API/movie/<slug:url>', movie_detail, name='movie'),
-    path('API/article/<slug:url>', article_detail, name='article' )
+    path('API/article/<slug:url>', article_detail, name='article'),
+    path('API/posts',  PostsListView.as_view(), name='posts'),
+    path('API/post_list', get_posts, name='po')
 ]

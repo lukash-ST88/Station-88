@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'API',
     'ckeditor',
     'ckeditor_uploader',
+    'drf_multiple_model',
 ]
 
 MIDDLEWARE = [
