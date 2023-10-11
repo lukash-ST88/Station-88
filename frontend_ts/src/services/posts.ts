@@ -1,7 +1,6 @@
 import axios from "axios";
 import { IMovie, IMovieRetrieve } from "../models";
-
-export const API_URL = "http://localhost:8000";
+import { API_URL } from "./settings/urls";
 
 class PostService {
   getAllPosts(limit: number, offset: number) {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IArticle, IArticleRetrieve } from "../models";
+import { API_URL } from "./settings/urls";
 
-const API_URL = "http://localhost:8000";
 
 class ArticleService {
   getAllArticles(limit: number, offset: number = 0) {

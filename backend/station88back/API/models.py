@@ -1,6 +1,20 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.models import User
 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=100, null=True)
+    last_name = models.CharField(max_length=100, null=True)
+    role = models.CharField(max_length=250, default=None, null=True)
+
+    class Meta:
+        verbose_name = "Профиль"
+        verbose_name_plural = "Профили"
+
+    def __str__(self):
+        return self.last_name
     
 class Movie(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')

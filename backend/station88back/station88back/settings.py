@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
     'corsheaders',
     'API',
     'ckeditor',
@@ -143,11 +145,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
 'http://localhost:3000',
+"http://127.0.0.1:3000"
+
 ] # for allowed hosts for frontend
 
 REST_FRAMEWORK = {
 'DEFAULT_AUTHENTICATION_CLASSES':[
 'rest_framework.authentication.BasicAuthentication',
+'rest_framework.authentication.TokenAuthentication',
 ],
 'DEFAULT_PERMISSION_CLASSES': [
     'rest_framework.permissions.AllowAny'
@@ -224,3 +229,6 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+DJOSER = {
+    "USER_ID_FIELD": "username"
+}

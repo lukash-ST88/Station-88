@@ -59,6 +59,7 @@ class PostsListView(FlatMultipleModelAPIView):
     ]
 
 
+
 @api_view(['GET'])
 def get_posts(request):
     try:

@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { IMovie, IArticle } from "./models";
-import MovieService from "./services/movies";
-import ArticleService from "./services/articles";
 import Navigation from "./components/containers/Navigation";
-import { Routes, Route } from "react-router-dom";
-import Movies from "./pages/Movies";
-import Articles from "./pages/Articles";
-import Home from "./pages/Home";
 import SliderContainer from "./components/containers/Slider/SliderContainer";
-import Movie from "./pages/Movie";
-import Article from "./pages/Article";
 import Router from "./routers/Router";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
+    <>
     <div className="App container color-theme mx-auto my-0">
       <div className="container py-5 mx-auto ">
         <Navigation />
@@ -28,6 +20,8 @@ function App() {
         Container 3
       </div>
     </div>
+    <ToastContainer hideProgressBar={true} newestOnTop={true} />
+    </>
   );
 }
 

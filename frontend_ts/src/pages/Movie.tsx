@@ -9,9 +9,8 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { getPageCount, getPagesArray } from "../utils/pages";
 import { useObserver } from "../hooks/useObserver";
 import Accordion from "../components/components/Accordion/Accordion";
-import { API_URL } from "../services/movies";
 import Loader from "../components/components/Loader/Loader";
-
+import { API_URL } from "../services/settings/urls";
 const Movie = () => {
   const [movie, setMovie] = useState<IMovie>();
   const params = useParams();

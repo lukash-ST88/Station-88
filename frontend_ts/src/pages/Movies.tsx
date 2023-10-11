@@ -10,6 +10,7 @@ import { useObserver } from "../hooks/useObserver";
 import { useFetching } from "../hooks/useFetching";
 import Loader from "../components/components/Loader/Loader";
 import MovieCard from "../components/cards/MovieCard";
+import axios from "axios";
 
 export interface IFilter {
   sort: string;
@@ -32,7 +33,7 @@ function Movies() {
 
   useEffect(() => {
     fetchMovies(limit, offset);
-    console.log(movies.map((movie) => console.log(movie.poster)));
+    console.log(axios.defaults.headers.common['Authorization'])
   }, [offset]);
 
   const [fetchMovies, isMovieLoading, movieError]: any = useFetching(

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IMovie, IMovieRetrieve } from "../models";
+import { API_URL } from "./settings/urls";
 
-export const API_URL = "http://localhost:8000";
 
 class MovieService {
   getAllMovies(limit: number, offset: number) {
