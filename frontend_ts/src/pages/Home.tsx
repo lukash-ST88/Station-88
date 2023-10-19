@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { IMovie, IArticle } from "../models";
 import PostService from "../services/posts";
-import ArticleService from "../services/articles";
-import Navigation from "../components/containers/Navigation";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useFetching } from "../hooks/useFetching";
-import Loader from "../components/components/Loader/Loader";
 import { useObserver } from "../hooks/useObserver";
 import { getPageCount, getPagesArray } from "../utils/pages";
 import PostCard from "../components/cards/PostCard";
+import { connect} from "react-redux";  
 
-function Home() {
+function Home(props: any) {
   const [posts, setPosts] = useState<any>([]);
   const [totalPages, setTotalPages] = useState(0);
   const [limit, setLimit] = useState(6);
@@ -52,6 +49,7 @@ function Home() {
   return (
     <div className="flex">
       <div className="w-5/6">
+        <div> {props.auth.isAuthenticated ? 1 : 0}</div>
         <div>
           {posts.map((post: any, index: number) => {
             return(
@@ -81,4 +79,9 @@ function Home() {
   );
 }
 
-export default Home;
+const mapStateToProps = (state: any) => ({
+  auth: state.auth
+});
+
+
+export default connect(mapStateToProps)(Home);  

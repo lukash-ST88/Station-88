@@ -6,7 +6,6 @@ import { connect, useDispatch } from "react-redux";
 const LoginTag = (props: any) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const dispatch = useDispatch();
     
     const onLoginClick = () => {
         const userData = {
@@ -17,6 +16,7 @@ const LoginTag = (props: any) => {
         console.log('login called')
     }
     return ( <div>
+        <div> {props.auth.isAuthenticated ? 1 : 0 } </div>
         <div className="relative z-0 w-full mb-6 group">
             <input value={username} onChange={(e)=>setUsername(e.target.value)} type="text" name="username" id="username" className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
             <label htmlFor="username" className="peer-focus:font-medium absolute text-xl text-white dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">username</label>
@@ -35,5 +35,5 @@ const mapStateToProps = (state: any) => ({
 
 
 export default connect(mapStateToProps, {login})(LoginTag);   
-// mapStateToProps just adds new state to props [prop.auth]
-// {login} - which is mapDispatchToProps - adds new dispatch to props [props.login() instead of props.dispatch(login(), or login()(dispatch))]
+// mapStateToProps just adds new state to props [props.auth]
+// {login} - which is mapDispatchToProps - adds new dispatch to props [props.login() instead of props.dispatch(login()), or login()(dispatch))]

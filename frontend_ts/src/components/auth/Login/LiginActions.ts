@@ -1,11 +1,11 @@
 import axios from "axios";
-// import { push } from "connected-react-router";
+import { push } from "react-router-redux";
 import { toast } from "react-toastify";
 import { SET_TOKEN, SET_CURRENT_USER, UNSET_CURRENT_USER } from "./LoginTypes";
 import { setAxiosAuthToken, toastOnError } from "../../../utils/authToken";
 import { API_URL } from "../../../services/settings/urls";
-import { store } from "../../../store";
-import { log } from "console";
+import { history } from "../../../store";
+// import { Redirect } from "react-router-dom"
 
 export const login = (userData: any, redirectTo: any) => {
   console.log(`login 0 - ${userData}`)
@@ -53,9 +53,11 @@ export const setCurrentUser = (user: any, redirectTo: string) => (dispatch: any)
   });
   console.log("set user is over " + redirectTo);
 
-  // if (redirectTo !== "") {
-  //   store.dispatch(push(redirectTo));
-  // }
+  if (redirectTo !== "") {
+    console.log('redirect works')
+    // dispatch(push(redirectTo));
+    dispatch(history.push('/'))
+  }
 };
 
 export const setToken = (token: any) => (dispatch: any) => {
