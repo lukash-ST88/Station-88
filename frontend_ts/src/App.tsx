@@ -1,4 +1,4 @@
-import Navigation from "./components/containers/Navigation";
+import Navigation from "./components/containers/Navigation/Navigation";
 import SliderContainer from "./components/containers/Slider/SliderContainer";
 import Router from "./routers/Router";
 import { ToastContainer } from "react-toastify";

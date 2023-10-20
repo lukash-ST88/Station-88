@@ -20,15 +20,6 @@ function Home(props: any) {
     console.log(posts.map((post: any) => console.log(post.title)));
   }, [offset]);
 
-  // useEffect(()=>{
-  //   fetchPosts()
-  // }, [])
-
-  // const fetchPosts: any = async ()=> {
-  //   return PostService.getAllPosts().then((response)=>{
-  //     setPosts(response.data.results)
-  //   })
-  // }
 
   const [fetchPosts, isPostLoading, postError]: any = useFetching(
     async (limit: number, offset: number) => {
@@ -60,17 +51,6 @@ function Home(props: any) {
         </div>
       </div>
       <div className="w-1/6"></div>
-      <div>
-        {posts.map((post: any) => {
-          return (
-            <>
-              <div>{post.title}</div>
-              <div>{post.type}</div>
-            </>
-          );
-        })}
-      </div>
-
       <div
         ref={lastElement}
         style={{ height: 10, background: "transperent" }}
