@@ -13,16 +13,6 @@ from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from station88back.settings import REST_FRAMEWORK
 
 
-def get_list_movies(request):
-    movies = Movie.objects.all()
-    return render(request, 'movies.html', {'movies': movies})
-
-
-def get_movie_detail(request, movie_slug):
-    movie = Movie.objects.get(url=movie_slug)
-    return render(request, 'movie_detail.html', {'movie': movie})
-
-
 class MovieListView(generics.ListAPIView):
     serializer_class = MovieSerializer
     queryset = Movie.objects.prefetch_related(
@@ -60,14 +50,14 @@ class PostsListView(FlatMultipleModelAPIView):
 
 
 
-@api_view(['GET'])
-def get_posts(request):
-    try:
-        movies = Movie.objects.all()
-        movie_serializer = MovieSerializer(movies)
-    except Movie.DoesNotExist:
-        return Response({'message': 'Фильм не найден'})
-    return Response(movie_serializer.data)
+# @api_view(['GET'])
+# def get_posts(request):
+#     try:
+#         movies = Movie.objects.all()
+#         movie_serializer = MovieSerializer(movies)
+#     except Movie.DoesNotExist:
+#         return Response({'message': 'Фильм не найден'})
+#     return Response(movie_serializer.data)
 
 
 @api_view(['GET'])
