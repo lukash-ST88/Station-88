@@ -9,7 +9,7 @@ export interface IProfile {
 
 
 export interface IUser {
-    name: string
+    username: string
     email?: string
     profile: IProfile | null
 }
@@ -38,8 +38,8 @@ export interface IST88rating {
 export interface IST88description {
     readonly id: number
     description: string
-    author: string
-    movie: string
+    author: IUser 
+    movie: IMovie 
 }
 
 
@@ -60,6 +60,7 @@ export interface IMovie {
     comments: IReview[] | null[]
     release_date: string
 }
+
 export interface IMovieRetrieve {
     count: number,
     next: string | null
@@ -104,7 +105,7 @@ export interface IBanners {
     link: string
 }
 
-export interface ISCenario {
+export interface IScenario {
     title: string
     synopsys: string
     text: string | any
@@ -117,7 +118,7 @@ export interface IProject {
     title: string
     year: number
     synopsys: string
-    scenario: null | any
+    scenario: IScenario 
     authors: IUser | null
     downloaded_film: string | undefined
     release_date: string | null

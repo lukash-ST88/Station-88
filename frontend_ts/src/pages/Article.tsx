@@ -42,3 +42,4 @@ const Article = () => {
 };
 
 export default Article;
+// TODO: - add Author name and some style

@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./cards.css" 
 
-interface IProjectProps {
+export interface IProjectIndexProps {
     project: IProject
     index: number
 }
 
-const ProjectCard = (props: IProjectProps)=> {
+const ProjectCard = (props: IProjectIndexProps)=> {
     const navigate = useNavigate();
     return (<>
     

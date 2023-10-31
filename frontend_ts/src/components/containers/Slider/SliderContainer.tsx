@@ -12,8 +12,8 @@ const SliderContainer = () => {
   useEffect(() => {
     retrieveBanners();
     setTimeout(() => {
-      setLoading(false);
-    }, 500);
+      setLoading(false); // TODO: - fix this
+    }, 1500);
   }, []);
 
   function retrieveBanners() {

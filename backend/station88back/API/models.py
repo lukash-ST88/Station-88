@@ -8,9 +8,9 @@ from django.utils.text import slugify
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    first_name = models.CharField(max_length=100, null=True)
-    last_name = models.CharField(max_length=100, null=True)
-    role = models.CharField(max_length=250, default=None, null=True, blank=True)
+    first_name = models.CharField(max_length=100, null=True, verbose_name="Имя")
+    last_name = models.CharField(max_length=100, null=True, verbose_name="Фамилия")
+    role = models.CharField(max_length=250, default=None, null=True, blank=True, verbose_name="Роль")
     avatar = models.ImageField(
         upload_to='user/avatar/', verbose_name='Фото', null=True)
 

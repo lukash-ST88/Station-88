@@ -65,3 +65,4 @@ const mapStateToProps = (state: any) => ({
 
 
 export default connect(mapStateToProps)(Home);  
+// TODO: - correct vertical text

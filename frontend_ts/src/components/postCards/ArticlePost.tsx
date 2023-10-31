@@ -13,7 +13,7 @@ const ArticlePost = (props: IArticleIndexProps) => {
         <div className="col-span-1 bg-white">
           <div className="date">
             {props.article.authors?.map((author: any) => {
-              return <div>Автор: {author}</div>;
+              return <div>Автор: {author.profile.first_name} {author.profile.last_name}</div>;
             })}
           </div>
         </div>

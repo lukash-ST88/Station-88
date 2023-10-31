@@ -26,3 +26,5 @@ const ArticleCard = (props: IArticleIndexProps) => {
 };
 
 export default ArticleCard
+
+// TODO:  - add modal for article type description

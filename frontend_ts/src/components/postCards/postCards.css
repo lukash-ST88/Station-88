@@ -16,6 +16,19 @@
     padding-top: 0.5rem;
 }
 
+.project-title-post {
+    font-family: 'tupo_vyazregular';
+    font-weight: 500;
+    font-size: 3rem;
+}
+
+.project-year {
+    font-family: 'Restora';
+    font-weight: 500;
+    font-size: 2rem;
+    padding-top: 0.5rem;
+}
+
 .date {
     /* display: inline-flex; */
     white-space: nowrap;
