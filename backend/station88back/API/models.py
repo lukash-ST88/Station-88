@@ -7,7 +7,7 @@ from django.utils.text import slugify
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=100, null=True)
     last_name = models.CharField(max_length=100, null=True)
     role = models.CharField(max_length=250, default=None, null=True, blank=True)
@@ -35,6 +35,7 @@ class Movie(models.Model):
     release_date = models.DateTimeField(default=timezone.now, verbose_name='Дата публикации', null=True)
     # related_articles
 
+    # def get_avg_rating_st88   
     class Meta:
         verbose_name = "Фильм"
         verbose_name_plural = "Фильмы"
@@ -175,20 +176,24 @@ class ProjectPresentation(models.Model):
 class ST88project(models.Model):
     title = models.CharField(max_length=100, verbose_name="Название")
     year = models.IntegerField(verbose_name="Год")
-    synopsys = models.TextField(verbose_name="")
+    synopsys = models.TextField(verbose_name="Синопсис")
     scenario = models.OneToOneField(Scenario, verbose_name="Сценарий",
-                                    related_name="ST88_project", on_delete=models.SET_NULL, null=True)
+                                    related_name="ST88_project", on_delete=models.SET_NULL, null=True, blank=True)
     # team = ArrayField(base_field=)
+    url = models.SlugField(max_length=255, unique=True,
+                           db_index=True, verbose_name='URL', null=True)
     authors = models.ManyToManyField(
         settings.AUTH_USER_MODEL, verbose_name='Авторы', related_name='ST88_projects')
     downloaded_film = models.FileField(
-        upload_to='ST88/projects/', verbose_name='Загруженный фильм', null=True)
+        upload_to='ST88/projects/', verbose_name='Загруженный фильм', null=True, blank=True)
     linked_film = models.CharField(
-        max_length=500, verbose_name="Ссылка на фильм", null=True)
+        max_length=500, verbose_name="Ссылка на фильм", null=True, blank=True)
     poster = models.ImageField(
         upload_to='scenario/posters/', verbose_name='Постер')
     release_date = models.DateTimeField(
         default=timezone.now, verbose_name='Дата публикации', null=True)
+    # хронометраж
+
 
     class Meta:
         verbose_name = "СТ88 Проект"

@@ -20,7 +20,7 @@ function Navigation(props: IAuthProps){
                 <Link to='/movies' className='nav-links'>Фильмы</Link>
                 <Link to='/' className='station88'> STATION 88 </Link>
                 <Link to='#' className='nav-links'>Образование</Link>
-                <Link to='#' className='nav-links'>Проекты</Link>
+                <Link to='/projects' className='nav-links'>Проекты</Link>
                 <div className='nav-links'>{props.auth.isAuthenticated ? <div>image</div> : <Link to='/login'>Профиль</Link> } </div>
             </div>
         </nav>

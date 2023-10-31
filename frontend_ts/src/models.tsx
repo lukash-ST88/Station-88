@@ -1,6 +1,17 @@
+export interface IProfile {
+    readonly id: number
+    user: IUser | null
+    first_name: string
+    last_name: string
+    role: string
+    avatar: string
+}
+
+
 export interface IUser {
     name: string
     email?: string
+    profile: IProfile | null
 }
 
 export interface IReview {
@@ -91,4 +102,32 @@ export interface IBanners {
     name: string
     banner: string
     link: string
+}
+
+export interface ISCenario {
+    title: string
+    synopsys: string
+    text: string | any
+    authors: IUser[] | null
+    poster: string
+    release_date: string
+}
+
+export interface IProject {
+    title: string
+    year: number
+    synopsys: string
+    scenario: null | any
+    authors: IUser | null
+    downloaded_film: string | undefined
+    release_date: string | null
+    url: string
+    poster: string | undefined
+}
+
+export interface  IProjectRetrieve {
+    count: number
+    next: string | null
+    previous: string | null
+    results: IProject[] 
 }

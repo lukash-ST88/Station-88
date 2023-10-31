@@ -6,6 +6,8 @@ import Movie from "../pages/Movie";
 import Movies from "../pages/Movies";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
+import Projects from "../pages/Projects";
+import Project from "../pages/Project";
 
 
 const Router = () => {
@@ -14,9 +16,11 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
+        <Route path="/article/:url" element={<Article />}/>
         <Route path="/movies" element={<Movies />} />
         <Route path="/movie/:url" element={<Movie />} />
-        <Route path="/article/:url" element={<Article />} />
+        <Route path="/projects" element={<Projects/>}/>
+        <Route path="/project/:url" element={<Project/>}/>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         {/* <Route path="/profile" element={requireAuth(Profile)}/> */}

@@ -1,5 +1,14 @@
 from rest_framework import serializers
 from .models import Movie, Article, ArticleType, Scenario, ST88description, ST88project, ST88rating, ProjectPresentation, Review, Banners
+from django.contrib.auth.models import User
+
+class CurrentUserSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    email = serializers.CharField()
+
+    class Meta:
+        model = User
+        fields = ('username', 'email')
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
@@ -35,7 +44,10 @@ class ArticleTypeSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class ArticleSerializer(serializers.ModelSerializer):
-    article_type = ArticleTypeSerializer(many=True, read_only=True)
+    # article_type = ArticleTypeSerializer(many=True, read_only=True)
+    article_type = serializers.StringRelatedField(many=True)
+    authors = CurrentUserSerializer(many=True, read_only=True)
+    # authors = serializers.SlugRelatedField(many=True, read_only=True, slug_field='username')
 
     class Meta:
         model = Article
@@ -45,3 +57,18 @@ class BannersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Banners
         fields = "__all__"
+
+
+
+class ScenarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Scenario
+        fields = "__all__"
+
+class ProjectSerializer(serializers.ModelSerializer):
+    scenario = ScenarioSerializer(read_only=True)
+
+    class Meta:
+        model = ST88project
+        fields = "__all__"
+

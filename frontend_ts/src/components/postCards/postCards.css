@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Restora';
+    src: url('../../css/Restora/Nasir Udin - RestoraThinItalic.otf') format("opentype");
+}
+
+.movie-title-post {
+    font-family: 'tupo_vyazregular';
+    font-weight: 500;
+    font-size: 3rem;
+}
+
+.movie-original-title-post {
+    font-family: 'Restora';
+    font-weight: 500;
+    font-size: 2rem;
+    padding-top: 0.5rem;
+}
+
+.date {
+    /* display: inline-flex; */
+    white-space: nowrap;
+    transform-origin: 0 50px;
+    transform: rotate(90deg);
+    color: #181818;
+    font-size: 1.25rem;
+
+}
+
+
+.article-poster-container {
+    position: relative;
+    text-align: center;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #181818;
+}
+
+.article-text-align {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.article-text-align .title {
+    font-size: 5rem;
+    font-family: 'tupo_vyazregular';
+}
+
+.article-text-align .subtitle {
+    font-size: 2.25rem;
+    font-family: 'Restora';
+    font-weight: 500;
+    font-style: italic;
+}

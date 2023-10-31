@@ -39,7 +39,7 @@ function Home(props: any) {
 
   return (
     <div className="flex">
-      <div className="w-5/6">
+      <div className="w-4/6">
         <div> {props.auth.isAuthenticated ? 1 : 0}</div>
         <div>
           {posts.map((post: any, index: number) => {
@@ -50,7 +50,7 @@ function Home(props: any) {
           })}
         </div>
       </div>
-      <div className="w-1/6"></div>
+      <div className="w-2/6"></div>
       <div
         ref={lastElement}
         style={{ height: 10, background: "transperent" }}
