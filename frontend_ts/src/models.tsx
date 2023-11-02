@@ -59,6 +59,7 @@ export interface IMovie {
     ST88ratings: IST88rating[] | null[]
     comments: IReview[] | null[]
     release_date: string
+    avg_rating: string | null
 }
 
 export interface IMovieRetrieve {

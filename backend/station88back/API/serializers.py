@@ -48,6 +48,7 @@ class MovieSerializer(serializers.ModelSerializer):
     ST88descriptions = ST88descriptionSerializer(many=True, read_only=True)
     ST88ratings = ST88ratingSerializer(many=True, read_only=True)
     comments = ReviewSerializer(many=True, read_only=True)
+    
 
     class Meta:
         model = Movie
@@ -57,10 +58,11 @@ class MovieSerializer(serializers.ModelSerializer):
 
 
 class MovieCardSerializer(serializers.ModelSerializer):
+    avg_rating = serializers.FloatField()
     class Meta:
         model = Movie
         fields = ['id', 'title', 'original_title',
-                  'url', 'poster', 'year', 'release_date']
+                  'url', 'poster', 'year', 'release_date', 'avg_rating']
 
 
 class ArticleTypeSerializer(serializers.ModelSerializer):

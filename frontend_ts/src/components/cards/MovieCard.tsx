@@ -1,6 +1,7 @@
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router-dom";
 import { IMovie } from "../../models";
+import Movie from "../../pages/Movie";
 
 export interface IMovieIndexProps {
     movie: IMovie
@@ -16,10 +17,10 @@ const MovieCard = (props: IMovieIndexProps)=> {
     <CSSTransition key={props.index} timeout={5000} classNames="post">
     <div
       onClick={() => navigate(`/movie/${props.movie.url}`)}
-      className="flex items-between md:flex-row md:max-w-xl border-custom bg-opacity-80 hover:ring-4 z-0 hover:z-10 hover:ring-green-600 hover:shadow-2xl transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-110 icons"
+      className="grid grid-cols-2 items-between md:flex-row md:max-w-xl border-custom bg-opacity-80 hover:ring-4 z-0 hover:z-10 hover:ring-green-600 hover:shadow-2xl transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-110 icons"
     >
       <img
-        className="object-cover w-full h-96 md:h-auto md:w-48"
+        className="object-cover w-auto h-72"
         src={props.movie.poster}
         alt={props.movie.title}
       />
@@ -61,7 +62,7 @@ const MovieCard = (props: IMovieIndexProps)=> {
           </svg>
           <div>{props.movie.year}</div>
         </div>
-        <h4>CT 10 imdb 8.5 КП 8.4</h4>
+        <h4>CT {props.movie.avg_rating} </h4>
       </div>
     </div>
   </CSSTransition>)

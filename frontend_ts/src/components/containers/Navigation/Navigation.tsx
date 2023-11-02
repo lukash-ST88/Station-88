@@ -3,31 +3,41 @@ import { connect} from "react-redux";
 import "./Navigation.css"
 
 
-interface IIsAuhtenticated {
+interface IUsernameEmail {
+    username: string
+    email: string
+}
+
+interface IIsAuhtenticatedUser {
     isAuthenticated: boolean
+    user: IUsernameEmail
 }
 
 interface IAuthProps {
-    auth:  IIsAuhtenticated
+    auth: IIsAuhtenticatedUser
 }
 
 function Navigation(props: IAuthProps){
+
     return (
         <nav>
-            <div className='flex flex-wrap justify-between items-center md:flex-nowrap md:gap-10'>
-                <Link to='#' className='img-links'><img className='logo' src='/images/Durica.jpg'></img></Link>
+            <div className='flex flex-wrap justify-around items-center md:flex-nowrap md:gap-10'>
+                <Link to='#' className=''><img className='img-links' src='/images/Durica_v2.jpg'></img></Link>
                 <Link to='/articles' className='nav-links'>Статьи</Link>
                 <Link to='/movies' className='nav-links'>Фильмы</Link>
                 <Link to='/' className='station88'> STATION 88 </Link>
                 <Link to='#' className='nav-links'>Образование</Link>
                 <Link to='/projects' className='nav-links'>Проекты</Link>
-                <div className='nav-links'>{props.auth.isAuthenticated ? <div>image</div> : <Link to='/login'>Профиль</Link> } </div>
+                {props.auth.isAuthenticated 
+                ? <Link to='#' className='nav-links'>{props.auth.user.username}</Link>
+                : <Link to='/login' className='nav-links'>Профиль</Link> 
+                } 
             </div>
         </nav>
     )
 }
 const mapStateToProps = (state: IAuthProps) => ({
-    auth: state.auth
+    auth: state.auth,
   });
 
 

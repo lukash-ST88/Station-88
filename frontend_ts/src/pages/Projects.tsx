@@ -43,28 +43,38 @@ function Projects() {
 
   return (
     <>
-      <div className="flex">
-        <div className="">
-          <TransitionGroup>
-            <div className="grid grid-cols-4 gap-4">
-              {projects.map(
-                (project: IProject, index: number) => {
+      {projects ? (
+        <div className="flex">
+          <div className="">
+            <TransitionGroup>
+              <div className="grid grid-cols-4 gap-4">
+                {projects.map((project: IProject, index: number) => {
                   return <ProjectCard project={project} index={index} />;
-                }
-              )}
-            </div>
-          </TransitionGroup>
+                })}
+              </div>
+            </TransitionGroup>
+            <div
+              ref={lastElement}
+              style={{ height: 10, background: "transperent" }}
+            />
+            {isProjectLoading && (
+              <div className="flex justify-center">
+                <Loader />
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <>
           <div
             ref={lastElement}
             style={{ height: 10, background: "transperent" }}
           />
-          {isProjectLoading && (
-            <div className="flex justify-center">
-              <Loader />
-            </div>
-          )}
-        </div>
-      </div>
+          <div className="text-center text-2xl">
+            На сегодняшний день ни одного проекта не заргуженно{" "}
+          </div>
+        </>
+      )}
     </>
   );
 }

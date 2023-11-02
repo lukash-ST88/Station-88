@@ -44,30 +44,24 @@ const Movie = () => {
             <div className="p-5">{movie?.title}</div>
             <div className="p-5 ">{movie?.original_title}</div>
           </div>
-          <div className="container flex">
-            <div className="w-1/3 flex flex-col m-4">
-              <img src={`${API_URL}${movie?.poster}`} />
-              <div>
-                <audio controls>
-                  <source src={`${API_URL}${movie?.music}`} type="audio/mpeg" />
-                </audio>
-              </div>
-              <div className="text-2xl">Режиссёр: {movie?.director}</div>
-              <div className="text-2xl">Год: {movie?.year}</div>
-              <div className="text-2xl">Жанр: {movie?.genre}</div>
-              <div>
-                <video width="320" height="240" controls>
-                  <source src={movie?.link} type="video/mp4" />
-                  <source src={movie?.link} type="video/ogg" />
-                </video>
+          <div className="container flex ">
+            <div className="w-1/3 flex flex-col justify-around my-4 divide-y-2">
+              <img className="my-2" src={`${API_URL}${movie?.poster}`} />
+              <div className="text-2xl text-center my-2">Режиссёр: {movie?.director}</div>
+              <div className="text-2xl text-center my-2">Год: {movie?.year}</div>
+              <div className="text-2xl text-center my-2">Жанр: {movie?.genre}</div>
+              <div className="my-2">
                 <iframe
-                  width="400"
+                  width="100%"
                   height="300"
                   loading="lazy"
-                  src="https://www.youtube.com/embed/mS8YraEXC9c?si=DG92Kt4kaAXVKSFQ"
+                  src={movie?.link}
                 ></iframe>
-                {/* <iframe src="https://platform.twitter.com/widgets/tweet_button.html" style={{border: '0', width:'130px', height:'20px'}}></iframe> */}
-                {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/mS8YraEXC9c?si=DG92Kt4kaAXVKSFQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe> */}
+                </div>
+                <div>
+                <audio className="w-full my-2" controls>
+                  <source src={`${API_URL}${movie?.music}`} type="audio/mpeg" />
+                </audio>
               </div>
             </div>
             <div className="w-2/3">
@@ -82,4 +76,4 @@ const Movie = () => {
 
 export default Movie;
 // TODO: correct accordion
-// TODO: correct video
+// TODO: add photo

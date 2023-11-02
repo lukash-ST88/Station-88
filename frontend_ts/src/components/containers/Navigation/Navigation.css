@@ -16,18 +16,16 @@
     background-color: rgb(34 197 94 / var(--tw-bg-opacity));
   }
 
-  .logo {
-    width: auto; 
-    height: 100%; 
+  .img-links {
+    border: solid 3px white;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
   }
 
-  .img-links {
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    border: solid 1px white;
-    border-radius: 50%;
-    padding-left: 0.25rem;
-    height: 100px;
-    width: 100px;
+  .img-links:hover {
+    --tw-bg-opacity: 1;
+    border-color: rgb(34 197 94 / var(--tw-bg-opacity));
   }
+

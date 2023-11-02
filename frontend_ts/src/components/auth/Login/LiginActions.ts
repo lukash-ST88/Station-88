@@ -5,6 +5,7 @@ import { SET_TOKEN, SET_CURRENT_USER, UNSET_CURRENT_USER } from "./LoginTypes";
 import { setAxiosAuthToken, toastOnError } from "../../../utils/authToken";
 import { API_URL } from "../../../services/settings/urls";
 import { history } from "../../../store";
+import { useNavigate } from "react-router";
 // import { Redirect } from "react-router-dom"
 
 export const login = (userData: any, redirectTo: any) => {
@@ -56,7 +57,8 @@ export const setCurrentUser = (user: any, redirectTo: string) => (dispatch: any)
   if (redirectTo !== "") {
     console.log('redirect works')
     // dispatch(push(redirectTo));
-    dispatch(history.push('/'))
+    dispatch(history.push('/movies'))
+   
   }
 };
 

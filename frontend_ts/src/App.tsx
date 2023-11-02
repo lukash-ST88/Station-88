@@ -1,3 +1,4 @@
+import Footer from "./components/containers/Footer/Footer";
 import Navigation from "./components/containers/Navigation/Navigation";
 import SliderContainer from "./components/containers/Slider/SliderContainer";
 import Router from "./routers/Router";
@@ -17,7 +18,7 @@ function App() {
         <Router />
       </div>
       <div className="container px-5 mx-auto xl:px-5 py-5 lg:py-8 mt-10 border-t border-gray-100 dark:border-gray-800">
-        Container 3
+        <Footer/>
       </div>
     </div>
     <ToastContainer hideProgressBar={true} newestOnTop={true} />
