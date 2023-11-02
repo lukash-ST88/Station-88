@@ -41,7 +41,7 @@ class ST88descriptionSerializer(serializers.ModelSerializer):
     movie = serializers.CharField()
     class Meta:
         model = ST88description
-        fields = ['description', 'author', 'release_date', 'movie']
+        fields = ['description', 'author', 'release_date', 'movie', 'id']
 
 
 class MovieSerializer(serializers.ModelSerializer):

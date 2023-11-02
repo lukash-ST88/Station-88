@@ -11,6 +11,8 @@ import { useObserver } from "../hooks/useObserver";
 import Accordion from "../components/components/Accordion/Accordion";
 import Loader from "../components/components/Loader/Loader";
 import { API_URL } from "../services/settings/urls";
+import AccordionMT from "../components/components/Accordion/AccordionMT";
+
 
 const Movie = () => {
   const [movie, setMovie] = useState<IMovie>();
@@ -65,7 +67,7 @@ const Movie = () => {
               </div>
             </div>
             <div className="w-2/3">
-              <Accordion movie={movie} />
+              <AccordionMT movie={movie} />
             </div>
           </div>
         </div>
