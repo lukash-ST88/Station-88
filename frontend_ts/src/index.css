@@ -32,6 +32,16 @@ body {
   src: url('css/Termimator_genisys/TerminatorGenisys.ttf');
 }
 
+@font-face {
+  font-family: 'RestoraItalic';
+  src: url('css/Restora/Nasir Udin - RestoraThinItalic.otf') format("opentype");
+}
+
+@font-face {
+  font-family: 'RestoraLight';
+  src: url('css/Restora/Nasir\ Udin\ -\ RestoraExtraLight.otf') format("opentype");
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -118,6 +128,24 @@ code {
   padding-right: 1.25rem;
   padding-top: 0.0rem;
   padding-bottom: 0.25rem;
+}
+
+.movie-original-title {
+  font-family: 'RestoraLight';
+  color: white;
+  font-weight: 500;
+  font-size: 2rem;  
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.0rem;
+  padding-bottom: 0.25rem;
+}
+
+.description-text {
+  font-family: 'RestoraLight';
+  color: white;
+  font-weight: 300;
+  font-size: 1rem;
 }
 
 .project-title {

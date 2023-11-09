@@ -28,18 +28,14 @@ export interface IReview {
 
 }
 
-export interface IST88rating {
-    readonly id: number
-    rating: number
-    author: string
-    movie: string
-}
+
 
 export interface IST88description {
     readonly id: number
     description: string
     author: IUser 
     movie: IMovie 
+    rating: string | null
 }
 
 
@@ -56,11 +52,11 @@ export interface IMovie {
     music: string
     link: string
     ST88descriptions: IST88description[] | null[]
-    ST88ratings: IST88rating[] | null[]
     comments: IReview[] | null[]
     release_date: string
     avg_rating: string | null
 }
+
 
 export interface IMovieRetrieve {
     count: number,

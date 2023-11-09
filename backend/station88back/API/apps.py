@@ -7,7 +7,8 @@ class ApiConfig(AppConfig):
 
 
 # TODO: correct project detail 
-#TODO: correct container slider
+#TODO: correct font
+#TODO: correct ratings
 #TODO: create Profile menu for auth
 #TODO: get modul sign in
 #TODO: typescript

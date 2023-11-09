@@ -5,7 +5,7 @@ import { useFetching } from "../hooks/useFetching";
 import { useObserver } from "../hooks/useObserver";
 import { getPageCount, getPagesArray } from "../utils/pages";
 import PostCard from "../components/cards/PostCard";
-import { connect} from "react-redux";  
+import { connect } from "react-redux";
 
 function Home(props: any) {
   const [posts, setPosts] = useState<any>([]);
@@ -19,7 +19,6 @@ function Home(props: any) {
     fetchPosts(limit, offset);
     console.log(posts.map((post: any) => console.log(post.title)));
   }, [offset]);
-
 
   const [fetchPosts, isPostLoading, postError]: any = useFetching(
     async (limit: number, offset: number) => {
@@ -40,13 +39,13 @@ function Home(props: any) {
   return (
     <div className="flex">
       <div className="w-4/6">
-        <div> {props.auth.isAuthenticated ? 1 : 0}</div>
         <div>
           {posts.map((post: any, index: number) => {
-            return(
-            <div>
-              <PostCard post={post} index={index} />
-            </div>);
+            return (
+              <div>
+                <PostCard post={post} index={index} />
+              </div>
+            );
           })}
         </div>
       </div>
@@ -60,9 +59,8 @@ function Home(props: any) {
 }
 
 const mapStateToProps = (state: any) => ({
-  auth: state.auth
+  auth: state.auth,
 });
 
-
-export default connect(mapStateToProps)(Home);  
+export default connect(mapStateToProps)(Home);
 // TODO: - correct vertical text

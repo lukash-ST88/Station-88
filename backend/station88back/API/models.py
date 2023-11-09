@@ -47,33 +47,23 @@ class Movie(models.Model):
     # rating imdb KinoPoisk api
 
 
-class ST88rating(models.Model):
-    rating = models.SmallIntegerField(verbose_name="Рейтинг по версии ST88")
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-                               related_name='ST88ratings', verbose_name='Автор')
-    movie = models.ForeignKey(
-        Movie, on_delete=models.CASCADE, related_name='ST88ratings', verbose_name='Фильм')
 
-    class Meta:
-        verbose_name = "СТ88 Рейтинг"
-        verbose_name_plural = "СТ88 Рейтинги"
-
-    def __str__(self):
-        return f'{self.author} - {self.movie} : {self.rating} '
 
 
 class ST88description(models.Model):
-    description = models.TextField(verbose_name="Описание по версии ST88")
+    description = models.TextField(verbose_name="Описание ST88", null=True, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
                                related_name='ST88descriptions', verbose_name='Автор', null=True)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE,
                               related_name='ST88descriptions', verbose_name='Фильм')
     release_date = models.DateTimeField(
         default=timezone.now, verbose_name='Дата публикации', null=True)
+    # rating = models.OneToOneField(ST88rating, on_delete=models.SET_NULL, related_name='description', null=True, blank=True, verbose_name='Рейтинг')
+    rating = models.SmallIntegerField(verbose_name="Рейтинг ST88", null=True, blank=True)
 
     class Meta:
-        verbose_name = "СТ88 описание"
-        verbose_name_plural = "СТ88 описания"
+        verbose_name = "СТ88 Описание и Рейтинг"
+        verbose_name_plural = "СТ88 Описания и Рейтинги"
 
     def __str__(self):
         return f'{self.author} - {self.movie}'

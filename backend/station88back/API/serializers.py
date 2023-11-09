@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Movie, Article, ArticleType, Scenario, ST88description, ST88project, ST88rating, ProjectPresentation, Review, Banners, Profile
+from .models import Movie, Article, ArticleType, Scenario, ST88description, ST88project, ProjectPresentation, Review, Banners, Profile
 from django.contrib.auth.models import User
 
 
@@ -30,10 +30,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ST88ratingSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ST88rating
-        fields = "__all__"
+
 
 
 class ST88descriptionSerializer(serializers.ModelSerializer):
@@ -41,12 +38,11 @@ class ST88descriptionSerializer(serializers.ModelSerializer):
     movie = serializers.CharField()
     class Meta:
         model = ST88description
-        fields = ['description', 'author', 'release_date', 'movie', 'id']
+        fields = ['description', 'author', 'release_date', 'movie', 'id', 'rating']
 
 
 class MovieSerializer(serializers.ModelSerializer):
     ST88descriptions = ST88descriptionSerializer(many=True, read_only=True)
-    ST88ratings = ST88ratingSerializer(many=True, read_only=True)
     comments = ReviewSerializer(many=True, read_only=True)
     
 
@@ -54,11 +50,11 @@ class MovieSerializer(serializers.ModelSerializer):
         model = Movie
         fields = ['id', 'title', 'original_title', 'url', 'poster',
                   'year', 'director', 'genre', 'music', 'link',
-                  'ST88descriptions', 'ST88ratings', 'comments', 'release_date']
+                  'ST88descriptions', 'comments', 'release_date']
 
 
 class MovieCardSerializer(serializers.ModelSerializer):
-    avg_rating = serializers.FloatField()
+    avg_rating = serializers.DecimalField(decimal_places=1, max_digits=3)
     class Meta:
         model = Movie
         fields = ['id', 'title', 'original_title',

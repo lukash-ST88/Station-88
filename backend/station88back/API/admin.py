@@ -1,10 +1,12 @@
+from typing import Any
 from django.contrib import admin
 from django import forms
-from .models import Movie, Article, ArticleType, Review, Scenario, ST88description, ST88project, ST88rating, ProjectPresentation, Banners, Profile, Frame
+from .models import Movie, Article, ArticleType, Review, Scenario, ST88description, ST88project, ProjectPresentation, Banners, Profile, Frame
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 from django.utils.html import mark_safe
+from django.db.models import Q
 
 
 # widget for CKeditor
@@ -33,9 +35,9 @@ class FrameInline(admin.TabularInline):
             return mark_safe(f"<img src='{obj.image.url}' height=75 width=auto>")
     get_image.short_description = 'Кадр'
 
-class ST88ratingInline(admin.TabularInline):
-    model = ST88rating
-    extra = 0
+# class ST88ratingInline(admin.TabularInline):
+#     model = ST88rating
+#     extra = 0
     
 class MovieAdmin(admin.ModelAdmin):
     list_display = ['title', 'original_title', 'year']
@@ -43,7 +45,7 @@ class MovieAdmin(admin.ModelAdmin):
     search_fields = ['title', 'original_title']
     prepopulated_fields = {"url": ("title", )}
     readonly_fields = ['poster_preview']
-    inlines = [ST88descriptionInline, ST88ratingInline, FrameInline]
+    inlines = [ST88descriptionInline, FrameInline]
     save_on_top = True
 
 
@@ -65,6 +67,34 @@ class UserAdmin(BaseUserAdmin):
 
 
 
+# class ST88ratingAdmin(admin.ModelAdmin):
+#     readonly_fields = ('description', )
+#     def save_model(self, request: Any, obj: Any, form: Any, change: Any) -> None:
+#         try:
+#             description = ST88description.objects.get(Q(movie=obj.movie) & Q(author=obj.author))
+#             print(description)
+#         except ST88description.DoesNotExist:
+#             obj.description = None
+#             super().save_model(request, obj, form, change)
+#         else:
+#             super().save_model(request, obj, form, change)
+#             description.rating = obj
+#             description.save()
+        
+    
+
+# class ST88descriptionAdmin(admin.ModelAdmin):
+#     readonly_fields = ('rating', )
+#     def save_model(self, request: Any, obj: Any, form: Any, change: Any) -> None:
+#         try:
+#             rating = ST88rating.objects.get(Q(movie=obj.movie) & Q(author=obj.author))
+#         except ST88rating.DoesNotExist:
+#             obj.rating = None
+#         else:
+#             obj.rating = rating
+#         return super().save_model(request, obj, form, change)
+
+
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Movie, MovieAdmin)
@@ -74,7 +104,7 @@ admin.site.register(Review)
 admin.site.register(Scenario)
 admin.site.register(ST88description)
 admin.site.register(ST88project)
-admin.site.register(ST88rating)
+# admin.site.register(ST88rating)
 admin.site.register(ProjectPresentation)
 admin.site.register(Banners)
 admin.site.register(Profile)

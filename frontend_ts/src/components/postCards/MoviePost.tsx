@@ -22,8 +22,8 @@ const MoviePost = (props: IMovieIndexProps) => {
             {props.movie.original_title}
           </div>
         </div>
-        <div className="col-auto bg-white">
-          <div className="date">{dateTime(props.movie.release_date)}</div>
+        <div className="col-span-1 flex bg-white justify-center text-black items-center">
+          <div className="vertical">{dateTime(props.movie.release_date)}</div>
         </div>
       </div>
     </>

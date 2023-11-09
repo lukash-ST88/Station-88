@@ -2,13 +2,7 @@ import { useState, useEffect } from "react";
 import { IMovie } from "../models";
 import { useFetching } from "../hooks/useFetching";
 import MovieService from "../services/movies";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import Filter from "../components/components/Filter/Filter";
-import { usePosts } from "../hooks/usePosts";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { getPageCount, getPagesArray } from "../utils/pages";
-import { useObserver } from "../hooks/useObserver";
-import Accordion from "../components/components/Accordion/Accordion";
+import { useParams } from "react-router-dom";
 import Loader from "../components/components/Loader/Loader";
 import { API_URL } from "../services/settings/urls";
 import AccordionMT from "../components/components/Accordion/AccordionMT";
@@ -42,16 +36,16 @@ const Movie = () => {
         <Loader />
       ) : (
         <div>
-          <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl movie-title ">
-            <div className="p-5">{movie?.title}</div>
-            <div className="p-5 ">{movie?.original_title}</div>
+          <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl">
+            <div className="p-5 movie-title">{movie?.title}</div>
+            <div className="p-5 movie-original-title">{movie?.original_title}</div>
           </div>
           <div className="container flex ">
-            <div className="w-1/3 flex flex-col justify-around my-4 divide-y-2">
+            <div className="w-1/3 flex flex-col justify-around my-4 divide-y-2 description-text">
               <img className="my-2" src={`${API_URL}${movie?.poster}`} />
-              <div className="text-2xl text-center my-2">Режиссёр: {movie?.director}</div>
-              <div className="text-2xl text-center my-2">Год: {movie?.year}</div>
-              <div className="text-2xl text-center my-2">Жанр: {movie?.genre}</div>
+              <div className="text-2xl text-center py-2">Режиссёр: {movie?.director}</div>
+              <div className="text-2xl text-center py-2">Год: {movie?.year}</div>
+              <div className="text-2xl text-center py-2">Жанр: {movie?.genre}</div>
               <div className="my-2">
                 <iframe
                   width="100%"
