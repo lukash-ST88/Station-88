@@ -42,7 +42,7 @@ class ArticleListView(generics.ListAPIView):
 @api_view(['GET'])
 def article_detail(request, url):
     try:
-        article = Article.objects.get(url=url)
+        article = Article.objects.prefetch_related('authors__profile').get(url=url)
     except Article.DoesNotExist:
         return Response({'message': 'Статья не нейдена'})
     if request.method == 'GET':

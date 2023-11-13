@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
 import { connect} from "react-redux";  
 import "./Navigation.css"
+import { ModalRS } from '../../components/Modal/Modal'
 
 
 interface IUsernameEmail {
@@ -30,7 +31,7 @@ function Navigation(props: IAuthProps){
                 <Link to='/projects' className='nav-links'>Проекты</Link>
                 {props.auth.isAuthenticated 
                 ? <Link to='#' className='nav-links'>{props.auth.user.username}</Link>
-                : <Link to='/login' className='nav-links'>Профиль</Link> 
+                : <div className='nav-links'><ModalRS/></div>
                 } 
             </div>
         </nav>
@@ -42,3 +43,7 @@ const mapStateToProps = (state: IAuthProps) => ({
 
 
 export default connect(mapStateToProps)(Navigation);  
+
+// <Link to='/login' className='nav-links'>Профиль</Link> 
+
+// TODO: - delete packages bootstrap and reactstrap

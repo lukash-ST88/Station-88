@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -19,3 +20,7 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+// TODO: - implement imageGallery(from my windows VScode) as a photo gallery for video or projects
+// TODO: - add comments
+// TODO: -fix navigate

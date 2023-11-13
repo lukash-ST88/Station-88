@@ -1,0 +1,9 @@
+.main-text {
+    font-family: 'tupo_vyazregular';
+    font-size: 50px;
+    text-decoration: underline;
+}
+.window-size {
+    padding-left: 30%;
+    padding-right: 30%;
+}

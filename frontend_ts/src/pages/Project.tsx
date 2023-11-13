@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IProject } from "../models";
+import { IProject, IUser } from "../models";
 import Loader from "../components/components/Loader/Loader";
 import { useFetching } from "../hooks/useFetching";
 import ProjectService from "../services/projects";
@@ -13,10 +13,7 @@ const Project = () => {
 
   useEffect(() => {
     fetchProject(params.url);
-    // setTimeout(()=>{
-    //     setLoading(false)
-    // }, 1000)
-    console.log(project?.scenario.text)
+    console.log(project?.scenario.text);
   }, []);
 
   const [fetchProject, isProjectLoading, ProjectError]: any = useFetching(
@@ -36,32 +33,48 @@ const Project = () => {
             <div className="p-5">{project?.title}</div>
           </div>
           <div className="container flex">
-            <div className="w-1/3 flex flex-col m-4">
-              <img src={`${API_URL}${project?.poster}`} />
-              <div className="text-2xl">Год: {project?.year}</div>
-              <div>
-                <video width="320" height="240" controls>
-                  <source src={project?.downloaded_film} type="video/mp4" />
-                  <source src={project?.downloaded_film} type="video/ogg" />
-                </video>
-                <iframe
-                  width="400"
-                  height="300"
-                  loading="lazy"
-                  src="https://www.youtube.com/embed/mS8YraEXC9c?si=DG92Kt4kaAXVKSFQ"
-                ></iframe>
-                {/* <iframe src="https://platform.twitter.com/widgets/tweet_button.html" style={{border: '0', width:'130px', height:'20px'}}></iframe> */}
-                {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/mS8YraEXC9c?si=DG92Kt4kaAXVKSFQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe> */}
+            <div className="w-1/3 flex flex-col justify-start m-4 divide-y-2 description-text">
+              <img className="my-2" src={`${API_URL}${project?.poster}`} />
+              <div className="text-2xl text-center py-2">
+                Авторы:{" "}
+                {project?.authors.map((author: IUser) => {
+                  return (
+                    <span>
+                      {author.profile?.last_name} {author.profile?.first_name}
+                    </span>
+                  );
+                })}
+              </div>
+              <div className="text-2xl text-center py-2">
+                Год: {project?.year}
               </div>
             </div>
-            <div className="w-2/3">
+            <div className="w-2/3 m-4 divide-y-2 text-2xl">
+              <div className="grid grid-cols-2 text-center divide-x-2">
+                <div className="m-2 text-red-500">Синопсис</div>
+                <a
+                  className="m-2 hover:text-red-500"
+                  href={project?.scenario.text}
+                  download
+                >
+                  Cценарий
+                </a>
+              </div>
+              <div className="text-base p-3">{project?.synopsys}</div>
+              <div className="grid grid-cols-2 text-center divide-x-2">
+                <div className="m-2 text-red-500">Трейлер</div>
+                <a
+                  className="m-2 hover:text-red-500"
+                  href={project?.linked_film}
+                  download
+                >
+                  Фильм
+                </a>
+              </div>
               <div>
-                <div>
-                  <div>Синопсис</div>
-                  <div>Сценарий: {project?.scenario.text}</div>
-                  <a href={project?.scenario.text} download>link_text</a>
-                </div>
-                <div>{project?.synopsys}</div>
+                <video width="750" height="500" controls>
+                  <source src={project?.downloaded_film} type="video/mp4" />
+                </video>
               </div>
             </div>
           </div>

@@ -35,7 +35,7 @@ export interface IST88description {
     description: string
     author: IUser 
     movie: IMovie 
-    rating: string | null
+    rating: number | any
 }
 
 
@@ -78,7 +78,7 @@ export interface IArticle {
     title: string
     url: string
     subtitle: string
-    authors: string[] | null
+    authors: IUser[] 
     release_date: string
     article_type: string[] | null
     poster: string
@@ -116,11 +116,12 @@ export interface IProject {
     year: number
     synopsys: string
     scenario: IScenario 
-    authors: IUser | null
+    authors: IUser[]
     downloaded_film: string | undefined
     release_date: string | null
     url: string
     poster: string | undefined
+    linked_film: string | undefined
 }
 
 export interface  IProjectRetrieve {
