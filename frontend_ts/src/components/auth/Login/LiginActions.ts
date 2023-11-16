@@ -1,14 +1,19 @@
 import axios from "axios";
-import { push } from "react-router-redux";
+// import { push } from "react-router-redux";
 import { toast } from "react-toastify";
 import { SET_TOKEN, SET_CURRENT_USER, UNSET_CURRENT_USER } from "./LoginTypes";
 import { setAxiosAuthToken, toastOnError } from "../../../utils/authToken";
 import { API_URL } from "../../../services/settings/urls";
 import { history } from "../../../store";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 // import { Redirect } from "react-router-dom"
 
-export const login = (userData: any, redirectTo: any) => {
+export interface IUserData {
+  username: string
+  password: string
+}
+
+export const login = (userData: IUserData, redirectTo: string) => {
   console.log(`login 0 - ${userData}`)
   return (dispatch: any) => {
     console.log("login 1");
@@ -75,6 +80,7 @@ export const setToken = (token: any) => (dispatch: any) => {
 
 export const  unsetCurrentUser = () => (dispatch: any) => {
   setAxiosAuthToken("");
+  console.log('in unsetCurrentUser')
   localStorage.removeItem("token");
   localStorage.removeItem("user");
   dispatch({
@@ -86,6 +92,7 @@ export const logout = () => (dispatch: any) => {
   axios
     .post(`${API_URL}/API/auth/token/logout/`)
     .then((response) => {
+      console.log('in logout')
       dispatch(unsetCurrentUser());
       // store.dispatch(push("/"));
       toast.success("Logout successful.");

@@ -1,6 +1,6 @@
 export interface IProfile {
     readonly id: number
-    user: IUser | null
+    user: IUser | undefined
     first_name: string
     last_name: string
     role: string
@@ -10,8 +10,8 @@ export interface IProfile {
 
 export interface IUser {
     username: string
-    email?: string
-    profile: IProfile | null
+    email?: string | null
+    profile: IProfile | undefined
 }
 
 export interface IReview {
@@ -31,11 +31,11 @@ export interface IReview {
 
 
 export interface IST88description {
-    readonly id: number
+    readonly id: number 
     description: string
     author: IUser 
     movie: IMovie 
-    rating: number | any
+    rating: number 
 }
 
 
@@ -49,10 +49,10 @@ export interface IMovie {
     year: number  
     director: string
     genre: string
-    music: string
-    link: string
-    ST88descriptions: IST88description[] | null[]
-    comments: IReview[] | null[]
+    music: string | undefined
+    link: string | undefined
+    ST88descriptions: IST88description[] | undefined[]
+    comments: IReview[] | undefined[]
     release_date: string
     avg_rating: string | null
 }
@@ -80,7 +80,7 @@ export interface IArticle {
     subtitle: string
     authors: IUser[] 
     release_date: string
-    article_type: string[] | null
+    article_type: string[] | undefined
     poster: string
     content: string | TrustedHTML
 }

@@ -8,6 +8,7 @@ import Signup from "../pages/Signup";
 import Login from "../pages/Login";
 import Projects from "../pages/Projects";
 import Project from "../pages/Project";
+import Profile from "../pages/Profile";
 
 
 const Router = () => {
@@ -23,7 +24,7 @@ const Router = () => {
         <Route path="/project/:url" element={<Project/>}/>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/profile" element={requireAuth(Profile)}/> */}
+        <Route path="/profile/:username" element={<Profile/>}/>
       </Routes>
     </>
   );

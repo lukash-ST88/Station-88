@@ -11,6 +11,7 @@ import {
     isSubimtted: false
   };
   
+  
   // define how action will change the state of the store
   export const signupReducer = (state = initialState, action: any) => {
     switch (action.type) {

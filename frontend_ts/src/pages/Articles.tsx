@@ -1,30 +1,32 @@
-import React, { useState, useEffect, useRef } from "react";
-import { IArticle } from "../models";
+import { useState, useEffect, useRef } from "react";
+import { IArticle, IMovie } from "../models";
 import ArticleService from "../services/articles";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IFilter } from "./Movies";
 import { usePosts } from "../hooks/usePosts";
 import { useFetching } from "../hooks/useFetching";
 import { getPageCount } from "../utils/pages";
 import { useObserver } from "../hooks/useObserver";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { TransitionGroup } from "react-transition-group";
 import Loader from "../components/components/Loader/Loader";
 import Filter from "../components/components/Filter/Filter";
 import ArticleCard from "../components/cards/ArticleCard";
 
+
+
 function Articles() {
   const [articles, setArticles] = useState<IArticle[]>([]);
   const [filter, setFilter] = useState<IFilter>({ sort: "", query: "" });
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalPages, setTotalPages] = useState<number>(0);
   const sortedAndSearchedArticles: any = usePosts(
     articles,
-    filter.sort,
+    filter.sort,    
     filter.query
   );
   const [limit, setLimit] = useState(6);
   const [offset, setOffset] = useState(0);
-  const lastElement: any = useRef();
-  const navigate = useNavigate();
+  const lastElement = useRef<HTMLDivElement>(null);
+  
 
   useEffect(() => {
     fetchArticles(limit, offset);

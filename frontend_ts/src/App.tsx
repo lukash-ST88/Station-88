@@ -1,4 +1,3 @@
-import { ModalRS } from "./components/components/Modal/Modal";
 import Footer from "./components/containers/Footer/Footer";
 import Navigation from "./components/containers/Navigation/Navigation";
 import SliderContainer from "./components/containers/Slider/SliderContainer";
@@ -22,6 +21,7 @@ function App() {
         <Footer/> 
       </div>
     </div>
+    {/* ToastContainer is used for representation of errers */}
     <ToastContainer hideProgressBar={true} newestOnTop={true} />
     </>
   );

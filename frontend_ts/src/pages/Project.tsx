@@ -9,7 +9,7 @@ import { API_URL } from "../services/settings/urls";
 const Project = () => {
   const [project, setproject] = useState<IProject>();
   const params = useParams();
-  const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     fetchProject(params.url);
@@ -37,9 +37,9 @@ const Project = () => {
               <img className="my-2" src={`${API_URL}${project?.poster}`} />
               <div className="text-2xl text-center py-2">
                 Авторы:{" "}
-                {project?.authors.map((author: IUser) => {
+                {project?.authors.map((author: IUser, index: number) => {
                   return (
-                    <span>
+                    <span key={index}>
                       {author.profile?.last_name} {author.profile?.first_name}
                     </span>
                   );

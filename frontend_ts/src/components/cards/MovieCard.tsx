@@ -1,7 +1,7 @@
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition} from "react-transition-group";
 import { useNavigate } from "react-router-dom";
 import { IMovie } from "../../models";
-import Movie from "../../pages/Movie";
+
 
 export interface IMovieIndexProps {
     movie: IMovie
@@ -10,8 +10,6 @@ export interface IMovieIndexProps {
 
 const MovieCard = (props: IMovieIndexProps)=> {
     const navigate = useNavigate();
-
-
 
     return (
     <CSSTransition key={props.index} timeout={5000} classNames="post">

@@ -27,7 +27,7 @@ function Movies() {
   );
   const [limit, setLimit] = useState(6);
   const [offset, setOffset] = useState(0);
-  const lastElement: any = useRef();
+  const lastElement = useRef<HTMLDivElement>(null);
 
 
   useEffect(() => {

@@ -3,8 +3,14 @@ import { login } from "./LiginActions";
 // import { withRouter } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 import "../auth.css"
+import { IUserData } from "./LiginActions";
 
-const LoginTag = (props: any) => {
+interface ILoginAuth {
+  login: (userdata: IUserData, redirectTo: string) => void;
+  auth: any;
+}
+
+const LoginTag = (props: ILoginAuth) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 

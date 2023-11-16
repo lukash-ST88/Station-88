@@ -3,24 +3,21 @@ import { useFetching } from "../hooks/useFetching";
 import { useParams } from "react-router-dom";
 import Loader from "../components/components/Loader/Loader";
 import ArticleService from "../services/articles";
-import { IUser } from "../models";
-import { title } from "process";
+import { IArticle, IUser } from "../models";
+import { EmptyObject } from "../customTypes";
 
 const Article = () => {
-  const [article, setArticle] = useState<any>({});
-  const params = useParams();
-  const [loading, setLoading] = useState(true);
-
+  const [article, setArticle] = useState<IArticle>({} as IArticle);
+  const params = useParams<string>();
+  
   useEffect(() => {
     fetchArticle(params.url);
-    console.log(article?.poster);
   }, []);
 
   const [fetchArticle, isArticleLoading, ArticleError]: any = useFetching(
     async (url: string) => {
       const response = await ArticleService.getArticleByUrl(url);
       setArticle(response.data);
-      console.log(article.title);
     }
   );
 
@@ -37,12 +34,12 @@ const Article = () => {
           <div className="container text-4xl px-20">
             <div dangerouslySetInnerHTML={{ __html: article?.content }} />
           </div>
-          <div className="mx-20 my-5">
-            Автор:
-            {article?.authors?.map((author: any) => {
+          <div className="mx-20 my-5 border border-r-0 border-t-0 border-b-0 border-green-500 text-2xl" style={{fontFamily: 'Restora', fontStyle: 'italic'}}>
+          &nbsp;Автор:&nbsp;
+            {article?.authors?.map((author: IUser, index: number) => {
               return (
-              <span>
-                 {author.profile.first_name} {author.profile.last_name} 
+              <span key={index}>
+                 {author.profile?.first_name} {author.profile?.last_name} 
               </span>);
             })}
           </div>

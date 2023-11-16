@@ -1,7 +1,11 @@
 import { useMemo } from "react";
 import { IArticle, IMovie } from "../models";
 
-
+export interface IusePosts {
+  posts: IMovie[] | IArticle[]
+  sort: string
+  query: string
+}
 
 
 export const useSortedPosts = (posts: IMovie[] | IArticle[], sort: string) => {

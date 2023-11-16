@@ -13,7 +13,7 @@ interface IMovieProps {
 }
 interface IIDOpen {
     open: number
-    description: IST88description | null;
+    description: IST88description | undefined;
 }
 
 
@@ -30,9 +30,10 @@ function IconM(props: IIDOpen){
 function AccordionMT(props: IMovieProps) {
   const [open, setOpen] = React.useState(1);
 
-  const handleOpen = (value: number | any) => {
+  const handleOpen = (value: number) => {
     setOpen(open === value ? 0 : value);
   };
+  
   return (
     <div className="mx-4">
       {props.movie?.ST88descriptions.map((description) => {

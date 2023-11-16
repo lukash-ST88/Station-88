@@ -17,7 +17,7 @@ const Filter = (props: FilterProps) => {
     <div className="m-2">
         <MyInput 
         value={props.filter.query} 
-        onChange={(event: any) => props.setFilter({ ...props.filter, query: event.target.value })}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => props.setFilter({ ...props.filter, query: event.target.value })}
         />
         <MySelect
         value={props.filter.sort}

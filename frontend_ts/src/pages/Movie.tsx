@@ -6,21 +6,21 @@ import { useParams } from "react-router-dom";
 import Loader from "../components/components/Loader/Loader";
 import { API_URL } from "../services/settings/urls";
 import AccordionMT from "../components/components/Accordion/AccordionMT";
-import { ModalRS } from "../components/components/Modal/Modal"
+import { ModalFR } from "../components/components/Modal/Modal"
 
 const Movie = () => {
   const [movie, setMovie] = useState<IMovie>();
-  const params = useParams();
-  const [loading, setLoading] = useState(true);
+  const params = useParams<string>();
+  
 
   useEffect(() => {
     fetchMovie(params.url);
     // setTimeout(()=>{
     //     setLoading(false)
     // }, 1000)
-    console.log(movie?.poster);
-    console.log(movie?.link);
-    console.log(movie?.music);
+    // console.log(movie?.poster);
+    // console.log(movie?.link);
+    // console.log(movie?.music);
   }, []);
 
   const [fetchMovie, isMovieLoading, movieError]: any = useFetching(
@@ -67,7 +67,6 @@ const Movie = () => {
                   <source src={`${API_URL}${movie?.music}`} type="audio/mpeg" />
                 </audio>
               </div>
-              <ModalRS/>
             </div>
             <div className="w-2/3">
               <AccordionMT movie={movie} />
@@ -80,5 +79,4 @@ const Movie = () => {
 };
 
 export default Movie;
-// TODO: correct accordion
 // TODO: add photo

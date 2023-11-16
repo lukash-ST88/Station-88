@@ -27,13 +27,14 @@ export const store = configureStore({
 
 export const history = createReduxHistory(store);
    
-if (!isEmpty(localStorage.getItem("token"))) {
-  store.dispatch(setToken(localStorage.getItem("token")));
-}
-if (!isEmpty(localStorage.getItem("user"))) {
-  const user = JSON.parse(localStorage.getItem("user") || '{}');
-  store.dispatch(setCurrentUser(user, "/"));
-}
+// if (!isEmpty(localStorage.getItem("token"))) {
+//   store.dispatch(setToken(localStorage.getItem("token")));
+// }
+
+// if (!isEmpty(localStorage.getItem("user"))) {
+//   const user = JSON.parse(localStorage.getItem("user") || '{}');
+//   store.dispatch(setCurrentUser(user, "/"));
+// }
 
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

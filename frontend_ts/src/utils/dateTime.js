@@ -1,10 +1,3 @@
-
-// interface Ioptions {
-//     year: string,
-//     month: string
-//     day: string
-// }
-
 const dateTime = (timestamp)=> {
     const date = new Date(timestamp)
     let options = {

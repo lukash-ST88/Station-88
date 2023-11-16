@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Movie, Article, Banners, ST88project
 from rest_framework import generics
-from .serializers import ArticleCardSerializer, MovieSerializer, ArticleSerializer, BannersSerializer, ProjectCardSerializer, ProjectSerializer, MovieCardSerializer
+from .serializers import ArticleCardSerializer, MovieSerializer, ArticleSerializer, BannersSerializer, ProjectCardSerializer, ProjectSerializer, MovieCardSerializer, CustomUserSerializer
 from django.db.models import Count
 from rest_framework.response import Response
 from rest_framework.pagination import LimitOffsetPagination
@@ -12,7 +12,7 @@ from drf_multiple_model.views import FlatMultipleModelAPIView
 from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 from station88back.settings import REST_FRAMEWORK
 from django.db.models import Avg
-from django.db.models import ExpressionWrapper, DecimalField
+from django.contrib.auth.models import User
 
 
 class BannersListView(generics.ListAPIView):
@@ -63,6 +63,16 @@ def project_detail(request, url):
     if request.method == 'GET':
         project_serializer = ProjectSerializer(project)
         return Response(project_serializer.data)
+
+@api_view(['GET'])
+def user_detail(request, username):
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return Response({'message': 'Пользователь не определен'})
+    if request.method == 'GET':
+        user_serializer = CustomUserSerializer(user)
+        return Response(user_serializer.data)
 
 
 class LimitPagination(MultipleModelLimitOffsetPagination):

@@ -4,15 +4,15 @@ import { IBanners } from '../../../models'
 import Loader from '../../components/Loader/Loader'
 import { Link } from 'react-router-dom'
 
-interface SlidesProps {
+interface ISlidesProps {
     slides: IBanners[]
     loading: boolean
 }
 
 
 
-const Slider = (props: SlidesProps)=> {
-    const [currentIndex, setCurrentIndex] = useState(0);
+const Slider = (props: ISlidesProps)=> {
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
     
 
     const goToPrevious = ()=>{

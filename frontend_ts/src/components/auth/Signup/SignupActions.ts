@@ -7,8 +7,9 @@ import {
 } from "./SignupTypes";
 import { API_URL } from "../../../services/settings/urls";
 import { store } from "../../../store";
+import { IUserData } from "../Login/LiginActions";
 
-export const signupNewUser = (userData: any) => {
+export const signupNewUser = (userData: IUserData) => {
   store.dispatch({ type: CREATE_USER_SUBMITTED })
   axios
     .post(`${API_URL}/API/auth/users/`, userData)

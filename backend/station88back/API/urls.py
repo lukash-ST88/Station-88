@@ -1,5 +1,5 @@
 from django.urls import path, include, re_path
-from .views import MovieListView, ArticleListView, BannersListView, movie_detail, article_detail, PostsListView, ProjectListView, project_detail
+from .views import MovieListView, ArticleListView, BannersListView, movie_detail, article_detail, PostsListView, ProjectListView, project_detail, user_detail
 
 
 urlpatterns = [
@@ -11,6 +11,7 @@ urlpatterns = [
     path('project/<slug:url>', project_detail, name='project'),
     path('banners', BannersListView.as_view(), name='banners'),
     path('posts',  PostsListView.as_view(), name='posts'),
+    path('user/<str:username>', user_detail, name='user'),
     re_path(r'^auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
 ]

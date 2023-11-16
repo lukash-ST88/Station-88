@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { IArticle, IProject } from "../models";
 import ProjectService from "../services/projects";
-import { Link, useNavigate } from "react-router-dom";
-import Filter from "../components/components/Filter/Filter";
-import { usePosts } from "../hooks/usePosts";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { getPageCount, getPagesArray } from "../utils/pages";
+import { useNavigate } from "react-router-dom";
+import { TransitionGroup } from "react-transition-group";
+import { getPageCount } from "../utils/pages";
 import { useObserver } from "../hooks/useObserver";
 import { useFetching } from "../hooks/useFetching";
 import Loader from "../components/components/Loader/Loader";
@@ -14,15 +12,15 @@ import axios from "axios";
 
 function Projects() {
   const [projects, setProjects] = useState<IProject[]>([]);
-  const [totalPages, setTotalPages] = useState(0);
-  const [limit, setLimit] = useState(6);
-  const [offset, setOffset] = useState(0);
-  const lastElement: any = useRef();
-  const navigate = useNavigate();
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [limit, setLimit] = useState<number>(6);
+  const [offset, setOffset] = useState<number>(0);
+  const lastElement = useRef<HTMLDivElement>(null);
+  
 
   useEffect(() => {
     fetchProjects(limit, offset);
-    console.log(axios.defaults.headers.common["Authorization"]);
+    // console.log(axios.defaults.headers.common["Authorization"]);
   }, [offset]);
 
   const [fetchProjects, isProjectLoading, ProjectError]: any = useFetching(

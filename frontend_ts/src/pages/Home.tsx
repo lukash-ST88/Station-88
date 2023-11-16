@@ -7,17 +7,16 @@ import { getPageCount, getPagesArray } from "../utils/pages";
 import PostCard from "../components/cards/PostCard";
 import { connect } from "react-redux";
 
-function Home(props: any) {
+function Home() {
   const [posts, setPosts] = useState<any>([]);
-  const [totalPages, setTotalPages] = useState(0);
-  const [limit, setLimit] = useState(6);
-  const [offset, setOffset] = useState(0);
-  const lastElement: any = useRef();
-  const navigate = useNavigate();
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [limit, setLimit] = useState<number>(6);
+  const [offset, setOffset] = useState<number>(0);
+  const lastElement = useRef<HTMLDivElement>(null);
+  
 
   useEffect(() => {
     fetchPosts(limit, offset);
-    console.log(posts.map((post: any) => console.log(post.title)));
   }, [offset]);
 
   const [fetchPosts, isPostLoading, postError]: any = useFetching(
@@ -63,4 +62,4 @@ const mapStateToProps = (state: any) => ({
 });
 
 export default connect(mapStateToProps)(Home);
-// TODO: - correct vertical text
+

@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import { connect} from "react-redux";  
 import "./Navigation.css"
-import { ModalRS } from '../../components/Modal/Modal'
+import { ModalFR } from '../../components/Modal/Modal'
 
 
 interface IUsernameEmail {
@@ -30,8 +30,8 @@ function Navigation(props: IAuthProps){
                 <Link to='#' className='nav-links'>Образование</Link>
                 <Link to='/projects' className='nav-links'>Проекты</Link>
                 {props.auth.isAuthenticated 
-                ? <Link to='#' className='nav-links'>{props.auth.user.username}</Link>
-                : <div className='nav-links'><ModalRS/></div>
+                ? <Link to={`/profile/${props.auth.user.username}`} className='nav-links'>{props.auth.user.username}</Link>
+                : <div className='nav-links'><ModalFR/></div>
                 } 
             </div>
         </nav>
@@ -47,3 +47,4 @@ export default connect(mapStateToProps)(Navigation);
 // <Link to='/login' className='nav-links'>Профиль</Link> 
 
 // TODO: - delete packages bootstrap and reactstrap
+// TODO: - flexable navbar
