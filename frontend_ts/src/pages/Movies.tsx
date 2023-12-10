@@ -25,6 +25,7 @@ function Movies() {
     filter.sort,
     filter.query
   );
+  
   const [limit, setLimit] = useState(6);
   const [offset, setOffset] = useState(0);
   const lastElement = useRef<HTMLDivElement>(null);

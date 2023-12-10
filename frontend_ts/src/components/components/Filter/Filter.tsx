@@ -30,7 +30,7 @@ const Filter = (props: FilterProps) => {
           { value: "+release_date", name: "по дате - новые"},
           { value: "+year", name: "по году - новые"},
           { value: "-year", name: "по году - старые" },
-          { value: "=release_date", name: "по дате - старые" }
+          { value: "-release_date", name: "по дате - старые" }
         ]}
       />
     </div>)

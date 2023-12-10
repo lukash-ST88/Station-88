@@ -14,6 +14,7 @@ const SignupTag = () => {
       username: username,
       password: password,
     };
+    
     signupNewUser(userData);
     console.log(userData.username, userData.password);
     // navigate(`${API_URL}/login`)

@@ -68,7 +68,7 @@ export const setCurrentUser = (user: any, redirectTo: string) => (dispatch: any)
 };
 
 export const setToken = (token: any) => (dispatch: any) => {
-  // setAxiosAuthToken(token);
+  setAxiosAuthToken(token);
   localStorage.setItem("token", token);
   console.log(`login 4 - ${localStorage.getItem("token")}`);
   dispatch({

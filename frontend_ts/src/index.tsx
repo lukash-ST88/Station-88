@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import reportWebVitals from './reportWebVitals';
 
 
 const root = ReactDOM.createRoot(
@@ -20,6 +21,8 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+reportWebVitals(console.log);
 
 // TODO: - implement imageGallery(from my windows VScode) as a photo gallery for video or projects
 // TODO: - add comments

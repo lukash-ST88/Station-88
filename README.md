@@ -5,7 +5,7 @@
 Station-88 is a movie production project, which indludes movie reviews, cinema articles, station-88 own projects and educational data.
 
 <ui><h4>The functionality of the project includes:</h4></ui>
-<li><s>Kinoposik and imdb API</s>
+<li>Kinoposik and imdb API
 <li>nav-slider
 <li> Dynamic list of articles 
 <li> Dynamic list of movies
@@ -13,7 +13,7 @@ Station-88 is a movie production project, which indludes movie reviews, cinema a
 <li> Possibility to search posts by its title
 <li> Possibility to sort post by its date 
 <li> Fetching new bunch of posts by crossing Intersection Observer
-<li> <s>Cross-origin authentication system</s></li>
+<li> Cross-origin authentication system</li>
 
 <h4>Basic frameworks and libraries:</h4>
 

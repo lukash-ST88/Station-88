@@ -1,4 +1,4 @@
-import { Checkbox, Label, Modal, TextInput } from "flowbite-react";
+import { Modal} from "flowbite-react";
 import { useState } from "react";
 import LoginTag from "../../auth/Login/LoginTag";
 import SignupTag from "../../auth/Signup/SignupTag";
