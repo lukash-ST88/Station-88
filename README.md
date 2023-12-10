@@ -5,7 +5,6 @@
 Station-88 is a movie production project, which indludes movie reviews, cinema articles, station-88 own projects and educational data.
 
 <ui><h4>The functionality of the project includes:</h4></ui>
-<li>Kinoposik and imdb API
 <li>nav-slider
 <li> Dynamic list of articles 
 <li> Dynamic list of movies
