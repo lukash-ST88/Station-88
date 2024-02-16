@@ -19,6 +19,17 @@ class MovieService {
     const response = axios.get<IMovie>(url);
     return response;
   }
+  getSortedMovies(limit: number, offset: number, sort: string){
+    const url = `${API_URL}/API/movies/sort/${sort}`;
+    const response = axios.get<IMovieRetrieve>(url, {
+      params: {
+        limit,
+        offset,
+      }
+    }
+    )
+    return response;
+  }
 }
 
 export default new MovieService();

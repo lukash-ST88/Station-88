@@ -30,6 +30,7 @@ function Articles() {
 
   useEffect(() => {
     fetchArticles(limit, offset);
+    console.log("effect")
   }, [offset]);
 
   const [fetchArticles, isArticleLoading, movieError]: any = useFetching(
@@ -70,7 +71,7 @@ function Articles() {
           </div>
         )}
       </div>
-      <div className="w-1/6 color-test ">
+      <div className="md:w-1/6 color-test">
         <Filter filter={filter} setFilter={setFilter} />
       </div>
     </div>

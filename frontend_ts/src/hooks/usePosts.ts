@@ -22,11 +22,14 @@ export const useSortedPosts = (posts: IMovie[] | IArticle[], sort: string) => {
   return sortedPosts;
 };
 
+
+
 export const usePosts = (posts: IMovie[] | IArticle[], sort: string, query: string) => {
   const sortedPosts = useSortedPosts(posts, sort);
+ 
 
   const sortedAndSearchedPosts = useMemo(() => {
-    return sortedPosts.filter((post) => post.title.includes(query));
-  }, [query, sortedPosts]); 
+    return sortedPosts.filter((post: any) => post.title.includes(query));
+  }, [query, posts]); 
   return sortedAndSearchedPosts;
 };

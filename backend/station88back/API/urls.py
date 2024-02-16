@@ -1,9 +1,10 @@
 from django.urls import path, include, re_path
-from .views import MovieListView, ArticleListView, BannersListView, movie_detail, article_detail, PostsListView, ProjectListView, project_detail, user_detail
+from .views import MovieListView, MovieSortedListView, ArticleListView, BannersListView, movie_detail, article_detail, PostsListView, ProjectListView, project_detail, user_detail
 
 
 urlpatterns = [
     path('movies', MovieListView.as_view(), name='movies'),
+    path('movies/sort/<str:sort>', MovieSortedListView.as_view(), name='sorted-movies'),
     path('movie/<slug:url>', movie_detail, name='movie'),
     path('articles', ArticleListView.as_view(), name='articles'),
     path('article/<slug:url>', article_detail, name='article'),

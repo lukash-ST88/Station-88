@@ -10,7 +10,7 @@ export const useObserver = (ref: any, canLoad: boolean, callback: any, isLoading
     var cb = function (entries: any[]) {
       if (entries[0].isIntersecting && canLoad) {
         callback();
-        console.log('div here')
+        // console.log('div here')
       }
     };
     observer.current = new IntersectionObserver(cb);

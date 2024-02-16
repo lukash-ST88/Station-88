@@ -44,7 +44,7 @@ const Movie = () => {
           </div>
           <div className="container flex ">
             <div className="w-1/3 flex flex-col justify-start my-4 divide-y-2 description-text">
-              <img className="my-2" src={`${API_URL}${movie?.poster}`} />
+              <img className="my-2" src={`${API_URL}${movie?.poster}`} alt="movie poster"/>
               <div className="text-2xl text-center py-2">
                 Режиссёр: {movie?.director}
               </div>

@@ -24,12 +24,22 @@ class MovieListView(generics.ListAPIView):
     serializer_class = MovieCardSerializer
     queryset = Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).all().order_by('-release_date')
 
+
+class MovieSortedListView(generics.ListAPIView):
+    serializer_class = MovieCardSerializer
+   
+    def get_queryset(self):
+        return Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).all().order_by(self.kwargs['sort'])
+    
+
+        
+
 @api_view(['GET'])
 def movie_detail(request, url):
     try:
         movie = Movie.objects.prefetch_related('ST88descriptions__author__profile').get(url=url)
     except Movie.DoesNotExist:
-        return Response({'message': 'Проект не найден'})
+        return Response({'message': 'Фильм не найден'})
     if request.method == 'GET':
         movie_serializer = MovieSerializer(movie)
         return Response(movie_serializer.data)

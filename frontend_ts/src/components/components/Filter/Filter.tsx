@@ -3,6 +3,7 @@ import { useState } from "react"
 import MySelect from "../../UI/MySelect/MySelect"
 import React from "react"
 import { IFilter } from "../../../pages/Movies"
+import { getSortValues } from "../../../utils/sortValues"
 
 
 interface FilterProps {
@@ -27,10 +28,10 @@ const Filter = (props: FilterProps) => {
         }}
         defaultValue="Сортиовка"
         options={[
-          { value: "+release_date", name: "по дате - новые"},
-          { value: "+year", name: "по году - новые"},
-          { value: "-year", name: "по году - старые" },
-          { value: "-release_date", name: "по дате - старые" }
+          { value: "-release_date", name: "по дате - новые"},
+          { value: "-year", name: "по году - новые"},
+          { value: "year", name: "по году - старые" },
+          { value: "release_date", name: "по дате - старые" }
         ]}
       />
     </div>)

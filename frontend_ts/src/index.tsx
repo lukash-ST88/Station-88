@@ -27,3 +27,4 @@ reportWebVitals(console.log);
 // TODO: - implement imageGallery(from my windows VScode) as a photo gallery for video or projects
 // TODO: - add comments
 // TODO: -fix navigate
+//TODO: error handler

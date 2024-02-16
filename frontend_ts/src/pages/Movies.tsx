@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect, useMemo } from "react";
 import { IArticle, IMovie } from "../models";
 import MovieService from "../services/movies";
 import Filter from "../components/components/Filter/Filter";
@@ -9,22 +9,29 @@ import { useObserver } from "../hooks/useObserver";
 import { useFetching } from "../hooks/useFetching";
 import Loader from "../components/components/Loader/Loader";
 import MovieCard from "../components/cards/MovieCard";
-import axios from "axios";
+import { useDidMountEffect } from "../hooks/useDidMountEffect";
+import { useFilter } from "../hooks/useFilter";
+
 
 export interface IFilter {
   sort: string;
   query: string;
 }
 
+
+
 function Movies() {
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [filter, setFilter] = useState<IFilter>({ sort: "", query: "" });
   const [totalPages, setTotalPages] = useState(0);
-  const sortedAndSearchedMovies: any = usePosts(
+  const searchedMovies: any = useFilter(
     movies,
-    filter.sort,
     filter.query
   );
+
+  // const sortedAndSearchedPosts = useMemo(() => {
+  //   return movies.filter((post: any) => post.title.includes(filter.query));
+  // }, [filter.query, movies]); f
   
   const [limit, setLimit] = useState(6);
   const [offset, setOffset] = useState(0);
@@ -32,14 +39,27 @@ function Movies() {
 
 
   useEffect(() => {
-    fetchMovies(limit, offset);
-    console.log(axios.defaults.headers.common['Authorization'])
+    fetchMovies(limit, offset, filter.sort);
+    console.log('offset - ' + offset)
+    // console.log(axios.defaults.headers.common['Authorization'])
   }, [offset]);
 
+  // this hoock allows not to call useEffect for the first render
+  useDidMountEffect(() => {
+    console.log("filter - " + offset)
+    fetchMovies(limit, 0, filter.sort);
+    setOffset(0);
+  }, [filter]);
+
   const [fetchMovies, isMovieLoading, movieError]: any = useFetching(
-    async (limit: number, offset: number) => {
-      const response = await MovieService.getAllMovies(limit, offset);
-      setMovies([...movies, ...response.data.results]);
+    async (limit: number, offset: number, sort: string) => {
+      const response = sort.length ? await MovieService.getSortedMovies(limit, offset, sort) : await MovieService.getAllMovies(limit, offset);
+      if(offset == 0){
+        setMovies([...response.data.results]);
+      }
+      else{
+        setMovies([...movies, ...response.data.results]);
+      }
       const totalCount = response.data.count;
       setTotalPages(getPageCount(totalCount, limit));
     }
@@ -57,15 +77,15 @@ function Movies() {
       <div className="flex">
         <div className="w-5/6">
           <TransitionGroup>
-            <div className="grid grid-cols-3 gap-4">
-              {sortedAndSearchedMovies.map((movie: IMovie, index: number) => {
+            <div className="grid  grid-col-1 md:grid-cols-3 gap-4">
+              {searchedMovies.map((movie: IMovie, index: number) => {
                 return <MovieCard movie={movie} index={index} />;
               })}
             </div>
           </TransitionGroup>
           <div
             ref={lastElement}
-            style={{ height: 10, background: "transperent" }}
+            style={{ height: 10, background: "red" }} //"transperent"
           />
           {isMovieLoading && (
             <div className="flex justify-center">
