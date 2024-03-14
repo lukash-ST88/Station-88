@@ -45,7 +45,7 @@ function Projects() {
         <div className="flex">
           <div className="">
             <TransitionGroup>
-              <div className="grid grid-cols-4 gap-4">
+              <div className="lg:grid lg:grid-cols-4 lg:gap-4 ">
                 {projects.map((project: IProject, index: number) => {
                   return <ProjectCard project={project} index={index} />;
                 })}

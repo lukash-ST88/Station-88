@@ -31,7 +31,7 @@ const Article = () => {
             <div className="p-5">{article?.title}</div>
             <div className="p-5 ">{article?.subtitle}</div>
           </div>
-          <div className="container text-4xl px-20">
+          <div className="container lg:text-4xl lg:px-20 text-xl">
             <div dangerouslySetInnerHTML={{ __html: article?.content }} />
           </div>
           <div className="mx-20 my-5 border border-r-0 border-t-0 border-b-0 border-green-500 text-2xl" style={{fontFamily: 'Restora', fontStyle: 'italic'}}>

@@ -29,13 +29,13 @@ const Project = () => {
         <Loader />
       ) : (
         <div>
-          <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl project-title ">
+          <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center lg:text-4xl text-xl project-title ">
             <div className="p-5">{project?.title}</div>
           </div>
           <div className="container flex">
             <div className="w-1/3 flex flex-col justify-start m-4 divide-y-2 description-text">
               <img className="my-2" src={`${API_URL}${project?.poster}`} />
-              <div className="text-2xl text-center py-2">
+              <div className="lg:text-2xl text-xl text-center py-2">
                 Авторы:{" "}
                 {project?.authors.map((author: IUser, index: number) => {
                   return (
@@ -45,7 +45,7 @@ const Project = () => {
                   );
                 })}
               </div>
-              <div className="text-2xl text-center py-2">
+              <div className="lg:text-2xl text-xl text-center py-2">
                 Год: {project?.year}
               </div>
             </div>

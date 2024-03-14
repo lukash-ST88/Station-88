@@ -13,6 +13,7 @@ import { useDidMountEffect } from "../hooks/useDidMountEffect";
 import { useFilter } from "../hooks/useFilter";
 
 
+
 export interface IFilter {
   sort: string;
   query: string;
@@ -74,8 +75,8 @@ function Movies() {
 
   return (
     <>
-      <div className="flex">
-        <div className="w-5/6">
+      <div className="flex flex-wrap">
+        <div className="lg:w-5/6 lg:order-2 order-2 ">
           <TransitionGroup>
             <div className="grid  grid-col-1 md:grid-cols-3 gap-4">
               {searchedMovies.map((movie: IMovie, index: number) => {
@@ -93,7 +94,7 @@ function Movies() {
             </div>
           )}
         </div>
-        <div className="w-1/6 color-test ">
+        <div className="lg:w-1/6 lg:order-2 color-test order-1">
           <Filter filter={filter} setFilter={setFilter} />
         </div>
       </div>

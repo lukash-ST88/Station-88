@@ -36,8 +36,8 @@ function Home() {
   );
 
   return (
-    <div className="flex">
-      <div className="w-4/6">
+    <div className="flex flex-wrap">
+      <div className="lg:w-4/6 order-2 lg:order-1">
         <div>
           {posts.map((post: any, index: number) => {
             return (
@@ -48,7 +48,7 @@ function Home() {
           })}
         </div>
       </div>
-      <div className="w-2/6"></div>
+      <div className="lg:w-2/6 lg:order-2 order-1"></div>
       <div
         ref={lastElement}
         style={{ height: 10, background: "transperent" }}

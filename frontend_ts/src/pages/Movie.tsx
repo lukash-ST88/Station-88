@@ -42,8 +42,8 @@ const Movie = () => {
               {movie?.original_title}
             </div>
           </div>
-          <div className="container flex ">
-            <div className="w-1/3 flex flex-col justify-start my-4 divide-y-2 description-text">
+          <div className="container flex flex-wrap justify-center">
+            <div className="lg:w-1/3 lg:flex lg:flex-col lg:justify-start my-4 divide-y-2 description-text">
               <img className="my-2" src={`${API_URL}${movie?.poster}`} alt="movie poster"/>
               <div className="text-2xl text-center py-2">
                 Режиссёр: {movie?.director}
@@ -68,7 +68,7 @@ const Movie = () => {
                 </audio>
               </div>
             </div>
-            <div className="w-2/3">
+            <div className="lg:w-2/3">
               <AccordionMT movie={movie} />
             </div>
           </div>

@@ -50,8 +50,8 @@ function Articles() {
   );
 
   return (
-    <div className="flex">
-      <div className="w-5/6">
+    <div className="flex flex-wrap">
+      <div className="lg:w-5/6 lg:order-2 order-2 ">
         <TransitionGroup>
           <div className="grid md:grid-cols-3 gap-4 grid-cols-1">
             {sortedAndSearchedArticles.map(
@@ -71,7 +71,7 @@ function Articles() {
           </div>
         )}
       </div>
-      <div className="md:w-1/6 color-test">
+      <div className="lg:w-1/6 lg:order-2 color-test order-1">
         <Filter filter={filter} setFilter={setFilter} />
       </div>
     </div>
