@@ -20,6 +20,7 @@ const ProjectPost = (props: IProjectIndexProps) => {
           alt={props.project.title}
         />
         <div className="col-span-10 justify-self-center self-center text-center divide-y-2">
+        <div className="flex justify-center"><div className="fixed top-0 bg-white text-black p-1">Проект</div></div>
           <div className="project-title-post">{props.project.title}</div>
           <div className="project-year">
             {props.project.year}

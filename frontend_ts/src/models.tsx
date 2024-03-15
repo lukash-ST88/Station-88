@@ -33,9 +33,10 @@ export interface IReview {
 export interface IST88description {
     readonly id: number 
     description: string
-    author: IUser 
-    movie: IMovie 
+    author: IUser
+    movie: IMovie | undefined
     rating: number 
+    book: IBook | undefined 
 }
 
 
@@ -58,11 +59,28 @@ export interface IMovie {
 }
 
 
+
 export interface IMovieRetrieve {
     count: number,
     next: string | null
     previous: string | null
     results: IMovie[] 
+}
+
+export interface IBook {
+    readonly id: number
+    title: string
+    original_title: string
+    url: string
+    poster: string
+    year: number  
+    writer: string
+    genre: string
+    ebook: string | any
+    ST88descriptions: IST88description[] | undefined[]
+    comments: IReview[] | undefined[]
+    release_date: string
+    avg_rating: string | null
 }
 
 export interface IArticleType {
@@ -112,6 +130,7 @@ export interface IScenario {
 }
 
 export interface IProject {
+    readonly id: number
     title: string
     year: number
     synopsys: string
@@ -122,11 +141,22 @@ export interface IProject {
     url: string
     poster: string | undefined
     linked_film: string | undefined
-}
+};
 
 export interface  IProjectRetrieve {
     count: number
     next: string | null
     previous: string | null
     results: IProject[] 
-}
+};
+
+export interface IFreePost {
+    readonly id: number
+    title: string
+    url: string
+    subtitle: string | undefined
+    content: string
+    release_date: string | null
+    author: IUser
+    poster: string | undefined 
+};

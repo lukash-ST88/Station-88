@@ -5,7 +5,6 @@ from django.utils import timezone
 from django.utils.text import slugify
 
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=100, null=True, verbose_name="Имя")
@@ -33,6 +32,7 @@ class Movie(models.Model):
     music = models.FileField(null=True, upload_to='movie/music/', verbose_name='Музыка', blank=True)
     link = models.CharField(max_length=500, verbose_name='Ссылка на трейлер', null=True, blank=True)
     release_date = models.DateTimeField(default=timezone.now, verbose_name='Дата публикации', null=True)
+
     # related_articles
 
     # def get_avg_rating_st88   
@@ -43,11 +43,7 @@ class Movie(models.Model):
     def __str__(self):
         return self.title
 
-
     # rating imdb KinoPoisk api
-
-
-
 
 
 class ST88description(models.Model):
@@ -55,7 +51,9 @@ class ST88description(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
                                related_name='ST88descriptions', verbose_name='Автор', null=True)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE,
-                              related_name='ST88descriptions', verbose_name='Фильм')
+                              related_name='ST88descriptions', verbose_name='Фильм', null=True, blank=True)
+    book = models.ForeignKey('Book', on_delete=models.CASCADE,
+                              related_name='ST88descriptions', verbose_name='Книга', null=True, blank=True)
     release_date = models.DateTimeField(
         default=timezone.now, verbose_name='Дата публикации', null=True)
     # rating = models.OneToOneField(ST88rating, on_delete=models.SET_NULL, related_name='description', null=True, blank=True, verbose_name='Рейтинг')
@@ -182,8 +180,8 @@ class ST88project(models.Model):
         upload_to='scenario/posters/', verbose_name='Постер')
     release_date = models.DateTimeField(
         default=timezone.now, verbose_name='Дата публикации', null=True)
-    # хронометраж
 
+    # хронометраж
 
     class Meta:
         verbose_name = "СТ88 Проект"
@@ -191,38 +189,6 @@ class ST88project(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class Review(models.Model):
-    email = models.EmailField(verbose_name='Email')
-    nickname = models.CharField(max_length=255, verbose_name='Имя', null=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
-                             related_name='reviews', null=True, on_delete=models.SET_NULL)
-    text = models.TextField(verbose_name='Комментарий')
-    parent = models.ForeignKey('self', on_delete=models.CASCADE,
-                               verbose_name='Родительский комментарий', related_name='children', null=True)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE,
-                              verbose_name='Фильм', related_name='comments', null=True)
-    scenario = models.ForeignKey(Scenario, on_delete=models.CASCADE,
-                                 verbose_name='Сценарий', related_name='comments', null=True)
-    article = models.ForeignKey(Article, on_delete=models.CASCADE,
-                                verbose_name='Статья', related_name='comments', null=True)
-    ST88_project = models.ForeignKey(ST88project, on_delete=models.CASCADE,
-                                     verbose_name='СТ88 Проект', related_name='comments', null=True)
-    project_presentation = models.ForeignKey(
-        ProjectPresentation, on_delete=models.CASCADE, verbose_name='Презентация проекта', related_name='comments', null=True)
-
-    class Meta:
-        verbose_name = "Комментарий"
-        verbose_name_plural = "Комментарии"
-
-    def __str__(self):
-        if self.user:
-            return f'{self.user}: {self.text}'
-        elif self.nickname:
-            return f'{self.nickname}: {self.text}'
-        else:
-            return f'{self.email}: {self.text}'
 
 
 class Banners(models.Model):
@@ -254,7 +220,7 @@ class Course(models.Model):
 
 
 class Education(models.Model):
-    title = models.CharField(max_length=255, verbose_name='Название') 
+    title = models.CharField(max_length=255, verbose_name='Название')
     description = models.TextField(verbose_name='Описание')
     authors = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name='educations', verbose_name='Авторы')
@@ -262,7 +228,7 @@ class Education(models.Model):
         default=timezone.now, verbose_name='Дата публикации', null=True)
     course = models.ForeignKey(
         Course, on_delete=models.CASCADE, verbose_name='Курс', related_name='educations', null=True)
-    
+
     class Meta:
         verbose_name = "Образование"
         verbose_name_plural = "Образование"
@@ -271,6 +237,79 @@ class Education(models.Model):
         return self.title
 
 
+class Book(models.Model):
+    title = models.CharField(max_length=255, verbose_name='Название')
+    original_title = models.CharField(max_length=255, verbose_name='Оригинальное название')
+    url = models.SlugField(max_length=255, unique=True, db_index=True, blank=True, verbose_name='URL')
+    poster = models.ImageField(upload_to='book/posters/', verbose_name='Постер')
+    year = models.IntegerField(verbose_name='Год')
+    writer = models.CharField(max_length=255, verbose_name='Писатель')
+    genre = models.CharField(max_length=50, verbose_name='Жанр')
+    release_date = models.DateTimeField(default=timezone.now, verbose_name='Дата публикации', null=True)
+    ebook = models.FileField(upload_to='book/ebooks/', verbose_name='Электронная книга')
+
+    class Meta:
+        verbose_name = "Книга"
+        verbose_name_plural = "Книги"
+
+    def __str__(self):
+        return self.title
+
+
+class FreePost(models.Model):
+    title = models.CharField(max_length=255, verbose_name='Название')
+    url = models.SlugField(max_length=255, unique=True,
+                           db_index=True, verbose_name='URL')
+    subtitle = models.CharField(max_length=100, verbose_name="Подзаголовок", blank=True)
+    content = models.TextField(verbose_name="Контент", null=True, blank=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+                               related_name='descriptions', verbose_name='Автор', null=True)
+    release_date = models.DateTimeField(
+        default=timezone.now, verbose_name='Дата публикации', null=True)
+    poster = models.ImageField(
+        upload_to='freepost/posters/', verbose_name='Постер', null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Пост в свободной форме"
+        verbose_name_plural = "Посты в свободной форме"
+
+    def __str__(self):
+        return f'{self.title}'
+
+
+class Review(models.Model):
+    email = models.EmailField(verbose_name='Email')
+    nickname = models.CharField(max_length=255, verbose_name='Имя', null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
+                             related_name='reviews', null=True, on_delete=models.SET_NULL)
+    text = models.TextField(verbose_name='Комментарий')
+    parent = models.ForeignKey('self', on_delete=models.CASCADE,
+                               verbose_name='Родительский комментарий', related_name='children', null=True)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE,
+                              verbose_name='Фильм', related_name='comments', null=True)
+    scenario = models.ForeignKey(Scenario, on_delete=models.CASCADE,
+                                 verbose_name='Сценарий', related_name='comments', null=True)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE,
+                                verbose_name='Статья', related_name='comments', null=True)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE,
+                             verbose_name='Книга', related_name='comments', null=True)
+    ST88_project = models.ForeignKey(ST88project, on_delete=models.CASCADE,
+                                     verbose_name='СТ88 Проект', related_name='comments', null=True)
+    project_presentation = models.ForeignKey(
+        ProjectPresentation, on_delete=models.CASCADE, verbose_name='Презентация проекта', related_name='comments',
+        null=True)
+
+    class Meta:
+        verbose_name = "Комментарий"
+        verbose_name_plural = "Комментарии"
+
+    def __str__(self):
+        if self.user:
+            return f'{self.user}: {self.text}'
+        elif self.nickname:
+            return f'{self.nickname}: {self.text}'
+        else:
+            return f'{self.email}: {self.text}'
+
 # TODO: team array
 # TODO: rating API KinoPoisk IMDB
-

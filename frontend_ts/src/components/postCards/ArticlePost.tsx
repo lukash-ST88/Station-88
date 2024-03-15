@@ -24,6 +24,7 @@ const ArticlePost = (props: IArticleIndexProps) => {
             src={props.article.poster}
             alt={props.article.title}
           />
+          <div className="flex justify-center"><div className="fixed top-0 bg-white text-black p-1">Статья</div></div>
           <div className="article-text-align">
             <div className="title">{props.article.title}</div>
             <div className="subtitle">{props.article.subtitle}</div>  

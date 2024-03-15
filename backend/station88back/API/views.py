@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .models import Movie, Article, Banners, ST88project
+from .models import Movie, Article, Banners, ST88project, Book, FreePost
 from rest_framework import generics
-from .serializers import ArticleCardSerializer, MovieSerializer, ArticleSerializer, BannersSerializer, ProjectCardSerializer, ProjectSerializer, MovieCardSerializer, CustomUserSerializer
+from .serializers import ArticleCardSerializer, MovieSerializer, ArticleSerializer, BannersSerializer, \
+    ProjectCardSerializer, ProjectSerializer, MovieCardSerializer, CustomUserSerializer, BookCardSerializer, \
+    BookSerializer, FreePostSerializer, FreePostCardSerializer
 from django.db.models import Count
 from rest_framework.response import Response
 from rest_framework.pagination import LimitOffsetPagination
@@ -20,6 +22,7 @@ class BannersListView(generics.ListAPIView):
     queryset = Banners.objects.all()
     pagination_class = None
 
+
 class MovieListView(generics.ListAPIView):
     serializer_class = MovieCardSerializer
     queryset = Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).all().order_by('-release_date')
@@ -27,12 +30,10 @@ class MovieListView(generics.ListAPIView):
 
 class MovieSortedListView(generics.ListAPIView):
     serializer_class = MovieCardSerializer
-   
+
     def get_queryset(self):
         return Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).all().order_by(self.kwargs['sort'])
-    
 
-        
 
 @api_view(['GET'])
 def movie_detail(request, url):
@@ -44,10 +45,12 @@ def movie_detail(request, url):
         movie_serializer = MovieSerializer(movie)
         return Response(movie_serializer.data)
 
+
 class ArticleListView(generics.ListAPIView):
     serializer_class = ArticleCardSerializer
     queryset = Article.objects.prefetch_related(
         'authors__profile', 'article_type').all().order_by('-release_date')
+
 
 @api_view(['GET'])
 def article_detail(request, url):
@@ -58,6 +61,7 @@ def article_detail(request, url):
     if request.method == 'GET':
         article_serializer = ArticleSerializer(article)
         return Response(article_serializer.data)
+
 
 class ProjectListView(generics.ListAPIView):
     queryset = ST88project.objects.all().order_by('-year')
@@ -74,6 +78,29 @@ def project_detail(request, url):
         project_serializer = ProjectSerializer(project)
         return Response(project_serializer.data)
 
+
+@api_view(['GET'])
+def book_detail(request, url):
+    try:
+        book = Book.objects.prefetch_related('ST88descriptions__author__profile').get(url=url)
+    except Book.DoesNotExist:
+        return Response({'message': 'Книга не найдена'})
+    if request.method == 'GET':
+        book_serializer = BookSerializer(book)
+        return Response(book_serializer.data)
+
+
+@api_view(['GET'])
+def free_post_detail(request, url):
+    try:
+        free_post = FreePost.objects.prefetch_related('author__profile').get(url=url)
+    except FreePost.DoesNotExist:
+        return Response({'message': 'Пост не нейден'})
+    if request.method == 'GET':
+        free_post_serializer = FreePostSerializer(free_post)
+        return Response(free_post_serializer.data)
+
+
 @api_view(['GET'])
 def user_detail(request, username):
     try:
@@ -87,7 +114,6 @@ def user_detail(request, username):
 
 class LimitPagination(MultipleModelLimitOffsetPagination):
     default_limit = REST_FRAMEWORK['PAGE_SIZE']
-    # default_limit = 2
 
 
 class PostsListView(FlatMultipleModelAPIView):
@@ -97,20 +123,17 @@ class PostsListView(FlatMultipleModelAPIView):
         {'queryset': Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).all().order_by('-release_date'),
          'serializer_class': MovieCardSerializer,
          'label': 'movie'},
+        {'queryset': Book.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).all().order_by('-release_date'),
+         'serializer_class': BookCardSerializer,
+         'label': 'book'},
         {'queryset': Article.objects.prefetch_related(
-        'authors__profile', 'article_type').all().order_by('-release_date'),
+            'authors__profile', 'article_type').all().order_by('-release_date'),
          'serializer_class': ArticleCardSerializer,
          'label': 'article'},
         {'queryset': ST88project.objects.all().order_by('-release_date'),
          'serializer_class': ProjectCardSerializer,
          'label': 'project'},
+        {'queryset': FreePost.objects.all().order_by('-release_date'),
+         'serializer_class': FreePostSerializer,
+         'label': 'free_post'},
     ]
-
-
-
-
-
-
-
-
-

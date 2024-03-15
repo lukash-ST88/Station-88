@@ -5,8 +5,7 @@ import MovieService from "../services/movies";
 import { useParams } from "react-router-dom";
 import Loader from "../components/components/Loader/Loader";
 import { API_URL } from "../services/settings/urls";
-import AccordionMT from "../components/components/Accordion/AccordionMT";
-import { ModalFR } from "../components/components/Modal/Modal"
+import AccordionMovie from "../components/components/Accordion/AccordionMT";
 
 const Movie = () => {
   const [movie, setMovie] = useState<IMovie>();
@@ -15,12 +14,6 @@ const Movie = () => {
 
   useEffect(() => {
     fetchMovie(params.url);
-    // setTimeout(()=>{
-    //     setLoading(false)
-    // }, 1000)
-    // console.log(movie?.poster);
-    // console.log(movie?.link);
-    // console.log(movie?.music);
   }, []);
 
   const [fetchMovie, isMovieLoading, movieError]: any = useFetching(
@@ -56,6 +49,7 @@ const Movie = () => {
               </div>
               <div className="my-2">
                 <iframe
+                  title={movie?.title}
                   width="100%"
                   height="300"
                   loading="lazy"
@@ -69,7 +63,7 @@ const Movie = () => {
               </div>
             </div>
             <div className="lg:w-2/3">
-              <AccordionMT movie={movie} />
+              <AccordionMovie movie={movie} />
             </div>
           </div>
         </div>

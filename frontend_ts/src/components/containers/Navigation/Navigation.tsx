@@ -76,4 +76,3 @@ export default connect(mapStateToProps)(NavbarDefault);
 // <Link to='/login' className='nav-links'>Профиль</Link> 
 
 // TODO: - delete packages bootstrap and reactstrap
-// TODO: - flexable navbar

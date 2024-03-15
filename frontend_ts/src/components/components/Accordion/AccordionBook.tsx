@@ -4,16 +4,16 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import { IMovie } from "../../../models";
+import { IBook } from "../../../models";
 import "./Accordion.css"
 import {IconM} from "./AccordionSet"
 
-interface IMovieProps {
-  movie: IMovie | undefined;
+interface IBookProps {
+  book: IBook | undefined;
 }
 
 
-function AccordionMovie(props: IMovieProps) {
+function AccordionBook(props: IBookProps) {
   const [open, setOpen] = React.useState(1);
 
   const handleOpen = (value: number) => {
@@ -22,7 +22,7 @@ function AccordionMovie(props: IMovieProps) {
   
   return (
     <div className="mx-4">
-      {props.movie?.ST88descriptions.map((description) => {
+      {props.book?.ST88descriptions.map((description) => {
         return (<>
         {description?.description ? 
         <Accordion open={open === description?.id} icon={<IconM open={open} description={description}/>}>
@@ -45,4 +45,4 @@ function AccordionMovie(props: IMovieProps) {
   );
 }
 
-export default AccordionMovie;
+export default AccordionBook;
