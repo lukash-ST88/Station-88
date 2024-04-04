@@ -4,10 +4,10 @@ services:
 
   server-django:
     container_name: django_server
-    build:
+    build:  
       context: ./backend
     ports:
-      - "8000:8000"
+      - "8080:8000"
     env_file:
       - .env.dev
     volumes:
@@ -20,7 +20,7 @@ services:
     build:
       context: ./frontend_ts
     volumes:
-      - ./frontend:/app
+      - ./frontend_ts:/app
     ports:
       - "30:3000"
 
@@ -33,7 +33,7 @@ services:
     env_file:
       - .env.dev
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data/
 volumes:
  pgdata:
 

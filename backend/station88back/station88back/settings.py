@@ -28,7 +28,7 @@ SECRET_KEY = SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = DEBUG
 
-ALLOWED_HOSTS = ALLOWED_HOSTS
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -52,6 +52,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', 
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,8 +61,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware', 
-    "django.middleware.common.CommonMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
@@ -146,11 +146,45 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_WHITELIST = [
-'http://localhost:3000',
-"http://127.0.0.1:3000"
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
-] # for allowed hosts for frontend
+
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
+
+CORS_ALLOW_HEADERS = (
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "Access-Control-Allow-Origin",
+    "Access-Control-Allow-Credentials",
+    'Access-Control-Allow-Methods',
+)
+
+# CORS_ALLOWED_ORIGINS = [
+# # 'http://localhost:3000',
+# # "http://127.0.0.1:3000",
+# # "http://127.0.0.1:30",
+# # "http://127.0.0.1:8080",
+# # "http://localhost:8080",
+# # "http://localhost:30",
+# # 'http://localhost:8000',
+# # "http://127.0.0.1:8000",
+# # 'http://0.0.0.0:8000',
+# # "http://0.0.0.0:3000",
+# 'http://172.25.0.4:3000',
+# "http://172.25.0.2:30",
+# ] # for allowed hosts for frontend
 
 # for debug toolbar
 INTERNAL_IPS = [
