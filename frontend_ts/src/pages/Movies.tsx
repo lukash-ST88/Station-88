@@ -86,7 +86,7 @@ function Movies() {
           </TransitionGroup>
           <div
             ref={lastElement}
-            style={{ height: 10, background: "red" }} //"transperent"
+            style={{ height: 10, background: "transperent" }} //"transperent"
           />
           {isMovieLoading && (
             <div className="flex justify-center">

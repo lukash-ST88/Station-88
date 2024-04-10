@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-/station88back/static
+
 # Distribution / packaging
 .Python
 build/
@@ -60,6 +60,10 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+/station88back/static/
+/station88back/staticfiles/
+/station88back/media/
+/station88back/mediafiles/
 
 # Flask stuff:
 instance/
@@ -77,6 +81,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
 
 # IPython
 profile_default/

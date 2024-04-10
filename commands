@@ -2,3 +2,5 @@ Connection to a container:
   - docker exec -it <container ID> /bin/sh 
 Exacute command inside a container:
   - docker exec -it <container ID> <comand>
+Check data of image or container(ip address for example):
+  - docker inspect <container ID or image ID>

@@ -2,16 +2,28 @@ version: '3'
 
 services:
 
+  postgres_db:
+      image: postgres:14-alpine3.17
+      container_name: postgres_db
+      ports:
+      - "5433:5432"
+      env_file:
+        - .env.dev
+      volumes:
+        - pgdata:/var/lib/postgresql/data/
+
   server-django:
     container_name: django_server
     build:  
       context: ./backend
     ports:
-      - "8080:8000"
+      - "5000:8000"
     env_file:
       - .env.dev
     volumes:
       - ./backend:/app
+      - static_files_back:/app/station88back/staticfiles/
+      - media_files_back:/app/station88back/mediafiles/
     depends_on:
       - postgres_db
 
@@ -21,21 +33,35 @@ services:
       context: ./frontend_ts
     volumes:
       - ./frontend_ts:/app
+      - build_files_front:/app/build
+      # - static_files_back:/app/staticfiles
+      # - media_files_back:/app/mediafiles
     ports:
-      - "30:3000"
-
-
-  postgres_db:
-    image: postgres:14-alpine3.17
-    container_name: postgres_db
+      - "3000:3000"
+    depends_on:
+      - server-django
+  
+  proxy-server-nginx:
+    container_name: nginx_server
+    build:
+      context: ./nginx
+    restart: unless-stopped
     ports:
-    - "5433:5432"
-    env_file:
-      - .env.dev
+      - "80:80"
     volumes:
-      - pgdata:/var/lib/postgresql/data/
+      - nginx_conf:/etc/nginx/conf.d
+      - static_files_back:/app/staticfiles
+      - media_files_back:/app/mediafiles
+      - build_files_front:/usr/share/nginx/html
+    depends_on:
+      - client-react
+
 volumes:
  pgdata:
+ static_files_back:
+ media_files_back:
+ build_files_front:
+ nginx_conf:
 
 
 

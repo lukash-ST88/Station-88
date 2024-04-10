@@ -9,6 +9,8 @@ COPY . /app
 RUN pip3 install -r requirements.txt 
 
 CMD cd station88back \
+    && python3 manage.py makemigrations \
     && python3 manage.py migrate \
     && python3 manage.py collectstatic --noinput\
-    && python3 manage.py runserver 0.0.0.0:8000
+    # && python3 manage.py runserver 0.0.0.0:8000
+    && gunicorn station88back.wsgi:application --bind 0.0.0.0:8000
