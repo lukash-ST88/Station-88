@@ -49,7 +49,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - nginx_conf:/etc/nginx/conf.d
+      # - nginx_conf:/etc/nginx/conf.d
       - static_files_back:/app/staticfiles
       - media_files_back:/app/mediafiles
       - build_files_front:/usr/share/nginx/html
@@ -61,7 +61,7 @@ volumes:
  static_files_back:
  media_files_back:
  build_files_front:
- nginx_conf:
+#  nginx_conf:
 
 
 
