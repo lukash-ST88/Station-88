@@ -26,6 +26,7 @@ class Movie(models.Model):
     original_title = models.CharField(max_length=255, verbose_name='Оригинальное название')
     url = models.SlugField(max_length=255, unique=True, db_index=True, blank=True, verbose_name='URL')
     poster = models.ImageField(upload_to='movie/posters/', verbose_name='Постер')
+    main_frame = models.ImageField(upload_to='movie/main_frames/', null=True, verbose_name='Главный кадр')
     year = models.IntegerField(verbose_name='Год')
     director = models.CharField(max_length=255, verbose_name='Режиссёр')
     genre = models.CharField(max_length=50, verbose_name='Жанр')

@@ -4,3 +4,9 @@ Exacute command inside a container:
   - docker exec -it <container ID> <comand>
 Check data of image or container(ip address for example):
   - docker inspect <container ID or image ID>
+Delete all docker containers:
+  - docker rm -vf $(docker ps -aq)
+Delete all docker images:
+  - docker rmi -f $(docker images -q)
+ 
+  
