@@ -1,4 +1,4 @@
-import {useState, useEffect, useContext} from 'react'
+import {useState } from 'react'
 import './Slider.css'
 import { IBanners } from '../../../models'
 import Loader from '../../components/Loader/Loader'

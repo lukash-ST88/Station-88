@@ -10,10 +10,10 @@ export interface IusePosts {
 
 export const useSortedPosts = (posts: IMovie[] | IArticle[], sort: string) => {
   const sortedPosts = useMemo(() => {
-    if (sort && sort[0] == '+') {
+    if (sort && sort[0] === '+') {
       return [...posts].sort((a: any, b: any) => b[sort.slice(1)] - a[sort.slice(1)]);
     }
-    else if(sort && sort[0] == '-'){
+    else if(sort && sort[0] === '-'){
       console.log((posts.map((post:any)=> post[sort.slice(1)]))) 
       return [...posts].sort((a: any, b: any) => a[sort.slice(1)] - b[sort.slice(1)]);
     }

@@ -1,6 +1,6 @@
 import { IProject } from "../../models";
 import { useNavigate } from "react-router-dom";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import "./cards.css" 
 
 export interface IProjectIndexProps {

@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from .config import SECRET_KEY, DEBUG, ALLOWED_HOSTS, POSTGRES_HOST, POSTGRES_NAME, POSTGRES_PASS, \
-    POSTGRES_PORT, POSTGRES_USER
+    POSTGRES_PORT, POSTGRES_USER, BACKEND_HOST, BACKEND_PORT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +28,7 @@ SECRET_KEY = SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = DEBUG
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ALLOWED_HOSTS
 
 
 # Application definition
@@ -146,7 +146,7 @@ MEDIA_URL = '/mediafiles/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 
@@ -171,20 +171,13 @@ CORS_ALLOW_HEADERS = (
     'Access-Control-Allow-Methods',
 )
 
-# CORS_ALLOWED_ORIGINS = [
-# # 'http://localhost:3000',
-# # "http://127.0.0.1:3000",
-# # "http://127.0.0.1:30",
-# # "http://127.0.0.1:8080",
-# # "http://localhost:8080",
-# # "http://localhost:30",
-# # 'http://localhost:8000',
-# # "http://127.0.0.1:8000",
-# # 'http://0.0.0.0:8000',
-# # "http://0.0.0.0:3000",
-# 'http://172.25.0.4:3000',
-# "http://172.25.0.2:30",
-# ] # for allowed hosts for frontend
+# for allowed hosts for frontend
+CORS_ALLOWED_ORIGINS = [
+'http://localhost:3000',
+'http://172.25.0.3:3000',
+'http://' + str(BACKEND_HOST) + str(BACKEND_PORT),
+'https://' + str(BACKEND_HOST) + str(BACKEND_PORT),
+] 
 
 # for debug toolbar
 INTERNAL_IPS = [

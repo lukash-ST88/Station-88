@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef, useLayoutEffect, useMemo } from "react";
-import { IArticle, IMovie } from "../models";
+import { IMovie } from "../models";
 import MovieService from "../services/movies";
 import Filter from "../components/components/Filter/Filter";
-import { usePosts } from "../hooks/usePosts";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { getPageCount, getPagesArray } from "../utils/pages";
+import { TransitionGroup } from "react-transition-group";
+import { getPageCount} from "../utils/pages";
 import { useObserver } from "../hooks/useObserver";
 import { useFetching } from "../hooks/useFetching";
 import Loader from "../components/components/Loader/Loader";

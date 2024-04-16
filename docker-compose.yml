@@ -34,8 +34,6 @@ services:
     volumes:
       - ./frontend_ts:/app
       - build_files_front:/app/build
-      # - static_files_back:/app/staticfiles
-      # - media_files_back:/app/mediafiles
     ports:
       - "3000:3000"
     depends_on:

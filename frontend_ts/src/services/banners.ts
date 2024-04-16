@@ -10,4 +10,4 @@ class BannersService{
    }
 }
 
-export default new BannersService
+export default new BannersService();

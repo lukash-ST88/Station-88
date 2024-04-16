@@ -1,9 +1,8 @@
 import MyInput from "../../UI/MyInput/MyInput"
-import { useState } from "react"
 import MySelect from "../../UI/MySelect/MySelect"
 import React from "react"
 import { IFilter } from "../../../pages/Movies"
-import { getSortValues } from "../../../utils/sortValues"
+
 
 
 interface FilterProps {
@@ -12,8 +11,6 @@ interface FilterProps {
 }
 
 const Filter = (props: FilterProps) => {
-    
-
     return (
     <div className="m-2">
         <MyInput 

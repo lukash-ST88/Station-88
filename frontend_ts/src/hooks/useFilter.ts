@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { IArticle, IMovie } from "../models";
+
 
 export const useFilter = (posts: any, query: string) => {
     const sortedPosts = useMemo(() => {

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { IMovie, IMovieRetrieve } from "../models";
 import { API_URL } from "./settings/urls";
 
 class PostService {
