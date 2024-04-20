@@ -46,13 +46,23 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       # - nginx_conf:/etc/nginx/conf.d
       - static_files_back:/app/staticfiles
       - media_files_back:/app/mediafiles
       - build_files_front:/usr/share/nginx/html
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot  
     depends_on:
       - client-react
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"    
 
 volumes:
  pgdata:

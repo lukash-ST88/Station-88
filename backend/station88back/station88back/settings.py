@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from .config import SECRET_KEY, DEBUG, ALLOWED_HOSTS, POSTGRES_HOST, POSTGRES_NAME, POSTGRES_PASS, \
-    POSTGRES_PORT, POSTGRES_USER, BACKEND_HOST, BACKEND_PORT
+    POSTGRES_PORT, POSTGRES_USER
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,13 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = DEBUG
+DEBUG = False
 
 ALLOWED_HOSTS = ALLOWED_HOSTS
 
 
-# Application definition
+CSRF_TRUSTED_ORIGINS = ['https://station88.ru']
 
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -146,7 +147,7 @@ MEDIA_URL = '/mediafiles/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS_ALLOW_ALL_ORIGINS = True
+#CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 
@@ -175,8 +176,7 @@ CORS_ALLOW_HEADERS = (
 CORS_ALLOWED_ORIGINS = [
 'http://localhost:3000',
 'http://172.25.0.3:3000',
-'http://' + str(BACKEND_HOST) + str(BACKEND_PORT),
-'https://' + str(BACKEND_HOST) + str(BACKEND_PORT),
+'https://station88.ru'
 ] 
 
 # for debug toolbar

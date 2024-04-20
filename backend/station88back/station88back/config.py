@@ -9,8 +9,6 @@ POSTGRES_NAME = os.environ.get('POSTGRES_NAME')
 POSTGRES_USER = os.environ.get('POSTGRES_USER')
 POSTGRES_PASS = os.environ.get('POSTGRES_PASSWORD')
 
-BACKEND_PORT = os.environ.get('BACKEND_PORT')
-BACKEND_HOST = os.environ.get('BACKEND_HOST')
 
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
