@@ -136,7 +136,7 @@ export interface IProject {
     synopsys: string
     scenario: IScenario 
     authors: IUser[]
-    downloaded_film: string | undefined
+    linked_trailer: string | undefined
     release_date: string | null
     url: string
     poster: string | undefined

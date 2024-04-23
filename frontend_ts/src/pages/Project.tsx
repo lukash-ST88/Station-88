@@ -72,9 +72,11 @@ const Project = () => {
                 </a>
               </div>
               <div>
+                {project?.linked_trailer && (
                 <video width="750" height="500" controls>
-                  <source src={project?.downloaded_film} type="video/mp4" />
+                  <source src={project?.linked_trailer} type="video/mp4" />
                 </video>
+                )}
               </div>
             </div>
           </div>

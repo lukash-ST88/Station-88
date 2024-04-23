@@ -12,7 +12,7 @@ const MoviePost = (props: IMovieIndexProps) => {
         onClick={() => navigate(`/movie/${props.movie.url}`)}
       >
         <img
-          className="object-cover col-span-4 h-84 w-full "
+          className="object-cover col-span-4 h-84 w-auto"
           src={props.movie.poster}
           alt={props.movie.title}
         />

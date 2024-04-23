@@ -31,6 +31,10 @@ Station-88 is a movie production project, which indludes movie reviews, cinema a
 
 ![Alt text](Screenshot_of_app.png)
 
+<h4> Версии языков </h4>
+<p> python 3.10 </p>
+<p> node v20.8.0 </p>
+
 
 <h4>Steps to activate the project on linux machine:</h4>
 <p> 1. Clone git repository to your machine:</p>

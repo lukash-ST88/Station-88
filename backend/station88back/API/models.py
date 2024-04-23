@@ -173,8 +173,8 @@ class ST88project(models.Model):
                            db_index=True, verbose_name='URL', null=True)
     authors = models.ManyToManyField(
         settings.AUTH_USER_MODEL, verbose_name='Авторы', related_name='ST88_projects')
-    downloaded_film = models.FileField(
-        upload_to='ST88/projects/', verbose_name='Загруженный фильм', null=True, blank=True)
+    linked_trailer = models.CharField(
+        max_length=500, verbose_name='Ссылка на трейлер', null=True, blank=True)
     linked_film = models.CharField(
         max_length=500, verbose_name="Ссылка на фильм", null=True, blank=True)
     poster = models.ImageField(

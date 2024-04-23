@@ -36,22 +36,33 @@ const Profile = () => {
       ) : (
         <div className="container flex flex-wrap justify-between text-center">
           <img src={`${API_URL}${user?.profile?.avatar}`} className="profile-img rounded-2xl" alt={user?.username}/>
-          <div>
-            <div className="rounded-md bg-green-500 mb-2 p-2">Ник профиля</div>
-            <div>{user?.username}</div>
+          <div className="flex flex-col justify-start items-start">
+          <div className="flex items-center">
+            <div className="rounded-md bg-green-500 m-2 p-2 w-32">Ник профиля</div>
+            <div className="p-2 m-2">{user?.username}</div>
           </div>
-          <div>
-            <div className="rounded-md bg-green-500 mb-2 p-2">Имя </div>
-            <div>{user?.profile?.first_name} {user?.profile?.last_name}</div>
+          <div className="flex items-center">
+            <div className="rounded-md bg-green-500 m-2 p-2 w-32">Имя </div>
+            <div className="m-2 p-2">{user?.profile?.first_name} {user?.profile?.last_name}</div>
           </div>
-          <div>
+          <div className="flex items-center">
+            <div className="rounded-md bg-green-500 m-2 p-2 w-32">Email </div>
+            <div className="m-2 p-2">{user?.email}</div>
+          </div>
+          <div className="flex items-center">
+            <div className="rounded-md bg-green-500 m-2 p-2 w-32">Роль </div>
+            <div className="m-2 p-2">{user?.profile?.role}</div>
+          </div>
+          </div> 
+          <div className="flex flex-col">
             <button
-              className="bg-red-500 rounded-md p-2"
+              className="bg-red-500 rounded-md p-2 m-2 hover:bg-white hover:text-red-500 border border-4xl hover:border-red-500"
               onClick={handleLogout}
             >
               {" "}
               Выйти
             </button>
+            <button className="p-2 m-2 bg-white text-black hover:bg-black hover:text-white border border-4xl border-white rounded-md" onClick={() => navigate("/admin/")}>Администрировать сайт</button>
           </div>
         </div>
       )}

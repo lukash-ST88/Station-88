@@ -17,7 +17,7 @@ const BookPost = (props: IBookIndexProps) => {
         onClick={() => navigate(`/book/${props.book.url}`)}
       >
         <img
-          className="object-cover col-span-4 h-84 w-full "
+          className="object-cover col-span-4 h-84 w-auto"
           src={props.book.poster}
           alt={props.book.title}
         />

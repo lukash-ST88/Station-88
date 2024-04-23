@@ -15,7 +15,7 @@ const ProjectPost = (props: IProjectIndexProps) => {
           <div className="vertical">ПРОЕКТ СТАНЦИИ 88</div>
         </div>
         <img
-          className="object-cover col-span-4 h-84 w-full "
+          className="object-cover col-span-4 h-84 w-auto"
           src={props.project.poster}
           alt={props.project.title}
         />
