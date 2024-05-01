@@ -62,7 +62,10 @@ const Profile = () => {
               {" "}
               Выйти
             </button>
-            <button className="p-2 m-2 bg-white text-black hover:bg-black hover:text-white border border-4xl border-white rounded-md" onClick={() => navigate("/admin/")}>Администрировать сайт</button>
+            <button className="p-2 m-2 bg-white text-black hover:bg-black hover:text-white border border-4xl border-white rounded-md" 
+              onClick={() => window.location.replace('https://station88.ru/admin/')}> 
+              Администрировать сайт
+            </button>
           </div>
         </div>
       )}
