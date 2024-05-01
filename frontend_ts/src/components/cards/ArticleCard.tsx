@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { CSSTransition} from "react-transition-group";
-import { IArticle } from "../../models";
+import { IArticle } from "../../interfaces/ArticleInterfaces";
 
 export interface IArticleIndexProps {
   article: IArticle;

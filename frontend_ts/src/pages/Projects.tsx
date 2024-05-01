@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import { IArticle, IProject } from "../models";
+import { IProject } from "../interfaces/ProjectInterfaces";
 import ProjectService from "../services/projects";
-import { useNavigate } from "react-router-dom";
 import { TransitionGroup } from "react-transition-group";
 import { getPageCount } from "../utils/pages";
 import { useObserver } from "../hooks/useObserver";
 import { useFetching } from "../hooks/useFetching";
 import Loader from "../components/components/Loader/Loader";
 import ProjectCard from "../components/cards/ProjectCard";
-import axios from "axios";
+
 
 function Projects() {
   const [projects, setProjects] = useState<IProject[]>([]);

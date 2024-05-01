@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import { IArticle, IMovie } from "../models";
+import { IArticle } from "../interfaces/ArticleInterfaces";
+import { IMovie } from "../interfaces/MovieInterfaces";
 
 export interface IusePosts {
   posts: IMovie[] | IArticle[]

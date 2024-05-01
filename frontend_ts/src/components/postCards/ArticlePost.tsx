@@ -1,4 +1,4 @@
-import { IUser } from "../../models";
+import { IUser } from "../../interfaces/UserInterfaces";
 import dateTime from "../../utils/dateTime";
 import { IArticleIndexProps } from "../cards/ArticleCard";
 import { useNavigate } from "react-router-dom";

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IFreePost } from "../models";
+import { IFreePost } from "../interfaces/FreePostInterfaces";
 import { API_URL } from "./settings/urls";
 
 

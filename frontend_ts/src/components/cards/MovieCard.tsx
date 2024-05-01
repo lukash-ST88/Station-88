@@ -1,6 +1,6 @@
 import { CSSTransition} from "react-transition-group";
 import { useNavigate } from "react-router-dom";
-import { IMovie } from "../../models";
+import { IMovie } from "../../interfaces/MovieInterfaces";
 
 
 export interface IMovieIndexProps {

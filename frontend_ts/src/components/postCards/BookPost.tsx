@@ -1,7 +1,7 @@
 import "./postCards.css";
 import dateTime from "../../utils/dateTime";
 import { useNavigate } from "react-router-dom";
-import { IBook } from "../../models";
+import { IBook } from "../../interfaces/BookInterfaces";
 
 interface IBookIndexProps {
     book: IBook

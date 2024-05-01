@@ -3,6 +3,8 @@ from .models import Movie, Article, ArticleType, Scenario, ST88description, ST88
     Banners, Profile, Book, FreePost
 from django.contrib.auth.models import User
 
+""" -----------Users--------- """
+
 
 class ProfileSerializer(serializers.Serializer):
     last_name = serializers.CharField()
@@ -25,6 +27,66 @@ class CustomUserSerializer(serializers.Serializer):
         fields = ('username', 'email', 'profile')
 
 
+""" ----------PrefetchesForBase---------- """
+
+
+class MoviePrefetchForBaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ['id', 'title', 'url']
+
+
+class ArticlePrefetchForBaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = ['id', 'title', 'url']
+
+
+""" ----------Cards---------- """
+
+
+class MovieCardSerializer(serializers.ModelSerializer):
+    avg_rating = serializers.DecimalField(decimal_places=1, max_digits=3)
+
+    class Meta:
+        model = Movie
+        fields = ['id', 'title', 'original_title',
+                  'url', 'poster', 'year', 'release_date', 'avg_rating']
+
+
+class BookCardSerializer(serializers.ModelSerializer):
+    avg_rating = serializers.DecimalField(decimal_places=1, max_digits=3)
+
+    class Meta:
+        model = Book
+        fields = ['id', 'title', 'original_title',
+                  'url', 'poster', 'year', 'release_date', 'avg_rating']
+
+
+class ArticleCardSerializer(serializers.ModelSerializer):
+    article_type = serializers.StringRelatedField(many=True, read_only=True)
+    authors = CustomUserSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Article
+        exclude = ['content']
+
+
+class ProjectCardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ST88project
+        fields = ['id', 'title', 'year', 'url', 'poster', 'release_date']
+
+
+class FreePostCardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FreePost
+        exclude = ['content']
+
+
+""" ----------Base---------- """
+
+
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
@@ -44,21 +106,13 @@ class ST88descriptionSerializer(serializers.ModelSerializer):
 class MovieSerializer(serializers.ModelSerializer):
     ST88descriptions = ST88descriptionSerializer(many=True, read_only=True)
     comments = ReviewSerializer(many=True, read_only=True)
+    related_articles = ArticlePrefetchForBaseSerializer(many=True, read_only=True)
 
     class Meta:
         model = Movie
         fields = ['id', 'title', 'original_title', 'url', 'poster',
                   'year', 'director', 'genre', 'music', 'link',
-                  'ST88descriptions', 'comments', 'release_date']
-
-
-class MovieCardSerializer(serializers.ModelSerializer):
-    avg_rating = serializers.DecimalField(decimal_places=1, max_digits=3)
-
-    class Meta:
-        model = Movie
-        fields = ['id', 'title', 'original_title',
-                  'url', 'poster', 'year', 'release_date', 'avg_rating']
+                  'ST88descriptions', 'comments', 'release_date', 'related_articles']
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -71,15 +125,6 @@ class BookSerializer(serializers.ModelSerializer):
                   'year', 'writer', 'genre', 'ST88descriptions', 'comments', 'release_date', 'ebook']
 
 
-class BookCardSerializer(serializers.ModelSerializer):
-    avg_rating = serializers.DecimalField(decimal_places=1, max_digits=3)
-
-    class Meta:
-        model = Book
-        fields = ['id', 'title', 'original_title',
-                  'url', 'poster', 'year', 'release_date', 'avg_rating']
-
-
 class ArticleTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ArticleType
@@ -90,22 +135,14 @@ class ArticleSerializer(serializers.ModelSerializer):
     article_type = ArticleTypeSerializer(many=True, read_only=True)
     # article_type = serializers.StringRelatedField(many=True)
     authors = CustomUserSerializer(many=True, read_only=True)
+    related_movies = MoviePrefetchForBaseSerializer(many=True, read_only=True)
 
     # authors = serializers.SlugRelatedField(many=True, read_only=True, slug_field='username')
 
     class Meta:
         model = Article
         fields = ['id', 'title', 'url', 'subtitle', 'authors',
-                  'release_date', 'article_type', 'poster', 'content']
-
-
-class ArticleCardSerializer(serializers.ModelSerializer):
-    article_type = serializers.StringRelatedField(many=True, read_only=True)
-    authors = CustomUserSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Article
-        exclude = ['content']
+                  'release_date', 'article_type', 'poster', 'content', 'related_movies']
 
 
 class BannersSerializer(serializers.ModelSerializer):
@@ -129,21 +166,9 @@ class ProjectSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ProjectCardSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ST88project
-        fields = ['id', 'title', 'year', 'url', 'poster', 'release_date']
-
-
 class FreePostSerializer(serializers.ModelSerializer):
     author = CustomUserSerializer(read_only=True)
 
     class Meta:
         model = FreePost
         fields = "__all__"
-
-
-class FreePostCardSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FreePost
-        exclude = ['content']

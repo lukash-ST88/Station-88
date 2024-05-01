@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { IArticle, IMovie } from "../models";
+import { IArticle } from "../interfaces/ArticleInterfaces";
 import ArticleService from "../services/articles";
-import { useNavigate } from "react-router-dom";
 import { IFilter } from "./Movies";
 import { usePosts } from "../hooks/usePosts";
 import { useFetching } from "../hooks/useFetching";

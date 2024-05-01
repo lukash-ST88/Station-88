@@ -23,7 +23,7 @@ class Profile(models.Model):
 
 class Movie(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
-    original_title = models.CharField(max_length=255, verbose_name='Оригинальное название')
+    original_title = models.CharField(max_length=255, verbose_name='Оригинальное название', null=True, blank=True)
     url = models.SlugField(max_length=255, unique=True, db_index=True, blank=True, verbose_name='URL')
     poster = models.ImageField(upload_to='movie/posters/', verbose_name='Постер')
     main_frame = models.ImageField(upload_to='movie/main_frames/', null=True, verbose_name='Главный кадр')
@@ -33,9 +33,8 @@ class Movie(models.Model):
     music = models.FileField(null=True, upload_to='movie/music/', verbose_name='Музыка', blank=True)
     link = models.CharField(max_length=500, verbose_name='Ссылка на трейлер', null=True, blank=True)
     release_date = models.DateTimeField(default=timezone.now, verbose_name='Дата публикации', null=True)
-
-    # related_articles
-
+    related_articles = models.ManyToManyField('Article', verbose_name='Связанные статьи', related_name='related_movies') 
+    
     # def get_avg_rating_st88   
     class Meta:
         verbose_name = "Фильм"
@@ -86,7 +85,7 @@ class Article(models.Model):
     title = models.CharField(max_length=100, verbose_name="Заголовок")
     url = models.SlugField(max_length=255, unique=True,
                            db_index=True, verbose_name='URL')
-    subtitle = models.CharField(max_length=100, verbose_name="Подзаголовок")
+    subtitle = models.CharField(max_length=100, verbose_name="Подзаголовок", blank=True, null=True)
     authors = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name='articles', verbose_name='Авторы')
     release_date = models.DateTimeField(
@@ -240,14 +239,14 @@ class Education(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
-    original_title = models.CharField(max_length=255, verbose_name='Оригинальное название')
+    original_title = models.CharField(max_length=255, verbose_name='Оригинальное название', blank=True, null=True)
     url = models.SlugField(max_length=255, unique=True, db_index=True, blank=True, verbose_name='URL')
     poster = models.ImageField(upload_to='book/posters/', verbose_name='Постер')
     year = models.IntegerField(verbose_name='Год')
     writer = models.CharField(max_length=255, verbose_name='Писатель')
     genre = models.CharField(max_length=50, verbose_name='Жанр')
     release_date = models.DateTimeField(default=timezone.now, verbose_name='Дата публикации', null=True)
-    ebook = models.FileField(upload_to='book/ebooks/', verbose_name='Электронная книга')
+    ebook = models.FileField(upload_to='book/ebooks/', verbose_name='Электронная книга', null=True, blank=True)
 
     class Meta:
         verbose_name = "Книга"

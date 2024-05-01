@@ -1,20 +1,12 @@
-import { IST88description } from "../../../models";
+import { IST88description } from "../../../interfaces/ReviewDescriptionInterfaces";
 import getColorRating from "../../../utils/getColorRating";
-import {
-    Accordion,
-    AccordionHeader,
-    AccordionBody,
-  } from "@material-tailwind/react";
-import "./Accordion.css"
+
 
 interface IIDOpen {
     open: number
     description: IST88description | undefined;
 }
 
-interface IST88descriptionProps {
-    description: IST88description | undefined;
-}
 
 export function IconM(props: IIDOpen){
     return (<>

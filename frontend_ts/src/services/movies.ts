@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IMovie, IMovieRetrieve } from "../models";
+import { IMovie, IMovieRetrieve } from "../interfaces/MovieInterfaces";
 import { API_URL } from "./settings/urls";
 
 

@@ -40,12 +40,12 @@
 }
 
 .article-text-align .title {
-    font-size: 5rem;
+    font-size: 3.5rem;
     font-family: 'tupo_vyazregular';
 }
 
 .article-text-align .subtitle {
-    font-size: 2.25rem;
+    font-size: 1.5rem;
     font-family: 'RestoraItalic';
     font-weight: 500;
     font-style: italic;

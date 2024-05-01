@@ -4,7 +4,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import { IBook } from "../../../models";
+import { IBook } from "../../../interfaces/BookInterfaces";
 import "./Accordion.css"
 import {IconM} from "./AccordionSet"
 

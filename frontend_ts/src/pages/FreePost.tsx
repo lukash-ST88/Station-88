@@ -3,7 +3,7 @@ import { useFetching } from "../hooks/useFetching";
 import { useParams } from "react-router-dom";
 import Loader from "../components/components/Loader/Loader";
 import FreePostService from "../services/freePosts";
-import { IFreePost} from "../models";
+import { IFreePost} from "../interfaces/FreePostInterfaces";
 
 
 const FreePost = () => {

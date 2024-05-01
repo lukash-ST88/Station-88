@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { IFreePost } from "../../models";
+import { IFreePost } from "../../interfaces/FreePostInterfaces";
 import dateTime from "../../utils/dateTime";
 
 interface IFreePostIndexProps{

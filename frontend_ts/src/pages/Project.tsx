@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IProject, IUser } from "../models";
+import { IProject } from "../interfaces/ProjectInterfaces";
+import {IUser} from "../interfaces/UserInterfaces"
 import Loader from "../components/components/Loader/Loader";
 import { useFetching } from "../hooks/useFetching";
 import ProjectService from "../services/projects";
@@ -34,7 +35,7 @@ const Project = () => {
           </div>
           <div className="container flex">
             <div className="w-1/3 flex flex-col justify-start m-4 divide-y-2 description-text">
-              <img className="my-2" src={`${API_URL}${project?.poster}`} />
+              <img className="my-2" src={`${API_URL}${project?.poster}`} alt={project?.title}/>
               <div className="lg:text-2xl text-xl text-center py-2">
                 Авторы:{" "}
                 {project?.authors.map((author: IUser, index: number) => {

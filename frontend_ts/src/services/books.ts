@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IBook } from "../models";
+import { IBook } from "../interfaces/BookInterfaces";
 import { API_URL } from "./settings/urls";
 
 

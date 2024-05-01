@@ -23,9 +23,13 @@ class BannersListView(generics.ListAPIView):
     pagination_class = None
 
 
+""" ---------- Movies ---------- """
+
+
 class MovieListView(generics.ListAPIView):
     serializer_class = MovieCardSerializer
-    queryset = Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).all().order_by('-release_date')
+    queryset = Movie.objects.annotate(avg_rating=Avg(
+        "ST88descriptions__rating")).all().order_by('-release_date')
 
 
 class MovieSortedListView(generics.ListAPIView):
@@ -38,12 +42,16 @@ class MovieSortedListView(generics.ListAPIView):
 @api_view(['GET'])
 def movie_detail(request, url):
     try:
-        movie = Movie.objects.prefetch_related('ST88descriptions__author__profile').get(url=url)
+        movie = Movie.objects.prefetch_related(
+            'ST88descriptions__author__profile').get(url=url)
     except Movie.DoesNotExist:
         return Response({'message': 'Фильм не найден'})
     if request.method == 'GET':
         movie_serializer = MovieSerializer(movie)
         return Response(movie_serializer.data)
+
+
+""" ---------- Articles ---------- """
 
 
 class ArticleListView(generics.ListAPIView):
@@ -55,7 +63,8 @@ class ArticleListView(generics.ListAPIView):
 @api_view(['GET'])
 def article_detail(request, url):
     try:
-        article = Article.objects.prefetch_related('authors__profile').get(url=url)
+        article = Article.objects.prefetch_related(
+            'authors__profile').get(url=url)
     except Article.DoesNotExist:
         return Response({'message': 'Статья не нейдена'})
     if request.method == 'GET':
@@ -63,9 +72,15 @@ def article_detail(request, url):
         return Response(article_serializer.data)
 
 
+""" ---------- Projects ---------- """
+
+
 class ProjectListView(generics.ListAPIView):
     queryset = ST88project.objects.all().order_by('-year')
     serializer_class = ProjectCardSerializer
+
+
+""" ---------- Books ---------- """
 
 
 @api_view(['GET'])
@@ -82,7 +97,8 @@ def project_detail(request, url):
 @api_view(['GET'])
 def book_detail(request, url):
     try:
-        book = Book.objects.prefetch_related('ST88descriptions__author__profile').get(url=url)
+        book = Book.objects.prefetch_related(
+            'ST88descriptions__author__profile').get(url=url)
     except Book.DoesNotExist:
         return Response({'message': 'Книга не найдена'})
     if request.method == 'GET':
@@ -90,15 +106,22 @@ def book_detail(request, url):
         return Response(book_serializer.data)
 
 
+""" ---------- Free Posts ---------- """
+
+
 @api_view(['GET'])
 def free_post_detail(request, url):
     try:
-        free_post = FreePost.objects.prefetch_related('author__profile').get(url=url)
+        free_post = FreePost.objects.prefetch_related(
+            'author__profile').get(url=url)
     except FreePost.DoesNotExist:
         return Response({'message': 'Пост не нейден'})
     if request.method == 'GET':
         free_post_serializer = FreePostSerializer(free_post)
         return Response(free_post_serializer.data)
+
+
+""" ---------- Users ---------- """
 
 
 @api_view(['GET'])
@@ -110,6 +133,9 @@ def user_detail(request, username):
     if request.method == 'GET':
         user_serializer = CustomUserSerializer(user)
         return Response(user_serializer.data)
+
+
+""" ---------- Posts ---------- """
 
 
 class LimitPagination(MultipleModelLimitOffsetPagination):

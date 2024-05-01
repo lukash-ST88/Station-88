@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { IBanners } from '../models';
+import { IBanners } from '../interfaces/RestInterfaces';
 import { API_URL } from './settings/urls';
 
 

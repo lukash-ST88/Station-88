@@ -3,8 +3,9 @@ import { useFetching } from "../hooks/useFetching";
 import { useParams } from "react-router-dom";
 import Loader from "../components/components/Loader/Loader";
 import ArticleService from "../services/articles";
-import { IArticle, IUser } from "../models";
-import { EmptyObject } from "../customTypes";
+import { IArticle} from "../interfaces/ArticleInterfaces";
+import {IUser} from "../interfaces/UserInterfaces";
+
 
 const Article = () => {
   const [article, setArticle] = useState<IArticle>({} as IArticle);

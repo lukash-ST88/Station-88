@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useLayoutEffect, useMemo } from "react";
-import { IMovie } from "../models";
+import { useState, useEffect, useRef} from "react";
+import { IMovie } from "../interfaces/MovieInterfaces";
 import MovieService from "../services/movies";
 import Filter from "../components/components/Filter/Filter";
 import { TransitionGroup } from "react-transition-group";

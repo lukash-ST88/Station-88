@@ -1,4 +1,4 @@
-import { IProject } from "../../models";
+import { IProject } from "../../interfaces/ProjectInterfaces";
 import { useNavigate } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import "./cards.css" 

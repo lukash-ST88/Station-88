@@ -4,7 +4,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import { IMovie } from "../../../models";
+import { IMovie } from "../../../interfaces/MovieInterfaces";
 import "./Accordion.css"
 import {IconM} from "./AccordionSet"
 

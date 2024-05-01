@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IProject, IProjectRetrieve } from "../models";
+import { IProject, IProjectRetrieve } from "../interfaces/ProjectInterfaces";
 import { API_URL } from "./settings/urls";
 
 

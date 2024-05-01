@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IArticle, IArticleRetrieve } from "../models";
+import { IArticle, IArticleRetrieve } from "../interfaces/ArticleInterfaces";
 import { API_URL } from "./settings/urls";
 
 

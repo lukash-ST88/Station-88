@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IUser}  from "../models";
+import { IUser}  from "../interfaces/UserInterfaces";
 import { API_URL } from "./settings/urls";
 
 

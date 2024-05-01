@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useFetching } from "../hooks/useFetching";
-import { IUser } from "../models";
+import { IUser } from "../interfaces/UserInterfaces";
 import UserService from "../services/users";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/components/Loader/Loader";
