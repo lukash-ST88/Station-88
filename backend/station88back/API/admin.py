@@ -21,11 +21,32 @@ class ArticleContentAdminForm(forms.ModelForm):
 
 class ArticleAdmin(admin.ModelAdmin):
     form = ArticleContentAdminForm
+    list_display = ['title', 'subtitle']
+    search_fields = ['title']
+    prepopulated_fields = {"url": ("title",)}
+
+
+class ArticleTypeAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"url": ("title",)}
+
+
+class ST88descriptionDescriptionAdminForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorUploadingWidget)
+
+    class Meta:
+        model = ST88description
+        fields = '__all__'
 
 
 class ST88descriptionInline(admin.StackedInline):
     model = ST88description
     extra = 0
+    form = ST88descriptionDescriptionAdminForm
+
+
+class ST88descriptionAdmin(admin.ModelAdmin):
+    form = ST88descriptionDescriptionAdminForm
+
 
 
 class FrameInline(admin.TabularInline):
@@ -134,11 +155,11 @@ admin.site.register(User, UserAdmin)
 admin.site.register(Movie, MovieAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(ArticleType)
+admin.site.register(ArticleType, ArticleTypeAdmin)
 admin.site.register(FreePost, FreePostAdmin)
 admin.site.register(Review)
 admin.site.register(Scenario)
-admin.site.register(ST88description)
+admin.site.register(ST88description, ST88descriptionAdmin)
 admin.site.register(ST88project)
 # admin.site.register(ST88rating)
 admin.site.register(ProjectPresentation)

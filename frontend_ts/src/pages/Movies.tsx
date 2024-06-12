@@ -44,7 +44,7 @@ function Movies() {
     // console.log(axios.defaults.headers.common['Authorization'])
   }, [offset]);
 
-  // this hoock allows not to call useEffect for the first render
+  // this hook allows not to call useEffect for the first render
   useDidMountEffect(() => {
     console.log("filter - " + offset)
     fetchMovies(limit, 0, filter.sort);
@@ -58,7 +58,7 @@ function Movies() {
         setMovies([...response.data.results]);
       }
       else{
-        setMovies([...movies, ...response.data.results]);
+        setMovies([...movies, ...response.data.results]); 
       }
       const totalCount = response.data.count;
       setTotalPages(getPageCount(totalCount, limit));

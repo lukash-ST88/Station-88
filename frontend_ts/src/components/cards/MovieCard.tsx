@@ -15,7 +15,7 @@ const MovieCard = (props: IMovieIndexProps)=> {
     <CSSTransition key={props.index} timeout={5000} classNames="post">
     <div
       onClick={() => navigate(`/movie/${props.movie.url}`)}
-      className="grid grid-cols-2 items-between md:flex-row md:max-w-xl border-custom bg-opacity-80 hover:ring-4 z-0 hover:z-10 hover:ring-green-600 hover:shadow-2xl transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-110 icons"
+      className="grid grid-cols-2 items-between md:flex-row md:max-w-xl border-custom bg-opacity-80 hover:ring-4 z-0 hover:z-10 hover:ring-green-600 hover:shadow-2xl transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-110 icons hover:cursor-pointer"
     >
       <img
         className="object-cover w-auto h-72"
@@ -60,7 +60,10 @@ const MovieCard = (props: IMovieIndexProps)=> {
           </svg>
           <div>{props.movie.year}</div>
         </div>
-        <h4>CT {props.movie.avg_rating} </h4>
+        <div>
+          <div className="m-0 p-0" style={{fontSize: "0.7rem"}}>Рейтинг</div>
+          <h4>CT {props.movie.avg_rating} </h4>
+        </div>
       </div>
     </div>
   </CSSTransition>)

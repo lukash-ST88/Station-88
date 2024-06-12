@@ -33,7 +33,7 @@ class Movie(models.Model):
     music = models.FileField(null=True, upload_to='movie/music/', verbose_name='Музыка', blank=True)
     link = models.CharField(max_length=500, verbose_name='Ссылка на трейлер', null=True, blank=True)
     release_date = models.DateTimeField(default=timezone.now, verbose_name='Дата публикации', null=True)
-    related_articles = models.ManyToManyField('Article', verbose_name='Связанные статьи', related_name='related_movies') 
+    related_articles = models.ManyToManyField('Article', verbose_name='Связанные статьи', related_name='related_movies', blank=True) 
     
     # def get_avg_rating_st88   
     class Meta:
@@ -95,7 +95,7 @@ class Article(models.Model):
     poster = models.ImageField(
         upload_to='article/posters/', verbose_name='Постер')
     content = models.TextField(verbose_name="Контент", null=True)
-    synopsys = models.TextField(verbose_name="Краткое содержание", null=True)
+    synopsys = models.TextField(verbose_name="Краткое содержание", null=True, blank=True)
 
     class Meta:
         verbose_name = "Статья"

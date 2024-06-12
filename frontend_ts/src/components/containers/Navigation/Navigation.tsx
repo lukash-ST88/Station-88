@@ -32,19 +32,25 @@ function NavbarDefault(props: IAuthProps) {
       () => window.innerWidth >= 960 && setOpenNav(false),
     );
   }, []);
- 
+  
+  function closeMobileNav() {
+    if (openNav) {
+      setOpenNav(false);
+    }
+  };
+
   const navList = (
     <ul className="mt-2 mb-0 flex flex-col lg:flex-row lg:items-center lg:gap-10">
             { !openNav && <Link to='#'><img className='img-links' src='/images/Durica_v2.jpg' alt='station88-logo'/></Link>}
-            { openNav && <Link to='/' className='nav-links'> Главная </Link>}
-            <Link to='/articles' className='nav-links'>Статьи</Link>
-            <Link to='/movies' className='nav-links'>Фильмы</Link>
+            { openNav && <Link to='/' className='nav-links' onClick={closeMobileNav}> Главная </Link>}
+            <Link to='/articles' className='nav-links' onClick={closeMobileNav}>Статьи</Link>
+            <Link to='/movies' className='nav-links'onClick={closeMobileNav}>Фильмы</Link>
             {!openNav && <Link to='/' className='station88'> STATION 88 </Link>}
-            <Link to='#' className='nav-links'>Образование</Link>
-            <Link to='/projects' className='nav-links'>Проекты</Link>
+            <Link to='#' className='nav-links' onClick={closeMobileNav}>Образование</Link>
+            <Link to='/projects' className='nav-links' onClick={closeMobileNav}>Проекты</Link>
             {props.auth.isAuthenticated 
-                ? <Link to={`/profile/${props.auth.user.username}`} className='nav-links'>{props.auth.user.username}</Link>
-                : <div className='nav-links'><ModalFR/></div>
+                ? <Link to={`/profile/${props.auth.user.username}`} className='nav-links' onClick={closeMobileNav}>{props.auth.user.username}</Link>
+                : <div className='nav-links' onClick={closeMobileNav}><ModalFR/></div>
             }
     </ul>
   );

@@ -24,10 +24,11 @@ const SliderContainer = () => {
 
   return (
     <>
-      {banners.length && 
+      {banners.length ? 
       <div className="image-container">
         <Slider slides={banners} loading={loading} />
       </div>
+      : <></>
       }
     </>
   );

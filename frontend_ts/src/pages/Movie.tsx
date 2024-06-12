@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import Loader from "../components/components/Loader/Loader";
 import { API_URL } from "../services/settings/urls";
 import AccordionMovie from "../components/components/Accordion/AccordionMT";
-import { arch } from "os";
 import AccordionArticles from "../components/components/Accordion/AccordionArticles";
 
 const Movie = () => {
@@ -72,7 +71,7 @@ const Movie = () => {
             </div>
             <div className="lg:w-2/3">
               <AccordionMovie movie={movie} />
-              {movie?.related_articles && <AccordionArticles articles={movie?.related_articles}/>}
+              {movie?.related_articles.length ? <AccordionArticles articles={movie?.related_articles}/> : <></>}
             </div>
           </div>
         </div>
