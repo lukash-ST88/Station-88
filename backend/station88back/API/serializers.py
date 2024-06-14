@@ -159,7 +159,13 @@ class ScenarioSerializer(serializers.ModelSerializer):
 
 class ProjectSerializer(serializers.ModelSerializer):
     scenario = ScenarioSerializer(read_only=True)
-    authors = CustomUserSerializer(many=True, read_only=True)
+    directors = CustomUserSerializer(many=True, read_only=True)
+    writers = CustomUserSerializer(many=True, read_only=True)
+    cinematographers = CustomUserSerializer(many=True, read_only=True)
+    designers = CustomUserSerializer(many=True, read_only=True)
+    editors = CustomUserSerializer(many=True, read_only=True)
+    actors = CustomUserSerializer(many=True, read_only=True)
+    producers = CustomUserSerializer(many=True, read_only=True)
 
     class Meta:
         model = ST88project

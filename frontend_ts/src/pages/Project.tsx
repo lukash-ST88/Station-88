@@ -6,6 +6,7 @@ import Loader from "../components/components/Loader/Loader";
 import { useFetching } from "../hooks/useFetching";
 import ProjectService from "../services/projects";
 import { API_URL } from "../services/settings/urls";
+import AuthorList from "../components/utils/AuthorList";
 
 const Project = () => {
   const [project, setproject] = useState<IProject>();
@@ -36,19 +37,22 @@ const Project = () => {
           <div className="container flex">
             <div className="w-1/3 flex flex-col justify-start m-4 divide-y-2 description-text">
               <img className="my-2" src={`${API_URL}${project?.poster}`} alt={project?.title}/>
-              <div className="lg:text-2xl text-xl text-center py-2">
-                Авторы:{" "}
-                {project?.authors.map((author: IUser, index: number) => {
-                  return (
-                    <span key={index}>
-                      {author.profile?.last_name} {author.profile?.first_name}
-                    </span>
-                  );
-                })}
+              <div className="text-xl text-center py-2">
+                Жанр: &nbsp; {project?.genre}
               </div>
-              <div className="lg:text-2xl text-xl text-center py-2">
-                Год: {project?.year}
+              <div className="text-xl text-center py-2">
+                Год: &nbsp; {project?.year}
               </div>
+              <div className="text-xl text-center py-2">
+                Хронометраж: &nbsp; {project?.length} мин
+              </div>
+              <AuthorList authors={project?.directors} workTitle="Режиссёр" workTitlePlural="Режиссёры"/>
+              <AuthorList authors={project?.writers} workTitle="Сценарист" workTitlePlural="Сценаристы"/>
+              <AuthorList authors={project?.cinematographers} workTitle="Оператор" workTitlePlural="Операторы"/>
+              <AuthorList authors={project?.producers} workTitle="Продюсер" workTitlePlural="Продюсеры"/>
+              <AuthorList authors={project?.actors} workTitle="Актёр" workTitlePlural="Актёры"/>
+              <AuthorList authors={project?.editors} workTitle="Монтажёр" workTitlePlural="Монтажёры"/>
+              <AuthorList authors={project?.designers} workTitle="Художник" workTitlePlural="Художники"/>
             </div>
             <div className="w-2/3 m-4 divide-y-2 text-2xl">
               <div className="grid grid-cols-2 text-center divide-x-2">
@@ -63,7 +67,7 @@ const Project = () => {
               </div>
               <div className="text-base p-3">{project?.synopsys}</div>
               <div className="grid grid-cols-2 text-center divide-x-2">
-                <div className="m-2 text-red-500">Трейлер</div>
+                <a className="m-2 hover:text-red-500" href={project?.linked_trailer}>Трейлер</a>
                 <a
                   className="m-2 hover:text-red-500"
                   href={project?.linked_film}

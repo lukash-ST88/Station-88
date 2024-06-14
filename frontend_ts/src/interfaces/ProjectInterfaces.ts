@@ -6,14 +6,22 @@ export interface IProject {
     readonly id: number
     title: string
     year: number
+    genre: string
+    length: number
     synopsys: string
     scenario: IScenario 
-    authors: IUser[]
+    directors: IUser[] 
+    writers: IUser[] 
+    cinematographers: IUser[] 
+    editors: IUser[] 
+    actors: IUser[] 
+    designers: IUser[] 
+    producers: IUser[] 
     linked_trailer: string | undefined
+    linked_film: string | undefined
     release_date: string | null
     url: string
     poster: string | undefined
-    linked_film: string | undefined
 };
 
 export interface  IProjectRetrieve {

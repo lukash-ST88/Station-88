@@ -164,14 +164,28 @@ class ProjectPresentation(models.Model):
 class ST88project(models.Model):
     title = models.CharField(max_length=100, verbose_name="Название")
     year = models.IntegerField(verbose_name="Год")
+    genre = models.CharField(max_length=50, verbose_name='Жанр', null=True)
+    length = models.IntegerField(verbose_name="Длительность (мин)", null=True)
     synopsys = models.TextField(verbose_name="Синопсис")
     scenario = models.OneToOneField(Scenario, verbose_name="Сценарий",
                                     related_name="ST88_project", on_delete=models.SET_NULL, null=True, blank=True)
     # team = ArrayField(base_field=)
     url = models.SlugField(max_length=255, unique=True,
                            db_index=True, verbose_name='URL', null=True)
-    authors = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, verbose_name='Авторы', related_name='ST88_projects')
+    directors = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, verbose_name='Режиссёр', related_name='ST88_projects_director', blank=True)
+    writers = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, verbose_name='Сценарист', related_name='ST88_projects_writer',  blank=True)
+    cinematographers = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, verbose_name='Оператор', related_name='ST88_projects_cinematographer', blank=True)
+    designers = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, verbose_name='Художник', related_name='ST88_projects_designer', blank=True)
+    editors = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, verbose_name='Монтажёр', related_name='ST88_projects_editor', blank=True)
+    actors = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, verbose_name='Актёры', related_name='ST88_projects_actor', blank=True)
+    producers = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, verbose_name='Продюсер', related_name='ST88_projects_producer', blank=True)
     linked_trailer = models.CharField(
         max_length=500, verbose_name='Ссылка на трейлер', null=True, blank=True)
     linked_film = models.CharField(
@@ -181,7 +195,6 @@ class ST88project(models.Model):
     release_date = models.DateTimeField(
         default=timezone.now, verbose_name='Дата публикации', null=True)
 
-    # хронометраж
 
     class Meta:
         verbose_name = "СТ88 Проект"
