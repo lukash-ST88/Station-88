@@ -22,6 +22,7 @@ export interface IProject {
     release_date: string | null
     url: string
     poster: string | undefined
+    links: string[] | undefined 
 };
 
 export interface  IProjectRetrieve {

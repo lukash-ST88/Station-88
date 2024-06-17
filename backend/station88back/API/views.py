@@ -83,8 +83,7 @@ class ProjectListView(generics.ListAPIView):
 @api_view(['GET'])
 def project_detail(request, url):
     try:
-        project = ST88project.objects.prefetch_related(
-            'directors__profile').get(url=url)
+        project = ST88project.objects.get(url=url)
     except ST88project.DoesNotExist:
         return Response({'message': 'Фильм не найден'})
     if request.method == 'GET':

@@ -26,7 +26,7 @@ function AccordionArticles(props: IAccordionArticlesProps) {
               className="text-white hover:text-red-500"
               onClick={() =>setOpen(!open) }
             >
-              Связанные статьи
+              Cвязанные статьи
             </AccordionHeader>
             <AccordionBody className="text-white">
               {props.articles?.map((article) => (

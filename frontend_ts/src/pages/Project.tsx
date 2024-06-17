@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IProject } from "../interfaces/ProjectInterfaces";
-import {IUser} from "../interfaces/UserInterfaces"
 import Loader from "../components/components/Loader/Loader";
 import { useFetching } from "../hooks/useFetching";
 import ProjectService from "../services/projects";
 import { API_URL } from "../services/settings/urls";
-import AuthorList from "../components/utils/AuthorList";
+import AccordionTeam from "../components/components/Accordion/AccordionTeam";
+import "../components/components/Accordion/Accordion.css";
+import AccordionLinks from "../components/components/Accordion/AccordionLinks";
 
 const Project = () => {
   const [project, setproject] = useState<IProject>();
@@ -32,10 +33,10 @@ const Project = () => {
       ) : (
         <div>
           <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center lg:text-4xl text-xl project-title ">
-            <div className="p-5">{project?.title}</div>
+            <div className="p-5 movie-title ">{project?.title}</div>
           </div>
-          <div className="container flex">
-            <div className="w-1/3 flex flex-col justify-start m-4 divide-y-2 description-text">
+          <div className="container lg:flex">
+            <div className="lg:w-1/3 lg:flex flex-col justify-start m-4 divide-y-2 description-text">
               <img className="my-2" src={`${API_URL}${project?.poster}`} alt={project?.title}/>
               <div className="text-xl text-center py-2">
                 Жанр: &nbsp; {project?.genre}
@@ -46,15 +47,9 @@ const Project = () => {
               <div className="text-xl text-center py-2">
                 Хронометраж: &nbsp; {project?.length} мин
               </div>
-              <AuthorList authors={project?.directors} workTitle="Режиссёр" workTitlePlural="Режиссёры"/>
-              <AuthorList authors={project?.writers} workTitle="Сценарист" workTitlePlural="Сценаристы"/>
-              <AuthorList authors={project?.cinematographers} workTitle="Оператор" workTitlePlural="Операторы"/>
-              <AuthorList authors={project?.producers} workTitle="Продюсер" workTitlePlural="Продюсеры"/>
-              <AuthorList authors={project?.actors} workTitle="Актёр" workTitlePlural="Актёры"/>
-              <AuthorList authors={project?.editors} workTitle="Монтажёр" workTitlePlural="Монтажёры"/>
-              <AuthorList authors={project?.designers} workTitle="Художник" workTitlePlural="Художники"/>
+              <AccordionTeam project={project}/>
             </div>
-            <div className="w-2/3 m-4 divide-y-2 text-2xl">
+            <div className="lg:w-2/3 m-4 divide-y-2 text-2xl accordion-description-text">
               <div className="grid grid-cols-2 text-center divide-x-2">
                 <div className="m-2 text-red-500">Синопсис</div>
                 <a
@@ -76,13 +71,7 @@ const Project = () => {
                   Фильм
                 </a>
               </div>
-              <div>
-                {project?.linked_trailer && (
-                <video width="750" height="500" controls>
-                  <source src={project?.linked_trailer} type="video/mp4" />
-                </video>
-                )}
-              </div>
+              {project?.links?.length  ?  <AccordionLinks links={project?.links}/> : <></>}
             </div>
           </div>
         </div>

@@ -22,11 +22,11 @@ const ProjectCard = (props: IProjectIndexProps)=> {
         src={props.project.poster}
         alt={props.project.title}
       />
-      <div className="color-card-project  text-center">
-        <div className="title-project">
+      <div className="color-card-project text-center lg:my-1">
+        <div className="card-main-text lg:text-2xl">
           <div className="">{props.project.title} </div>
         </div>
-        <div className="title-project">
+        <div className="card-main-text lg:text-2xl">
           <div>{props.project.year}</div>
         </div>
       </div>

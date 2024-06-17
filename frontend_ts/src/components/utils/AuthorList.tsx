@@ -1,4 +1,5 @@
 import { IUser } from "../../interfaces/UserInterfaces";
+import "../components/Accordion/Accordion.css"
 
 interface IAuthorListProps {
     authors: IUser[] | undefined
@@ -12,10 +13,10 @@ const AuthorList = (props: IAuthorListProps) => {
             <>
                 {props.authors.length > 0 && 
                 <>
-                    <div className="text-xl text-start py-2">
+                    <div className="text-xl text-start py-2 accordion-description-text">
                         {props.authors.length > 1 ? 
                         <div className="container flex">
-                            <div>{props.workTitlePlural}: &nbsp;</div>
+                            <div>{props.workTitlePlural}: &nbsp; </div>
                             <div>
                             {props.authors.map((author: IUser, index: number) => {
                                     return (

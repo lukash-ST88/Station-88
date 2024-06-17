@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils import timezone
-from django.utils.text import slugify
+from django.contrib.postgres.fields import ArrayField
 
 
 class Profile(models.Model):
@@ -169,7 +169,6 @@ class ST88project(models.Model):
     synopsys = models.TextField(verbose_name="Синопсис")
     scenario = models.OneToOneField(Scenario, verbose_name="Сценарий",
                                     related_name="ST88_project", on_delete=models.SET_NULL, null=True, blank=True)
-    # team = ArrayField(base_field=)
     url = models.SlugField(max_length=255, unique=True,
                            db_index=True, verbose_name='URL', null=True)
     directors = models.ManyToManyField(
@@ -190,6 +189,7 @@ class ST88project(models.Model):
         max_length=500, verbose_name='Ссылка на трейлер', null=True, blank=True)
     linked_film = models.CharField(
         max_length=500, verbose_name="Ссылка на фильм", null=True, blank=True)
+    links = ArrayField(models.CharField(max_length=255), blank=True, null=True)
     poster = models.ImageField(
         upload_to='scenario/posters/', verbose_name='Постер')
     release_date = models.DateTimeField(

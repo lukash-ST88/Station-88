@@ -1,3 +1,7 @@
 .rounded {
     border-radius: 25%;
 }
+
+.accordion-description-text {
+    font-family: 'RestoraLight';
+}
