@@ -31,7 +31,7 @@ class ArticleTypeAdmin(admin.ModelAdmin):
 
 
 class ST88descriptionDescriptionAdminForm(forms.ModelForm):
-    description = forms.CharField(widget=CKEditorUploadingWidget)
+    description = forms.CharField(widget=CKEditorUploadingWidget, required=False)
 
     class Meta:
         model = ST88description

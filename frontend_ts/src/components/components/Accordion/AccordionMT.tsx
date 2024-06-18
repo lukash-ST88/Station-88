@@ -34,7 +34,7 @@ function AccordionMovie(props: IMovieProps) {
               {description?.author.profile?.last_name}
             </AccordionHeader>
             <AccordionBody className="text-white">
-              {description?.description}
+              <div dangerouslySetInnerHTML={{ __html: description?.description }} />
             </AccordionBody>
           </Accordion>
           : null }
