@@ -12,7 +12,7 @@ const FreePost = (props: IFreePostIndexProps) => {
     return(
     <>
     <div
-        className="container grid grid-cols-16 m-5 border-2 hover:ring-4 z-0 hover:z-10 hover:text-black hover:bg-white hover:ring-white transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-110 hover:cursor-pointer"
+        className="container grid grid-cols-16 my-5 border-2 hover:ring-4 z-0 hover:z-10 hover:text-black hover:bg-white hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer"
         onClick={() => navigate(`/free-post/${props.freePost.url}`)}
       >
         <img

@@ -11,7 +11,8 @@ function App() {
       <div className="container py-5 mx-auto ">
         <Navigation />
       </div>
-      <div className="container px-5 mx-auto ">
+      <hr className="mx-5 mb-3"/>
+      <div className="container px-5 mx-auto xl:block hidden">
         <SliderContainer />
       </div>
       <div className="container px-5 mx-auto xl:px-5 py-5 lg:py-8 ">

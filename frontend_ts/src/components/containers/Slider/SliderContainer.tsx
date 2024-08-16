@@ -15,7 +15,8 @@ const SliderContainer = () => {
       setLoading(false); // TODO: - fix this
     }, 1500);
   }, []);
-
+  
+  //TODO: - useMemo
   function retrieveBanners() {
     BannersService.getAllBanners()
       .then((response) => setBanners(response.data))

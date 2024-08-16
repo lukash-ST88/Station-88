@@ -1,27 +1,18 @@
 .movie-title-post {
     font-family: 'tupo_vyazregular';
-    font-weight: 500;
-    font-size: 3rem;
 }
 
 .movie-original-title-post {
     font-family: 'RestoraItalic';
-    font-weight: 500;
-    font-size: 2rem;
-    padding-top: 0.5rem;
+
 }
 
 .project-title-post {
     font-family: 'tupo_vyazregular';
-    font-weight: 500;
-    font-size: 3rem;
 }
 
 .project-year {
     font-family: 'RestoraItalic';
-    font-weight: 500;
-    font-size: 2rem;
-    padding-top: 0.5rem;
 }
 
 .article-poster-container {
@@ -40,14 +31,11 @@
 }
 
 .article-text-align .title {
-    font-size: 3.5rem;
     font-family: 'tupo_vyazregular';
 }
 
 .article-text-align .subtitle {
-    font-size: 1.5rem;
     font-family: 'RestoraItalic';
-    font-weight: 500;
     font-style: italic;
 }
 

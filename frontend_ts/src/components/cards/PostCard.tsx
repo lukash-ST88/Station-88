@@ -11,9 +11,7 @@ interface IPostIndexProps {
 
 const PostCard = (props:IPostIndexProps) => {
     if (props.post.type === 'movie') {
-        return(
-            <MoviePost movie={props.post} index={props.index}/>
-        )
+        return<MoviePost movie={props.post} index={props.index}/>
     } 
     else if (props.post.type === 'article'){
         return <ArticlePost article={props.post} index={props.index}/>

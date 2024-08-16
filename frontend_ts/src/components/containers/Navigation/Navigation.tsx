@@ -41,11 +41,11 @@ function NavbarDefault(props: IAuthProps) {
 
   const navList = (
     <ul className="mt-2 mb-0 flex flex-col lg:flex-row lg:items-center lg:gap-10">
-            { !openNav && <Link to='#'><img className='img-links' src='/images/Durica_v2.jpg' alt='station88-logo'/></Link>}
-            { openNav && <Link to='/' className='nav-links' onClick={closeMobileNav}> Главная </Link>}
+            <Link to='#' className='hidden lg:block'><img className='img-links' src='/images/Durica_v2.jpg' alt='station88-logo'/></Link>
+            <Link to='/' className='nav-links block lg:hidden' onClick={closeMobileNav}> Главная </Link>
             <Link to='/articles' className='nav-links' onClick={closeMobileNav}>Статьи</Link>
             <Link to='/movies' className='nav-links'onClick={closeMobileNav}>Фильмы</Link>
-            {!openNav && <Link to='/' className='station88'> STATION 88 </Link>}
+            <Link to='/' className='station88 hidden lg:block'> STATION 88 </Link>
             <Link to='#' className='nav-links' onClick={closeMobileNav}>Образование</Link>
             <Link to='/projects' className='nav-links' onClick={closeMobileNav}>Проекты</Link>
             {props.auth.isAuthenticated 
