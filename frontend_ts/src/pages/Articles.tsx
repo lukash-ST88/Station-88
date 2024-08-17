@@ -49,10 +49,10 @@ function Articles() {
   );
 
   return (
-    <div className="flex flex-wrap">
-      <div className="lg:w-5/6 lg:order-2 order-2 ">
+    <div className="flex flex-wrap justify-center">
+      <div className="lg:w-5/6 lg:order-1 order-2 mt-4 lg:mt-0">
         <TransitionGroup>
-          <div className="grid md:grid-cols-3 gap-4 grid-cols-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
             {sortedAndSearchedArticles.map(
               (article: IArticle, index: number) => {
                 return <ArticleCard article={article} index={index} />;
@@ -70,7 +70,7 @@ function Articles() {
           </div>
         )}
       </div>
-      <div className="lg:w-1/6 lg:order-2 color-test order-1">
+      <div className="lg:w-1/6 lg:order-2 color-test order-1 w-full mb-6">
         <Filter filter={filter} setFilter={setFilter} />
       </div>
     </div>

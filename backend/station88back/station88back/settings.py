@@ -35,6 +35,8 @@ CSRF_TRUSTED_ORIGINS = ['https://station88.ru']
 
 # Application definition
 INSTALLED_APPS = [
+    "admin_interface",
+    "colorfield",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -199,7 +201,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 6
 } # to specify which default authentication and permission we pick up
 
-
+# some parameters for admin interface color package
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SILENCED_SYSTEM_CHECKS = ["security.W019"]
 
 CKEDITOR_UPLOAD_PATH = "uploads/" # a relative path for uploaded files 
 CKEDITOR_CONFIGS = {

@@ -8,8 +8,8 @@ interface PropsProps {
 
 const MyInput = forwardRef((props: PropsProps, ref: any) => {
   return (
-    <div>
-      <div className="relative z-0 w-full mb-6 group m-2">
+    <div className="w-full mx-2.5">
+      <div className="relative z-0 w-full group">
         <input
           {...props}
           ref={ref}

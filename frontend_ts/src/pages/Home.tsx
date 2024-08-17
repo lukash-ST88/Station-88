@@ -39,6 +39,7 @@ function Home() {
     <div className="flex flex-wrap">
       <div className="lg:w-4/6 order-2 lg:order-1">
         <div className="lg:mx-5">
+          
           {posts.map((post: any, index: number) => {
             return (
               <div>

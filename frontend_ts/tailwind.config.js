@@ -13,6 +13,11 @@ module.exports = withMT({
      '16': 'repeat(16, minmax(0, 1fr))'},
      gridColumn: {
       'span-14': 'span 14 / span 14',
+     },
+     color: {
+      'st88-main':'rgba(5, 150, 105,1)',
+      'st88-sacondary': '#ffffff',
+      'st88-background': '#181818'
      }
     },
   },

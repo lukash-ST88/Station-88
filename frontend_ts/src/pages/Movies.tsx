@@ -74,10 +74,10 @@ function Movies() {
 
   return (
     <>
-      <div className="flex flex-wrap">
-        <div className="lg:w-5/6 lg:order-2 order-2 ">
+      <div className="flex flex-wrap justify-center">
+        <div className="lg:w-5/6 lg:order-1 order-2 ">
           <TransitionGroup>
-            <div className="grid  grid-col-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {searchedMovies.map((movie: IMovie, index: number) => {
                 return <MovieCard movie={movie} index={index} />;
               })}
@@ -93,7 +93,7 @@ function Movies() {
             </div>
           )}
         </div>
-        <div className="lg:w-1/6 lg:order-2 color-test order-1">
+        <div className="lg:w-1/6 lg:order-2 color-test order-1 w-full mb-6">
           <Filter filter={filter} setFilter={setFilter} />
         </div>
       </div>

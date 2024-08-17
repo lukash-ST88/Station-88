@@ -12,7 +12,7 @@ interface FilterProps {
 
 const Filter = (props: FilterProps) => {
     return (
-    <div className="m-2">
+    <div className="lg:m-2 flex lg:block">
         <MyInput 
         value={props.filter.query} 
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => props.setFilter({ ...props.filter, query: event.target.value })}

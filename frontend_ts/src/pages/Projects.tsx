@@ -41,8 +41,7 @@ function Projects() {
   return (
     <>
       {projects ? (
-        <div className="flex">
-          <div className="">
+        <div className="flex justify-center">
             <TransitionGroup>
               <div className="grid lg:grid-cols-4 lg:gap-4 grid-cols-2 gap-2">
                 {projects.map((project: IProject, index: number) => {
@@ -59,7 +58,6 @@ function Projects() {
                 <Loader />
               </div>
             )}
-          </div>
         </div>
       ) : (
         <>
