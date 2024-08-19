@@ -39,7 +39,7 @@
     top: 50%;
     transform: translate(0, -50%);
     font-size: 100px;
-    color: #181818;
+    @apply text-st88-background;
     z-index: 1;
     cursor:pointer;
 }
@@ -67,9 +67,8 @@
     margin: 0 3px;
     cursor: pointer;
     font-size: 30px;
-    color: #181818;
+    @apply text-st88-background;
     border-radius: 25%;
-    
 }
 
 

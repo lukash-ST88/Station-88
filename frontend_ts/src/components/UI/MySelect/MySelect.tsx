@@ -15,7 +15,7 @@ const MySelect = (props: MySelectOPtionsProps) => {
     <div className="w-full mx-2.5">
       <select
         id="underline_select"
-        className="block py-2.5 w-full text-xl text-gray-500 bg-transparent border-0 border-b-2 border-white appearance-none focus:outline-none hover:text-red-600 focus:ring-0 focus:border-red-600 peer"
+        className="block py-2.5 w-full text-xl text-gray-500 bg-transparent border-0 border-b-2 border-white appearance-none focus:outline-none hover:text-st88-secondary focus:ring-0 focus:border-st88-secondary peer"
         value={props.value}
         onChange={(event) => props.onChange(event.target.value)}
       >

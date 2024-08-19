@@ -4,6 +4,7 @@ import {
     AccordionHeader,
     AccordionBody,
   } from "@material-tailwind/react";
+import BoundArticlesIcon from "../../icons/BoundArticlesIcon";
 
 interface IAccordionLinksProps{
     links: string[] | undefined
@@ -15,7 +16,7 @@ const AccordionLinks = (props:IAccordionLinksProps) => {
 
     return(<>
     <div className="">
-        <Accordion open={open} className="">
+        <Accordion open={open} icon={<BoundArticlesIcon/>}>
             <AccordionHeader
               className="text-white hover:text-red-500 border-b-2"
               onClick={() =>setOpen(!open) }

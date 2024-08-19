@@ -4,10 +4,9 @@
 }
 
 .color-card-project {
-    background-color: #181818;
+    @apply bg-st88-background;
   }
 
   .card-main-text {
     font-family: 'RestoraLight';
-    /* font-weight: 300; */
 }

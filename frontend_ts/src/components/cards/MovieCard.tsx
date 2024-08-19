@@ -18,7 +18,7 @@ const MovieCard = (props: IMovieIndexProps)=> {
     <CSSTransition key={props.index} timeout={5000} classNames="post">
     <div
       onClick={() => navigate(`/movie/${props.movie.url}`)}
-      className="grid grid-cols-2 items-between md:flex-row md:max-w-xl border bg-opacity-80 hover:lg:border-green-600 hover:lg:ring-4 z-0 hover:z-10 hover:lg:ring-green-600 hover:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110 lg:icons hover:cursor-pointer"
+      className="grid grid-cols-2 items-between md:flex-row md:max-w-xl border bg-opacity-80 hover:lg:border-st88-main hover:lg:ring-st88-main hover:lg:ring-4 z-0 hover:z-10 hover:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110 lg:icons hover:cursor-pointer"
     >
       <img
         className="object-cover w-auto h-72"

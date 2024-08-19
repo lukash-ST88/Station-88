@@ -14,7 +14,7 @@ const ArticleCard = (props: IArticleIndexProps) => {
     <CSSTransition key={props.index} timeout={5000} classNames="post">
       <div
         onClick={() => navigate(`/article/${props.article.url}`)}
-        className="relative border z-0 hover:z-10 hover:lg:text-green-600 hover:lg:border-4 hover:lg:border-green-600 hover:cursor-pointer transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110"
+        className="relative border z-0 hover:lg:border-st88-main hover:z-10 hover:lg:text-st88-main hover:lg:ring-4 hover:lg:ring-st88-main hover:cursor-pointer transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110"
       >
         <div className="text-center color-card card-main-text">{props.article.title}</div>
         <img src={props.article.poster} className="object-cover h-48 w-full" alt={props.article.title}/>

@@ -6,25 +6,20 @@
   font-size: 1.5rem;
   line-height: 2.25rem;
   font-weight: 500;
-  --tw-text-opacity: 1;
-  color: rgb(34 197 94 / var(--tw-text-opacity));
+  @apply text-st88-main;
   text-align: center;
 }
 
 .nav-links:hover {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+  @apply text-st88-background;
+  @apply bg-st88-main
 }
 
 .img-links {
   border: solid 3px white;
   border-radius: 50%;
-  /* height: 80px;
-    width: 80px; */
-  height: 8vh;
-  width: 8vh;
+  height: 80px;
+  width: 80px;
   object-fit: cover;
   display: block;
 }
@@ -33,16 +28,13 @@
   .img-links-lg {
     border: solid 3px white;
     border-radius: 50%;
-    /* height: 80px;
-    width: 80px; */
-    height: 8vh;
-    width: 8vh;
+    height: 80px;
+    width: 80px;
     object-fit: cover;
     display: block;
   }
 }
 
 .img-links:hover {
-  --tw-bg-opacity: 1;
-  border-color: rgb(34 197 94 / var(--tw-bg-opacity));
-}
+  @apply border-st88-main;
+};

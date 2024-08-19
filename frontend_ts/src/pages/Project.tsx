@@ -8,6 +8,13 @@ import { API_URL } from "../services/settings/urls";
 import AccordionTeam from "../components/components/Accordion/AccordionTeam";
 import "../components/components/Accordion/Accordion.css";
 import AccordionLinks from "../components/components/Accordion/AccordionLinks";
+import GenreIcon from "../components/icons/GenreIcon";
+import TimeIcon from "../components/icons/TimeIcon";
+import DurationIcon from "../components/icons/DurationIcon";
+import SynopsysIcon from "../components/icons/SynopsysIcon";
+import ScenarioIcon from "../components/icons/ScenarioIcon";
+import MovieIcon from "../components/icons/MovieIcon";
+import TrailerIcon from "../components/icons/TrailerIcon";
 
 const Project = () => {
   const [project, setproject] = useState<IProject>();
@@ -38,38 +45,50 @@ const Project = () => {
           <div className="container lg:flex">
             <div className="lg:w-1/3 lg:flex flex-col justify-start m-4 divide-y-2 description-text">
               <img className="my-2" src={`${API_URL}${project?.poster}`} alt={project?.title}/>
-              <div className="text-xl text-center py-2">
-                Жанр: &nbsp; {project?.genre}
+              <div className="text-movie-description">
+                <GenreIcon/>
+                <div> Жанр: {project?.genre}</div>
               </div>
-              <div className="text-xl text-center py-2">
-                Год: &nbsp; {project?.year}
+              <div className="text-movie-description">
+                <TimeIcon/>
+                <div>Год: {project?.year}</div>
               </div>
-              <div className="text-xl text-center py-2">
-                Хронометраж: &nbsp; {project?.length} мин
+              <div className="text-movie-description">
+                <DurationIcon/>
+                <div>Хронометраж: {project?.length} мин</div>
               </div>
               <AccordionTeam project={project}/>
             </div>
             <div className="lg:w-2/3 m-4 divide-y-2 text-2xl accordion-description-text">
               <div className="grid grid-cols-2 text-center divide-x-2">
-                <div className="m-2 text-red-500">Синопсис</div>
-                <a
-                  className="m-2 hover:text-red-500"
-                  href={project?.scenario.text}
-                  download
-                >
-                  Cценарий
-                </a>
+                <div className="m-2 text-st88-secondary flex justify-center items-center">
+                  <SynopsysIcon/>
+                  <div className="m-2">Синопсис</div>
+                </div>
+                <div className="m-2 flex justify-center items-center hover:text-st88-secondary">
+                  <ScenarioIcon/>
+                  {project?.scenario?.text ? 
+                  <a className="m-2 " href={project?.scenario.text} download>
+                    Cценарий
+                  </a>
+                  :<div className="m-2 text-gray-700 hover:text-gray-700"> Сценарий</div>
+                }
+                </div>
               </div>
               <div className="text-base p-3">{project?.synopsys}</div>
               <div className="grid grid-cols-2 text-center divide-x-2">
-                <a className="m-2 hover:text-red-500" href={project?.linked_trailer}>Трейлер</a>
-                <a
-                  className="m-2 hover:text-red-500"
-                  href={project?.linked_film}
-                  download
-                >
-                  Фильм
-                </a>
+                <div className={`flex justify-center items-center m-2 ${project?.linked_trailer? "hover:text-st88-secondary" : "text-gray-700"}`}>
+                  <TrailerIcon/>
+                  <a href={project?.linked_trailer} download className="m-2">
+                    Трейлер
+                  </a>
+                </div>
+                <div className={`flex justify-center items-center m-2 ${project?.linked_film ? "hover:text-st88-secondary" : "text-gray-700"}`}>
+                  <MovieIcon/>
+                  <a href={project?.linked_film} download className="m-2">
+                    Фильм
+                  </a>
+                </div>
               </div>
               {project?.links?.length  ?  <AccordionLinks links={project?.links}/> : <></>}
             </div>

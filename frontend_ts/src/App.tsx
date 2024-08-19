@@ -8,17 +8,18 @@ function App() {
   return (
     <>
     <div className="App container color-theme mx-auto my-0">
-      <div className="container py-5 mx-auto ">
+      <div className="container py-4 mx-auto ">
         <Navigation />
       </div>
       <hr className="mx-5 mb-3"/>
       <div className="container px-5 mx-auto xl:block hidden">
         <SliderContainer />
       </div>
+      <hr className="mx-5 mt-3 hidden lg:block"/>
       <div className="container px-5 mx-auto xl:px-5 py-5 lg:py-8 ">
         <Router />
       </div>
-      <div className="container px-5 mx-auto xl:px-5 py-5 lg:py-8 mt-10 border-t border-gray-100 dark:border-gray-800">
+      <div className="container px-5 mx-auto xl:px-5 py-5 lg:py-8 mt-10 border-t border-gray-100">
         <Footer/> 
       </div>
     </div>

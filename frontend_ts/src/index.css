@@ -4,9 +4,7 @@
 
 body {
   margin: 0;
-  font-family: 'Open Sans',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Tahoma', 'Open Sans','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
@@ -49,23 +47,24 @@ code {
 
 
 .color-theme {
-  background-color: #181818;
+  @apply bg-st88-background;
 }
 
 /* for using responsive variants */
 @layer components {
   .icons:hover {
     fill: currentColor;
-    --tw-text-opacity: 1;
-    color: rgb(22 163 74 / var(--tw-text-opacity));
+    @apply text-st88-main;
+  }
+}
+
+@layer base {
+  html {
+    font-family: "RestoraLight";
   }
 }
 
 
-
-.color-test {
-  color: #e41111
-}
 
 .station88 {
   font-family: 'tupo_vyazregular';
@@ -79,7 +78,7 @@ code {
 }
 
 .station88:hover {
-  color: #e41111
+  @apply text-st88-secondary;
 }
 
 .text-on-image {
@@ -90,14 +89,6 @@ code {
   left: 10%;
   top: 50%;
   transform: translate(0, -50%)
-}
-
-.border-custom {
-  border-width: 1px;
-}
-
-.border-custom:hover {
-  border-width: 0px;
 }
 
 .color-card {

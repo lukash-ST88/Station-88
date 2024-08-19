@@ -7,6 +7,7 @@ import {
 import { IArticle } from "../../../interfaces/ArticleInterfaces";
 import "./Accordion.css"
 import { useNavigate } from "react-router-dom";
+import BoundArticlesIcon from "../../icons/BoundArticlesIcon";
 
 
 interface IAccordionArticlesProps {
@@ -21,9 +22,9 @@ function AccordionArticles(props: IAccordionArticlesProps) {
   
   return (
     <div className="mx-4">
-        <Accordion open={open}>
+        <Accordion open={open} icon={<BoundArticlesIcon/>}>
             <AccordionHeader
-              className="text-white hover:text-red-500"
+              className="text-white hover:text-st88-secondary"
               onClick={() =>setOpen(!open) }
             >
               Cвязанные статьи
@@ -32,7 +33,7 @@ function AccordionArticles(props: IAccordionArticlesProps) {
               {props.articles?.map((article) => (
                 <div 
                 onClick={() => navigate(`/article/${article?.url}`)} 
-                className="text-gray-500 hover:text-red-500 hover:cursor-pointer italic text-xl text-center">
+                className="text-gray-500 hover:text-st88-secondary hover:cursor-pointer italic text-xl text-center">
                     {article?.title}
                 </div>
               ))}

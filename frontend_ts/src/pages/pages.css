@@ -1,5 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .text-movie-description  {
+        @apply text-xl lg:text-2xl text-center py-2 pl-4 flex justify-start gap-2 items-center;
+        
+    }
+}
+
 .profile-img {
     width: 20vw;
     height: 20vw;
 }
-

@@ -27,7 +27,7 @@ function AccordionMovie(props: IMovieProps) {
         {description?.description ? 
         <Accordion open={open === description?.id} icon={<IconM open={open} description={description}/>}>
             <AccordionHeader
-              className="text-white hover:text-red-500"
+              className="text-white hover:text-st88-secondary"
               onClick={() => handleOpen(description?.id)}
             >
               {description?.author.profile?.first_name}{" "}

@@ -23,7 +23,7 @@ const Filter = (props: FilterProps) => {
           console.log(selectedSort);
           props.setFilter({ ...props.filter, sort: selectedSort });
         }}
-        defaultValue="Сортиовка"
+        defaultValue="Сортировка"
         options={[
           { value: "-release_date", name: "по дате - новые"},
           { value: "-year", name: "по году - новые"},

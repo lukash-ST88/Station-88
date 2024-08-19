@@ -14,11 +14,14 @@ module.exports = withMT({
      gridColumn: {
       'span-14': 'span 14 / span 14',
      },
-     color: {
-      'st88-main':'rgba(5, 150, 105,1)',
-      'st88-sacondary': '#ffffff',
+     colors: {
+      'st88-main':'rgb(34 197 94)',
+      'st88-secondary': '#e53935',
       'st88-background': '#181818'
-     }
+     },
+     fontFamily: {
+      'restora-sans':  ['RestoraLight', 'ui-sans-serif', 'system-ui', 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"]
+     },
     },
   },
   plugins: [],

@@ -24,7 +24,6 @@ const LoginTag = (props: ILoginAuth) => {
   };
   return (
     <div className="w-full">
-      <div> {props.auth.isAuthenticated ? 1 : 0} </div>
       <div className="text-center text-black main-text"> Вход </div>
       <div className="relative z-0 w-full mb-6 group">
         <input
