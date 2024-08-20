@@ -4,34 +4,12 @@
 
 Station-88 is a movie production project, which indludes movie reviews, cinema articles, station-88 own projects and educational data.
 
-<ui><h4>The functionality of the project includes:</h4></ui>
-<li>nav-slider
-<li> Dynamic list of articles 
-<li> Dynamic list of movies
-<li> Mixed up list
-<li> Possibility to search posts by its title
-<li> Possibility to sort post by its date 
-<li> Fetching new bunch of posts by crossing Intersection Observer
-<li> Cross-origin authentication system</li>
-
-<h4>Basic frameworks and libraries:</h4>
-
-<ui>backend</ui>
-<li>Django
-<li>Django REST Framework
-<li>ckeditor
-<li>psycopg2</li>
-<ui>frontend</ui>
-<li>React
-<li>TypeScript
-<li>axios
-<li>tailwind
 
 <h4>Screen of application</h4>
 
 ![Alt text](Screenshot_of_app.png)
 
-<h4> Версии языков </h4>
+<h4> Language Versions: </h4>
 <p> python 3.10 </p>
 <p> node v20.8.0 </p>
 
