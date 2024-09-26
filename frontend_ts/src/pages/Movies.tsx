@@ -40,13 +40,11 @@ function Movies() {
 
   useEffect(() => {
     fetchMovies(limit, offset, filter.sort);
-    console.log('offset - ' + offset)
     // console.log(axios.defaults.headers.common['Authorization'])
   }, [offset]);
 
   // this hook allows not to call useEffect for the first render
   useDidMountEffect(() => {
-    console.log("filter - " + offset)
     fetchMovies(limit, 0, filter.sort);
     setOffset(0);
   }, [filter]);
@@ -73,31 +71,29 @@ function Movies() {
   );
 
   return (
-    <>
-      <div className="flex flex-wrap justify-center">
-        <div className="lg:w-5/6 lg:order-1 order-2 ">
-          <TransitionGroup>
-            <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {searchedMovies.map((movie: IMovie, index: number) => {
-                return <MovieCard movie={movie} index={index} />;
-              })}
-            </div>
-          </TransitionGroup>
-          <div
-            ref={lastElement}
-            style={{ height: 10, background: "transperent" }} //"transperent"
-          />
-          {isMovieLoading && (
-            <div className="flex justify-center">
-              <Loader />
-            </div>
-          )}
-        </div>
-        <div className="lg:w-1/6 lg:order-2 color-test order-1 w-full mb-6">
-          <Filter filter={filter} setFilter={setFilter} />
-        </div>
+    <div className="flex flex-wrap justify-center">
+      <div className="lg:w-5/6 lg:order-1 order-2 ">
+        <TransitionGroup>
+          <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {searchedMovies.map((movie: IMovie, index: number) => {
+              return <MovieCard movie={movie} index={index} />;
+            })}
+          </div>
+        </TransitionGroup>
+        <div
+          ref={lastElement}
+          style={{ height: 10, background: "transperent" }} //"transperent"
+        />
+        {isMovieLoading && (
+          <div className="flex justify-center">
+            <Loader />
+          </div>
+        )}
       </div>
-    </>
+      <div className="lg:w-1/6 lg:order-2 color-test order-1 w-full mb-6">
+        <Filter filter={filter} setFilter={setFilter} />
+      </div>
+    </div>
   );
 }
 export default Movies;

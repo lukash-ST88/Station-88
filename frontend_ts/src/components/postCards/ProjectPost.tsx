@@ -8,25 +8,21 @@ const ProjectPost = (props: IProjectIndexProps) => {
   return (
     <>
       <div
-        className="container grid grid-cols-16 my-3 lg:my-5 border-2 hover:lg:ring-4 z-0 hover:z-10 hover:lg:text-black hover:lg:bg-white hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer"
+        className="post-container"
         onClick={() => navigate(`/Project/${props.project.url}`)}
       >
-        <div className="col-span-1 flex bg-white justify-center text-black items-center transform rotate-180 text-[10px] lg:text-sm p-2 lg:p-4">
+        <div className="project-post-name">
           <div className="vertical">ПРОЕКТ СТАНЦИИ 88</div>
         </div>
-        <img
-          className="object-cover col-span-4 h-84 w-auto"
-          src={props.project.poster}
-          alt={props.project.title}
-        />
+        <img className="post-image" src={props.project.poster} alt={props.project.title}/>
         <div className="col-span-10 justify-self-center self-center text-center divide-y-2">
-          <div className="flex justify-center"><div className="fixed top-0 bg-white text-black p-1 text-xs lg:text-base">Проект</div></div>
-          <div className="project-title-post text-3xl md:text-5xl">{props.project.title}</div>
-          <div className="project-year text-lg md:text-3xl pt-1 lg:pt-2">
+          <div className="flex justify-center"><div className="post-type-fixed">Проект</div></div>
+          <div className="project-post-title">{props.project.title}</div>
+          <div className="project-post-year">
             {props.project.year}
           </div>
         </div>
-        <div className="col-span-1 flex bg-white justify-center text-black items-center text-[10px] lg:text-sm p-2 lg:p-4">
+        <div className="post-date">
           <div className="vertical">{dateTime(props.project.release_date)}</div>
         </div>
       </div>

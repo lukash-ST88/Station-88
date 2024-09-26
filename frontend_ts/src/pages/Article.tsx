@@ -5,6 +5,7 @@ import Loader from "../components/components/Loader/Loader";
 import ArticleService from "../services/articles";
 import { IArticle} from "../interfaces/ArticleInterfaces";
 import {IUser} from "../interfaces/UserInterfaces";
+import "./pages.css"
 
 
 const Article = () => {
@@ -28,15 +29,15 @@ const Article = () => {
         <Loader />
       ) : (
         <div>
-          <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl Article-title ">
+          <div className="article-title-container">
             <div className="p-5">{article?.title}</div>
             <div className="p-5 ">{article?.subtitle}</div>
           </div>
-          <div className="container lg:text-4xl lg:px-20 text-xl">
+          <div className="article-content">
             <div dangerouslySetInnerHTML={{ __html: article?.content }} />
           </div>
-          <div className="mx-20 my-5 border border-r-0 border-t-0 border-b-0 border-green-500 text-2xl" style={{fontFamily: 'Restora', fontStyle: 'italic'}}>
-          &nbsp;Автор:&nbsp;
+          <div className="article-authors">
+            &nbsp;Автор:&nbsp;
             {article?.authors?.map((author: IUser, index: number) => {
               return (
               <span key={index}>

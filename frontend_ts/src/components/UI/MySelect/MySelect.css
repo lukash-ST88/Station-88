@@ -1,0 +1,6 @@
+.myselect-container{
+    @apply w-full mx-2.5;
+}
+.myselect{
+    @apply block py-2.5 w-full text-xl text-gray-500 bg-transparent border-0 border-b-2 border-white appearance-none focus:outline-none hover:text-st88-secondary focus:ring-0 focus:border-st88-secondary;
+}

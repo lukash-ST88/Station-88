@@ -24,7 +24,7 @@ function AccordionArticles(props: IAccordionArticlesProps) {
     <div className="mx-4">
         <Accordion open={open} icon={<BoundArticlesIcon/>}>
             <AccordionHeader
-              className="text-white hover:text-st88-secondary"
+              className="text-white hover:text-st88-secondary accordion-description-text"
               onClick={() =>setOpen(!open) }
             >
               Cвязанные статьи

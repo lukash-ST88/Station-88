@@ -9,7 +9,7 @@ export interface IProject {
     genre: string
     length: number
     synopsys: string
-    scenario: IScenario 
+    scenario: IScenario | undefined
     directors: IUser[] 
     writers: IUser[] 
     cinematographers: IUser[] 

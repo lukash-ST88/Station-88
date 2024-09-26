@@ -29,7 +29,6 @@ function Articles() {
 
   useEffect(() => {
     fetchArticles(limit, offset);
-    console.log("effect")
   }, [offset]);
 
   const [fetchArticles, isArticleLoading, movieError]: any = useFetching(

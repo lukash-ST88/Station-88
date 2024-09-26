@@ -33,10 +33,10 @@ const Movie = () => {
         <Loader />
       ) : (
         <div>
-          <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl">
-            <div className="p-2 lg:p-5 movie-title">{movie?.title}</div>
+          <div className="movie-title-container">
+            <div className="movie-title">{movie?.title}</div>
             {Boolean(movie?.original_title) && 
-            <div className="p-2 lg:p-5 movie-original-title">
+            <div className="movie-original-title">
               {movie?.original_title}
             </div> 
             }
@@ -46,15 +46,15 @@ const Movie = () => {
               <div className="md:grid md:grid-cols-2 md:gap-2 lg:divide-y-2 lg:block">
                 <img className="my-2" src={`${API_URL}${movie?.poster}`} alt="movie poster"/>
                 <div className="divide-y-2">
-                  <div className="text-movie-description">
+                  <div className="movie-description">
                     <MovieIcon/> 
                     <div>Режиссёр: {movie?.director}</div>
                   </div>
-                  <div className="text-movie-description">
+                  <div className="movie-description">
                     <TimeIcon/>
                     <div>Год: {movie?.year}</div>
                   </div>
-                  <div className="text-movie-description">
+                  <div className="movie-description">
                     <GenreIcon/>
                     <div>Жанр: {movie?.genre}</div>
                   </div>

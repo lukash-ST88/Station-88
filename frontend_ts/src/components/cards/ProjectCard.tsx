@@ -10,29 +10,22 @@ export interface IProjectIndexProps {
 
 const ProjectCard = (props: IProjectIndexProps)=> {
     const navigate = useNavigate();
-    return (<>
     
-  <CSSTransition key={props.index} timeout={5000} classNames="post">
-    <div
-      onClick={() => navigate(`/project/${props.project.url}`)}
-      className="grid grid-col-1 md:max-w-xl mx-2 border hover:lg:border-st88-main bg-opacity-80 hover:lg:ring-4 z-0 hover:cursor-pointer hover:z-10 hover:lg:ring-st88-main hover:lg:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110 lg:icons"
-    >
-      <img
-        className="object-cover justify-items-center w-full h-[360px] lg:h-[480px]"
-        src={props.project.poster}
-        alt={props.project.title}
-      />
-      <div className="color-card-projct text-center lg:my-1">
-        <div className="card-main-text md:text-2xl">
-          <div className="">{props.project.title} </div>
+    return (
+      <CSSTransition key={props.index} timeout={5000} classNames="post">
+        <div onClick={() => navigate(`/project/${props.project.url}`)} className="project-card-container lg:icons">
+          <img className="project-card-image" src={props.project.poster} alt={props.project.title}/>
+          <div className="text-center lg:my-1">
+            <div className="md:text-2xl">
+              <div className="">{props.project.title} </div>
+            </div>
+            <div className="md:text-xl">
+              <div>{props.project.year}</div>
+            </div>
+          </div>
         </div>
-        <div className="card-main-text md:text-xl">
-          <div>{props.project.year}</div>
-        </div>
-      </div>
-    </div>
-  </CSSTransition>
-  </>)
+      </CSSTransition>
+    )
 }
 
 export default ProjectCard;

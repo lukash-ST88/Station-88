@@ -3,14 +3,70 @@
 @tailwind utilities;
 
 
-@layer components {
-    .text-movie-description  {
-        @apply text-xl lg:text-2xl text-center py-2 pl-4 flex justify-start gap-2 items-center;
-        
-    }
-}
 
 .profile-img {
     width: 20vw;
     height: 20vw;
 }
+
+.article-title-container{
+    @apply container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl;
+}
+
+.article-content {
+    @apply container lg:text-4xl lg:px-20 text-xl;
+}
+
+.article-authors {
+    font-family: 'Restora';
+    font-style: italic;
+    @apply mx-20 my-5 border border-r-0 border-t-0 border-b-0 border-green-500 text-2xl;
+}
+
+.movie-title-container{
+    @apply container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl;
+}
+
+.movie-title {
+    font-family: 'tupo_vyazregular';
+    color: white;
+    font-weight: 500;
+    font-size: 3rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0.0rem;
+    padding-bottom: 0.25rem;
+    @apply p-2 lg:p-5;
+  }
+  
+.movie-original-title {
+    font-family: 'RestoraLight';
+    color: white;
+    font-weight: 500;
+    font-size: 2rem;  
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0.0rem;
+    padding-bottom: 0.25rem;
+    @apply p-2 lg:p-5;
+  }
+
+.movie-description  {
+    font-family: 'RestoraLight';
+    @apply text-xl lg:text-2xl text-center py-2 pl-4 flex justify-start gap-2 items-center;    
+}
+
+.project-title-container {
+    font-family: 'tupo_vyazregular';
+    color: white;
+    font-weight: 500;
+    font-size: 4rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0.0rem;
+    padding-bottom: 0.25rem;
+    @apply container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center lg:text-4xl text-xl;
+  }
+
+
+  

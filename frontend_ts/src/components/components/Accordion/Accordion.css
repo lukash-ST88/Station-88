@@ -4,4 +4,9 @@
 
 .accordion-description-text {
     font-family: 'RestoraLight';
+    @apply lg:text-2xl font-light;
+}
+
+.link-text{
+    @apply text-gray-500 hover:text-st88-secondary hover:cursor-pointer italic text-xl text-center;
 }

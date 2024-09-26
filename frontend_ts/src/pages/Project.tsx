@@ -11,10 +11,12 @@ import AccordionLinks from "../components/components/Accordion/AccordionLinks";
 import GenreIcon from "../components/icons/GenreIcon";
 import TimeIcon from "../components/icons/TimeIcon";
 import DurationIcon from "../components/icons/DurationIcon";
-import SynopsysIcon from "../components/icons/SynopsysIcon";
+import SynopsysIcon from "../components/icons/SynopsisIcon";
 import ScenarioIcon from "../components/icons/ScenarioIcon";
 import MovieIcon from "../components/icons/MovieIcon";
 import TrailerIcon from "../components/icons/TrailerIcon";
+import AccordionSynopsis from "../components/components/Accordion/AccordionSynopsis";
+import AccordionSources from "../components/components/Accordion/AccordionSources";
 
 const Project = () => {
   const [project, setproject] = useState<IProject>();
@@ -23,7 +25,7 @@ const Project = () => {
 
   useEffect(() => {
     fetchProject(params.url);
-    console.log(project?.scenario.text);
+    console.log(project?.scenario?.text);
   }, []);
 
   const [fetchProject, isProjectLoading, ProjectError]: any = useFetching(
@@ -35,48 +37,45 @@ const Project = () => {
 
   return (
     <>
-      {isProjectLoading ? (
+      {isProjectLoading 
+      ? (
         <Loader />
-      ) : (
+      ) 
+      : (
         <div>
-          <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center lg:text-4xl text-xl project-title ">
+          <div className="project-title-container">
             <div className="p-5 movie-title ">{project?.title}</div>
           </div>
-          <div className="container lg:flex">
-            <div className="lg:w-1/3 lg:flex flex-col justify-start m-4 divide-y-2 description-text">
+          <div className="container lg:flex ">
+            <div className="lg:w-1/3 lg:flex flex-col justify-start mt-4 divide-y-2 md:grid grid-cols-2 md:gap-2 md:items-start">
               <img className="my-2" src={`${API_URL}${project?.poster}`} alt={project?.title}/>
-              <div className="text-movie-description">
-                <GenreIcon/>
-                <div> Жанр: {project?.genre}</div>
-              </div>
-              <div className="text-movie-description">
-                <TimeIcon/>
-                <div>Год: {project?.year}</div>
-              </div>
-              <div className="text-movie-description">
-                <DurationIcon/>
-                <div>Хронометраж: {project?.length} мин</div>
-              </div>
-              <AccordionTeam project={project}/>
-            </div>
-            <div className="lg:w-2/3 m-4 divide-y-2 text-2xl accordion-description-text">
-              <div className="grid grid-cols-2 text-center divide-x-2">
-                <div className="m-2 text-st88-secondary flex justify-center items-center">
-                  <SynopsysIcon/>
-                  <div className="m-2">Синопсис</div>
+              <div className="grid grid-cols-1 divide-y-2 md:my-2">
+                <div className="movie-description">
+                  <GenreIcon/>
+                  <div className=""> Жанр: {project?.genre}</div>
                 </div>
+                <div className="movie-description">
+                  <TimeIcon/>
+                  <div>Год: {project?.year}</div>
+                </div>
+                <div className="movie-description">
+                  <DurationIcon/>
+                  <div>Хронометраж: {project?.length} мин</div>
+                </div>
+                <AccordionTeam project={project}/>
+              </div>
+            </div>
+            <div className="lg:w-2/3 lg:m-4 text-2xl accordion-description-text">
+              <div className="lg:grid grid-cols-3 text-center divide-x-2 border-b-2 hidden">
                 <div className="m-2 flex justify-center items-center hover:text-st88-secondary">
                   <ScenarioIcon/>
                   {project?.scenario?.text ? 
-                  <a className="m-2 " href={project?.scenario.text} download>
+                  <a className="m-2" href={project?.scenario.text} download>
                     Cценарий
                   </a>
                   :<div className="m-2 text-gray-700 hover:text-gray-700"> Сценарий</div>
-                }
+                  }
                 </div>
-              </div>
-              <div className="text-base p-3">{project?.synopsys}</div>
-              <div className="grid grid-cols-2 text-center divide-x-2">
                 <div className={`flex justify-center items-center m-2 ${project?.linked_trailer? "hover:text-st88-secondary" : "text-gray-700"}`}>
                   <TrailerIcon/>
                   <a href={project?.linked_trailer} download className="m-2">
@@ -90,6 +89,8 @@ const Project = () => {
                   </a>
                 </div>
               </div>
+              <AccordionSynopsis synopsis={project?.synopsys}/>
+              <AccordionSources project={project}/>
               {project?.links?.length  ?  <AccordionLinks links={project?.links}/> : <></>}
             </div>
           </div>

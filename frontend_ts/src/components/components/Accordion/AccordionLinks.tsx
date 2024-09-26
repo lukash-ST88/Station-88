@@ -5,6 +5,7 @@ import {
     AccordionBody,
   } from "@material-tailwind/react";
 import BoundArticlesIcon from "../../icons/BoundArticlesIcon";
+import "./Accordion.css"
 
 interface IAccordionLinksProps{
     links: string[] | undefined
@@ -18,18 +19,17 @@ const AccordionLinks = (props:IAccordionLinksProps) => {
     <div className="">
         <Accordion open={open} icon={<BoundArticlesIcon/>}>
             <AccordionHeader
-              className="text-white hover:text-red-500 border-b-2"
+              className="text-white hover:text-st88-secondary border-b-2"
               onClick={() =>setOpen(!open) }
             >
-            <div></div>{/* dont remove these divs they are for alignment center */}
-            <div className="accordion-description-text text-2xl font-light">Связанные источники</div>
+            {/* <div></div>dont remove these divs they are for alignment center */}
+            <div className="accordion-description-text mx-2">Связанные источники</div>
             </AccordionHeader>
             <AccordionBody className="text-white">
               {props.links?.map((link) => (
-                <div><a href={link} className="text-gray-500 hover:text-red-500 hover:cursor-pointer italic text-xl text-center">
+                <a href={link} className="link-text">
                     {link}
                 </a>
-                </div>
               ))}
             </AccordionBody>
           </Accordion>   

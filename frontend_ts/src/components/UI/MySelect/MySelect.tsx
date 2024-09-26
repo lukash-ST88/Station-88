@@ -1,3 +1,5 @@
+import "./MySelect.css" 
+
 interface Options {
   value: string;
   name: string;
@@ -12,10 +14,10 @@ interface MySelectOPtionsProps {
 
 const MySelect = (props: MySelectOPtionsProps) => {
   return (
-    <div className="w-full mx-2.5">
+    <div className="myselect-container">
       <select
         id="underline_select"
-        className="block py-2.5 w-full text-xl text-gray-500 bg-transparent border-0 border-b-2 border-white appearance-none focus:outline-none hover:text-st88-secondary focus:ring-0 focus:border-st88-secondary peer"
+        className="myselect peer"
         value={props.value}
         onChange={(event) => props.onChange(event.target.value)}
       >

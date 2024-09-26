@@ -7,6 +7,7 @@ import {
 import AuthorList from "../../utils/AuthorList";
 import { IProject } from "../../../interfaces/ProjectInterfaces";
 import "./Accordion.css"
+import TeamIcon from "../../icons/TeamIcon";
 
 interface IAccordionTeamProps {
     project: IProject | undefined
@@ -17,13 +18,12 @@ const AccordionTeam = (props: IAccordionTeamProps) => {
     return (
     <>
      <div className="text-center">
-        <Accordion open={open}>
+        <Accordion open={open} icon={<TeamIcon/>}>
             <AccordionHeader
               className="text-white hover:text-red-500 border-b-2"
-              onClick={() =>setOpen(!open) }
+            onClick={() =>setOpen(!open)}
             >
-              <div></div>{/* dont remove these divs they are for alignment center */}
-              <div className="accordion-description-text font-semibold">Съёмочная команда</div>
+              <div className="accordion-description-text font-semibold mx-2">Съёмочная команда</div>
             </AccordionHeader>
             <AccordionBody className="text-white border-b-2">
               <AuthorList authors={props.project?.directors} workTitle="Режиссёр" workTitlePlural="Режиссёры"/>

@@ -1,25 +1,66 @@
-.movie-title-post {
+/* common post styles */
+
+.vertical {
+    writing-mode: vertical-rl;
+}
+
+.post-container {
+    @apply container grid grid-cols-16 my-3 lg:my-5 border-2 hover:lg:ring-4 z-0 hover:z-10 hover:lg:text-st88-background hover:lg:bg-white hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
+}
+
+.post-image { 
+    @apply object-cover col-span-4 w-auto;
+}
+
+.post-type-fixed {
+    @apply fixed top-0 bg-white text-st88-background p-1 text-xs lg:text-base;
+}
+
+.post-date {
+    @apply col-span-1 flex bg-white justify-center text-black items-center text-[10px] lg:text-sm p-2 lg:p-4;
+}
+
+
+
+/* movie post styles */
+
+.movie-post-text-container {
+    @apply col-span-11 justify-self-center self-center text-center;
+}
+
+.movie-post-title {
     font-family: 'tupo_vyazregular';
+    @apply text-3xl md:text-5xl;
 }
 
-.movie-original-title-post {
+.movie-post-original-title {
     font-family: 'RestoraItalic';
+    @apply text-xl md:text-3xl pt-1 lg:pt-2;
 }
 
-.project-title-post {
-    font-family: 'tupo_vyazregular';
+
+/* article post styles */
+
+.article-post-date {
+    @apply col-span-1 flex  justify-center  items-center text-[10px] lg:text-sm p-2 lg:p-4;
 }
 
-.project-year {
-    font-family: 'RestoraItalic';
+.article-post-container {
+    @apply container grid grid-cols-16 my-5 border-2 bg-white text-black hover:lg:ring-4 z-0 hover:z-10 hover:lg:text-white hover:lg:bg-st88-background hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
 }
 
-.article-poster-container {
+.article-post-author-container{
+    @apply col-span-1 flex justify-center items-center transform rotate-180 text-[10px] lg:text-sm p-2 lg:p-4;
+}
+
+.article-image-container {
     position: relative;
     text-align: center;
     color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #181818;
+}
+
+.article-post-image {
+    @apply object-cover lg:h-80 md:h-60 h-auto w-full group-hover:lg:opacity-40;
 }
 
 .article-text-align {
@@ -31,13 +72,28 @@
 
 .article-text-align .title {
     font-family: 'tupo_vyazregular';
+    @apply text-2xl lg:text-5xl;
 }
 
 .article-text-align .subtitle {
     font-family: 'RestoraItalic';
     font-style: italic;
+    @apply text-sm lg:text-xl;
 }
 
-.vertical {
-    writing-mode: vertical-rl;
+
+ /* project post styles */
+
+.project-post-name {
+    @apply col-span-1 flex bg-white justify-center text-black items-center transform rotate-180 text-[10px] lg:text-sm p-2 lg:p-4;
+}
+
+.project-post-title {
+    font-family: 'tupo_vyazregular';
+    @apply text-3xl md:text-5xl;
+}
+
+.project-post-year {
+    font-family: 'RestoraItalic';
+    @apply text-lg md:text-3xl pt-1 lg:pt-2;
 }
