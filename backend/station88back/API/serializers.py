@@ -72,6 +72,13 @@ class ArticleCardSerializer(serializers.ModelSerializer):
         exclude = ['content']
 
 
+class ArticleTypeCardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ArticleType
+        fields = ['id', 'title', 'url']
+
+
+
 class ProjectCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = ST88project

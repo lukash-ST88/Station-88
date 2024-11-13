@@ -11,6 +11,20 @@ class PostService {
       },
     });
     return response;
+  };
+  getFilteredPosts(limit: number, offset: number = 0, category: string, search_characters: string, start_date: Date | null = null, end_date: Date | null = null){
+    const url = `${API_URL}/API/posts/filters`
+    const response = axios.get<any>(url, {
+      params: {
+        limit,
+        offset,
+        category,
+        search_characters,
+        start_date,
+        end_date
+      }
+    })
+    return response;
   }
 }
 

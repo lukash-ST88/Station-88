@@ -28,3 +28,10 @@ export interface IArticleRetrieve {
     previous: string | null
     results: IArticle[] 
 }
+
+export interface IArticleTypeRetrieve{
+    count: number,
+    next: string | null
+    previous: string | null
+    results: IArticleType[]
+}

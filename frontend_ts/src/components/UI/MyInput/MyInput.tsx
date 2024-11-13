@@ -4,11 +4,12 @@ import "./MyInput.css";
 interface PropsProps {
   value: string;
   onChange(func: any): void;
+  className?: string;
 }
 
 const MyInput = forwardRef((props: PropsProps, ref: any) => {
   return (
-    <div className="w-full mx-2.5">
+    <div className={`w-full mx-2.5 ${props.className}`}>
       <div className="myinput-container group">
         <input
           {...props}

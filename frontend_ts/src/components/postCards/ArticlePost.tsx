@@ -10,9 +10,12 @@ const ArticlePost = (props: IArticleIndexProps) => {
       <div className="article-post-container" onClick={() => navigate(`/article/${props.article.url}`)} key={props.index}>
         <div className="article-post-author-container">
           <div className="vertical">
-            {props.article.authors?.map((author: IUser, index: number) => {
-              return <div key={index}>Автор: {author.profile?.first_name} {author.profile?.last_name}</div>;
-            })}
+            <div className="flex justify-center items-center gap-1 divide-y-2">
+              <div>{props.article.authors?.length > 1 ? 'Авторы': 'Автор'}:</div>
+              {props.article.authors?.map((author: IUser, index: number) => 
+                <div key={index} className="pt-1"> {author.profile?.first_name} {author.profile?.last_name} </div>
+              )}
+            </div>
           </div>
         </div>
         <div className="col-span-14 article-image-container">

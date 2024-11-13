@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef} from "react";
 import { IMovie } from "../interfaces/MovieInterfaces";
 import MovieService from "../services/movies";
-import Filter from "../components/components/Filter/Filter";
 import { TransitionGroup } from "react-transition-group";
 import { getPageCount} from "../utils/pages";
 import { useObserver } from "../hooks/useObserver";
@@ -9,50 +8,53 @@ import { useFetching } from "../hooks/useFetching";
 import Loader from "../components/components/Loader/Loader";
 import MovieCard from "../components/cards/MovieCard";
 import { useDidMountEffect } from "../hooks/useDidMountEffect";
-import { useFilter } from "../hooks/useFilter";
+import MovieFilter from "../components/components/Filter/MovieFilter";
 
 
 
-export interface IFilter {
-  sort: string;
-  query: string;
-}
 
 
 
 function Movies() {
   const [movies, setMovies] = useState<IMovie[]>([]);
-  const [filter, setFilter] = useState<IFilter>({ sort: "", query: "" });
-  const [totalPages, setTotalPages] = useState(0);
-  const searchedMovies: any = useFilter(
-    movies,
-    filter.query
-  );
 
-  // const sortedAndSearchedPosts = useMemo(() => {
-  //   return movies.filter((post: any) => post.title.includes(filter.query));
-  // }, [filter.query, movies]); f
-  
+
+  const [sort, setSort] = useState<string>("");
+  const [search, setSearch] = useState<string>("");
+  const defaultYears = [1888, Number(new Date().getFullYear())];
+  const [releaseYears, setReleaseYears] = useState<number[]>(defaultYears); 
+
+  const [totalPages, setTotalPages] = useState(0);
+
   const [limit, setLimit] = useState(6);
   const [offset, setOffset] = useState(0);
   const lastElement = useRef<HTMLDivElement>(null);
 
 
   useEffect(() => {
-    fetchMovies(limit, offset, filter.sort);
+    fetchMovies(limit, offset, sort);
     // console.log(axios.defaults.headers.common['Authorization'])
   }, [offset]);
 
   // this hook allows not to call useEffect for the first render
   useDidMountEffect(() => {
-    fetchMovies(limit, 0, filter.sort);
+    fetchMovies(limit, 0, sort);
     setOffset(0);
-  }, [filter]);
+  }, [sort, search, releaseYears]);
 
   const [fetchMovies, isMovieLoading, movieError]: any = useFetching(
     async (limit: number, offset: number, sort: string) => {
-      const response = sort.length ? await MovieService.getSortedMovies(limit, offset, sort) : await MovieService.getAllMovies(limit, offset);
-      if(offset == 0){
+      let response;
+      if (search || releaseYears != defaultYears) {
+        if(releaseYears != defaultYears){
+          response = await MovieService.getFilteredMovies(limit, offset, sort, search, releaseYears[0], releaseYears[1]);
+        } else {
+          response = await MovieService.getFilteredMovies(limit, offset, sort, search);
+        }
+      } else {
+        response = sort.length ? await MovieService.getSortedMovies(limit, offset, sort) : await MovieService.getAllMovies(limit, offset);
+      }
+      if(offset == 0) {
         setMovies([...response.data.results]);
       }
       else{
@@ -70,20 +72,33 @@ function Movies() {
     isMovieLoading
   );
 
+  function resetFilter(){
+    setSort("");
+    setSearch(""); 
+  }
+
   return (
     <div className="flex flex-wrap justify-center">
       <div className="lg:w-5/6 lg:order-1 order-2 ">
+        <div className="flex justify-center items-center mb-5 lg:hidden">
+          <div className="border-b-2 cursor-default px-4 py-2 text-st88-main font-bold border-st88-main text-2xl">
+            Фильмы
+          </div>
+        </div>
         <TransitionGroup>
           <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {searchedMovies.map((movie: IMovie, index: number) => {
+            {movies.map((movie: IMovie, index: number) => {
               return <MovieCard movie={movie} index={index} />;
             })}
           </div>
         </TransitionGroup>
-        <div
-          ref={lastElement}
-          style={{ height: 10, background: "transperent" }} //"transperent"
-        />
+        {movies.length == 0 && 
+          <div className="flex justify-center">
+            <div className="border p-2 border-st88-secondary text-st88-secondary">
+              Фильмы не найдены
+            </div>
+          </div>}
+        <div ref={lastElement} style={{ height: 10, background: "transperent" }} />
         {isMovieLoading && (
           <div className="flex justify-center">
             <Loader />
@@ -91,7 +106,21 @@ function Movies() {
         )}
       </div>
       <div className="lg:w-1/6 lg:order-2 color-test order-1 w-full mb-6">
-        <Filter filter={filter} setFilter={setFilter} />
+        <div className="flex justify-center items-center lg:hidden">
+          <div className="border-b-2 cursor-default px-4 py-2 text-st88-secondary font-bold border-st88-secondary text-2xl">
+            Фильтры
+          </div>
+        </div>
+        <MovieFilter defaultYeras={defaultYears}
+                      sort={sort} setSort={setSort} 
+                      search={search} setSearch={setSearch}
+                      releaseYears={releaseYears} setReleaseYears={setReleaseYears}/>
+        {[search, sort].some(item=>item) 
+          && 
+          <div className="flex justify-center items-center">
+            <div className="lg:my-5 mt-10 cursor-pointer border-2 p-2 hover:bg-st88-secondary" onClick={resetFilter}>Сбросить</div>
+          </div>
+        }
       </div>
     </div>
   );

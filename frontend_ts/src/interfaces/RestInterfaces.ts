@@ -6,3 +6,8 @@ export interface IBanners {
     banner: string
     link: string
 }
+
+export interface ISearchDate {
+    startDate: Date | null;
+    endDate: Date | null;
+  }

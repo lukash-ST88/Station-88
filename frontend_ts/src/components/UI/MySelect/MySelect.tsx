@@ -10,11 +10,12 @@ interface MySelectOPtionsProps {
   defaultValue: string;
   value: string;
   onChange(selectedSort: any): void;
+  className?: string;
 }
 
 const MySelect = (props: MySelectOPtionsProps) => {
   return (
-    <div className="myselect-container">
+    <div className={`myselect-container ${props.className}`}>
       <select
         id="underline_select"
         className="myselect peer"
