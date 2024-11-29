@@ -21,7 +21,7 @@ interface FilterProps {
 const PostFilter = (props: FilterProps) => {
     return (
         <>
-            <div className="lg:mx-2 flex lg:block">
+            <div className="lg:mx-2 flex lg:block ">
                 <MyInput 
                     value={props.search} 
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => props.setSearch(event.target.value)}

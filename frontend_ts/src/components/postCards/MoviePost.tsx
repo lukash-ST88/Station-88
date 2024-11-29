@@ -18,7 +18,7 @@ const MoviePost = (props: IMovieIndexProps) => {
         </div>
       </div>
       <div className="post-date">
-        <div className="vertical">{dateTime(props.movie.release_date)}</div>
+        <div className="vertical flex divide-y-2 gap-1">{dateTime(props.movie.release_date).map((dateItem: string)=><div className="pt-1">{dateItem}</div>)}</div>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const ProjectPost = (props: IProjectIndexProps) => {
           </div>
         </div>
         <div className="post-date">
-          <div className="vertical">{dateTime(props.project.release_date)}</div>
+          <div className="vertical flex divide-y-2 gap-1">{dateTime(props.project.release_date).map((dateItem: string)=><div className="pt-1">{dateItem}</div>)}</div>
         </div>
       </div>
     </>

@@ -30,7 +30,7 @@ const BookPost = (props: IBookIndexProps) => {
           </div>
         </div>
         <div className="col-span-1 flex bg-white justify-center text-black items-center">
-          <div className="vertical">{dateTime(props.book.release_date)}</div>
+          <div className="vertical flex divide-y-2 gap-1">{dateTime(props.book.release_date).map((dateItem: string)=><div className="pt-1">{dateItem}</div>)}</div>
         </div>
       </div>
     </>)

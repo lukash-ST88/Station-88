@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Movie, Article, ArticleType, Scenario, ST88description, ST88project, ProjectPresentation, Review, \
-    Banners, Profile, Book, FreePost
+    Banners, Profile, Book, FreePost, Frame
 from django.contrib.auth.models import User
 
 """ -----------Users--------- """
@@ -99,6 +99,12 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = "__all__"
 
+class FrameSerializer(serializers.ModelSerializer):
+    movie = serializers.CharField()
+
+    class Meta:
+        model = Frame
+        fields = ['id', 'title', 'image', 'movie']
 
 class ST88descriptionSerializer(serializers.ModelSerializer):
     author = CustomUserSerializer(read_only=True)
@@ -114,12 +120,13 @@ class MovieSerializer(serializers.ModelSerializer):
     ST88descriptions = ST88descriptionSerializer(many=True, read_only=True)
     comments = ReviewSerializer(many=True, read_only=True)
     related_articles = ArticlePrefetchForBaseSerializer(many=True, read_only=True)
+    frames = FrameSerializer(many=True, read_only=True)
 
     class Meta:
         model = Movie
         fields = ['id', 'title', 'original_title', 'url', 'poster',
                   'year', 'director', 'genre', 'music', 'link',
-                  'ST88descriptions', 'comments', 'release_date', 'related_articles']
+                  'ST88descriptions', 'comments', 'release_date', 'related_articles', 'frames']
 
 
 class BookSerializer(serializers.ModelSerializer):

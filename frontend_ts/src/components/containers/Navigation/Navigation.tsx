@@ -40,13 +40,18 @@ function NavbarDefault(props: IAuthProps) {
   };
 
   const navList = (
-    <ul className="mt-2 mb-0 flex flex-col lg:flex-row lg:items-center lg:gap-10">
-            <Link to='#' className='hidden lg:block'><img className='img-links' src='/images/Durica_v2.jpg' alt='station88-logo'/></Link>
+    <ul className="mt-2 mb-0 flex flex-col lg:grid lg:grid-cols-7 lg:items-center lg:gap-8 lg:mx-5 lg:justify-center">
+            {/* <Link to='#' className='hidden lg:block'><img className='img-links' src='/images/Durica_v2.jpg' alt='station88-logo'/></Link> */}
+            <Link to='#' className='hidden lg:flex flex-col justify-center items-center'>
+              <img className='w-[80px] h-auto border-b-2 pb-1 hover:border-st88-main border-white' src='/images/Durica_v4.png' alt='station88-logo'/>
+              {/* <div className='lg:absolute'> О нас </div> */}
+            </Link>
+            
             <Link to='/' className='nav-links block lg:hidden' onClick={closeMobileNav}> Главная </Link>
             <Link to='/articles' className='nav-links' onClick={closeMobileNav}>Статьи</Link>
             <Link to='/movies' className='nav-links'onClick={closeMobileNav}>Фильмы</Link>
             <Link to='/' className='station88 hidden lg:block'> STATION 88 </Link>
-            <Link to='#' className='nav-links' onClick={closeMobileNav}>Образование</Link>
+            <Link to='#' className='nav-links' onClick={closeMobileNav}>Блог</Link>
             <Link to='/projects' className='nav-links' onClick={closeMobileNav}>Проекты</Link>
             {props.auth.isAuthenticated 
                 ? <Link to={`/profile/${props.auth.user.username}`} className='nav-links' onClick={closeMobileNav}>{props.auth.user.username}</Link>

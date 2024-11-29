@@ -1,6 +1,7 @@
 import { IST88description } from "./ReviewDescriptionInterfaces"
 import { IReview } from "./ReviewDescriptionInterfaces"
 import { IArticle } from "./ArticleInterfaces"
+import { IFrame } from "./FrameInterface"
 
 export interface IMovie {
     readonly id: number
@@ -18,6 +19,7 @@ export interface IMovie {
     release_date: string
     related_articles: IArticle[] | undefined[]
     avg_rating: string | null
+    frames: IFrame[] | undefined
 }
 
 

@@ -27,7 +27,7 @@ const ArticlePost = (props: IArticleIndexProps) => {
           </div>
         </div>
         <div className="article-post-date  group-hover:opacity-none">
-          <div className="vertical">{dateTime(props.article.release_date)}</div>
+          <div className="vertical flex divide-y-2 gap-1">{dateTime(props.article.release_date).map((dateItem: string)=><div className="pt-1">{dateItem}</div>)}</div>
         </div>
       </div>
   );
