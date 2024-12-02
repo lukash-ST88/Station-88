@@ -11,13 +11,17 @@ import Project from "../pages/Project";
 import Profile from "../pages/Profile";
 import Book from "../pages/Book";
 import FreePost from "../pages/FreePost";
+import Blog from "../pages/Blog";
+import About from "../pages/About";
 
 
 const Router = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home/>}/>      
+        <Route path="/" element={<Home/>}/>
+        <Route path="/blog" element={<Blog/>}/>
+        <Route path="/about" element={<About/>}/>      
         <Route path="/articles" element={<Articles />} />
         <Route path="/article/:url" element={<Article />}/>
         <Route path="/movies" element={<Movies />} />
