@@ -1,8 +1,10 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.template.defaultfilters import default
 from django.utils import timezone
 from django.contrib.postgres.fields import ArrayField
+
 
 
 class Profile(models.Model):
@@ -11,7 +13,10 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=100, null=True, verbose_name="Фамилия")
     role = models.CharField(max_length=250, default=None, null=True, blank=True, verbose_name="Роль")
     avatar = models.ImageField(
-        upload_to='user/avatar/', verbose_name='Фото', null=True)
+        upload_to='user/avatar/', verbose_name='Автар', null=True)
+    photo = models.ImageField(
+        upload_to='user/photo/', verbose_name='Фото', null=True)
+    order = models.IntegerField(verbose_name='Очередность', null=True)
 
     class Meta:
         verbose_name = "Профиль"

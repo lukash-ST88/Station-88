@@ -5,6 +5,8 @@ export interface IProfile {
     last_name: string
     role: string
     avatar: string
+    photo: string
+    order: number
 }
 
 

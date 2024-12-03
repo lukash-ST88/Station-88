@@ -11,10 +11,12 @@ class ProfileSerializer(serializers.Serializer):
     first_name = serializers.CharField()
     role = serializers.CharField()
     avatar = serializers.ImageField()
+    photo = serializers.ImageField()
+    order = serializers.IntegerField()
 
     class Meta:
         model = Profile
-        fields = ['last_name', 'first_name', 'role', 'avatar']
+        fields = ['last_name', 'first_name', 'role', 'avatar', 'photo', 'order']
 
 
 class CustomUserSerializer(serializers.Serializer):

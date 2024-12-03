@@ -9,6 +9,11 @@ class UserService {
     const response = axios.get<IUser>(url);
     return response;
   }
+  getTeamUsers(){
+    const url = `${API_URL}/API/users/team`;
+    const response = axios.get<IUser[]>(url);
+    return response; 
+  }
 }
 
 export default new UserService();

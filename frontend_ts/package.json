@@ -13,6 +13,7 @@
     "@types/react": "18.2.19",
     "@types/react-dom": "^18.2.7",
     "axios": "^1.4.0",
+    "dayjs": "^1.11.13",
     "flowbite": "^1.8.1",
     "flowbite-react": "^0.6.0",
     "history": "^5.3.0",

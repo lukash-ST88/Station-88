@@ -1,4 +1,5 @@
 from django.utils.datetime_safe import datetime
+from djoser.serializers import UserSerializer
 
 from .models import Movie, Article, Banners, ST88project, Book, FreePost, ArticleType
 from rest_framework import generics
@@ -206,6 +207,13 @@ def free_post_detail(request, url):
 """ ---------- Users ---------- """
 
 
+class UserTeamListView(generics.ListAPIView):
+    serializer_class = CustomUserSerializer
+    queryset = User.objects.filter(is_staff=True).order_by('profile__order')
+    pagination_class = None
+
+
+
 @api_view(['GET'])
 def user_detail(request, username):
     try:
@@ -215,6 +223,7 @@ def user_detail(request, username):
     if request.method == 'GET':
         user_serializer = CustomUserSerializer(user)
         return Response(user_serializer.data)
+
 
 
 """ ---------- Posts ---------- """

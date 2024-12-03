@@ -5,7 +5,6 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 import "./Accordion.css"
-import { useNavigate } from "react-router-dom";
 import { IMovie } from "../../../interfaces/MovieInterfaces";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import { FaImage } from "react-icons/fa6";
@@ -18,8 +17,6 @@ interface IAccordionFramesProps {
 
 function AccordionFrames(props: IAccordionFramesProps) {
   const [open, setOpen] = React.useState<boolean>(true);
-  const navigate = useNavigate();
-
   
   return (
     <div className="mx-4">
