@@ -19,6 +19,19 @@ class ArticleService {
     const response = axios.get<IArticle>(url);
     return response;
   };
+  
+  getArticlesByUsername(username:string){
+    const url = `${API_URL}/API/articles/user/${username}`
+    const response = axios.get<IArticleRetrieve>(url);
+    return response;
+  };
+
+  getArticlesByUsernameAndTitle(username: string, title: string){
+    const url = `${API_URL}/API/articles/user/${username}/title/${title}`
+    const response = axios.get<IArticleRetrieve>(url);
+    return response;
+  }
+
   getSortedArticles(limit: number, offset: number, sort: string){
     const url = `${API_URL}/API/articles/sort/${sort}`;
     const response = axios.get<IArticleRetrieve>(url, {

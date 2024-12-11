@@ -22,11 +22,12 @@ class ProfileSerializer(serializers.Serializer):
 class CustomUserSerializer(serializers.Serializer):
     username = serializers.CharField()
     email = serializers.CharField()
+    is_staff = serializers.BooleanField()
     profile = ProfileSerializer(read_only=True)
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'profile')
+        fields = ('username', 'email', 'profile', 'is_staff')
 
 
 """ ----------PrefetchesForBase---------- """

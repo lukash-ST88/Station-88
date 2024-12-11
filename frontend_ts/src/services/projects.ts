@@ -19,6 +19,17 @@ class ProjectService {
     const response = axios.get<IProject>(url);
     return response;
   }
+  getProjectsByUsername(username: string) {
+    const url = `${API_URL}/API/projects/user/${username}`;
+    const response = axios.get<IProjectRetrieve>(url);
+    return response;
+  }
+
+  getProjectsByUsernameAndTitle(username: string, title: string){
+    const url = `${API_URL}/API/projects/user/${username}/title/${title}`;
+    const response = axios.get<IProjectRetrieve>(url);
+    return response;
+  }
 }
 
 export default new ProjectService();

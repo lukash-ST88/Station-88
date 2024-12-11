@@ -4,10 +4,10 @@
 
 
 
-.profile-img {
+/* .profile-img {
     width: 20vw;
     height: 20vw;
-}
+} */
 
 .article-title-container{
     @apply container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl;
@@ -68,5 +68,8 @@
     @apply container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center lg:text-4xl text-xl;
   }
 
+  .profile-column-name-box {
+    @apply bg-st88-secondary mx-4 my-2 p-2 w-[150px];
+  }
 
   

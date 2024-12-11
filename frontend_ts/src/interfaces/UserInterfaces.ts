@@ -13,5 +13,6 @@ export interface IProfile {
 export interface IUser {
     username: string
     email?: string | null
+    is_staff: boolean
     profile: IProfile | undefined
 }

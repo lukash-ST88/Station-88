@@ -39,6 +39,22 @@ class MovieSortedListView(generics.ListAPIView):
     def get_queryset(self):
         return Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).all().order_by(self.kwargs['sort'])
 
+
+
+class MovieByUserListView(generics.ListAPIView):
+    serializer_class = MovieCardSerializer
+
+    def get_queryset(self):
+        return Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).filter(ST88descriptions__author__username=self.kwargs['username']).order_by('-release_date')
+
+class MovieByUserAndTitleListView(generics.ListAPIView):
+    serializer_class = MovieCardSerializer
+
+    def get_queryset(self):
+        return Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).filter(
+            (Q(ST88descriptions__author__username=self.kwargs['username']) &
+            Q(title__icontains=self.kwargs['title']))).order_by('-release_date')
+
 class MovieFilteredListView(generics.ListAPIView):
     serializer_class = MovieCardSerializer
 
@@ -90,6 +106,20 @@ class ArticleSortedListView(generics.ListAPIView):
     def get_queryset(self):
         return Article.objects.prefetch_related('authors__profile', 'article_type').all().order_by(self.kwargs['sort'])
 
+
+
+class ArticleByUserListView(generics.ListAPIView):
+    serializer_class = ArticleCardSerializer
+
+    def get_queryset(self):
+        return Article.objects.filter(authors__username=self.kwargs['username']).order_by('-release_date')
+
+class ArticleByUserAndTitleListView(generics.ListAPIView):
+    serializer_class = ArticleCardSerializer
+    def get_queryset(self):
+        return Article.objects.filter(
+            Q(authors__username=self.kwargs['username']) &
+            Q(title__icontains=self.kwargs['title'])).order_by('-release_date')
 
 class ArticlesFilteredListView(generics.ListAPIView):
     serializer_class = ArticleCardSerializer
@@ -162,6 +192,37 @@ class ProjectListView(generics.ListAPIView):
     queryset = ST88project.objects.all().order_by('-year')
     serializer_class = ProjectCardSerializer
 
+
+
+class ProjectByUserListView(generics.ListAPIView):
+    serializer_class = ProjectCardSerializer
+
+    def get_queryset(self):
+        username = self.kwargs['username']
+        return ST88project.objects.filter(Q(directors__username=username) |
+                                          Q(writers__username=username) |
+                                          Q(cinematographers__username=username) |
+                                          Q(designers__username=username) |
+                                          Q(editors__username=username) |
+                                          Q(actors__username=username) |
+                                          Q(producers__username=username)
+                                          ).order_by('-release_date').distinct()
+
+class ProjectByUserAndTitleListView(generics.ListAPIView):
+    serializer_class = ProjectCardSerializer
+
+    def get_queryset(self):
+        username = self.kwargs['username']
+        title = self.kwargs['title']
+        return ST88project.objects.filter((Q(directors__username=username) |
+                                          Q(writers__username=username) |
+                                          Q(cinematographers__username=username) |
+                                          Q(designers__username=username) |
+                                          Q(editors__username=username) |
+                                          Q(actors__username=username) |
+                                          Q(producers__username=username)) &
+                                          Q(title__icontains=title)
+                                          ).order_by('-release_date').distinct()
 
 @api_view(['GET'])
 def project_detail(request, url):

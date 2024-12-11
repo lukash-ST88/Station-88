@@ -21,6 +21,18 @@ class MovieService {
     return response;
   };
 
+  getMoviesByUsername(username: string) {
+    const url = `${API_URL}/API/movies/user/${username}`;
+    const response = axios.get<IMovieRetrieve>(url);
+    return response;
+  }
+  
+  getMovieByUsernameAndTitle(username: string, title: string){
+    const url = `${API_URL}/API/movies/user/${username}/title/${title}`;
+    const response = axios.get<IMovieRetrieve>(url);
+    return response;
+  }
+
   getSortedMovies(limit: number, offset: number, sort: string){
     const url = `${API_URL}/API/movies/sort/${sort}`;
     const response = axios.get<IMovieRetrieve>(url, {
