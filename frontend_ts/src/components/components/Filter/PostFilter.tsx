@@ -3,7 +3,7 @@ import MySelect from "../../UI/MySelect/MySelect"
 import React, { useState } from "react"
 import MyDatePicker from "../../UI/DatePicker/DatePicker"
 import { IPostCategory, postCategories } from "../../../utils/hardData"
-import { ISearchDate } from "../../../interfaces/RestInterfaces"
+import { ISearchDate } from "../../../interfaces/Interfaces"
 
 
 

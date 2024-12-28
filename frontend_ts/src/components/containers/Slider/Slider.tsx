@@ -1,6 +1,6 @@
 import {useState } from 'react'
 import './Slider.css'
-import { IBanners } from '../../../interfaces/RestInterfaces'
+import { IBanners } from '../../../interfaces/Interfaces'
 import Loader from '../../components/Loader/Loader'
 import { Link } from 'react-router-dom'
 

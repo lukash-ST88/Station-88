@@ -5,7 +5,7 @@ import { useObserver } from "../hooks/useObserver";
 import { getPageCount} from "../utils/pages";
 import PostCard from "../components/cards/PostCard";
 import Loader from "../components/components/Loader/Loader";
-import { ISearchDate } from "../interfaces/RestInterfaces";
+import { ISearchDate } from "../interfaces/Interfaces";
 import PostFilter from "../components/components/Filter/PostFilter";
 import { useDidMountEffect } from "../hooks/useDidMountEffect";
 

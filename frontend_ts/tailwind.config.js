@@ -18,6 +18,7 @@ module.exports = withMT({
      colors: {
       'st88-main':'rgb(34 197 94)',
       'st88-secondary': '#e53935',
+      'st88-third':'rgb(66 66 66)',
       'st88-background': '#181818'
      },
      fontFamily: {

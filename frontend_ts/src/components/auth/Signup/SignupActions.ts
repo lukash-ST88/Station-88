@@ -15,9 +15,7 @@ export const signupNewUser = (userData: IUserData) => {
     .post(`${API_URL}/API/auth/users/`, userData)
     .then(response => {
       toast.success(
-        "Account for " +
-          userData.username +
-          " created successfully. Please login."
+        "Аккаунт для " + userData.username +" создан"
       );
       store.dispatch({ type: CREATE_USER_SUCCESS });
       console.log('success')

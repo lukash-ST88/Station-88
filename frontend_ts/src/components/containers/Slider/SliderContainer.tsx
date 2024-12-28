@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Slider from "./Slider";
 import "./Slider.css";
-import { IBanners } from "../../../interfaces/RestInterfaces";
+import { IBanners } from "../../../interfaces/Interfaces";
 import BannersService from "../../../services/banners";
 import Loader from "../../components/Loader/Loader";
 

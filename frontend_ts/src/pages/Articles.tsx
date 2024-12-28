@@ -10,7 +10,7 @@ import Loader from "../components/components/Loader/Loader";
 import ArticleCard from "../components/cards/ArticleCard";
 import { useDidMountEffect } from "../hooks/useDidMountEffect";
 import ArticleFilter from "../components/components/Filter/ArticleFilter";
-import { ISearchDate } from "../interfaces/RestInterfaces";
+import { ISearchDate } from "../interfaces/Interfaces";
 
 
 
