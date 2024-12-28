@@ -223,6 +223,19 @@ class Banners(models.Model):
     def __str__(self):
         return self.title
 
+class Sliders(models.Model):
+    title = models.CharField(max_length=255, verbose_name='Заголовок')
+    description = models.CharField(verbose_name='Описание раздела', null=True)
+    slider = models.ImageField(upload_to='sliders/', verbose_name='Слайдер')
+    link = models.CharField(max_length=255, verbose_name='Ссылка', null=True)
+    color = models.CharField(max_length=20, verbose_name='Цвет')
+
+    class Meta:
+        verbose_name = 'Слайдер'
+        verbose_name_plural = "Слайдеры"
+
+    def __str__(self):
+        return self.title
 
 class Course(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')

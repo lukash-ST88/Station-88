@@ -2,7 +2,7 @@ from typing import Any
 from django.contrib import admin
 from django import forms
 from .models import Movie, Article, ArticleType, Review, Scenario, ST88description, ST88project, ProjectPresentation, \
-    Banners, Profile, Frame, Book, FreePost
+    Banners, Profile, Frame, Book, FreePost, Sliders
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
@@ -164,6 +164,7 @@ admin.site.register(ST88project)
 # admin.site.register(ST88rating)
 admin.site.register(ProjectPresentation)
 admin.site.register(Banners)
+admin.site.register(Sliders)
 admin.site.register(Profile)
 
 admin.site.site_title = 'Станция 88'

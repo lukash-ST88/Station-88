@@ -8,7 +8,7 @@ POSTGRES_PORT = os.environ.get('POSTGRES_PORT')
 POSTGRES_NAME = os.environ.get('POSTGRES_NAME')
 POSTGRES_USER = os.environ.get('POSTGRES_USER')
 POSTGRES_PASS = os.environ.get('POSTGRES_PASSWORD')
-
+GMAIL_PASS = os.environ.get('GMAIL_PASSWORD')
 
 
 SECRET_KEY = os.environ.get('SECRET_KEY')

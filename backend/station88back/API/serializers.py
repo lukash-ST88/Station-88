@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Movie, Article, ArticleType, Scenario, ST88description, ST88project, ProjectPresentation, Review, \
-    Banners, Profile, Book, FreePost, Frame
+    Banners, Profile, Book, FreePost, Frame, Sliders
 from django.contrib.auth.models import User
 
 """ -----------Users--------- """
@@ -167,6 +167,10 @@ class BannersSerializer(serializers.ModelSerializer):
         model = Banners
         fields = "__all__"
 
+class SlidersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sliders
+        fields = "__all__"
 
 class ScenarioSerializer(serializers.ModelSerializer):
     class Meta:

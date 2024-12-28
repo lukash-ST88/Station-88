@@ -1,11 +1,11 @@
 from django.utils.datetime_safe import datetime
 from djoser.serializers import UserSerializer
 
-from .models import Movie, Article, Banners, ST88project, Book, FreePost, ArticleType
+from .models import Movie, Article, Banners, ST88project, Book, FreePost, ArticleType, Sliders
 from rest_framework import generics
 from .serializers import ArticleCardSerializer, MovieSerializer, ArticleSerializer, BannersSerializer, \
     ProjectCardSerializer, ProjectSerializer, MovieCardSerializer, CustomUserSerializer, BookCardSerializer, \
-    BookSerializer, FreePostSerializer, FreePostCardSerializer, ArticleTypeCardSerializer
+    BookSerializer, FreePostSerializer, FreePostCardSerializer, ArticleTypeCardSerializer, SlidersSerializer
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -15,13 +15,33 @@ from station88back.settings import REST_FRAMEWORK
 from django.db.models import Avg
 from django.contrib.auth.models import User
 
-from .utils import ArticleTypePagination
+from .utils import ArticleTypePagination, send_email
 from django.db.models import Q
+
+
+""" ---------- Rest ---------- """
 
 class BannersListView(generics.ListAPIView):
     serializer_class = BannersSerializer
     queryset = Banners.objects.all()
     pagination_class = None
+
+
+class SlidersListView(generics.ListAPIView):
+    serializer_class = SlidersSerializer
+    queryset = Sliders.objects.all()
+    pagination_class = None
+
+
+@api_view(['POST'])
+def send_message(request):
+    data = request.data
+    user_email = data.get('email')
+    user_message = data.get('content')
+    response_data = send_email(user_message, user_email)
+    return Response(response_data)
+
+
 
 
 """ ---------- Movies ---------- """
