@@ -80,6 +80,9 @@ class MovieAdmin(admin.ModelAdmin):
 
     poster_preview.short_description = 'Постер обзор'
 
+class ProjectAdmin(admin.ModelAdmin):
+    inlines = [FrameInline]
+    save_on_top = True
 
 class BookAdmin(admin.ModelAdmin):
     list_display = ['title', 'original_title', 'year']
@@ -160,7 +163,7 @@ admin.site.register(FreePost, FreePostAdmin)
 admin.site.register(Review)
 admin.site.register(Scenario)
 admin.site.register(ST88description, ST88descriptionAdmin)
-admin.site.register(ST88project)
+admin.site.register(ST88project, ProjectAdmin)
 # admin.site.register(ST88rating)
 admin.site.register(ProjectPresentation)
 admin.site.register(Banners)

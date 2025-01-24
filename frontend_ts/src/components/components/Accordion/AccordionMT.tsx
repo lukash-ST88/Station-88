@@ -21,7 +21,7 @@ function AccordionMovie(props: IMovieProps) {
   };
   
   return (
-    <div className="mx-4">
+    <div className="">
       {props.movie?.ST88descriptions.map((description) => {
         return (<>
         {description?.description ? 
@@ -33,7 +33,7 @@ function AccordionMovie(props: IMovieProps) {
               Рецензия: {description?.author.profile?.first_name} {description?.author.profile?.last_name}
             </AccordionHeader>
             <AccordionBody className="text-white">
-              <div dangerouslySetInnerHTML={{ __html: description?.description }} />
+              <div dangerouslySetInnerHTML={{ __html: description?.description }} className="movie-font"/>
             </AccordionBody>
           </Accordion>
           : null }

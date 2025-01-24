@@ -24,7 +24,7 @@ function App() {
       </div>
     </div>
     {/* ToastContainer is used for representation of errers */}
-    <ToastContainer hideProgressBar={true} newestOnTop={true} />
+    <ToastContainer hideProgressBar={true} newestOnTop={true} position="top-center" theme="dark"/>
     </>
   );
 }

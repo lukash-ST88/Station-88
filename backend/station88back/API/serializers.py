@@ -104,10 +104,11 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class FrameSerializer(serializers.ModelSerializer):
     movie = serializers.CharField()
+    project = serializers.CharField()
 
     class Meta:
         model = Frame
-        fields = ['id', 'title', 'image', 'movie']
+        fields = ['id', 'title', 'image', 'movie', 'project']
 
 class ST88descriptionSerializer(serializers.ModelSerializer):
     author = CustomUserSerializer(read_only=True)
@@ -187,6 +188,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     editors = CustomUserSerializer(many=True, read_only=True)
     actors = CustomUserSerializer(many=True, read_only=True)
     producers = CustomUserSerializer(many=True, read_only=True)
+    frames = FrameSerializer(many=True, read_only=True)
 
     class Meta:
         model = ST88project

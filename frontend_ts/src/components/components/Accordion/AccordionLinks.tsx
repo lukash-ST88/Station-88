@@ -23,7 +23,7 @@ const AccordionLinks = (props:IAccordionLinksProps) => {
               onClick={() =>setOpen(!open) }
             >
             {/* <div></div>dont remove these divs they are for alignment center */}
-            <div className="accordion-description-text mx-2">Связанные источники</div>
+            <div className="accordion-description-text">Связанные источники</div>
             </AccordionHeader>
             <AccordionBody className="text-white">
               {props.links?.map((link) => (

@@ -22,23 +22,25 @@ const FreePost = () => {
   );
 
   return (
-    <>
+    <> 
       {isFreePostLoading ? (
-        <Loader />
+        <div className="flex justify-center items-center h-screen"><Loader/></div>
       ) : (
         <div>
-          <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl FreePost-title ">
-            <div className="p-5">{freePost?.title}</div>
-            <div className="p-5 ">{freePost?.subtitle}</div>
+          <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl movie-title-container">
+            <div className="movie-title">{freePost?.title}</div>
+            {Boolean(freePost?.subtitle) && 
+              <div className="movie-original-title">{freePost?.subtitle}</div>
+            }
           </div>
-          <div className="container lg:text-4xl lg:px-20 text-xl">
+          <div className="container lg:text-4xl lg:px-20 text-xl pt-5">
             <div dangerouslySetInnerHTML={{ __html: freePost?.content }} />
           </div>
-          <div className="mx-20 my-5 border border-r-0 border-t-0 border-b-0 border-green-500 text-2xl" style={{fontFamily: 'Restora', fontStyle: 'italic'}}>
-          &nbsp;Автор:&nbsp;
+          <div className="lg:mx-20 my-5 border border-r-0 border-t-0 border-b-0 border-green-500 lg:text-2xl text-xl" style={{fontFamily: 'Restora', fontStyle: 'italic'}}>
+            &nbsp;Автор:&nbsp;
             <span>
                  {freePost?.author?.profile?.first_name} {freePost?.author?.profile?.last_name} 
-              </span>
+            </span>
           </div>
         </div>
       )}

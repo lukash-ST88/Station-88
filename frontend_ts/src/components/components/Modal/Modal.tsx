@@ -2,6 +2,7 @@ import { Modal} from "flowbite-react";
 import { useState } from "react";
 import LoginTag from "../../auth/Login/LoginTag";
 import SignupTag from "../../auth/Signup/SignupTag";
+import { FaUserAlt } from "react-icons/fa";
 
 export const ModalFR = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -13,7 +14,7 @@ export const ModalFR = () => {
 
   return (
     <>
-      <button onClick={() => setOpenModal(true)}>Профиль</button>
+      <button onClick={() => setOpenModal(true)} className="flex items-center gap-2 justify-center">Профиль<FaUserAlt className='lg:hidden block w-5 h-5'/></button>
  
       <Modal show={openModal} size="md" onClose={onCloseModal} popup className="fixed top-0 right-0 left-0 z-50 h-modal h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full lg:window-size bg-opacity-50">
         <Modal.Body>

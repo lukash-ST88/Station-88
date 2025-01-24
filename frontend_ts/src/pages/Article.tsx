@@ -30,20 +30,22 @@ const Article = () => {
       ) : (
         <div>
           <div className="article-title-container">
-            <div className="p-5">{article?.title}</div>
-            <div className="p-5 ">{article?.subtitle}</div>
+            <div className="article-title">{article?.title}</div>
+            <div className="article-subtitle">{article?.subtitle}</div>
           </div>
           <div className="article-content">
-            <div dangerouslySetInnerHTML={{ __html: article?.content }} />
+            <div dangerouslySetInnerHTML={{ __html: article?.content }} className="article-font"/>
           </div>
           <div className="article-authors">
-            &nbsp;Автор:&nbsp;
-            {article?.authors?.map((author: IUser, index: number) => {
-              return (
-              <span key={index}>
-                 {author.profile?.first_name} {author.profile?.last_name} 
-              </span>);
-            })}
+            <div className="pl-2"> {article?.authors?.length > 1 ? 'Авторы:': 'Автор:'} </div>
+            <div className="flex justify-start divide-x-2 divide-gray-600 items-center">
+              {article?.authors?.map((author: IUser, index: number) => {
+                return (
+                <span key={index} className="lg:p-2 p-1">
+                  {author.profile?.first_name} {author.profile?.last_name} 
+                </span>);
+              })}
+            </div>
           </div>
         </div>
       )}
@@ -52,4 +54,4 @@ const Article = () => {
 };
 
 export default Article;
-// TODO: - add Author name and some style
+

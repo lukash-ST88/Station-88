@@ -5,11 +5,11 @@
 }
 
 .post-container {
-    @apply container grid grid-cols-16 my-3 lg:my-5 border-2 hover:lg:ring-4 z-0 hover:z-10 hover:lg:text-st88-background hover:lg:bg-white hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
+    @apply lg:h-[260px] md:h-[200px] h-[150px] container grid grid-cols-16 my-3 lg:my-5 border-2 hover:lg:ring-4 z-0 hover:z-10 hover:lg:text-st88-background hover:lg:bg-white hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
 }
 
 .post-image { 
-    @apply object-cover col-span-4 w-auto;
+    @apply object-cover col-span-4 lg:w-[180px] h-full md:w-[140px] w-[100px];
 }
 
 .post-type-fixed {
@@ -17,7 +17,7 @@
 }
 
 .post-date {
-    @apply col-span-1 flex bg-white justify-center text-black items-center text-[10px] lg:text-sm p-2 lg:p-4;
+    @apply col-span-1 flex overflow-hidden bg-white justify-center text-black items-center text-[9px] lg:text-sm p-1 lg:p-4;
 }
 
 
@@ -30,27 +30,27 @@
 
 .movie-post-title {
     font-family: 'tupo_vyazregular';
-    @apply text-3xl md:text-5xl;
+    @apply text-2xl lg:text-5xl md:text-3xl;
 }
 
 .movie-post-original-title {
     font-family: 'RestoraItalic';
-    @apply text-xl md:text-3xl pt-1 lg:pt-2;
+    @apply text-lg md:text-xl lg:text-3xl pt-1 lg:pt-2;
 }
 
 
 /* article post styles */
 
 .article-post-date {
-    @apply col-span-1 flex  justify-center  items-center text-[10px] lg:text-sm p-2 lg:p-4;
+    @apply col-span-1 flex justify-center  items-center text-[10px] lg:text-sm p-2 lg:p-4;
 }
 
 .article-post-container {
-    @apply container grid grid-cols-16 my-5 border-2 bg-white text-black hover:lg:ring-4 z-0 hover:z-10 hover:lg:text-white hover:lg:bg-st88-background hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
+    @apply lg:h-[260px] md:h-[200px] h-[150px] container grid grid-cols-16 my-3 lg:my-5 border-2 bg-white text-black hover:lg:ring-4 z-0 hover:z-10 hover:lg:text-white hover:lg:bg-st88-background hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
 }
 
 .article-post-author-container{
-    @apply col-span-1 flex justify-center items-center transform rotate-180 text-[10px] lg:text-sm p-2 lg:p-4;
+    @apply col-span-1 h-[150px] flex justify-center items-center transform rotate-180 text-[8px] md:text-[10px] lg:text-sm p-2 lg:p-4 lg:h-[260px] md:h-[200px] ;
 }
 
 .article-image-container {
@@ -60,7 +60,7 @@
 }
 
 .article-post-image {
-    @apply object-cover lg:h-80 md:h-60 h-auto w-full group-hover:lg:opacity-40;
+    @apply object-cover lg:h-[256px] w-full group-hover:lg:opacity-40 h-[146px] md:h-[196px];
 }
 
 .article-text-align {
@@ -72,13 +72,13 @@
 
 .article-text-align .title {
     font-family: 'tupo_vyazregular';
-    @apply text-2xl lg:text-5xl;
+    @apply text-xl md:text-3xl lg:text-5xl;
 }
 
 .article-text-align .subtitle {
     font-family: 'RestoraItalic';
     font-style: italic;
-    @apply text-sm lg:text-xl;
+    @apply text-[10px] md:text-sm lg:text-base;
 }
 
 
@@ -90,10 +90,22 @@
 
 .project-post-title {
     font-family: 'tupo_vyazregular';
-    @apply text-3xl md:text-5xl;
+    @apply text-2xl md:text-3xl lg:text-5xl;
 }
 
 .project-post-year {
     font-family: 'RestoraItalic';
-    @apply text-lg md:text-3xl pt-1 lg:pt-2;
+    @apply text-lg md:text-xl lg:text-3xl pt-1 lg:pt-2;
+}
+
+/* free post styles */
+
+.free-post-title {
+    font-family: 'RestoraLight';
+    @apply text-base md:text-xl lg:text-2xl mx-2;
+}
+
+.free-post-subtitle {
+    font-family: 'RestoraLight';
+    @apply text-sm md:text-base lg:text-xl mx-2;
 }

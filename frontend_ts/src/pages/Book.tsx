@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import BookService from "../services/books";
 import { IBook } from "../interfaces/BookInterfaces";
 import AccordionBook from "../components/components/Accordion/AccordionBook";
+import TimeIcon from "../components/icons/TimeIcon";
+import GenreIcon from "../components/icons/GenreIcon";
+import { FiFeather } from "react-icons/fi";
 
 const Book = () => {
     const [book, setBook] = useState<IBook>();
@@ -28,25 +31,30 @@ const Book = () => {
           <Loader />
         ) : (
           <div>
-            <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl">
-              <div className="p-5 book-title">{book?.title}</div>
+            <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl items-center">
+              <div className="movie-title">{book?.title}</div>
               {Boolean(book?.original_title) &&
-              <div className="p-5 book-original-title">
+              <div className="movie-original-title">
                 {book?.original_title}
               </div>
               }  
             </div>
             <div className="container flex flex-wrap justify-center">
-              <div className="lg:w-1/3 lg:flex lg:flex-col lg:justify-start my-4 divide-y-2 description-text">
-                <img className="my-2" src={`${API_URL}${book?.poster}`} alt="book poster"/>
-                <div className="text-2xl text-center py-2">
-                  Автор: {book?.writer}
-                </div>
-                <div className="text-2xl text-center py-2">
-                  Год: {book?.year}
-                </div>
-                <div className="text-2xl text-center py-2">
-                  Жанр: {book?.genre}
+              <div className="lg:w-1/3 lg:flex lg:flex-col lg:justify-start lg:my-4 divide-y-2 description-text">
+                <div className="flex justify-center items-center"><img className="my-2 w-[200px] lg:w-[360px]" src={`${API_URL}${book?.poster}`} alt="book poster"/></div>
+                <div className="divide-y-2">
+                  <div className="movie-description">
+                    <FiFeather className="w-6 h-6"/>
+                    <div>Автор: {book?.writer}</div>
+                  </div>
+                  <div className="movie-description">
+                    <TimeIcon/>
+                    <div>Год: {book?.year}</div>
+                  </div>
+                  <div className="movie-description">
+                  <GenreIcon/>
+                  <div>Жанр: {book?.genre}</div>
+                  </div>
                 </div>
               </div>
               <div className="lg:w-2/3">

@@ -27,11 +27,10 @@ function AccordionBook(props: IBookProps) {
         {description?.description ? 
         <Accordion open={open === description?.id} icon={<IconM open={open} description={description}/>}>
             <AccordionHeader
-              className="text-white hover:text-red-500"
+              className="text-white hover:text-st88-secondary accordion-description-text" 
               onClick={() => handleOpen(description?.id)}
             >
-              {description?.author.profile?.first_name}{" "}
-              {description?.author.profile?.last_name}
+              Рецензия: {description?.author.profile?.first_name}{" "} {description?.author.profile?.last_name}
             </AccordionHeader>
             <AccordionBody className="text-white">
               <div dangerouslySetInnerHTML={{ __html: description?.description }} />

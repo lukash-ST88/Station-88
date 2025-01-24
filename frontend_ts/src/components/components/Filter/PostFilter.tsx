@@ -40,7 +40,7 @@ const PostFilter = (props: FilterProps) => {
                     
                 />
             </div>
-            <MyDatePicker searchDateTime={props.searchDateTime} setSearchDateTime={props.setSearchDateTime} className="mx-2 mt-2 lg:mx-0 lg:pl-4 lg:mt-2 "/>
+            <MyDatePicker searchDateTime={props.searchDateTime} setSearchDateTime={props.setSearchDateTime} className="m-2 lg:ml-1 lg:pl-4 lg:mt-2 lg:mr-0 lg:m-2"/>
         </>
     )
 }

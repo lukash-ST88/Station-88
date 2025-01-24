@@ -23,9 +23,9 @@ const AccordionTeam = (props: IAccordionTeamProps) => {
               className="text-white hover:text-red-500 border-b-2"
             onClick={() =>setOpen(!open)}
             >
-              <div className="accordion-description-text font-semibold mx-2">Съёмочная команда</div>
+              <div className="accordion-description-text font-semibold">Съёмочная команда</div>
             </AccordionHeader>
-            <AccordionBody className="text-white border-b-2">
+            <AccordionBody className="text-white border-b-2 text-base">
               <AuthorList authors={props.project?.directors} workTitle="Режиссёр" workTitlePlural="Режиссёры"/>
               <AuthorList authors={props.project?.writers} workTitle="Сценарист" workTitlePlural="Сценаристы"/>
               <AuthorList authors={props.project?.cinematographers} workTitle="Оператор" workTitlePlural="Операторы"/>

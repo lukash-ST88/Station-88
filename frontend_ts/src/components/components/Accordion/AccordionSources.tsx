@@ -24,7 +24,7 @@ const AccordionSources = (props: IAccordionSourcesProps) => {
             className="text-white hover:text-st88-secondary border-b-2 lg:hidden "
             onClick={() =>setOpen(!open) }
             >
-            <div className="accordion-description-text mx-2">Источники</div>
+            <div className="accordion-description-text">Источники</div>
             </AccordionHeader>
             <AccordionBody className="text-white border-b-2 grid grid-cols-1 accordion-description-text">
                 <div className="m-2 flex justify-start items-center hover:text-st88-secondary">

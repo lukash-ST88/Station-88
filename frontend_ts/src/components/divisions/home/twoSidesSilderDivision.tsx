@@ -65,10 +65,12 @@ const TwoSidesSliderDivision = () => {
                             }}>
                             {[...sliders].reverse().map((slider: ISlider, index: number)=> {
                                 return (
-                                    <div className="flex flex-col justify-center items-center px-5 text-center" style={{height, backgroundColor: slider.color}} key={index}>
-                                        <div className="text-4xl">{slider.title}</div>
-                                        <div className="text-sm">{slider.description}</div>
-                                    </div>
+                                    <a href={slider.link}>
+                                        <div className="flex flex-col justify-center items-center px-5 text-center hover:cursor-pointer " style={{height, backgroundColor: slider.color}} key={index}>
+                                            <div className="text-4xl hover:border-b-2">{slider.title}</div>
+                                            <div className="text-sm">{slider.description}</div>
+                                        </div>
+                                    </a>
                                 )
                             })}
                         </div>
@@ -80,10 +82,10 @@ const TwoSidesSliderDivision = () => {
                             }}>
                                 {sliders.map((slider: ISlider, index: number)=>{
                                     return(
-                                        <>
-                                            <img className={`h-[100%] w-[100%] object-cover object-center`}
+                                        <a href={slider.link}>
+                                            <img className={`h-[100%] w-[100%] object-cover object-center hover:lg:bg-white hover:ring-white transition duration-100 ease-in-out transform  hover:lg:scale-110 cursor-pointer`}
                                                 src={slider.slider} alt={slider.title} key={index}/>
-                                        </>
+                                        </a>
                                     )
                                 })}
                         </div>

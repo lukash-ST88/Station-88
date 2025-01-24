@@ -3,12 +3,19 @@ import { connect} from "react-redux";
 import "./Navigation.css"
 import { ModalFR } from '../../components/Modal/Modal'
 import {
-  MobileNav,
+  Collapse,
   IconButton,
 } from "@material-tailwind/react";
 import { useEffect, useState } from 'react';
 import { ClosingCross, NavbarToggle } from '../../utils/svgImages';
- 
+import { RiArticleFill } from "react-icons/ri"; 
+import { RiMovie2Fill } from "react-icons/ri";
+import { MdMovie } from "react-icons/md";
+import { FaThList } from "react-icons/fa";
+import { FaUsersBetweenLines } from "react-icons/fa6";
+import { FaUserAlt } from "react-icons/fa";
+import { GiBeveledStar } from "react-icons/gi";
+
 interface IUsernameEmail {
     username: string
     email: string
@@ -40,21 +47,19 @@ function NavbarDefault(props: IAuthProps) {
   };
 
   const navList = (
-    <ul className="mt-2 mb-0 flex flex-col lg:grid lg:grid-cols-7 lg:items-center lg:gap-8 lg:mx-5 lg:justify-center">
-            {/* <Link to='#' className='hidden lg:block'><img className='img-links' src='/images/Durica_v2.jpg' alt='station88-logo'/></Link> */}
+    <ul className="mt-2 mb-0 flex flex-col items-end lg:grid lg:grid-cols-7 lg:items-center lg:gap-8 lg:mx-5 lg:justify-center lg:text-2xl">
             <Link to='/about' className='hidden lg:flex flex-col justify-center items-center'>
               <img className='w-[80px] h-auto border-b-2 pb-1 hover:border-st88-main border-white' src='/images/Durica_v4.png' alt='station88-logo'/>
-              {/* <div className='lg:absolute'> О нас </div> */}
             </Link>
-            <Link to='/' className='nav-links block lg:hidden' onClick={closeMobileNav}> Главная </Link>
-            <Link to='/articles' className='nav-links' onClick={closeMobileNav}>Статьи</Link>
-            <Link to='/movies' className='nav-links'onClick={closeMobileNav}>Фильмы</Link>
-            <Link to='/' className='station88 hidden lg:block'> STATION 88 </Link>
-            <Link to='/blog' className='nav-links' onClick={closeMobileNav}>Блог</Link>
-            <Link to='/projects' className='nav-links' onClick={closeMobileNav}>Проекты</Link>
-            <Link to='/about' className='nav-links block lg:hidden' onClick={closeMobileNav}> О нас </Link>
+            <Link to='/' className='nav-links lg:hidden flex items-center gap-2 justify-center' onClick={closeMobileNav}> Главная <GiBeveledStar className='lg:hidden block w-5 h-5'/></Link>
+            <Link to='/articles' className='nav-links flex items-center gap-2 justify-center' onClick={closeMobileNav}>Статьи <RiArticleFill className='lg:hidden block w-5 h-5'/></Link>
+            <Link to='/movies' className='nav-links flex items-center gap-2 justify-center' onClick={closeMobileNav}>Фильмы <RiMovie2Fill className='lg:hidden block w-5 h-5'/></Link>
+            <Link to='/' className='station88 hidden lg:inline-block'> STATION 88 </Link>
+            <Link to='/blog' className='nav-links flex items-center gap-2 justify-center' onClick={closeMobileNav}>Блог <FaThList className='lg:hidden block w-5 h-5'/></Link>
+            <Link to='/projects' className='nav-links flex items-center gap-2 justify-center' onClick={closeMobileNav}>Проекты <MdMovie className='lg:hidden block w-5 h-5'/></Link>
+            <Link to='/about' className='nav-links lg:hidden flex items-center gap-2 justify-center' onClick={closeMobileNav}> О нас <FaUsersBetweenLines className='lg:hidden block w-5 h-5'/></Link>
             {props.auth.isAuthenticated 
-                ? <Link to={`/profile/${props.auth.user.username}`} className='nav-links' onClick={closeMobileNav}>{props.auth.user.username}</Link>
+                ? <Link to={`/profile/${props.auth.user.username}`} className='nav-links flex items-center gap-2 justify-center' onClick={closeMobileNav}><div className={props.auth.user.username.length > 12 ? 'lg:text-sm' : ''}>{props.auth.user.username}</div><FaUserAlt className='lg:hidden block w-5 h-5'/></Link>
                 : <div className='nav-links' onClick={closeMobileNav}><ModalFR/></div>
             }
     </ul>
@@ -69,11 +74,16 @@ function NavbarDefault(props: IAuthProps) {
           {openNav ? <ClosingCross/> : <NavbarToggle/>}
         </IconButton>
       </div>
-      <MobileNav open={openNav}>
-        <div className="container mx-auto">
-          {navList}
+      <Collapse open={openNav}>
+        <div className="container mx-auto grid grid-cols-8 items-end justify-start">
+          <div className='col-span-5'>
+            <img className='max-h-[220px] hover:border-st88-main border-white' src='/images/Durica_v4.png' alt='station88-logo'/>
+          </div>
+          <div className='col-span-3'>
+            {navList}
+          </div>
         </div>
-      </MobileNav>
+      </Collapse>
     </nav>
   );
 }

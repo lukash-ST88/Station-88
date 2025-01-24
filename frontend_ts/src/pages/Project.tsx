@@ -11,12 +11,12 @@ import AccordionLinks from "../components/components/Accordion/AccordionLinks";
 import GenreIcon from "../components/icons/GenreIcon";
 import TimeIcon from "../components/icons/TimeIcon";
 import DurationIcon from "../components/icons/DurationIcon";
-import SynopsysIcon from "../components/icons/SynopsisIcon";
 import ScenarioIcon from "../components/icons/ScenarioIcon";
 import MovieIcon from "../components/icons/MovieIcon";
 import TrailerIcon from "../components/icons/TrailerIcon";
 import AccordionSynopsis from "../components/components/Accordion/AccordionSynopsis";
 import AccordionSources from "../components/components/Accordion/AccordionSources";
+import AccordionFrames from "../components/components/Accordion/AccordionFrames";
 
 const Project = () => {
   const [project, setproject] = useState<IProject>();
@@ -39,17 +39,17 @@ const Project = () => {
     <>
       {isProjectLoading 
       ? (
-        <Loader />
+        <div className="flex justify-center items-center h-screen"><Loader/></div>
       ) 
       : (
         <div>
           <div className="project-title-container">
-            <div className="p-5 movie-title ">{project?.title}</div>
+            <div className="movie-title ">{project?.title}</div>
           </div>
           <div className="container lg:flex ">
-            <div className="lg:w-1/3 lg:flex flex-col justify-start mt-4 divide-y-2 md:grid grid-cols-2 md:gap-2 md:items-start">
-              <img className="my-2" src={`${API_URL}${project?.poster}`} alt={project?.title}/>
-              <div className="grid grid-cols-1 divide-y-2 md:my-2">
+            <div className="lg:w-1/3 lg:flex flex-col justify-center mt-4 divide-y-2 md:grid grid-cols-2 md:gap-2 lg:items-center">
+              <div className="flex justify-center items-center"><img className="my-2 w-[200px] md:w-[280px] lg:w-[360px]" src={`${API_URL}${project?.poster}`} alt={project?.title}/></div>
+              <div className="grid grid-cols-1 divide-y-2 my-2">
                 <div className="movie-description">
                   <GenreIcon/>
                   <div className=""> Жанр: {project?.genre}</div>
@@ -65,9 +65,9 @@ const Project = () => {
                 <AccordionTeam project={project}/>
               </div>
             </div>
-            <div className="lg:w-2/3 lg:m-4 text-2xl accordion-description-text">
+            <div className="lg:w-2/3 text-2xl accordion-description-text">
               <div className="lg:grid grid-cols-3 text-center divide-x-2 border-b-2 hidden">
-                <div className="m-2 flex justify-center items-center hover:text-st88-secondary">
+                <div className="m- flex justify-center items-center hover:text-st88-secondary">
                   <ScenarioIcon/>
                   {project?.scenario?.text ? 
                   <a className="m-2" href={project?.scenario.text} download>
@@ -92,6 +92,7 @@ const Project = () => {
               <AccordionSynopsis synopsis={project?.synopsys}/>
               <AccordionSources project={project}/>
               {project?.links?.length  ?  <AccordionLinks links={project?.links}/> : <></>}
+              {project?.frames && project.frames.length > 0 && <AccordionFrames item={project!}/>}
             </div>
           </div>
         </div>

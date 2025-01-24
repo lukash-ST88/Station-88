@@ -76,7 +76,9 @@ class Frame(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название кадра')
     image = models.ImageField(upload_to='movie/frames/', verbose_name='Кадр')
     movie = models.ForeignKey(
-        Movie, on_delete=models.CASCADE, verbose_name='Фильм', related_name='frames')
+        Movie, on_delete=models.CASCADE, verbose_name='Фильм', related_name='frames', null=True, blank=True)
+    project = models.ForeignKey(
+        'ST88project', on_delete=models.CASCADE, verbose_name='Проект', related_name='frames', null=True, blank=True)
 
     class Meta:
         verbose_name = "Кадр"
@@ -225,9 +227,9 @@ class Banners(models.Model):
 
 class Sliders(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
-    description = models.CharField(verbose_name='Описание раздела', null=True)
+    description = models.CharField(verbose_name='Описание раздела', null=True, blank=True)
     slider = models.ImageField(upload_to='sliders/', verbose_name='Слайдер')
-    link = models.CharField(max_length=255, verbose_name='Ссылка', null=True)
+    link = models.CharField(max_length=255, verbose_name='Ссылка', null=True, blank=True)
     color = models.CharField(max_length=20, verbose_name='Цвет')
 
     class Meta:

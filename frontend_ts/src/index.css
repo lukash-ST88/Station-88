@@ -2,15 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   margin: 0;
-  font-family: 'Tahoma', 'Open Sans','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans';
+  font-family: sans-serif, Arial, Helvetica;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background-color: #111;
   color: white;
 }
 
+@font-face {
+  font-family: 'RestoraLight';
+  src: url('css/Restora/Nasir\ Udin\ -\ RestoraExtraLight.otf') format("opentype");
+}
 
 @font-face {
   font-family: 'tupo_vyazregular';
@@ -35,10 +40,6 @@ body {
   src: url('css/Restora/Nasir Udin - RestoraThinItalic.otf') format("opentype");
 }
 
-@font-face {
-  font-family: 'RestoraLight';
-  src: url('css/Restora/Nasir\ Udin\ -\ RestoraExtraLight.otf') format("opentype");
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -5,11 +5,12 @@
 }
 
 .article-card-title {
-  font-family: 'Restora';
-  @apply bg-st88-background
+  font-family: sans-serif, Arial, Helvetica;
+  @apply bg-st88-background;
 }
 
 .article-card-subtitle {
+  font-family:  sans-serif, Arial, Helvetica;
   @apply text-center italic text-sm;
 }
 
@@ -37,10 +38,15 @@
 
 /* project card styles */
 
-.project-card-container{
+.project-card-container {
   @apply grid grid-cols-1 md:max-w-xl mx-2 border hover:lg:border-st88-main bg-opacity-80 hover:lg:ring-4 z-0 hover:cursor-pointer hover:z-10 hover:lg:ring-st88-main hover:lg:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110;
 }
 
-.project-card-image{
-  @apply object-cover justify-items-center w-full md:h-[360px] lg:h-[480px] h-[240px];
+.project-card-image {
+  @apply object-cover justify-items-center w-full md:h-[300px] lg:h-[450px] h-[180px];
+}
+
+.project-card-title {
+  font-family: sans-serif, Arial, Helvetica;
+  @apply md:text-2xl px-1  ;
 }

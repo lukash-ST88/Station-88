@@ -20,7 +20,7 @@ const AccordionSynopsis = (props: IAccordionSynopsisProps) => {
                 className="text-white hover:text-st88-secondary border-b-2"
                 onClick={() =>setOpen(!open) }
                 >
-                <div className="accordion-description-text mx-2">Синописис</div>
+                <div className="accordion-description-text">Синописис</div>
                 </AccordionHeader>
                 <AccordionBody className="text-white border-b-2">
                     {props.synopsis}

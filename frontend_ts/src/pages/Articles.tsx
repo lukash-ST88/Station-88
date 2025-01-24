@@ -90,7 +90,7 @@ function Articles() {
     <div className="flex flex-wrap justify-center">
       <div className="lg:w-5/6 lg:order-1 order-2 mt-4 lg:mt-0">
         <div className="flex justify-center items-center mb-5 lg:hidden">
-          <div className="border-b-2 cursor-default px-4 py-2 text-st88-main font-bold border-st88-main text-2xl">
+          <div className="border-b-2 cursor-default px-4 py-2 text-st88-main font-bold border-st88-main text-xl">
             Статьи
           </div>
         </div>
@@ -103,7 +103,7 @@ function Articles() {
             )}
           </div>
         </TransitionGroup>
-        {articles.length == 0 && 
+        {articles.length === 0 && 
           <div className="flex justify-center">
             <div className="border p-2 border-st88-secondary text-st88-secondary">
               Статьи не найдены
@@ -121,7 +121,7 @@ function Articles() {
       </div>
       <div className="lg:w-1/6 lg:order-2 color-test order-1 w-full mb-6">
         <div className="flex justify-center items-center lg:hidden">
-          <div className="border-b-2 cursor-default px-4 py-2 text-st88-secondary font-bold border-st88-secondary text-2xl">
+          <div className="border-b-2 cursor-default px-4 py-2 text-st88-secondary font-bold border-st88-secondary text-xl">
             Фильтры
           </div>
         </div>

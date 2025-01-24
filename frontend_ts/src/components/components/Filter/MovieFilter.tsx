@@ -50,7 +50,7 @@ const MovieFilter = (props: FilterProps) => {
                         step={1}
                         onChange={(newReleaseYears) => props.setReleaseYears(newReleaseYears)}
                         renderThumb={(props, state) => (
-                            <div {...props} className="p-1 bg-st88-secondary border-2 flex items-center justify-center text-white text-xs font-bold focus:ring-white focus:outline-none focus:ring-2">
+                            <div {...props} className="p-1 bg-st88-secondary border-2 rounded flex items-center justify-center text-white text-xs font-bold focus:ring-white focus:outline-none focus:ring-2">
                                 {state.valueNow}
                             </div>
                         )}

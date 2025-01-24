@@ -4,56 +4,59 @@
 
 
 
-/* .profile-img {
-    width: 20vw;
-    height: 20vw;
-} */
 
 .article-title-container{
-    @apply container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl;
+    @apply container md:flex md:flex-wrap grid grid-cols-1 justify-center md:divide-x-2 text-center items-center border-b-2 md:border-b-0;
+}
+
+.article-title {
+  font-family: 'RestoraLight';
+  @apply md:p-5 lg:text-4xl text-2xl p-1;
+}
+
+.article-subtitle {
+  font-family: 'RestoraLight';
+  font-style: italic;
+  @apply md:p-5 lg:text-xl text-base p-1;
 }
 
 .article-content {
-    @apply container lg:text-4xl lg:px-20 text-xl;
+    @apply container lg:px-[300px] md:px-[100px] px-[20px] pt-2;
+}
+
+.article-font {
+  font-family: sans-serif, Arial, Helvetica;
+  @apply lg:text-xl text-base;
+  
 }
 
 .article-authors {
-    font-family: 'Restora';
+    font-family: 'RestoraLight';
     font-style: italic;
-    @apply mx-20 my-5 border border-r-0 border-t-0 border-b-0 border-green-500 text-2xl;
+    @apply lg:mx-20 my-5 border border-r-0 border-t-0 border-b-0 border-green-500 lg:text-2xl text-xl flex justify-start items-center;
 }
 
 .movie-title-container{
-    @apply container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl;
+    @apply container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl items-center;
 }
 
 .movie-title {
     font-family: 'tupo_vyazregular';
     color: white;
     font-weight: 500;
-    font-size: 3rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    padding-top: 0.0rem;
-    padding-bottom: 0.25rem;
-    @apply p-2 lg:p-5;
+    @apply p-0 lg:p-5 lg:text-6xl text-4xl ;
   }
   
 .movie-original-title {
     font-family: 'RestoraLight';
     color: white;
     font-weight: 500;
-    font-size: 2rem;  
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    padding-top: 0.0rem;
-    padding-bottom: 0.25rem;
-    @apply p-2 lg:p-5;
+    @apply p-0 lg:p-5 lg:text-4xl text-xl;
   }
 
 .movie-description  {
     font-family: 'RestoraLight';
-    @apply text-xl lg:text-2xl text-center py-2 pl-4 flex justify-start gap-2 items-center;    
+    @apply text-base lg:text-2xl text-center py-2 pl-4 flex justify-start gap-2 items-center;    
 }
 
 .project-title-container {
@@ -61,10 +64,6 @@
     color: white;
     font-weight: 500;
     font-size: 4rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    padding-top: 0.0rem;
-    padding-bottom: 0.25rem;
     @apply container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center lg:text-4xl text-xl;
   }
 

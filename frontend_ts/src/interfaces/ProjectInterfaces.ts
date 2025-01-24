@@ -1,3 +1,4 @@
+import { IFrame } from "./FrameInterface"
 import { IScenario } from "./ScenarioInterfaces"
 import { IUser } from "./UserInterfaces"
 
@@ -22,7 +23,8 @@ export interface IProject {
     release_date: string | null
     url: string
     poster: string | undefined
-    links: string[] | undefined 
+    links: string[] | undefined
+    frames: IFrame[] | undefined 
 };
 
 export interface  IProjectRetrieve {

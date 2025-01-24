@@ -1,12 +1,7 @@
 .nav-links {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  font-size: 1.5rem;
   line-height: 2.25rem;
-  font-weight: 500;
-  @apply text-st88-main;
+  font-weight: 600;
+  @apply text-st88-main px-[1.25rem] lg:py-[0.5rem];
   text-align: center;
 }
 

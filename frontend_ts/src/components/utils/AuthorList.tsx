@@ -13,7 +13,7 @@ const AuthorList = (props: IAuthorListProps) => {
             <>
                 {props.authors.length > 0 && 
                 <>
-                    <div className="text-xl text-start py-2 accordion-description-text">
+                    <div className="lg:text-xl text-start py-2">
                         {props.authors.length > 1 ? 
                         <div className="container flex">
                             <div>{props.workTitlePlural}: &nbsp; </div>

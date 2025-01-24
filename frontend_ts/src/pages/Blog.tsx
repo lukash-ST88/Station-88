@@ -72,7 +72,7 @@ function Blog() {
     <div className="flex flex-wrap justify-center">
       <div className="lg:w-4/6 order-2 lg:order-1">
       <div className="flex justify-center items-center mb-5 lg:hidden">
-          <div className="border-b-2 cursor-default px-4 py-2 text-st88-main font-bold border-st88-main text-2xl">
+          <div className="border-b-2 cursor-default px-4 py-2 text-st88-main font-bold border-st88-main text-xl">
             Посты
           </div>
         </div>
@@ -101,7 +101,7 @@ function Blog() {
       </div>
       <div className="lg:w-2/6 lg:order-2 order-1">
       <div className="flex justify-center items-center lg:hidden">
-          <div className="border-b-2 cursor-default px-4 py-2 text-st88-secondary font-bold border-st88-secondary text-2xl">
+          <div className="border-b-2 cursor-default px-4 py-2 text-st88-secondary font-bold border-st88-secondary text-xl">
             Фильтры
           </div>
         </div>

@@ -6,8 +6,8 @@ const IntroductionDivision = () => {
                     <img className='w-[180px] h-auto border-b-2 pb-1 border-white' src='/images/Durica_v4.png' alt='station88-logo'/>
                     <div className="station88 hover:text-white">СТАНЦИЯ 88</div>
                 </div>
-                <div className="bg-st88-background p-2 border-2 max-w-[500px] text-center h-[300px] flex justify-center items-center">
-                    <div>Cообщество посвященное анлизу кинемотаграфических, литературных и музыкальных работ в виде рецензий статей и разборов, а также представлению проектов деятельности нашей команды</div>
+                <div className="bg-st88-background lg:p-4 p-2 border-2 max-w-[500px] text-center h-[300px] flex justify-center items-center">
+                    <div className="italic">Cообщество посвященное анлизу кинемотаграфических, литературных и музыкальных работ в виде рецензий статей и разборов, а также представлению проектов деятельности нашей команды</div>
                 </div>
             </div>
         </>

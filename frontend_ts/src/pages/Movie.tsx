@@ -43,9 +43,9 @@ const Movie = () => {
             }
           </div>
           <div className="container flex flex-wrap justify-center">
-            <div className="lg:w-1/3 lg:flex lg:flex-col lg:justify-start my-4 divide-y-2 description-text">
+            <div className="lg:w-1/3 lg:flex lg:flex-col lg:justify-start lg:my-4 divide-y-2">
               <div className="md:grid md:grid-cols-2 md:gap-2 lg:divide-y-2 lg:block">
-                <img className="my-2" src={`${API_URL}${movie?.poster}`} alt="movie poster"/>
+                <div className="flex justify-center"><img className="my-2 w-[200px] lg:w-[360px]" src={`${API_URL}${movie?.poster}`} alt="movie poster"/></div>
                 <div className="divide-y-2">
                   <div className="movie-description">
                     <MovieIcon/> 
@@ -59,15 +59,17 @@ const Movie = () => {
                     <GenreIcon/>
                     <div>Жанр: {movie?.genre}</div>
                   </div>
-                  {Boolean(movie?.title) && 
-                    <div className="my-2">
-                      <iframe
-                        title={movie?.title}
-                        width="100%"
-                        height="300"
-                        loading="lazy"
-                        src={movie?.link}>
-                      </iframe>
+                  {Boolean(movie?.link) && 
+                    <div className="flex justify-center">
+                      <div className="my-2 w-[200px] lg:w-[360px]">
+                        <iframe
+                          title={movie?.title}
+                          width="100%"
+                          // height="300"
+                          loading="lazy"
+                          src={movie?.link}>
+                        </iframe>
+                      </div>
                     </div>
                   }
                   {Boolean(movie?.music) &&
@@ -81,8 +83,8 @@ const Movie = () => {
               </div>
             </div>
             <div className="lg:w-2/3">
-              <AccordionMovie movie={movie} />
-              {movie?.frames && movie.frames.length > 0 && <AccordionFrames movie={movie!} />}
+              <div className="lg:mx-4"><AccordionMovie movie={movie} /></div>
+              {movie?.frames && movie.frames.length > 0 && <div className="lg:mx-4"><AccordionFrames item={movie!}/></div>}
               {movie?.related_articles.length ? <AccordionArticles articles={movie?.related_articles}/> : <></>}
             </div>
           </div>
