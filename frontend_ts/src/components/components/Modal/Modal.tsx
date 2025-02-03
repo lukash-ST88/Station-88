@@ -16,7 +16,7 @@ export const ModalFR = () => {
     <>
       <button onClick={() => setOpenModal(true)} className="flex items-center gap-2 justify-center">Профиль<FaUserAlt className='lg:hidden block w-5 h-5'/></button>
  
-      <Modal show={openModal} size="md" onClose={onCloseModal} popup className="fixed top-0 right-0 left-0 z-50 h-modal h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full lg:window-size bg-opacity-50">
+      <Modal show={openModal} size="md" onClose={onCloseModal} popup className="fixed top-0 right-0 left-0 z-50 h-modal h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full lg:window-size bg-opacity-50" style={{zIndex: 101}}>
         <Modal.Body>
           <div className="space-y-6">
             {isLogedIn ? <LoginTag /> : <SignupTag/>}

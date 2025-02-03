@@ -93,6 +93,9 @@ const Profile = () => {
 
     return (
       <>
+        <title> Профиль </title> 
+        <meta name="description" content={`Профиль пользоватля: ${user?.username}`}/>
+
         {isUserLoading ? (
           <Loader />
         ) : (

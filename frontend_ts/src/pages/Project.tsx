@@ -37,6 +37,9 @@ const Project = () => {
 
   return (
     <>
+      <title> {project?.title} </title> 
+      <meta name="description" content={project?.synopsys}/>
+
       {isProjectLoading 
       ? (
         <div className="flex justify-center items-center h-screen"><Loader/></div>
@@ -44,12 +47,12 @@ const Project = () => {
       : (
         <div>
           <div className="project-title-container">
-            <div className="movie-title ">{project?.title}</div>
+            <h1 className="movie-title ">{project?.title}</h1>
           </div>
           <div className="container lg:flex ">
-            <div className="lg:w-1/3 lg:flex flex-col justify-center mt-4 divide-y-2 md:grid grid-cols-2 md:gap-2 lg:items-center">
+            <div className="lg:w-1/3 lg:flex flex-col justify-center mt-4 divide-y-2 md:grid grid-cols-2 md:gap-2 lg:items-center md:items-start">
               <div className="flex justify-center items-center"><img className="my-2 w-[200px] md:w-[280px] lg:w-[360px]" src={`${API_URL}${project?.poster}`} alt={project?.title}/></div>
-              <div className="grid grid-cols-1 divide-y-2 my-2">
+              <div className="grid grid-cols-1 divide-y-2 my-2 w-full">
                 <div className="movie-description">
                   <GenreIcon/>
                   <div className=""> Жанр: {project?.genre}</div>
@@ -65,9 +68,9 @@ const Project = () => {
                 <AccordionTeam project={project}/>
               </div>
             </div>
-            <div className="lg:w-2/3 text-2xl accordion-description-text">
+            <div className="lg:w-2/3 accordion-description-text">
               <div className="lg:grid grid-cols-3 text-center divide-x-2 border-b-2 hidden">
-                <div className="m- flex justify-center items-center hover:text-st88-secondary">
+                <div className={`flex justify-center items-center ${project?.scenario?.text ? 'hover:text-st88-secondary': 'text-gray-700'}`}>
                   <ScenarioIcon/>
                   {project?.scenario?.text ? 
                   <a className="m-2" href={project?.scenario.text} download>
@@ -76,7 +79,7 @@ const Project = () => {
                   :<div className="m-2 text-gray-700 hover:text-gray-700"> Сценарий</div>
                   }
                 </div>
-                <div className={`flex justify-center items-center m-2 ${project?.linked_trailer? "hover:text-st88-secondary" : "text-gray-700"}`}>
+                <div className={`flex justify-center items-center m-2 ${project?.linked_trailer ? "hover:text-st88-secondary" : "text-gray-700"}`}>
                   <TrailerIcon/>
                   <a href={project?.linked_trailer} download className="m-2">
                     Трейлер

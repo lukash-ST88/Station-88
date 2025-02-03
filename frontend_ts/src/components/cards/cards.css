@@ -17,11 +17,11 @@
 /* movie card styles */
 
 .movie-card-container {
-  @apply grid grid-cols-2 md:flex-row md:max-w-xl border bg-opacity-80 hover:lg:border-st88-main hover:lg:ring-st88-main hover:lg:ring-4 z-0 hover:z-10 hover:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer bg-st88-background;
+  @apply grid grid-cols-2 md:flex-row md:max-w-xl max-w-xs border bg-opacity-80 hover:lg:border-st88-main hover:lg:ring-st88-main hover:lg:ring-4 z-0 hover:z-10 hover:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer bg-st88-background;
 }
 
 .movie-card-image {
-  @apply object-cover w-auto h-72;
+  @apply object-cover lg:w-auto lg:h-72 h-60 w-full;
 }
 .movie-card-text-container {
   @apply flex flex-col justify-around items-center text-center p-5 leading-normal;
@@ -43,10 +43,10 @@
 }
 
 .project-card-image {
-  @apply object-cover justify-items-center w-full md:h-[300px] lg:h-[450px] h-[180px];
+  @apply object-cover justify-items-center w-full md:h-[250px] lg:h-[450px] h-[180px];
 }
 
 .project-card-title {
   font-family: sans-serif, Arial, Helvetica;
-  @apply md:text-2xl px-1  ;
+  @apply lg:text-2xl px-1  ;
 }

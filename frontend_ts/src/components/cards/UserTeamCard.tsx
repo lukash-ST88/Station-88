@@ -16,9 +16,11 @@ const UserTeamCard = (props: IUserTeamCardProps) => {
             </div>
         </div>
         <div className="flex flex-col items-center justify-center">
-            {stringToArray(props.user.profile!.role).map((role: string, index: number) => (
-                <div key={index} className="italic text-st88-main text-base lg:text-2xl font-bold">{role}</div>
-            ))}
+          {props.user.profile?.role && 
+            stringToArray(props.user.profile?.role).map((role: string, index: number) => (
+              <div key={index} className="italic text-st88-main text-base lg:text-2xl font-bold">{role}</div>
+            ))
+          }
         </div>
     </div>
   )

@@ -6,6 +6,7 @@ import ArticleService from "../services/articles";
 import { IArticle} from "../interfaces/ArticleInterfaces";
 import {IUser} from "../interfaces/UserInterfaces";
 import "./pages.css"
+import { articlesPageMeta } from "../utils/metaContent";
 
 
 const Article = () => {
@@ -25,25 +26,28 @@ const Article = () => {
 
   return (
     <>
+      <title> {article?.title} </title> 
+      <meta name="description" content={article?.synopsys}/>
+
       {isArticleLoading ? (
         <Loader />
       ) : (
         <div>
           <div className="article-title-container">
-            <div className="article-title">{article?.title}</div>
-            <div className="article-subtitle">{article?.subtitle}</div>
+            <h1 className="article-title">{article?.title}</h1>
+            <h2 className="article-subtitle">{article?.subtitle}</h2>
           </div>
           <div className="article-content">
-            <div dangerouslySetInnerHTML={{ __html: article?.content }} className="article-font"/>
+            <div dangerouslySetInnerHTML={{ __html: article?.content }} className="ckeditor-content"/>
           </div>
           <div className="article-authors">
             <div className="pl-2"> {article?.authors?.length > 1 ? 'Авторы:': 'Автор:'} </div>
             <div className="flex justify-start divide-x-2 divide-gray-600 items-center">
               {article?.authors?.map((author: IUser, index: number) => {
                 return (
-                <span key={index} className="lg:p-2 p-1">
+                <h3 key={index} className="lg:p-2 p-1">
                   {author.profile?.first_name} {author.profile?.last_name} 
-                </span>);
+                </h3>);
               })}
             </div>
           </div>

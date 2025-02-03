@@ -16,10 +16,10 @@ const ProjectPost = (props: IProjectIndexProps) => {
         </div>
         <img className="post-image" src={props.project.poster} alt={props.project.title}/>
         <div className="col-span-10 justify-self-center self-center text-center">
-          <div className="flex justify-center"><div className="post-type-fixed">Проект</div></div>
-          <div className="project-post-title border-b-2">
+          <h2 className="flex justify-center"><div className="post-type-fixed">Проект</div></h2>
+          <h3 className="project-post-title border-b-2">
             {props.project.title}
-          </div>
+          </h3>
           <div className="project-post-year">
             {props.project.year}
           </div>

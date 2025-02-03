@@ -21,7 +21,7 @@ function AccordionBook(props: IBookProps) {
   };
   
   return (
-    <div className="mx-4">
+    <div className="">
       {props.book?.ST88descriptions.map((description) => {
         return (<>
         {description?.description ? 
@@ -33,7 +33,7 @@ function AccordionBook(props: IBookProps) {
               Рецензия: {description?.author.profile?.first_name}{" "} {description?.author.profile?.last_name}
             </AccordionHeader>
             <AccordionBody className="text-white">
-              <div dangerouslySetInnerHTML={{ __html: description?.description }} />
+              <div dangerouslySetInnerHTML={{ __html: description?.description }} className="ckeditor-content md:px-10 px-[18px]"/>
             </AccordionBody>
           </Accordion>
           : null }

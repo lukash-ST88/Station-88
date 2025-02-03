@@ -22,7 +22,7 @@ const AccordionSynopsis = (props: IAccordionSynopsisProps) => {
                 >
                 <div className="accordion-description-text">Синописис</div>
                 </AccordionHeader>
-                <AccordionBody className="text-white border-b-2">
+                <AccordionBody className="ckeditor-content md:px-10 px-[18px] text-white">
                     {props.synopsis}
                 </AccordionBody>
           </Accordion>   

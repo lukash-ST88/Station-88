@@ -21,8 +21,8 @@ const MovieCard = (props: IMovieIndexProps)=> {
         <div className="movie-card-text-container">
           <div className="flex flex-col justify-center items-center">
             <MovieIcon/>
-            <div className="">{props.movie.title} </div>
-            <div className="movie-card-original-title">{props.movie.original_title}</div>
+            <h2 className="">{props.movie.title} </h2>
+            <h2 className="movie-card-original-title">{props.movie.original_title}</h2>
           </div>
           <div className="flex flex-col justify-center items-center">
             <TimeIcon/>
@@ -30,7 +30,7 @@ const MovieCard = (props: IMovieIndexProps)=> {
           </div>
           <div>
             <div className="movie-card-rating">Рейтинг</div>
-            <h4>CT {props.movie.avg_rating} </h4>
+            <div className="">CT {props.movie.avg_rating} </div>
           </div>
         </div>
       </div>

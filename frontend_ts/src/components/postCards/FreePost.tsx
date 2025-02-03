@@ -21,11 +21,11 @@ const FreePost = (props: IFreePostIndexProps) => {
           alt={props.freePost.title}
         />
         <div className="col-span-11 justify-self-center self-center text-center divide-y-2">
-        <div className="flex justify-center"><div className="fixed top-0 bg-white text-black p-1">Пост</div></div>
-          <div className="free-post-title">{props.freePost.title}</div>
-          <div className="free-post-subtitle">
+        <h2 className="flex justify-center"><div className="fixed top-0 bg-white text-black p-1">Пост</div></h2>
+          <h3 className="free-post-title">{props.freePost.title}</h3>
+          <h4 className="free-post-subtitle">
             {props.freePost.subtitle} 
-          </div>
+          </h4>
         </div>
         <div className="post-date">
           <div className="vertical flex divide-y-2 gap-1">{dateTime(props.freePost.release_date).map((dateItem: string)=><div className="pt-1">{dateItem}</div>)}</div>

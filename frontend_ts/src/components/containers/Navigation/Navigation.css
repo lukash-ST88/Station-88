@@ -6,8 +6,8 @@
 }
 
 .nav-links:hover {
-  @apply text-st88-background;
-  @apply bg-st88-main
+  @apply lg:text-st88-background;
+  @apply lg:bg-st88-main
 }
 
 .img-links {

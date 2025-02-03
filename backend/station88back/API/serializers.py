@@ -160,7 +160,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ['id', 'title', 'url', 'subtitle', 'authors',
-                  'release_date', 'article_type', 'poster', 'content', 'related_movies']
+                  'release_date', 'article_type', 'poster', 'content', 'related_movies', 'synopsys']
 
 
 class BannersSerializer(serializers.ModelSerializer):

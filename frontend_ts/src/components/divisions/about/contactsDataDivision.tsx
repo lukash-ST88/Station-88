@@ -8,7 +8,7 @@ const ContactsDataDivision = () => {
             <div className="flex justify-center gap-10 items-center p-5 bg-gradient-to-r from-st88-background via-white to-st88-background">
                 <div className="hidden lg:flex flex-col justify-center items-center gap-2 border-2 px-5 cursor-default bg-gradient-to-b from-st88-background via-st88-third to-st88-background min-h-[320px] min-w-[240px]">
                     <BsFillStarFill className="text-8xl"/>
-                    <div className="border-t-2 text-2xl my-4 py-2">Контакты</div>
+                    <h1 className="border-t-2 text-2xl my-4 py-2">Контакты</h1>
                 </div>
                 <div className="grid grid-cols-1 justify-center items-center gap-2 content-center border-2 px-4 lg:px-16 cursor-default bg-gradient-to-b from-st88-background via-st88-third to-st88-background lg:min-h-[320px] min-w-[240px] min-h-[200px]">
                         <div className="flex justify-around items-center gap-2">

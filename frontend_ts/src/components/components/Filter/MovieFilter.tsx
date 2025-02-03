@@ -48,7 +48,7 @@ const MovieFilter = (props: FilterProps) => {
                         min={props.defaultYeras[0]}
                         max={props.defaultYeras[1]}
                         step={1}
-                        onChange={(newReleaseYears) => props.setReleaseYears(newReleaseYears)}
+                        onAfterChange={(newReleaseYears) => props.setReleaseYears(newReleaseYears)}
                         renderThumb={(props, state) => (
                             <div {...props} className="p-1 bg-st88-secondary border-2 rounded flex items-center justify-center text-white text-xs font-bold focus:ring-white focus:outline-none focus:ring-2">
                                 {state.valueNow}

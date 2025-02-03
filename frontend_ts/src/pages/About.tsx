@@ -4,6 +4,7 @@ import { useFetching } from "../hooks/useFetching";
 import UserService from "../services/users";
 import ContactsDataDivision from "../components/divisions/about/contactsDataDivision";
 import TeamDataDivision from "../components/divisions/about/teamDataDivision";
+import { aboutPageMeta } from "../utils/metaContent";
 
 const About = () => {
     const [users, setUsers] = useState<IUser[]>([]);
@@ -21,6 +22,9 @@ const About = () => {
     )
     return (
         <>  
+            <title> Наши контакты </title> 
+            <meta name="description" content={aboutPageMeta}/>
+            
             <ContactsDataDivision/>
             <TeamDataDivision users={users}/>
         </>

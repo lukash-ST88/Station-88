@@ -26,4 +26,3 @@ reportWebVitals(console.log);
 
 // TODO: - transitions for slide
 // TODO: - add comments
-//TODO: error handler

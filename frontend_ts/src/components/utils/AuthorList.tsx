@@ -20,22 +20,22 @@ const AuthorList = (props: IAuthorListProps) => {
                             <div>
                             {props.authors.map((author: IUser, index: number) => {
                                     return (
-                                        <div key={index} className="">
+                                        <h1 key={index} className="">
                                         {author.profile?.last_name} {author.profile?.first_name}  
-                                        </div>
+                                        </h1>
                                     );
                             })}
                             </div>
-                        </div> : <>
+                        </div> : <div className="flex justify-start">
                             {props.workTitle}: &nbsp;
                             {props.authors.map((author: IUser, index: number) => {
                                     return (
-                                        <span key={index}>
+                                        <h2 key={index}>
                                         {author.profile?.last_name} {author.profile?.first_name}  &nbsp; 
-                                        </span>
+                                        </h2>
                                     );
                             })}
-                        </>} 
+                        </div>} 
                     </div>
                 </>}
             </>  }

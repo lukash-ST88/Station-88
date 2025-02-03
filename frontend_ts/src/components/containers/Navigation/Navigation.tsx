@@ -59,7 +59,7 @@ function NavbarDefault(props: IAuthProps) {
             <Link to='/projects' className='nav-links flex items-center gap-2 justify-center' onClick={closeMobileNav}>Проекты <MdMovie className='lg:hidden block w-5 h-5'/></Link>
             <Link to='/about' className='nav-links lg:hidden flex items-center gap-2 justify-center' onClick={closeMobileNav}> О нас <FaUsersBetweenLines className='lg:hidden block w-5 h-5'/></Link>
             {props.auth.isAuthenticated 
-                ? <Link to={`/profile/${props.auth.user.username}`} className='nav-links flex items-center gap-2 justify-center' onClick={closeMobileNav}><div className={props.auth.user.username.length > 12 ? 'lg:text-sm' : ''}>{props.auth.user.username}</div><FaUserAlt className='lg:hidden block w-5 h-5'/></Link>
+                ? <Link to={`/profile/${props.auth.user?.username}`} className='nav-links flex items-center gap-2 justify-center' onClick={closeMobileNav}><div className={props.auth.user?.username?.length > 12 ? 'lg:text-sm' : ''}>{props.auth.user?.username}</div><FaUserAlt className='lg:hidden block w-5 h-5'/></Link>
                 : <div className='nav-links' onClick={closeMobileNav}><ModalFR/></div>
             }
     </ul>
@@ -67,14 +67,14 @@ function NavbarDefault(props: IAuthProps) {
  
   return (
     <nav>
-      <div className="flex flex-wrap justify-around items-center md:flex-nowrap">
-       <Link to='/' className='lg:hidden station88 ml-5'> STATION 88 </Link>
+      <div className="flex flex-wrap justify-between items-center md:flex-nowrap lg:static fixed container w-[100vw] bg-st88-background lg:h-auto h-[60px] border-b-2 px-2 lg:border-b-0" style={{zIndex: 100}}>
+        <Link to='/' className='lg:hidden station88'> STATION 88 </Link>
         <div className="hidden lg:block">{navList}</div>
-        <IconButton variant="text" className="ml-auto h-6 w-6 mr-5 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden" ripple={false} onClick={() => setOpenNav(!openNav)}>
+        <IconButton variant="text" className="h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden" ripple={false} onClick={() => setOpenNav(!openNav)}>
           {openNav ? <ClosingCross/> : <NavbarToggle/>}
         </IconButton>
       </div>
-      <Collapse open={openNav}>
+      <Collapse open={openNav} className='fixed bg-st88-background lg:static mt-[60px] border-b-2 container lg:border-b-0 lg:mt-0' style={{zIndex: 100}}>
         <div className="container mx-auto grid grid-cols-8 items-end justify-start">
           <div className='col-span-5'>
             <img className='max-h-[220px] hover:border-st88-main border-white' src='/images/Durica_v4.png' alt='station88-logo'/>

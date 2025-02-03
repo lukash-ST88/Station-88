@@ -6,7 +6,6 @@ from station88back.config import GMAIL_PASS
 
 def send_email(body: str, user_email:str):
     st88_email = "station88.rg@gmail.com"
-    # password = 'ytqq ysot cvtc mufe'
     password = GMAIL_PASS
     subject = "Сообщение с сайта Станции 88"
 

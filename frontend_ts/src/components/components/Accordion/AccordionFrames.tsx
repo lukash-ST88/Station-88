@@ -17,7 +17,7 @@ interface IAccordionFramesProps {
 
 
 function AccordionFrames(props: IAccordionFramesProps) {
-  const [open, setOpen] = React.useState<boolean>(true);
+  const [open, setOpen] = React.useState<boolean>(Boolean(window.screen.width > 1024));
   
   return (
     <div className="">

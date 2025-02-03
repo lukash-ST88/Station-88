@@ -7,6 +7,8 @@ import {
 import { IMovie } from "../../../interfaces/MovieInterfaces";
 import "./Accordion.css"
 import {IconM} from "./AccordionSet"
+import "../../../pages/pages.css"
+
 
 interface IMovieProps {
   movie: IMovie | undefined;
@@ -32,8 +34,8 @@ function AccordionMovie(props: IMovieProps) {
             >
               Рецензия: {description?.author.profile?.first_name} {description?.author.profile?.last_name}
             </AccordionHeader>
-            <AccordionBody className="text-white">
-              <div dangerouslySetInnerHTML={{ __html: description?.description }} className="movie-font"/>
+            <AccordionBody className="text-white py-0 lg:py-2">
+              <div dangerouslySetInnerHTML={{ __html: description?.description }} className="ckeditor-content md:px-10 px-[18px]"/>
             </AccordionBody>
           </Accordion>
           : null }

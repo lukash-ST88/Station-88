@@ -10,7 +10,7 @@ export interface IBook {
     year: number  
     writer: string
     genre: string
-    ebook: string | any
+    ebook: string | undefined
     ST88descriptions: IST88description[] | undefined[]
     comments: IReview[] | undefined[]
     release_date: string

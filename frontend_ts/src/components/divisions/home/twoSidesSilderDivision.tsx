@@ -52,7 +52,7 @@ const TwoSidesSliderDivision = () => {
 
     return (
         <>
-         <div className="mt-10 p-5 bg-gradient-to-r from-st88-background via-white to-st88-background">
+         <div className="md:mt-10 mt-5 p-5 bg-gradient-to-r from-st88-background via-white to-st88-background">
              <div className="hidden lg:flex justify-center items-center">
                 <div className="ring-2 ring-white relative overflow-hidden" style={{height, width}}>
                     <div className="grid grid-cols-3">
@@ -66,9 +66,9 @@ const TwoSidesSliderDivision = () => {
                             {[...sliders].reverse().map((slider: ISlider, index: number)=> {
                                 return (
                                     <a href={slider.link}>
-                                        <div className="flex flex-col justify-center items-center px-5 text-center hover:cursor-pointer " style={{height, backgroundColor: slider.color}} key={index}>
-                                            <div className="text-4xl hover:border-b-2">{slider.title}</div>
-                                            <div className="text-sm">{slider.description}</div>
+                                        <div className="flex flex-col justify-center items-center px-5 text-center hover:cursor-pointer transition duration-100 ease-in-out transform  hover:lg:scale-110" style={{height, backgroundColor: slider.color}} key={index}>
+                                            <h2 className="text-4xl">{slider.title}</h2>
+                                            <h3 className="text-sm">{slider.description}</h3>
                                         </div>
                                     </a>
                                 )

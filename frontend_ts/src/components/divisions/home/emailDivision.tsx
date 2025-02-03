@@ -28,7 +28,7 @@ const EmailDivision = () =>{
     }
     return (
         <>
-            <div className="mt-10 items-center p-5 bg-gradient-to-r from-st88-background via-st88-secondary to-st88-background">
+            <div className="md:mt-10 mt-5 items-center p-5 bg-gradient-to-r from-st88-background via-st88-secondary to-st88-background">
                 <div className="flex justify-center items-center">
                     <div className="w-[400px] border-2 bg-gradient-to-b from-st88-background via-st88-third to-st88-background p-5 text-center text-st88-secondary lg:text-2xl border-st88-secondary flex flex-col items-center gap-4" >
                         <div className="text-white border-b-2 border-st88-secondary">

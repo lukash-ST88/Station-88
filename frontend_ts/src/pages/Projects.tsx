@@ -7,6 +7,7 @@ import { useObserver } from "../hooks/useObserver";
 import { useFetching } from "../hooks/useFetching";
 import Loader from "../components/components/Loader/Loader";
 import ProjectCard from "../components/cards/ProjectCard";
+import { projectsPageMeta } from "../utils/metaContent";
 
 
 function Projects() {
@@ -40,25 +41,35 @@ function Projects() {
 
   return (
     <>
+      <title> Проекты Станции 88 </title> 
+      <meta name="description" content={projectsPageMeta}/>
+      
       {projects ? (
-        <div className="flex justify-center">
-            <TransitionGroup>
-              <div className="grid lg:grid-cols-4 lg:gap-4 grid-cols-2 gap-2">
-                {projects.map((project: IProject, index: number) => {
-                  return <ProjectCard project={project} index={index} />;
-                })}
-              </div>
-            </TransitionGroup>
-            <div
-              ref={lastElement}
-              style={{ height: 10, background: "transperent" }}
-            />
-            {isProjectLoading && (
-              <div className="flex justify-center">
-                <Loader />
-              </div>
-            )}
-        </div>
+        <>
+          <div className="flex justify-center items-center mb-5 lg:hidden">
+            <h1 className="border-b-2 cursor-default px-4 py-2 text-st88-main font-bold border-st88-main text-xl">
+              Проекты
+            </h1>
+          </div>
+          <div className="flex justify-center">
+              <TransitionGroup>
+                <div className="grid lg:grid-cols-4 lg:gap-4 grid-cols-2 gap-2">
+                  {projects.map((project: IProject, index: number) => {
+                    return <ProjectCard project={project} index={index} />;
+                  })}
+                </div>
+              </TransitionGroup>
+              <div
+                ref={lastElement}
+                style={{ height: 10, background: "transperent" }}
+              />
+              {isProjectLoading && (
+                <div className="flex justify-center">
+                  <Loader />
+                </div>
+              )}
+          </div>
+        </>
       ) : (
         <>
           <div

@@ -29,9 +29,9 @@ const PostFilter = (props: FilterProps) => {
                 <MySelect
                     value={props.postCategory}
                     onChange={(selectedCategory) => {
-                        props.setPosts([]);
+                        // props.setPosts([]);
                         props.setPostCategory(selectedCategory);
-                        props.setOffset(0);
+                        // props.setOffset(0);
                     }}
                     defaultValue="Категория"
                     options={postCategories.map((category: IPostCategory)=>{

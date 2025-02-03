@@ -16,10 +16,10 @@ const ProjectCard = (props: IProjectIndexProps)=> {
         <div onClick={() => navigate(`/project/${props.project.url}`)} className="project-card-container lg:icons">
           <img className="project-card-image" src={props.project.poster} alt={props.project.title}/>
           <div className="text-center lg:my-1">
-            <div className="project-card-title">
+            <h2 className="project-card-title">
               <div className="">{props.project.title} </div>
-            </div>
-            <div className="md:text-xl md:block hidden">
+            </h2>
+            <div className="lg:text-xl md:block hidden">
               <div>{props.project.year}</div>
             </div>
           </div>

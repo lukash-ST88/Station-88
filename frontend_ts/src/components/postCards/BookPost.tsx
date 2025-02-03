@@ -22,16 +22,16 @@ const BookPost = (props: IBookIndexProps) => {
           alt={props.book.title}
         />
         <div className="movie-post-text-container">
-        <div className="flex justify-center"><div className="post-type-fixed">Книга</div></div>
-          <div className="movie-post-title">{props.book.title}</div>
+          <h2 className="flex justify-center"><div className="post-type-fixed">Книга</div></h2>
+          <h3 className="movie-post-title">{props.book.title}</h3>
           <hr/>
-          <div className="movie-post-original-title">
+          <h3 className="movie-post-original-title">
             {props.book.original_title}
-          </div>
+          </h3>
         </div>
         <div className="post-date">
           <div className="vertical flex divide-y-2 gap-1">{dateTime(props.book.release_date).map((dateItem: string)=><div className="pt-1">{dateItem}</div>)}</div>
-        </div>
+        </div>  
       </div>
     </>)
 };

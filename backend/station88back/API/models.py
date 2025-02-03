@@ -69,7 +69,7 @@ class ST88description(models.Model):
         verbose_name_plural = "СТ88 Описания и Рейтинги"
 
     def __str__(self):
-        return f'{self.author} - {self.movie}'
+        return f'{self.author} - {self.movie if self.movie else self.book}'
 
 
 class Frame(models.Model):
@@ -118,7 +118,7 @@ class ArticleType(models.Model):
     url = models.SlugField(max_length=255, unique=True,
                            db_index=True, verbose_name='URL')
     description = models.TextField(null=True, verbose_name="Описание")
-    photo = models.ImageField(
+    photo = models.ImageField(null=True, blank=True,
         upload_to='article/types/', verbose_name='Фото типа статьи')
 
     class Meta:
@@ -132,10 +132,10 @@ class ArticleType(models.Model):
 class Scenario(models.Model):
     title = models.CharField(max_length=150, verbose_name="Название")
     synopsys = models.TextField(verbose_name="Синопсис")
-    text = models.FileField(upload_to='scenario/texts/', verbose_name='Текст')
+    text = models.FileField(upload_to='scenario/texts/', verbose_name='Текст', null=True, blank=True)
     authors = models.ManyToManyField(
         settings.AUTH_USER_MODEL, verbose_name='Авторы', related_name="scenarios")
-    poster = models.ImageField(
+    poster = models.ImageField(null=True, blank=True,
         upload_to='scenario/posters/', verbose_name='Постер')
     release_date = models.DateTimeField(
         default=timezone.now, verbose_name='Дата публикации', null=True)

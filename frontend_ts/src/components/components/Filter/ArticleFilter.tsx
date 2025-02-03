@@ -28,7 +28,7 @@ const ArticleFilter = (props: FilterProps) => {
             <MyInput 
                 value={props.search} 
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => props.setSearch(event.target.value)}
-                className="lg:px-2 pr-4"
+                className="lg:px-2 pr-5"
             />
             <div className="lg:mx-2 flex lg:block">
                 <MySelect
@@ -46,9 +46,9 @@ const ArticleFilter = (props: FilterProps) => {
                     className=""
                     value={props.articleCategorySlug}
                     onChange={(selectedCategory) => {
-                        props.setArticles([]);
+                        // props.setArticles([]);
                         props.setArticleCategorySlug(selectedCategory);
-                        props.setOffset(0);
+                        // props.setOffset(0);
                     }}
                     defaultValue="Категория"
                     options={props.categories.map((category: IArticleType)=>{
@@ -57,7 +57,7 @@ const ArticleFilter = (props: FilterProps) => {
                     
                 />
             </div>
-            <MyDatePicker searchDateTime={props.searchDateTime} setSearchDateTime={props.setSearchDateTime} className="mx2 mt-2 lg:ml-1 lg:pl-4 lg:mt-2"/>
+            <MyDatePicker searchDateTime={props.searchDateTime} setSearchDateTime={props.setSearchDateTime} className="mt-2 lg:pl-5 px-2 lg:px-0"/>
         </>
     )
 }

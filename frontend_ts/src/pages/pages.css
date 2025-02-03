@@ -21,37 +21,32 @@
 }
 
 .article-content {
-    @apply container lg:px-[300px] md:px-[100px] px-[20px] pt-2;
+    @apply container lg:px-[300px] md:px-[100px] px-[18px] pt-2;
 }
 
-.article-font {
-  font-family: sans-serif, Arial, Helvetica;
-  @apply lg:text-xl text-base;
-  
-}
 
 .article-authors {
     font-family: 'RestoraLight';
     font-style: italic;
-    @apply lg:mx-20 my-5 border border-r-0 border-t-0 border-b-0 border-green-500 lg:text-2xl text-xl flex justify-start items-center;
+    @apply lg:mx-20 my-5 border-l-2 border-st88-main lg:text-2xl text-base flex justify-start items-center text-center;
 }
 
 .movie-title-container{
-    @apply container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl items-center;
+    @apply container md:flex md:flex-wrap grid grid-cols-1 justify-center md:divide-x-2 text-center text-4xl items-center;
 }
 
 .movie-title {
     font-family: 'tupo_vyazregular';
     color: white;
     font-weight: 500;
-    @apply p-0 lg:p-5 lg:text-6xl text-4xl ;
+    @apply p-0 lg:p-5 lg:text-6xl text-4xl md:p-3;
   }
   
 .movie-original-title {
     font-family: 'RestoraLight';
     color: white;
     font-weight: 500;
-    @apply p-0 lg:p-5 lg:text-4xl text-xl;
+    @apply p-0 lg:p-5 lg:text-4xl text-xl md:p-3;
   }
 
 .movie-description  {
@@ -71,4 +66,65 @@
     @apply bg-st88-secondary mx-4 my-2 p-2 w-[150px];
   }
 
+  /* ckeditor */
+  .ckeditor-content {
+    font-family: sans-serif, Arial, Helvetica;
+    @apply lg:text-[20px] md:text-[18px] text-[16px];
+  }
+
+  .ckeditor-content blockquote {
+    font-family: 'Brush Script MT', cursive;
+    @apply italic mx-2 my-2 border-l-2 pl-2 border-st88-main lg:text-[24px] md:text-[22px] text-[20px] lg:mx-5;
+  }
+
+  .ckeditor-content p {
+    @apply my-6 leading-[1.8];
+  }
+
+  .ckeditor-content h1, 
+  .ckeditor-content h2 {
+    @apply lg:text-[24px] font-bold md:text-[22px] text-[20px] lg:pt-5 pt-2;
+  }
   
+  .ckeditor-content h3, 
+  .ckeditor-content h4, 
+  .ckeditor-content h5, 
+  .ckeditor-content h6 {
+    @apply lg:text-[22px] font-bold md:text-[20px] text-[18px] lg:pt-5 pt-2;
+  }
+
+  .ckeditor-content a {
+    @apply text-st88-main italic underline;
+  }
+
+  .ckeditor-content ul,
+  .ckeditor-content ol,
+  .ckeditor-content li,
+  .ckeditor-content p,
+  .ckeditor-content a,
+  .ckeditor-content span,
+  .ckeditor-content div  {
+    font-size: inherit !important;
+    font-family: inherit !important; 
+  }
+
+  .ckeditor-content ul {
+    list-style-type:square; 
+  }
+
+  .ckeditor-content ol{
+    list-style-type:decimal; 
+  }
+
+  .ckeditor-content li {
+    @apply lg:my-3 lg:ml-[75px] ml-[50px] my-1;
+  }
+
+  .ckeditor-content table, 
+  .ckeditor-content tr, 
+  .ckeditor-content td {
+    width: inherit !important;
+    overflow: inherit !important;
+    @apply border-2 text-center;
+  }
+

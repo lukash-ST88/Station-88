@@ -5,11 +5,11 @@
 }
 
 .post-container {
-    @apply lg:h-[260px] md:h-[200px] h-[150px] container grid grid-cols-16 my-3 lg:my-5 border-2 hover:lg:ring-4 z-0 hover:z-10 hover:lg:text-st88-background hover:lg:bg-white hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
+    @apply lg:h-[260px] md:h-[200px] h-[140px] container grid grid-cols-16 my-3 lg:my-5 border-2 hover:lg:ring-4 z-0 hover:z-10 hover:lg:text-st88-background hover:lg:bg-white hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
 }
 
 .post-image { 
-    @apply object-cover col-span-4 lg:w-[180px] h-full md:w-[140px] w-[100px];
+    @apply object-cover col-span-4 w-full lg:h-[256px] md:h-[196px] h-[136px];
 }
 
 .post-type-fixed {
@@ -25,7 +25,7 @@
 /* movie post styles */
 
 .movie-post-text-container {
-    @apply col-span-11 justify-self-center self-center text-center;
+    @apply col-span-11 justify-self-center self-center text-center mx-2;
 }
 
 .movie-post-title {
@@ -35,7 +35,7 @@
 
 .movie-post-original-title {
     font-family: 'RestoraItalic';
-    @apply text-lg md:text-xl lg:text-3xl pt-1 lg:pt-2;
+    @apply text-lg md:text-xl lg:text-3xl pt-1 lg:pt-2 leading-4;
 }
 
 
@@ -102,7 +102,7 @@
 
 .free-post-title {
     font-family: 'RestoraLight';
-    @apply text-base md:text-xl lg:text-2xl mx-2;
+    @apply text-sm lg:text-2xl mx-2 pt-1;
 }
 
 .free-post-subtitle {

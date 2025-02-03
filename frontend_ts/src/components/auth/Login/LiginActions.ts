@@ -81,7 +81,7 @@ export const logout = () => (dispatch: any) => {
     .post(`${API_URL}/API/auth/token/logout/`)
     .then((response) => {
       dispatch(unsetCurrentUser());
-      toast.success("Вы вышли из аккаунта");
+      toast.success("Вы вышли из профиля");
     })
     .catch((error) => {
       dispatch(unsetCurrentUser());

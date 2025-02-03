@@ -7,4 +7,4 @@ export const API_URL = "http://localhost:8000";
 // for docker run on remote server onside container
 //export const API_URL = "https://station88.ru";
 // for docker run on remote server inside container
-//export const API_URL = "https://django_server:8000"
+// export const API_URL = "https://django_server:8000"

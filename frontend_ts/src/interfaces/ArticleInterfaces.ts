@@ -20,6 +20,7 @@ export interface IArticle {
     poster: string
     content: string | TrustedHTML
     related_movies: IMovie[] | undefined[]
+    synopsys: string | undefined
 }
 
 export interface IArticleRetrieve {

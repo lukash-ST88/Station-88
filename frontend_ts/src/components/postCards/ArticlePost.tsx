@@ -20,10 +20,10 @@ const ArticlePost = (props: IArticleIndexProps) => {
         </div>
         <div className="col-span-14 article-image-container">
           <img className="article-post-image" src={props.article.poster} alt={props.article.title}/>
-          <div className="flex justify-center"><div className="post-type-fixed">Статья</div></div>
+          <h2 className="flex justify-center"><div className="post-type-fixed">Статья</div></h2>
           <div className="article-text-align  bg-white text-black rounded-lg opacity-90 p-2 group-hover:opacity-none">
-            <div className="title">{props.article.title}</div>
-            <div className="subtitle">{props.article.subtitle}</div>  
+            <h3 className="title">{props.article.title}</h3>
+            <h4 className="subtitle">{props.article.subtitle}</h4>  
           </div>
         </div>
         <div className="article-post-date  group-hover:opacity-none">

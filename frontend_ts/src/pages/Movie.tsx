@@ -30,26 +30,29 @@ const Movie = () => {
 
   return (
     <>
+      <title> {movie?.title} </title> 
+      <meta name="description" content={`Рецензии на фильм "${movie?.title}"`}/>
+
       {isMovieLoading ? (
         <Loader />
       ) : (
         <div>
           <div className="movie-title-container">
-            <div className="movie-title">{movie?.title}</div>
+            <h1 className="movie-title">{movie?.title}</h1>
             {Boolean(movie?.original_title) && 
-            <div className="movie-original-title">
+            <h1 className="movie-original-title">
               {movie?.original_title}
-            </div> 
+            </h1> 
             }
           </div>
           <div className="container flex flex-wrap justify-center">
             <div className="lg:w-1/3 lg:flex lg:flex-col lg:justify-start lg:my-4 divide-y-2">
-              <div className="md:grid md:grid-cols-2 md:gap-2 lg:divide-y-2 lg:block">
-                <div className="flex justify-center"><img className="my-2 w-[200px] lg:w-[360px]" src={`${API_URL}${movie?.poster}`} alt="movie poster"/></div>
+              <div className="md:grid md:grid-cols-2 md:gap-2 lg:divide-y-2 lg:block min-w-[250px]">
+                <div className="flex justify-center items-center"><img className="my-2 w-[200px] lg:w-[360px]" src={`${API_URL}${movie?.poster}`} alt="movie poster"/></div>
                 <div className="divide-y-2">
                   <div className="movie-description">
                     <MovieIcon/> 
-                    <div>Режиссёр: {movie?.director}</div>
+                    <h1>Режиссёр: {movie?.director}</h1>
                   </div>
                   <div className="movie-description">
                     <TimeIcon/>
@@ -65,7 +68,6 @@ const Movie = () => {
                         <iframe
                           title={movie?.title}
                           width="100%"
-                          // height="300"
                           loading="lazy"
                           src={movie?.link}>
                         </iframe>
@@ -95,4 +97,4 @@ const Movie = () => {
 };
 
 export default Movie;
-// TODO: add photo
+

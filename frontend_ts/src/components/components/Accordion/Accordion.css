@@ -6,9 +6,8 @@
     font-family: 'RestoraLight';
     @apply lg:text-2xl font-light text-base;
 }
-.movie-font {
-    font-family: sans-serif, Arial, Helvetica;
-}
+
+
 
 .link-text{
     @apply text-gray-500 hover:text-st88-secondary hover:cursor-pointer italic lg:text-xl text-center;

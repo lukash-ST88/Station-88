@@ -22,25 +22,27 @@ const FreePost = () => {
   );
 
   return (
-    <> 
+    <>
+      <title> {freePost.title} </title> 
+      <meta name="description" content={freePost.subtitle}/> 
+
       {isFreePostLoading ? (
         <div className="flex justify-center items-center h-screen"><Loader/></div>
       ) : (
         <div>
           <div className="container lg:flex lg:flex-wrap grid grid-cols-1 justify-center lg:divide-x-2 text-center text-4xl movie-title-container">
-            <div className="movie-title">{freePost?.title}</div>
+            <h2 className="movie-title">{freePost?.title}</h2>
             {Boolean(freePost?.subtitle) && 
-              <div className="movie-original-title">{freePost?.subtitle}</div>
+              <h3 className="movie-original-title">{freePost?.subtitle}</h3>
             }
           </div>
           <div className="container lg:text-4xl lg:px-20 text-xl pt-5">
-            <div dangerouslySetInnerHTML={{ __html: freePost?.content }} />
+            <div dangerouslySetInnerHTML={{ __html: freePost?.content }} className="ckeditor-content md:px-10 px-[18px] lg:px-[200px]"/>
           </div>
           <div className="lg:mx-20 my-5 border border-r-0 border-t-0 border-b-0 border-green-500 lg:text-2xl text-xl" style={{fontFamily: 'Restora', fontStyle: 'italic'}}>
-            &nbsp;Автор:&nbsp;
-            <span>
-                 {freePost?.author?.profile?.first_name} {freePost?.author?.profile?.last_name} 
-            </span>
+            <h3>
+                &nbsp;Автор:&nbsp;{freePost?.author?.profile?.first_name} {freePost?.author?.profile?.last_name} 
+            </h3>
           </div>
         </div>
       )}
