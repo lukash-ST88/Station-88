@@ -36,10 +36,10 @@ function Articles() {
   
 
   useEffect(() => {
-    if (offset !== 0) {
+    
       fetchArticles(limit, offset, sort);
       console.log('useEffect', offset)
-    }
+    
   }, [offset]);
 
   useEffect(()=>{
