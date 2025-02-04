@@ -28,7 +28,8 @@ function Blog() {
   const lastElement = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetchPosts(limit, offset);   
+    fetchPosts(limit, offset);
+    console.log("useEffect blog");
   }, [offset]);
 
   useDidMountEffect(() => {

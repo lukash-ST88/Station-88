@@ -36,10 +36,8 @@ function Articles() {
   
 
   useEffect(() => {
-    
       fetchArticles(limit, offset, sort);
-      console.log('useEffect', offset)
-    
+      console.log("use effect articles")
   }, [offset]);
 
   useEffect(()=>{

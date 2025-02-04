@@ -35,9 +35,8 @@ function Movies() {
   const memoOffset = useMemo(() => offset, [offset]);
   
   useEffect(() => {
-   
       fetchMovies(limit, offset, sort);
-    
+      console.log("use effect articles")
     // console.log(axios.defaults.headers.common['Authorization'])
   }, [offset]);
 
