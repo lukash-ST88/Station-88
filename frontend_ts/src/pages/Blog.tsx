@@ -9,9 +9,16 @@ import { ISearchDate } from "../interfaces/Interfaces";
 import PostFilter from "../components/components/Filter/PostFilter";
 import { useDidMountEffect } from "../hooks/useDidMountEffect";
 import { blogPageMeta } from "../utils/metaContent";
+import {
+  Collapse,
+} from "@material-tailwind/react";
+import FilterNav from "../components/components/Filter/FilterNav";
+
 
 
 function Blog() {
+  const [openNav, setOpenNav] = useState(false);
+
   const [posts, setPosts] = useState<any>([]);
 
   const [search, setSearch] = useState<string>("");
@@ -26,6 +33,10 @@ function Blog() {
   const [offset, setOffset] = useState<number>(0);
   
   const lastElement = useRef<HTMLDivElement>(null);
+
+  useEffect(()=>{
+    if (window.innerWidth >= 960) setOpenNav(true);
+  },[])
 
   useEffect(() => {
     fetchPosts(limit, offset);
@@ -75,15 +86,10 @@ function Blog() {
 
       <div className="flex flex-wrap justify-center">
         <div className="lg:w-4/6 order-2 lg:order-1">
-        <div className="flex justify-center items-center mb-5 lg:hidden">
-            <h1 className="border-b-2 cursor-default px-4 py-2 text-st88-main font-bold border-st88-main text-xl">
-              Посты
-            </h1>
-          </div>
           <div className="lg:mx-5">
             {posts.map((post: any, index: number) => {
               return (
-                <div>
+                <div className="">
                   <PostCard post={post} index={index} />
                 </div>
               );
@@ -104,22 +110,21 @@ function Blog() {
             }
         </div>
         <div className="lg:w-2/6 lg:order-2 order-1">
-        <div className="flex justify-center items-center lg:hidden">
-            <div className="border-b-2 cursor-default px-4 py-2 text-st88-secondary font-bold border-st88-secondary text-xl">
-              Фильтры
-            </div>
-          </div>
-          <PostFilter search={search} setSearch={setSearch} 
-                      postCategory={postCategory} setPostCategory={setPostCategory}
-                      setPosts={setPosts} setOffset={setOffset}
-                      searchDateTime={searchDateTime} setSearchDateTime={setSearchDateTime}
-            />
+          <FilterNav openNav={openNav} setOpenNav={setOpenNav} title="Блог"/>
+          <Collapse open={openNav} className={`${openNav ? "overflow-visible z-0" : 'overflow-hidden'}`}>
+            <PostFilter search={search} setSearch={setSearch} 
+                        postCategory={postCategory} setPostCategory={setPostCategory}
+                        setPosts={setPosts} setOffset={setOffset}
+                        searchDateTime={searchDateTime} setSearchDateTime={setSearchDateTime}
+              />
             {[search, postCategory, searchDateTime.startDate].some(item=>item) 
             && 
             <div className="flex justify-center items-center">
-              <div className="lg:my-5 mt-10 cursor-pointer border-2 p-2 hover:bg-st88-secondary" onClick={resetFilter}>Сбросить</div>
+              <div className="lg:my-5 lg:mt-10 mt-4  cursor-pointer border-2 p-2 hover:bg-st88-secondary" onClick={resetFilter}>Сбросить</div>
             </div>
-          }
+            }
+          </Collapse>
+          
         </div>
       </div>
     </>

@@ -5,7 +5,7 @@
 }
 
 .post-container {
-    @apply lg:h-[260px] md:h-[200px] h-[140px] container grid grid-cols-16 my-3 lg:my-5 border-2 hover:lg:ring-4 z-0 hover:z-10 hover:lg:text-st88-background hover:lg:bg-white hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
+    @apply lg:h-[260px] md:h-[200px] h-[140px] container grid grid-cols-16 my-3 lg:my-5 border-2 hover:lg:ring-4 z-30 hover:z-40 hover:lg:text-st88-background bg-st88-background hover:lg:bg-white hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
 }
 
 .post-image { 
@@ -46,7 +46,7 @@
 }
 
 .article-post-container {
-    @apply lg:h-[260px] md:h-[200px] h-[150px] container grid grid-cols-16 my-3 lg:my-5 border-2 bg-white text-black hover:lg:ring-4 z-0 hover:z-10 hover:lg:text-white hover:lg:bg-st88-background hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
+    @apply lg:h-[260px] md:h-[200px] h-[150px] container grid grid-cols-16 my-3 lg:my-5 border-2 bg-white text-black hover:lg:ring-4 z-30 hover:z-40 hover:lg:text-white hover:lg:bg-st88-background hover:ring-white transition duration-100 ease-in-out transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer;
 }
 
 .article-post-author-container{

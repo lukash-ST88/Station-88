@@ -18,13 +18,13 @@ export const login = (userData: IUserData, redirectTo: string) => {
       .then((response) => {
         const { auth_token } = response.data;
         setAxiosAuthToken(auth_token);
-        dispatch(setToken(auth_token));
+        dispatch(setToken(auth_token)); 
         dispatch(getCurrentUser(redirectTo));
         toast.success("Вы успешно вошли в профиль");
       })
       .catch((error) => {
         dispatch(unsetCurrentUser());
-        toast.error("Вы не вошли в профиль, вероято пароль или логин неверный", error);
+        toast.error("Вы не вошли в профиль, неверный логин или пароль", error);
       });
   };
 };

@@ -1,6 +1,6 @@
 import MyInput from "../../UI/MyInput/MyInput"
 import MySelect from "../../UI/MySelect/MySelect"
-import React, { useState } from "react"
+import React from "react"
 import { IArticle, IArticleType } from "../../../interfaces/ArticleInterfaces"
 import MyDatePicker from "../../UI/DatePicker/DatePicker"
 import { ISearchDate } from "../../../interfaces/Interfaces"
@@ -28,9 +28,9 @@ const ArticleFilter = (props: FilterProps) => {
             <MyInput 
                 value={props.search} 
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => props.setSearch(event.target.value)}
-                className="lg:px-2 pr-5"
+                className="lg:px-2 pr-5 lg:mr-2 lg:ml-[0.60rem]"
             />
-            <div className="lg:mx-2 flex lg:block">
+            <div className="lg:mx-2 flex lg:block lg:mr-2 lg:ml-[0.60rem]">
                 <MySelect
                     value={props.sort}
                     onChange={(selectedSort) => {
@@ -57,7 +57,7 @@ const ArticleFilter = (props: FilterProps) => {
                     
                 />
             </div>
-            <MyDatePicker searchDateTime={props.searchDateTime} setSearchDateTime={props.setSearchDateTime} className="mt-2 lg:pl-5 px-2 lg:px-0"/>
+            <MyDatePicker searchDateTime={props.searchDateTime} setSearchDateTime={props.setSearchDateTime} className="mt-3 lg:pl-4 px-2 lg:px-0 lg:ml-1"/>
         </>
     )
 }

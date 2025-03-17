@@ -17,6 +17,7 @@ import TrailerIcon from "../components/icons/TrailerIcon";
 import AccordionSynopsis from "../components/components/Accordion/AccordionSynopsis";
 import AccordionSources from "../components/components/Accordion/AccordionSources";
 import AccordionFrames from "../components/components/Accordion/AccordionFrames";
+import { YearRepresentation } from "../utils/dataRepresentation";
 
 const Project = () => {
   const [project, setproject] = useState<IProject>();
@@ -59,7 +60,7 @@ const Project = () => {
                 </div>
                 <div className="movie-description">
                   <TimeIcon/>
-                  <div>Год: {project?.year}</div>
+                  <div>Год: {YearRepresentation(project?.year, project?.end_year)}</div>
                 </div>
                 <div className="movie-description">
                   <DurationIcon/>

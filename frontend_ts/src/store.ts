@@ -4,9 +4,11 @@ import { signupReducer } from './components/auth/Signup/SignupReducer'
 import { loginReducer } from './components/auth/Login/LoginReducer'
 import { configureStore } from '@reduxjs/toolkit'
 import { isEmpty } from './utils/isEmpty'
-import { setToken, setCurrentUser } from './components/auth/Login/LiginActions'
+import { setToken, setCurrentUser, unsetCurrentUser } from './components/auth/Login/LiginActions'
 import { createBrowserHistory } from "history";
 import { createReduxHistoryContext } from "redux-first-history";
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const {
   createReduxHistory,
@@ -40,6 +42,17 @@ if (!isEmpty(localStorage.getItem("user"))) {
   }, 700)
 }
 
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      store.dispatch(unsetCurrentUser());
+      toast.error("Ваш токен истек, пожалуйста, зайдите в профиль заново");
+      store.dispatch(history.push('/'));
+    }
+    return Promise.reject(error);
+  }
+);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

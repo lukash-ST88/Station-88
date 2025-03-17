@@ -7,6 +7,7 @@ export interface IProject {
     readonly id: number
     title: string
     year: number
+    end_year: number | undefined
     genre: string
     length: number
     synopsys: string

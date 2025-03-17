@@ -73,8 +73,8 @@
   }
 
   .ckeditor-content blockquote {
-    font-family: 'Brush Script MT', cursive;
-    @apply italic mx-2 my-2 border-l-2 pl-2 border-st88-main lg:text-[24px] md:text-[22px] text-[20px] lg:mx-5;
+    font-family: 'Spectral', sans-serif, Arial, Helvetica;
+    @apply italic mx-2 my-2 border-l-2 pl-2 border-st88-main lg:text-[20px] md:text-[18px] text-[16px] lg:mx-5;
   }
 
   .ckeditor-content p {

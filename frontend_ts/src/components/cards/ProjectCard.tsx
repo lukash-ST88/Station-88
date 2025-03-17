@@ -2,6 +2,7 @@ import { IProject } from "../../interfaces/ProjectInterfaces";
 import { useNavigate } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import "./cards.css" 
+import { YearRepresentation } from "../../utils/dataRepresentation";
 
 export interface IProjectIndexProps {
     project: IProject
@@ -20,7 +21,7 @@ const ProjectCard = (props: IProjectIndexProps)=> {
               <div className="">{props.project.title} </div>
             </h2>
             <div className="lg:text-xl md:block hidden">
-              <div>{props.project.year}</div>
+              <div>{YearRepresentation(props.project.year, props.project.end_year)} </div>
             </div>
           </div>
         </div>

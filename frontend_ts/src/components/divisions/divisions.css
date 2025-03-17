@@ -1,4 +1,4 @@
 .site-description {
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Spectral' ,Helvetica;
     @apply italic md:text-2xl text-center text-xl;
 }

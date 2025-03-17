@@ -7,7 +7,8 @@ export interface IBook {
     original_title: string | undefined
     url: string
     poster: string
-    year: number  
+    year: number
+    end_year: number | undefined
     writer: string
     genre: string
     ebook: string | undefined

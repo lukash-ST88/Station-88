@@ -10,13 +10,18 @@ import MovieCard from "../components/cards/MovieCard";
 import { useDidMountEffect } from "../hooks/useDidMountEffect";
 import MovieFilter from "../components/components/Filter/MovieFilter";
 import { moviesPageMeta } from "../utils/metaContent";
-
+import {
+  Collapse,
+} from "@material-tailwind/react";
+import FilterNav from "../components/components/Filter/FilterNav";
 
 
 
 
 
 function Movies() {
+  const [openNav, setOpenNav] = useState(false);
+
   const [movies, setMovies] = useState<IMovie[]>([]);
 
 
@@ -34,10 +39,12 @@ function Movies() {
    
   const memoOffset = useMemo(() => offset, [offset]);
   
+  useEffect(()=>{
+    if (window.innerWidth >= 960) setOpenNav(true);
+  },[])
+
   useEffect(() => {
       fetchMovies(limit, offset, sort);
-      console.log("use effect articles")
-    // console.log(axios.defaults.headers.common['Authorization'])
   }, [offset]);
 
   // this hook allows not to call useEffect for the first render
@@ -88,11 +95,6 @@ function Movies() {
 
       <div className="flex flex-wrap justify-center">
         <div className="lg:w-5/6 lg:order-1 order-2 ">
-          <div className="flex justify-center items-center mb-5 lg:hidden">
-            <h1 className="border-b-2 cursor-default px-4 py-2 text-st88-main font-bold border-st88-main text-xl">
-              Фильмы
-            </h1>
-          </div>
           <TransitionGroup>
             <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {movies.map((movie: IMovie, index: number) => {
@@ -114,21 +116,19 @@ function Movies() {
           )}
         </div>
         <div className="lg:w-1/6 lg:order-2 color-test order-1 w-full mb-6">
-          <div className="flex justify-center items-center lg:hidden">
-            <div className="border-b-2 cursor-default px-4 py-2 text-st88-secondary font-bold border-st88-secondary text-xl">
-              Фильтры
-            </div>
-          </div>
-          <MovieFilter defaultYeras={defaultYears}
-                        sort={sort} setSort={setSort} 
-                        search={search} setSearch={setSearch}
-                        releaseYears={releaseYears} setReleaseYears={setReleaseYears}/>
-          {[search, sort].some(item=>item) 
+          <FilterNav openNav={openNav} setOpenNav={setOpenNav} title="Фильмы"/>
+          <Collapse open={openNav} className={`${openNav ? "overflow-visible z-0" : 'overflow-hidden'}`}>
+            <MovieFilter defaultYeras={defaultYears}
+                          sort={sort} setSort={setSort} 
+                          search={search} setSearch={setSearch}
+                          releaseYears={releaseYears} setReleaseYears={setReleaseYears}/>
+            {[search, sort].some(item=>item) 
             && 
             <div className="flex justify-center items-center">
-              <div className="lg:my-5 mt-10 cursor-pointer border-2 p-2 hover:bg-st88-secondary" onClick={resetFilter}>Сбросить</div>
+              <div className="lg:my-5 lg:mt-10 mt-4  cursor-pointer border-2 p-2 hover:bg-st88-secondary" onClick={resetFilter}>Сбросить</div>
             </div>
-          }
+            }
+          </Collapse>
         </div>
       </div>
     </>

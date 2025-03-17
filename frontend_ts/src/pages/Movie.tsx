@@ -11,6 +11,7 @@ import MovieIcon from "../components/icons/MovieIcon";
 import TimeIcon from "../components/icons/TimeIcon";
 import GenreIcon from "../components/icons/GenreIcon";
 import AccordionFrames from "../components/components/Accordion/AccordionFrames";
+import { YearRepresentation } from "../utils/dataRepresentation";
 
 const Movie = () => {
   const [movie, setMovie] = useState<IMovie>();
@@ -56,7 +57,7 @@ const Movie = () => {
                   </div>
                   <div className="movie-description">
                     <TimeIcon/>
-                    <div>Год: {movie?.year}</div>
+                    <div>Год: {YearRepresentation(movie?.year, movie?.end_year)}</div>
                   </div>
                   <div className="movie-description">
                     <GenreIcon/>

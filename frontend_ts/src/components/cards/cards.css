@@ -1,7 +1,7 @@
 /* article card styles */
 
 .article-card-container{
-  @apply relative text-center border z-0 hover:lg:border-st88-main hover:z-10 hover:lg:text-st88-main hover:lg:ring-4 hover:lg:ring-st88-main hover:cursor-pointer transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110;
+  @apply relative text-center border z-[3] hover:lg:border-st88-main hover:z-10 hover:lg:text-st88-main hover:lg:ring-4 hover:lg:ring-st88-main hover:cursor-pointer transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110;
 }
 
 .article-card-title {
@@ -17,7 +17,7 @@
 /* movie card styles */
 
 .movie-card-container {
-  @apply grid grid-cols-2 md:flex-row md:max-w-xl max-w-xs border bg-opacity-80 hover:lg:border-st88-main hover:lg:ring-st88-main hover:lg:ring-4 z-0 hover:z-10 hover:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer bg-st88-background;
+  @apply grid grid-cols-2 md:flex-row md:max-w-xl max-w-xs border hover:lg:border-st88-main hover:lg:ring-st88-main hover:lg:ring-4 z-[3] hover:z-10 hover:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110 hover:cursor-pointer bg-st88-background;
 }
 
 .movie-card-image {
@@ -39,7 +39,7 @@
 /* project card styles */
 
 .project-card-container {
-  @apply grid grid-cols-1 md:max-w-xl mx-2 border hover:lg:border-st88-main bg-opacity-80 hover:lg:ring-4 z-0 hover:cursor-pointer hover:z-10 hover:lg:ring-st88-main hover:lg:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110;
+  @apply grid grid-cols-1 md:max-w-xl mx-2 border hover:lg:border-st88-main hover:lg:ring-4 z-0 hover:cursor-pointer hover:z-10 hover:lg:ring-st88-main hover:lg:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110;
 }
 
 .project-card-image {

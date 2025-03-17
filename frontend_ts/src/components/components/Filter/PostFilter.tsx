@@ -21,7 +21,7 @@ interface FilterProps {
 const PostFilter = (props: FilterProps) => {
     return (
         <>
-            <div className="lg:mx-2 flex lg:block ">
+            <div className="lg:mr-[0.60rem] lg:ml-4 flex lg:block ">
                 <MyInput 
                     value={props.search} 
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => props.setSearch(event.target.value)}
@@ -40,7 +40,7 @@ const PostFilter = (props: FilterProps) => {
                     
                 />
             </div>
-            <MyDatePicker searchDateTime={props.searchDateTime} setSearchDateTime={props.setSearchDateTime} className="m-2 lg:ml-1 lg:pl-4 lg:mt-2 lg:mr-0 lg:m-2"/>
+            <MyDatePicker searchDateTime={props.searchDateTime} setSearchDateTime={props.setSearchDateTime} className="m-[0.60rem] lg:ml-3 lg:pl-4 lg:mt-3 lg:mr-0 mr-[0.60rem]"/>
         </>
     )
 }

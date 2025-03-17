@@ -4,6 +4,7 @@ import { IMovie } from "../../interfaces/MovieInterfaces";
 import "./cards.css"
 import MovieIcon from "../icons/MovieIcon";
 import TimeIcon from "../icons/TimeIcon";
+import { YearRepresentation } from "../../utils/dataRepresentation";
 
 
 export interface IMovieIndexProps {
@@ -26,7 +27,7 @@ const MovieCard = (props: IMovieIndexProps)=> {
           </div>
           <div className="flex flex-col justify-center items-center">
             <TimeIcon/>
-            <div>{props.movie.year}</div>
+            <div>{YearRepresentation(props.movie.year, props.movie.end_year)}</div>
           </div>
           <div>
             <div className="movie-card-rating">Рейтинг</div>

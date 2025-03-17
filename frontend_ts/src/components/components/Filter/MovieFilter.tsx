@@ -39,7 +39,7 @@ const MovieFilter = (props: FilterProps) => {
                     ]} 
                 />
             </div>
-            <div className="lg:mt-4 lg:ml-4 mx-2 lg:mx-0">
+            <div className="lg:mt-4 lg:ml-5 mx-2 lg:mx-0">
                 <div className="m-2 flex justify-center items-center text-gray-500 text-xl">Год</div>
                 <ReactSlider
                         className="w-full h-2 bg-gray-500 cursor-pointer flex items-center justify-center"

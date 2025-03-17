@@ -12,10 +12,15 @@ import { useDidMountEffect } from "../hooks/useDidMountEffect";
 import ArticleFilter from "../components/components/Filter/ArticleFilter";
 import { ISearchDate } from "../interfaces/Interfaces";
 import { articlesPageMeta } from "../utils/metaContent";
-
+import {
+  Collapse,
+} from "@material-tailwind/react";
+import FilterNav from "../components/components/Filter/FilterNav";
 
 
 function Articles() {
+  const [openNav, setOpenNav] = useState(false);
+
   const [articles, setArticles] = useState<IArticle[]>([]);
   const [categories, setCategories] = useState<IArticleType[]>([])
   
@@ -43,6 +48,10 @@ function Articles() {
   useEffect(()=>{
     fetchArticleCategories();
   }, [])
+
+  useEffect(()=>{
+    if (window.innerWidth >= 960) setOpenNav(true);
+  },[])
 
   useDidMountEffect(() => {
     fetchArticles(limit, 0, sort);
@@ -95,11 +104,6 @@ function Articles() {
 
       <div className="flex flex-wrap justify-center">
         <div className="lg:w-5/6 lg:order-1 order-2 lg:mt-0">
-          <div className="flex justify-center items-center mb-5 lg:hidden">
-            <h1 className="border-b-2 cursor-default px-4 py-2 text-st88-main font-bold border-st88-main text-xl">
-              Статьи
-            </h1>
-          </div>
           <TransitionGroup>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
               {articles.map(
@@ -126,24 +130,22 @@ function Articles() {
           )}
         </div>
         <div className="lg:w-1/6 lg:order-2 color-test order-1 w-full mb-6">
-          <div className="flex justify-center items-center lg:hidden">
-            <div className="border-b-2 cursor-default px-4 py-2 text-st88-secondary font-bold border-st88-secondary text-xl">
-              Фильтры
-            </div>
-          </div>
-          <ArticleFilter sort={sort} setSort={setSort} 
-                        search={search} setSearch={setSearch} 
-                        articleCategorySlug={articleCategorySlug} 
-                        setArticles={setArticles} 
-                        setArticleCategorySlug={setArticleCategorySlug} 
-                        setOffset={setOffset} categories={categories}
-                        searchDateTime={searchDateTime} setSearchDateTime={setSearchDateTime}/>
-          {[search, sort, articleCategorySlug, searchDateTime.startDate].some(item=>item) 
+          <FilterNav openNav={openNav} setOpenNav={setOpenNav} title="Статьи"/>
+          <Collapse open={openNav} className={openNav ? "overflow-visible z-0" : ""}>
+            <ArticleFilter sort={sort} setSort={setSort} 
+                          search={search} setSearch={setSearch} 
+                          articleCategorySlug={articleCategorySlug} 
+                          setArticles={setArticles} 
+                          setArticleCategorySlug={setArticleCategorySlug} 
+                          setOffset={setOffset} categories={categories}
+                          searchDateTime={searchDateTime} setSearchDateTime={setSearchDateTime}/>
+            {[search, sort, articleCategorySlug, searchDateTime.startDate].some(item=>item) 
             && 
             <div className="flex justify-center items-center">
-              <div className="lg:my-5 mt-10 cursor-pointer border-2 p-2 hover:bg-st88-secondary" onClick={resetFilter}>Сбросить</div>
+              <div className="lg:my-5 lg:mt-10 mt-4 cursor-pointer border-2 p-2 hover:bg-st88-secondary" onClick={resetFilter}>Сбросить</div>
             </div>
-          }
+            }
+          </Collapse>
         </div>
       </div>
     </>

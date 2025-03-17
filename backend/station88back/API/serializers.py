@@ -54,7 +54,7 @@ class MovieCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ['id', 'title', 'original_title',
-                  'url', 'poster', 'year', 'release_date', 'avg_rating']
+                  'url', 'poster', 'year', 'release_date', 'avg_rating', 'end_year']
 
 
 class BookCardSerializer(serializers.ModelSerializer):
@@ -63,7 +63,7 @@ class BookCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ['id', 'title', 'original_title',
-                  'url', 'poster', 'year', 'release_date', 'avg_rating']
+                  'url', 'poster', 'year', 'end_year', 'release_date', 'avg_rating']
 
 
 class ArticleCardSerializer(serializers.ModelSerializer):
@@ -85,7 +85,7 @@ class ArticleTypeCardSerializer(serializers.ModelSerializer):
 class ProjectCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = ST88project
-        fields = ['id', 'title', 'year', 'url', 'poster', 'release_date']
+        fields = ['id', 'title', 'year', 'end_year', 'url', 'poster', 'release_date']
 
 
 class FreePostCardSerializer(serializers.ModelSerializer):
@@ -129,7 +129,7 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ['id', 'title', 'original_title', 'url', 'poster',
-                  'year', 'director', 'genre', 'music', 'link',
+                  'year', 'end_year','director', 'genre', 'music', 'link',
                   'ST88descriptions', 'comments', 'release_date', 'related_articles', 'frames']
 
 
@@ -140,7 +140,7 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ['id', 'title', 'original_title', 'url', 'poster',
-                  'year', 'writer', 'genre', 'ST88descriptions', 'comments', 'release_date', 'ebook']
+                  'year','end_year', 'writer', 'genre', 'ST88descriptions', 'comments', 'release_date', 'ebook']
 
 
 class ArticleTypeSerializer(serializers.ModelSerializer):

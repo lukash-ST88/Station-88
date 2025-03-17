@@ -10,6 +10,7 @@ export interface IMovie {
     url: string
     poster: string
     year: number
+    end_year: number | undefined
     director: string
     genre: string
     music: string | undefined

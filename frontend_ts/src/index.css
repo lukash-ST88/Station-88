@@ -39,7 +39,10 @@ body {
   font-family: 'RestoraItalic';
   src: url('css/Restora/Nasir Udin - RestoraThinItalic.otf') format("opentype");
 }
-
+@font-face {
+  font-family: 'Spectral';
+  src: url('css/Spectral/Spectral-LightItalic.ttf');
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -71,12 +74,12 @@ code {
   font-family: 'tupo_vyazregular';
   color: white;
   font-weight: 500;
-  @apply text-5xl
+  @apply text-5xl text-center;
 }
 
-.station88:hover {
-  @apply text-st88-secondary;
-}
+/* .station88:hover {
+  @apply text-st88-main;
+} */
 
 .text-on-image {
   text-align: center;

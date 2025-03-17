@@ -1,13 +1,21 @@
 .nav-links {
   line-height: 2.25rem;
   font-weight: 600;
-  @apply text-st88-main px-[1.25rem] lg:py-[0.5rem];
+  @apply px-[1.25rem] lg:py-[0.5rem] flex items-center gap-2 justify-center;
   text-align: center;
 }
 
 .nav-links:hover {
   @apply lg:text-st88-background;
   @apply lg:bg-st88-main
+}
+
+.active-link-color {
+  @apply lg:text-st88-background lg:bg-st88-main;
+}
+
+.link-color {
+  @apply text-st88-main;
 }
 
 .img-links {

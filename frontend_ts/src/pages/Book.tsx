@@ -10,6 +10,7 @@ import TimeIcon from "../components/icons/TimeIcon";
 import GenreIcon from "../components/icons/GenreIcon";
 import { FiFeather } from "react-icons/fi";
 import { MdLaptopChromebook } from "react-icons/md";
+import { YearRepresentation } from "../utils/dataRepresentation";
 
 const Book = () => {
     const [book, setBook] = useState<IBook>();
@@ -54,7 +55,7 @@ const Book = () => {
                     </div>
                     <div className="movie-description">
                       <TimeIcon/>
-                      <div>Год: {book?.year}</div>
+                      <div>Год: {YearRepresentation(book?.year, book?.end_year)}</div>
                     </div>
                     <div className="movie-description">
                       <GenreIcon/>

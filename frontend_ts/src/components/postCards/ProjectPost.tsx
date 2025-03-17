@@ -2,6 +2,7 @@ import { IProjectIndexProps } from "../cards/ProjectCard";
 import "./postCards.css";
 import dateTime from "../../utils/dateTime";
 import { useNavigate } from "react-router-dom";
+import { YearRepresentation } from "../../utils/dataRepresentation";
 
 const ProjectPost = (props: IProjectIndexProps) => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const ProjectPost = (props: IProjectIndexProps) => {
             {props.project.title}
           </h3>
           <div className="project-post-year">
-            {props.project.year}
+            {YearRepresentation(props.project.year, props.project.end_year)}
           </div>
         </div>
         <div className="post-date">
