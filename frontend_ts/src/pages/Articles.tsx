@@ -131,7 +131,7 @@ function Articles() {
         </div>
         <div className="lg:w-1/6 lg:order-2 color-test order-1 w-full mb-6">
           <FilterNav openNav={openNav} setOpenNav={setOpenNav} title="Статьи"/>
-          <Collapse open={openNav} className={openNav ? "overflow-visible z-0" : ""}>
+          <Collapse open={openNav} className={openNav ? "overflow-visible z-0" : "overflow-hidden"}>
             <ArticleFilter sort={sort} setSort={setSort} 
                           search={search} setSearch={setSearch} 
                           articleCategorySlug={articleCategorySlug} 

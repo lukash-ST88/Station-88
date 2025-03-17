@@ -89,7 +89,7 @@ function Blog() {
           <div className="lg:mx-5">
             {posts.map((post: any, index: number) => {
               return (
-                <div className="">
+                <div className="relative z-[1]">
                   <PostCard post={post} index={index} />
                 </div>
               );
