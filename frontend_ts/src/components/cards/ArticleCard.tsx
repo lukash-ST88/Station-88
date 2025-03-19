@@ -15,7 +15,7 @@ const ArticleCard = (props: IArticleIndexProps) => {
       <div onClick={() => navigate(`/article/${props.article.url}`)} className="article-card-container">
         <h2 className="article-card-title">{props.article.title} </h2>
         <img src={props.article.poster} className="object-cover h-48 w-full" alt={props.article.title}/>
-        <h3 className="article-card-subtitle">{props.article.subtitle}</h3>
+        <h3 className="article-card-subtitle">{props.article.subtitle || "\u00A0"} </h3>
       </div>
     </CSSTransition>
   );  

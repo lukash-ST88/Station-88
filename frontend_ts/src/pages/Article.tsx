@@ -35,7 +35,9 @@ const Article = () => {
         <div>
           <div className="article-title-container">
             <h1 className="article-title">{article?.title}</h1>
-            <h2 className="article-subtitle">{article?.subtitle}</h2>
+            {Boolean(article.subtitle) && 
+              <h2 className="article-subtitle">{article?.subtitle}</h2>
+            }
           </div>
           <div className="article-content">
             <div dangerouslySetInnerHTML={{ __html: article?.content }} className="ckeditor-content"/>

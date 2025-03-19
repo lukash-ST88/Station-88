@@ -21,7 +21,7 @@ const FreePost = (props: IFreePostIndexProps) => {
           alt={props.freePost.title}
         />
         <div className="col-span-11 justify-self-center self-center text-center divide-y-2">
-        <h2 className="flex justify-center"><div className="fixed top-0 bg-white text-black p-1">Пост</div></h2>
+        <h2 className="flex justify-center"><div className="post-type-fixed">Пост</div></h2>
           <h3 className="free-post-title">{props.freePost.title}</h3>
           <h4 className="free-post-subtitle">
             {props.freePost.subtitle} 

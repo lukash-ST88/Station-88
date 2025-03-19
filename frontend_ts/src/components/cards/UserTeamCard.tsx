@@ -9,7 +9,7 @@ const UserTeamCard = (props: IUserTeamCardProps) => {
   return (
     <div className="bg-gradient-to-b from-st88-background via-st88-third to-st88-background border-2 border-st88-main grid lg:grid-cols-2 gap-2 p-4 lg:h-[320px] min-h-[280px] grid-cols-1 lg:w-[400px] w-[240px]">
         <div className="flex flex-col items-center justify-center gap-2">
-            <img src={props.user.profile?.photo} alt={props.user.username} className="lg:w-[200px] w-[120px]"/>
+            <img src={props.user.profile?.photo} alt={props.user.username} className="lg:max-w-[200px] max-w-[120px] lg:max-h-[200px] max-h-[135px]"/>
             <div className="flex flex-col items-center justify-center border-t-2 text-base lg:text-2xl">
                 <div>{props.user.profile?.first_name}</div>
                 <div>{props.user.profile?.last_name}</div>
@@ -18,7 +18,7 @@ const UserTeamCard = (props: IUserTeamCardProps) => {
         <div className="flex flex-col items-center justify-center">
           {props.user.profile?.role && 
             stringToArray(props.user.profile?.role).map((role: string, index: number) => (
-              <div key={index} className="italic text-st88-main text-base lg:text-2xl font-bold">{role}</div>
+              <div key={index} className={`italic text-st88-main text-base ${role.length > 12 ? "lg:text-base":"lg:text-2xl"} font-bold`}>{role}</div>
             ))
           }
         </div>
