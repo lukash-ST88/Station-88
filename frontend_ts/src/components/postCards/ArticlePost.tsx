@@ -23,7 +23,7 @@ const ArticlePost = (props: IArticleIndexProps) => {
           <h2 className="flex justify-center"><div className="post-type-fixed">Статья</div></h2>
           <div className="article-text-align  bg-white text-black rounded-lg opacity-90 p-2 group-hover:opacity-none">
             <h3 className="title">{props.article.title}</h3>
-            <h4 className="subtitle">{props.article.subtitle}</h4>  
+            <h4 className="subtitle" style={{ whiteSpace: 'pre-wrap' }}>{props.article.subtitle}</h4>  
           </div>
         </div>
         <div className="article-post-date  group-hover:opacity-none">

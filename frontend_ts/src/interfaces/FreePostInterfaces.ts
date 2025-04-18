@@ -6,7 +6,7 @@ export interface IFreePost {
     url: string
     subtitle: string | undefined
     content: string
-    release_date: string | null
+    release_date: string 
     author: IUser
     poster: string | undefined 
 };

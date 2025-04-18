@@ -12,6 +12,7 @@ export interface IBook {
     writer: string
     genre: string
     ebook: string | undefined
+    links: string[]
     ST88descriptions: IST88description[] | undefined[]
     comments: IReview[] | undefined[]
     release_date: string

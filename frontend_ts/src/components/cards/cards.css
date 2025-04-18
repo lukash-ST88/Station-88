@@ -1,7 +1,7 @@
 /* article card styles */
 
 .article-card-container{
-  @apply grid grid-cols-1 items-center justify-center relative text-center border z-[3] hover:lg:border-st88-main hover:z-10 hover:lg:text-st88-main hover:lg:ring-4 hover:lg:ring-st88-main hover:cursor-pointer transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110;
+  @apply bg-st88-background grid grid-cols-1 items-center justify-center relative text-center border z-[3] hover:lg:border-st88-main hover:z-10 hover:lg:text-st88-main hover:lg:ring-4 hover:lg:ring-st88-main hover:cursor-pointer transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110;
 }
 
 .article-card-title {

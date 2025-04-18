@@ -21,7 +21,7 @@ export interface IProject {
     producers: IUser[] 
     linked_trailer: string | undefined
     linked_film: string | undefined
-    release_date: string | null
+    release_date: string 
     url: string
     poster: string | undefined
     links: string[] | undefined

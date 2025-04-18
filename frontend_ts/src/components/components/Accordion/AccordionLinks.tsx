@@ -25,7 +25,7 @@ const AccordionLinks = (props:IAccordionLinksProps) => {
             {/* <div></div>dont remove these divs they are for alignment center */}
             <div className="accordion-description-text">Связанные источники</div>
             </AccordionHeader>
-            <AccordionBody className="text-white">
+            <AccordionBody className="text-white flex flex-col gap-2 items-start justify-center">
               {props.links?.map((link) => (
                 <a href={link} className="link-text">
                     {link}

@@ -128,3 +128,6 @@
     @apply border-2 text-center;
   }
 
+  .ckeditor-content img {
+    @apply block my-0 mx-auto;
+  }

@@ -107,5 +107,5 @@
 
 .free-post-subtitle {
     font-family: 'RestoraLight';
-    @apply text-sm md:text-base lg:text-xl mx-2;
+    @apply text-sm md:text-base lg:text-xl mx-2 italic;
 }

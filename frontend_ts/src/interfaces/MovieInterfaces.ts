@@ -19,6 +19,7 @@ export interface IMovie {
     comments: IReview[] | undefined[]
     release_date: string
     related_articles: IArticle[] | undefined[]
+    related_links: string[]
     avg_rating: string | null
     frames: IFrame[] | undefined
 }

@@ -47,7 +47,9 @@ axios.interceptors.response.use(
   (error) => {
     if (error.response && error.response.status === 401) {
       store.dispatch(unsetCurrentUser());
-      toast.error("Ваш токен истек, пожалуйста, зайдите в профиль заново");
+      toast.error("Ваш токен истек, пожалуйста, зайдите в профиль заново", {
+        toastId: "token-expired"
+      });
       store.dispatch(history.push('/'));
     }
     return Promise.reject(error);

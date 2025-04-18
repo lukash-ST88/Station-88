@@ -12,6 +12,7 @@ import TimeIcon from "../components/icons/TimeIcon";
 import GenreIcon from "../components/icons/GenreIcon";
 import AccordionFrames from "../components/components/Accordion/AccordionFrames";
 import { YearRepresentation } from "../utils/dataRepresentation";
+import AccordionLinks from "../components/components/Accordion/AccordionLinks";
 
 const Movie = () => {
   const [movie, setMovie] = useState<IMovie>();
@@ -86,9 +87,12 @@ const Movie = () => {
               </div>
             </div>
             <div className="lg:w-2/3">
-              <div className="lg:mx-4"><AccordionMovie movie={movie} /></div>
-              {movie?.frames && movie.frames.length > 0 && <div className="lg:mx-4"><AccordionFrames item={movie!}/></div>}
-              {movie?.related_articles.length ? <AccordionArticles articles={movie?.related_articles}/> : <></>}
+              <div className="lg:mx-4">
+                <AccordionMovie movie={movie} />
+                {movie?.frames && movie.frames.length > 0 && <AccordionFrames item={movie!}/>}
+                {movie?.related_articles.length ? <AccordionArticles articles={movie?.related_articles}/> : <></>}
+                {movie?.related_links?.length  ?  <AccordionLinks links={movie?.related_links}/> : <></>}
+              </div>
             </div>
           </div>
         </div>

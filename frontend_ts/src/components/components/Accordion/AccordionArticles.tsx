@@ -21,13 +21,13 @@ function AccordionArticles(props: IAccordionArticlesProps) {
 
   
   return (
-    <div className="mx-4">
+    <div className="">
         <Accordion open={open} icon={<BoundArticlesIcon/>}>
             <AccordionHeader
               className="text-white hover:text-st88-secondary accordion-description-text"
               onClick={() =>setOpen(!open) }
             >
-              Cвязанные статьи
+              Связанные статьи
             </AccordionHeader>
             <AccordionBody className="text-white">
               {props.articles?.map((article) => (

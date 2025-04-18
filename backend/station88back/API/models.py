@@ -17,6 +17,10 @@ class Profile(models.Model):
     photo = models.ImageField(
         upload_to='user/photo/', verbose_name='Фото', null=True)
     order = models.IntegerField(verbose_name='Очередность', null=True)
+    vk_link = models.CharField(max_length=250, null=True, blank=True, verbose_name="В контакте")
+    telegram_link = models.CharField(max_length=250, null=True, blank=True, verbose_name="Телеграм")
+    instagram_link = models.CharField(max_length=250, null=True, blank=True, verbose_name="Инстаграм")
+
 
     class Meta:
         verbose_name = "Профиль"
@@ -39,8 +43,9 @@ class Movie(models.Model):
     music = models.FileField(null=True, upload_to='movie/music/', verbose_name='Музыка', blank=True)
     link = models.CharField(max_length=500, verbose_name='Ссылка на трейлер', null=True, blank=True)
     release_date = models.DateTimeField(default=timezone.now, verbose_name='Дата публикации', null=True)
-    related_articles = models.ManyToManyField('Article', verbose_name='Связанные статьи', related_name='related_movies', blank=True) 
-    
+    related_articles = models.ManyToManyField('Article', verbose_name='Связанные статьи', related_name='related_movies', blank=True)
+    related_links = ArrayField(models.CharField(max_length=255), blank=True, null=True, verbose_name="Связанные источники")
+
     # def get_avg_rating_st88   
     class Meta:
         verbose_name = "Фильм"
@@ -90,10 +95,10 @@ class Frame(models.Model):
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=100, verbose_name="Заголовок")
+    title = models.TextField(max_length=150, verbose_name="Заголовок")
     url = models.SlugField(max_length=255, unique=True,
                            db_index=True, verbose_name='URL')
-    subtitle = models.CharField(max_length=100, verbose_name="Подзаголовок", blank=True, null=True)
+    subtitle = models.TextField(max_length=150, verbose_name="Подзаголовок", blank=True, null=True)
     authors = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name='articles', verbose_name='Авторы')
     release_date = models.DateTimeField(
@@ -198,7 +203,7 @@ class ST88project(models.Model):
         max_length=500, verbose_name='Ссылка на трейлер', null=True, blank=True)
     linked_film = models.CharField(
         max_length=500, verbose_name="Ссылка на фильм", null=True, blank=True)
-    links = ArrayField(models.CharField(max_length=255), blank=True, null=True)
+    links = ArrayField(models.CharField(max_length=255), blank=True, null=True, verbose_name="Связанные источники")
     poster = models.ImageField(
         upload_to='scenario/posters/', verbose_name='Постер')
     release_date = models.DateTimeField(
@@ -283,6 +288,7 @@ class Book(models.Model):
     genre = models.CharField(max_length=50, verbose_name='Жанр')
     release_date = models.DateTimeField(default=timezone.now, verbose_name='Дата публикации', null=True)
     ebook = models.FileField(upload_to='book/ebooks/', verbose_name='Электронная книга', null=True, blank=True)
+    links = ArrayField(models.CharField(max_length=255), blank=True, null=True, verbose_name="Связанные источники")
 
     class Meta:
         verbose_name = "Книга"
@@ -347,5 +353,4 @@ class Review(models.Model):
         else:
             return f'{self.email}: {self.text}'
 
-# TODO: team array
 # TODO: rating API KinoPoisk IMDB

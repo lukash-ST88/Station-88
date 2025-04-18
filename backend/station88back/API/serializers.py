@@ -13,10 +13,13 @@ class ProfileSerializer(serializers.Serializer):
     avatar = serializers.ImageField()
     photo = serializers.ImageField()
     order = serializers.IntegerField()
+    instagram_link = serializers.CharField()
+    vk_link = serializers.CharField()
+    telegram_link = serializers.CharField()
 
     class Meta:
         model = Profile
-        fields = ['last_name', 'first_name', 'role', 'avatar', 'photo', 'order']
+        fields = ['last_name', 'first_name', 'role', 'avatar', 'photo', 'order', 'instagram_link', 'vk_link', 'telegram_link']
 
 
 class CustomUserSerializer(serializers.Serializer):
@@ -130,7 +133,7 @@ class MovieSerializer(serializers.ModelSerializer):
         model = Movie
         fields = ['id', 'title', 'original_title', 'url', 'poster',
                   'year', 'end_year','director', 'genre', 'music', 'link',
-                  'ST88descriptions', 'comments', 'release_date', 'related_articles', 'frames']
+                  'ST88descriptions', 'comments', 'release_date', 'related_articles', 'frames', 'related_links']
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -140,7 +143,7 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ['id', 'title', 'original_title', 'url', 'poster',
-                  'year','end_year', 'writer', 'genre', 'ST88descriptions', 'comments', 'release_date', 'ebook']
+                  'year','end_year', 'writer', 'genre', 'ST88descriptions', 'comments', 'release_date', 'ebook', 'links']
 
 
 class ArticleTypeSerializer(serializers.ModelSerializer):

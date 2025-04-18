@@ -11,6 +11,7 @@ import GenreIcon from "../components/icons/GenreIcon";
 import { FiFeather } from "react-icons/fi";
 import { MdLaptopChromebook } from "react-icons/md";
 import { YearRepresentation } from "../utils/dataRepresentation";
+import AccordionLinks from "../components/components/Accordion/AccordionLinks";
 
 const Book = () => {
     const [book, setBook] = useState<IBook>();
@@ -73,7 +74,10 @@ const Book = () => {
                 </div>
               </div>
               <div className="lg:w-2/3">
-                <AccordionBook book={book} />
+                <div className="lg:mx-4">
+                  <AccordionBook book={book} />
+                  {book?.links?.length  ?  <AccordionLinks links={book?.links}/> : <></>}
+                </div>
               </div>
             </div>
           </div>

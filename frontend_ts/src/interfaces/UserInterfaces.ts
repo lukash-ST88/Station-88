@@ -7,6 +7,9 @@ export interface IProfile {
     avatar: string
     photo: string
     order: number
+    instagram_link?: string
+    telegram_link?: string
+    vk_link?: string
 }
 
 
