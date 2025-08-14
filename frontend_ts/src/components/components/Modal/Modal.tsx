@@ -14,7 +14,7 @@ export const ModalFR = () => {
 
   return (
     <>
-      <button onClick={() => setOpenModal(true)} className="flex items-center gap-2 justify-center">Профиль<FaUserAlt className='lg:hidden block w-5 h-5'/></button>
+      <button onClick={() => setOpenModal(true)} className="flex items-center gap-2 justify-center">Профиль</button>
  
       <Modal show={openModal} size="md" onClose={onCloseModal} popup className="fixed top-0 right-0 left-0 z-50 h-modal h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full lg:window-size bg-opacity-50" style={{zIndex: 101}}>
         <Modal.Body>
@@ -24,9 +24,9 @@ export const ModalFR = () => {
             ? <button onClick={() => setIsLogedIn(!isLogedIn)} className="text-red-500 bg-white border border-red-500 hover:bg-red-500 hover:text-white font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">Регистрация</button> 
             : <button onClick={() => setIsLogedIn(!isLogedIn)} className="text-green-500 bg-white border border-green-500 hover:bg-green-500 hover:text-white font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">Вход</button> 
             }
-          <button className="text-gray-500 bg-white border border-gray-500 hover:bg-gray-500 hover:text-white font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center" onClick={() => onCloseModal()}> 
-          Закрыть
-          </button>
+            <button className="text-gray-500 bg-white border border-gray-500 hover:bg-gray-500 hover:text-white font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center" onClick={() => onCloseModal()}> 
+              Закрыть
+            </button>
           </div>
         </Modal.Body>
      

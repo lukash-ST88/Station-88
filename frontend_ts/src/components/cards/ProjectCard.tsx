@@ -16,11 +16,11 @@ const ProjectCard = (props: IProjectIndexProps)=> {
       <CSSTransition key={props.index} timeout={5000} classNames="post">
         <div onClick={() => navigate(`/project/${props.project.url}`)} className="project-card-container lg:icons">
           <img className="project-card-image" src={props.project.poster} alt={props.project.title}/>
-          <div className="text-center lg:my-1">
+          <div className="text-center lg:h-[100px] flex flex-col justify-center h-[50px]">
             <h2 className="project-card-title">
               <div className="">{props.project.title} </div>
             </h2>
-            <div className="lg:text-xl md:block hidden">
+            <div className="project-card-year">
               <div>{YearRepresentation(props.project.year, props.project.end_year)} </div>
             </div>
           </div>

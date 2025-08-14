@@ -13,6 +13,7 @@ import Book from "../pages/Book";
 import FreePost from "../pages/FreePost";
 import Blog from "../pages/Blog";
 import About from "../pages/About";
+import Channel from "../pages/Channel";
 
 
 const Router = () => {
@@ -29,6 +30,7 @@ const Router = () => {
         <Route path="/book/:url" element={<Book />}/>
         <Route path="/projects" element={<Projects/>}/>
         <Route path="/project/:url" element={<Project/>}/>
+        <Route path="/channel" element={<Channel/>}/>
         <Route path="/free-post/:url" element={<FreePost/>}/>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />

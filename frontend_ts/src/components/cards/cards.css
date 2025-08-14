@@ -39,7 +39,7 @@
 /* project card styles */
 
 .project-card-container {
-  @apply grid grid-cols-1 md:max-w-xl mx-2 border hover:lg:border-st88-main hover:lg:ring-4 z-0 hover:cursor-pointer hover:z-10 hover:lg:ring-st88-main hover:lg:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110;
+  @apply grid grid-cols-1 md:max-w-xl mx-2 border hover:lg:border-st88-main hover:lg:ring-4 z-0 hover:cursor-pointer hover:z-10 hover:lg:ring-st88-main hover:lg:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110 bg-st88-third;
 }
 
 .project-card-image {
@@ -48,5 +48,9 @@
 
 .project-card-title {
   font-family: sans-serif, Arial, Helvetica;
-  @apply lg:text-2xl px-1  ;
+  @apply lg:text-2xl px-1 ;
+}
+.project-card-year {
+  font-family: sans-serif, Arial, Helvetica;
+  @apply lg:text-xl md:block hidden;
 }
