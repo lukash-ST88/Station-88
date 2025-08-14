@@ -4,3 +4,4 @@ export const moviesPageMeta: string = "Статьи посвященные ки�
 export const blogPageMeta: string = "Болг с последними новостями, статьями и обзорами из мира кино"
 export const mainDescription: string = "Сообщество посвящено анализу кинематографических, литературных и музыкальных работ в виде рецензий, статей и разборов, а также представлению проектов деятельности нашей команды"
 export const projectsPageMeta: string = "Разработанные, спроектированные и снятые проекты Станции 88"
+export const channelPageMeta: string = "Страница ведео канала Станции 88 на YouTube и ВК"

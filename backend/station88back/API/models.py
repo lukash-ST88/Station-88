@@ -20,6 +20,7 @@ class Profile(models.Model):
     vk_link = models.CharField(max_length=250, null=True, blank=True, verbose_name="В контакте")
     telegram_link = models.CharField(max_length=250, null=True, blank=True, verbose_name="Телеграм")
     instagram_link = models.CharField(max_length=250, null=True, blank=True, verbose_name="Инстаграм")
+    kinorium_link = models.CharField(max_length=250, null=True, blank=True, verbose_name="Кинориум")
 
 
     class Meta:
@@ -173,6 +174,36 @@ class ProjectPresentation(models.Model):
     def __str__(self):
         return self.title
 
+
+
+class ChannelVideo(models.Model):
+    title = models.CharField(max_length=250, verbose_name="Название")
+    url = models.SlugField(max_length=255, unique=True, db_index=True, blank=True, verbose_name='URL')
+    poster = models.ImageField(upload_to='channel/posters/', verbose_name='Постер', null=True)
+    playlist = models.ForeignKey(
+        "ChannelPlaylist", on_delete=models.SET_NULL, verbose_name='Плейлист', related_name='videos', null=True, blank=True)
+    duration = models.IntegerField(verbose_name="Хронометраж")
+    release_date = models.DateTimeField(default=timezone.now, verbose_name='Дата публикации', null=True)
+    youtube_link = models.CharField(max_length=500, null=True, blank=True, verbose_name="YouTube")
+    vk_link = models.CharField(max_length=500, null=True, blank=True, verbose_name="В контакте")
+
+    class Meta:
+        verbose_name = "Канал Видео"
+        verbose_name_plural = "Канал Видео"
+
+    def __str__(self):
+        return self.title
+
+class ChannelPlaylist(models.Model):
+    title = models.CharField(max_length=250, verbose_name="Название")
+    url = models.SlugField(max_length=255, unique=True, db_index=True, blank=True, verbose_name='URL')
+
+    class Meta:
+        verbose_name = "Канал Плейлист"
+        verbose_name_plural = "Канал Плейлист"
+
+    def __str__(self):
+        return self.title
 
 class ST88project(models.Model):
     title = models.CharField(max_length=100, verbose_name="Название")

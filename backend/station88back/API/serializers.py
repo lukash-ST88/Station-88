@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Movie, Article, ArticleType, Scenario, ST88description, ST88project, ProjectPresentation, Review, \
-    Banners, Profile, Book, FreePost, Frame, Sliders
+    Banners, Profile, Book, FreePost, Frame, Sliders, ChannelVideo, ChannelPlaylist
 from django.contrib.auth.models import User
 
 """ -----------Users--------- """
@@ -16,10 +16,11 @@ class ProfileSerializer(serializers.Serializer):
     instagram_link = serializers.CharField()
     vk_link = serializers.CharField()
     telegram_link = serializers.CharField()
+    kinorium_link = serializers.CharField()
 
     class Meta:
         model = Profile
-        fields = ['last_name', 'first_name', 'role', 'avatar', 'photo', 'order', 'instagram_link', 'vk_link', 'telegram_link']
+        fields = ['last_name', 'first_name', 'role', 'avatar', 'photo', 'order', 'instagram_link', 'vk_link', 'telegram_link', 'kinorium_link']
 
 
 class CustomUserSerializer(serializers.Serializer):
@@ -95,6 +96,16 @@ class FreePostCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = FreePost
         exclude = ['content']
+
+class ChannelPlaylistCardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChannelPlaylist
+        fields = "__all__"
+
+class ChannelVideoCardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChannelVideo
+        fields = ["id", "vk_link", "youtube_link", "title", "release_date", "duration", "poster"]
 
 
 """ ----------Base---------- """

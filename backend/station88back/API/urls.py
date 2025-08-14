@@ -1,9 +1,13 @@
 from django.urls import path, include, re_path
+from pkg_resources.extern import names
+
+from .models import ChannelVideo
 from .views import MovieListView, MovieSortedListView, ArticleListView, BannersListView, movie_detail, article_detail, \
     PostsListView, ProjectListView, project_detail, user_detail, book_detail, free_post_detail, ArticleTypeListView, \
     ArticleSortedListView, ArticlesFilteredListView, MovieFilteredListView, PostsFilteredListView, UserTeamListView, \
     ArticleByUserListView, MovieByUserListView, ProjectByUserListView, MovieByUserAndTitleListView, \
-    ArticleByUserAndTitleListView, ProjectByUserAndTitleListView, SlidersListView, send_message
+    ArticleByUserAndTitleListView, ProjectByUserAndTitleListView, SlidersListView, send_message, ChannelVideoListView, \
+    ChannelPlaylistListView, ChannelVideoSortedListView, ChannelVideoFilteredListView
 
 urlpatterns = [
 
@@ -33,6 +37,12 @@ urlpatterns = [
     path('projects/user/<str:username>/title/<str:title>', ProjectByUserAndTitleListView.as_view(), name='projects-by-user-title'),
     path('project/<slug:url>', project_detail, name='project'),
 
+    #channel
+    path('channel/video', ChannelVideoListView.as_view(), name="channel-video"),
+    path('channel/video/sort/<str:sort>',ChannelVideoSortedListView.as_view(), name="sorted-channel-video"),
+    path('channel/video/filters', ChannelVideoFilteredListView.as_view(), name="filtered-channel-video"),
+    path('channel/playlist', ChannelPlaylistListView.as_view(), name="channel-playlist"),
+
     #freeposts
     path('free-post/<slug:url>', free_post_detail, name='free-post'),
 
@@ -56,4 +66,5 @@ urlpatterns = [
     #tools
     re_path(r'^auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
+
 ]

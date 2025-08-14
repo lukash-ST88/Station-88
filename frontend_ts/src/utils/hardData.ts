@@ -24,5 +24,9 @@ export const postCategories: IPostCategory[] = [
         name: "Посты",
         slug: "free_post"
     },
+    {
+        name: "Канал",
+        slug: "channel_video"
+    },
     
 ]

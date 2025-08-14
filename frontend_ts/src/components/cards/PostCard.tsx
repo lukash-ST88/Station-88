@@ -3,6 +3,7 @@ import MoviePost from "../postCards/MoviePost";
 import ProjectPost from "../postCards/ProjectPost";
 import BookPost from "../postCards/BookPost";
 import FreePost from "../postCards/FreePost";
+import ChannelVideoPost from "../postCards/ChannelVideoPost";
 
 interface IPostIndexProps {
     post: any
@@ -24,6 +25,9 @@ const PostCard = (props:IPostIndexProps) => {
     }
     else if (props.post.type === 'free_post'){
         return <FreePost freePost={props.post} index={props.index}/>
+    }
+    else if (props.post.type === "channel_video"){
+        return <ChannelVideoPost channelVideo={props.post} index={props.index}/>
     }
     else {
         return <div>Неизвестный пост</div>

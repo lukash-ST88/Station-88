@@ -39,7 +39,7 @@
 /* project card styles */
 
 .project-card-container {
-  @apply grid grid-cols-1 md:max-w-xl mx-2 border hover:lg:border-st88-main hover:lg:ring-4 z-0 hover:cursor-pointer hover:z-10 hover:lg:ring-st88-main hover:lg:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110 bg-st88-third;
+  @apply grid grid-cols-1 md:max-w-xl mx-2 border hover:lg:border-st88-main hover:lg:ring-4 z-0 hover:cursor-pointer hover:z-10 hover:lg:ring-st88-main hover:lg:shadow-2xl transition duration-100 ease-in-out lg:transform hover:lg:-translate-y-1 hover:lg:scale-110 bg-st88-background;
 }
 
 .project-card-image {
@@ -53,4 +53,30 @@
 .project-card-year {
   font-family: sans-serif, Arial, Helvetica;
   @apply lg:text-xl md:block hidden;
+}
+
+/* channel card styles */
+
+.channel-card-container{
+  @apply bg-white grid grid-cols-1 items-center justify-center text-center border hover:cursor-pointer z-[3] hover:z-10;
+}
+
+.channel-card-title {
+  font-family: sans-serif, Arial, Helvetica;
+  @apply bg-white min-h-[50px] text-st88-background flex justify-center items-center p-1;
+}
+
+.channel-card-network {
+  @apply lg:h-[10px] h-[40px] flex justify-center items-center;
+}
+
+.channel-post-network {
+  @apply lg:h-[10px] h-[30px] flex justify-center items-center;
+}
+
+.channel-card-image-hover {
+  @apply h-full flex justify-center items-center transition-all duration-300;
+}
+.channel-card-image-hover-icon {
+  @apply text-3xl text-white opacity-0 transition-opacity duration-300 ;
 }

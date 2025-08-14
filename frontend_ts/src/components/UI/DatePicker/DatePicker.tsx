@@ -1,4 +1,5 @@
 import Datepicker from "react-tailwindcss-datepicker";
+import { formatSearchDate } from "../../../utils/dateTime";
 
 interface IMyDatePickerProps{
     searchDateTime: {
@@ -16,7 +17,7 @@ const MyDatePicker = (props: IMyDatePickerProps) =>{
                             primaryColor={"red"}
                             inputClassName="w-full border-b-2 pb-3 bg-transparent placeholder:text-gray-500 text-white focus:border-st88-secondary focus:outline-none placeholder:text-xl text-sm"
                             toggleClassName="absolute text-white pb-2 right-0 h-full px-2 hover:text-st88-secondary"
-                            onChange={(newSearchDate:any) => props.setSearchDateTime(newSearchDate)}
+                            onChange={(newSearchDate:any) => props.setSearchDateTime(formatSearchDate(newSearchDate))}
                             configs={{
                                 shortcuts: {
                                     today: "Сегодня",

@@ -1,11 +1,12 @@
 from django.utils.datetime_safe import datetime
 from djoser.serializers import UserSerializer
-
-from .models import Movie, Article, Banners, ST88project, Book, FreePost, ArticleType, Sliders
+from django.db.models import Max
+from .models import Movie, Article, Banners, ST88project, Book, FreePost, ArticleType, Sliders, ChannelVideo, ChannelPlaylist
 from rest_framework import generics
 from .serializers import ArticleCardSerializer, MovieSerializer, ArticleSerializer, BannersSerializer, \
     ProjectCardSerializer, ProjectSerializer, MovieCardSerializer, CustomUserSerializer, BookCardSerializer, \
-    BookSerializer, FreePostSerializer, FreePostCardSerializer, ArticleTypeCardSerializer, SlidersSerializer
+    BookSerializer, FreePostSerializer, FreePostCardSerializer, ArticleTypeCardSerializer, SlidersSerializer, \
+    ChannelVideoCardSerializer, ChannelPlaylistCardSerializer
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -15,7 +16,7 @@ from station88back.settings import REST_FRAMEWORK
 from django.db.models import Avg
 from django.contrib.auth.models import User
 
-from .utils import ArticleTypePagination, send_email
+from .utils import ArticleTypePagination, send_email, ChannelPlaylistPagination
 from django.db.models import Q
 
 
@@ -255,6 +256,68 @@ def project_detail(request, url):
         return Response(project_serializer.data)
 
 
+""" ---------- Channel -------- """
+
+
+class ChannelVideoListView(generics.ListAPIView):
+    queryset = ChannelVideo.objects.all().order_by('-release_date')
+    serializer_class = ChannelVideoCardSerializer
+
+class ChannelVideoSortedListView(generics.ListAPIView):
+    serializer_class = ChannelVideoCardSerializer
+
+    def get_queryset(self):
+        return ChannelVideo.objects.prefetch_related('playlist').all().order_by(self.kwargs['sort'])
+
+class ChannelVideoFilteredListView(generics.ListAPIView):
+    serializer_class = ChannelVideoCardSerializer
+
+    def get_queryset(self):
+        sort = self.request.query_params.get('sort') if  self.request.query_params.get('sort') else "-release_date"
+        playlist_slug = self.request.query_params.get('playlist_slug')
+        search_characters = self.request.query_params.get('search_characters')
+        start_duration = int(self.request.query_params.get('start_duration'))
+        end_duration = int(self.request.query_params.get('end_duration'))
+        is_duration = all((start_duration, end_duration))
+
+        queryset = []
+        if playlist_slug and not search_characters and not is_duration:
+            queryset = (ChannelVideo.objects.prefetch_related('playlist')
+                    .filter(playlist__url=playlist_slug).order_by(sort))
+        elif not playlist_slug and search_characters and not is_duration:
+            queryset = (ChannelVideo.objects.prefetch_related('playlist')
+                        .filter(title__icontains=search_characters).order_by(sort))
+        elif not playlist_slug and not search_characters and is_duration:
+            queryset = (ChannelVideo.objects.prefetch_related('playlist')
+                        .filter(Q(duration__gte=start_duration) & Q(duration__lte=end_duration))
+                        .order_by(sort))
+        elif not playlist_slug and search_characters and is_duration:
+            queryset = (ChannelVideo.objects.prefetch_related('playlist')
+                        .filter(Q(duration__gte=start_duration) & Q(duration__lte=end_duration)
+                                & Q(title__icontains=search_characters))
+                        .order_by(sort))
+        elif playlist_slug and not search_characters and is_duration:
+            queryset = (ChannelVideo.objects.prefetch_related('playlist')
+                        .filter(Q(duration__gte=start_duration) & Q(duration__lte=end_duration) & Q(playlist__url=playlist_slug))
+                        .order_by(sort))
+        elif playlist_slug and search_characters and not is_duration:
+            queryset = (ChannelVideo.objects.prefetch_related('playlist')
+                        .filter(Q(playlist__url=playlist_slug) & Q(title__icontains=search_characters))
+                        .order_by(sort))
+
+        elif playlist_slug and search_characters and is_duration:
+            queryset = (ChannelVideo.objects.prefetch_related('playlist')
+                        .filter(Q(playlist__url=playlist_slug) & Q(title__icontains=search_characters)
+                                & Q(duration__gte=start_duration) & Q(duration__lte=end_duration))
+                        .order_by(sort))
+        return queryset
+
+class ChannelPlaylistListView(generics.ListAPIView):
+    queryset = ChannelPlaylist.objects.all().order_by("title")
+    serializer_class = ChannelPlaylistCardSerializer
+    pagination_class = ChannelPlaylistPagination
+
+
 """ ---------- Books ---------- """
 
 
@@ -333,6 +396,9 @@ class PostsListView(FlatMultipleModelAPIView):
         {'queryset': FreePost.objects.all().order_by('-release_date'),
          'serializer_class': FreePostSerializer,
          'label': 'free_post'},
+        {'queryset': ChannelVideo.objects.all().order_by('-release_date'),
+         'serializer_class': ChannelVideoCardSerializer,
+         'label': 'channel_video'}
     ]
 
 
@@ -357,6 +423,7 @@ class PostsFilteredListView(FlatMultipleModelAPIView):
         articles = []
         projects = []
         freeposts = []
+        channel_videos = []
 
         if search_characters and not is_date:
             movies = (Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating"))
@@ -372,6 +439,9 @@ class PostsFilteredListView(FlatMultipleModelAPIView):
             freeposts = (FreePost.objects
                          .filter(Q(title__icontains=search_characters) | Q(subtitle__icontains=search_characters))
                          .order_by(self.sorting_field))
+            channel_videos = (ChannelVideo.objects
+                         .filter(title__icontains=search_characters)
+                         .order_by(self.sorting_field))
         elif not search_characters and is_date:
             movies = (Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating"))
                         .filter(Q(release_date__gte=start_date) & Q(release_date__lte=end_date))
@@ -386,6 +456,9 @@ class PostsFilteredListView(FlatMultipleModelAPIView):
                         .filter(Q(release_date__gte=start_date) & Q(release_date__lte=end_date))
                         .order_by(self.sorting_field))
             freeposts = (FreePost.objects
+                         .filter(Q(release_date__gte=start_date) & Q(release_date__lte=end_date))
+                         .order_by(self.sorting_field))
+            channel_videos = (ChannelVideo.objects
                          .filter(Q(release_date__gte=start_date) & Q(release_date__lte=end_date))
                          .order_by(self.sorting_field))
         elif search_characters and is_date:
@@ -409,12 +482,17 @@ class PostsFilteredListView(FlatMultipleModelAPIView):
                          .filter(Q(release_date__gte=start_date) & Q(release_date__lte=end_date)
                                  & (Q(title__icontains=search_characters) | Q(subtitle__icontains=search_characters)))
                          .order_by(self.sorting_field))
+            channel_videos = (ChannelVideo.objects
+                         .filter(Q(release_date__gte=start_date) & Q(release_date__lte=end_date)
+                                 & Q(title__icontains=search_characters))
+                         .order_by(self.sorting_field))
         elif not search_characters and not is_date:
             movies = Movie.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).all().order_by(self.sorting_field)
             books = Book.objects.annotate(avg_rating=Avg("ST88descriptions__rating")).all().order_by(self.sorting_field)
             articles = Article.objects.prefetch_related('authors__profile', 'article_type').all().order_by(self.sorting_field)
             projects = ST88project.objects.all().order_by(self.sorting_field)
             freeposts = FreePost.objects.all().order_by(self.sorting_field)
+            channel_videos = ChannelVideo.objects.all().order_by(self.sorting_field)
 
         querylist = [
             {'queryset': movies,
@@ -432,6 +510,9 @@ class PostsFilteredListView(FlatMultipleModelAPIView):
             {'queryset': freeposts,
              'serializer_class': FreePostSerializer,
              'label': 'free_post'},
+            {'queryset': channel_videos,
+             'serializer_class': ChannelVideoCardSerializer,
+             'label': 'channel_video'},
         ]
 
         if category:

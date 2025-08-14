@@ -3,6 +3,7 @@ import { stringToArray } from "../../utils/covertion";
 import { FaVk } from "react-icons/fa6";
 import { FaTelegram } from "react-icons/fa6";
 import { RiInstagramFill } from "react-icons/ri";
+import { RiMovie2Fill } from "react-icons/ri";
 
 interface IUserTeamCardProps {
   user: IUser
@@ -30,6 +31,7 @@ const UserTeamCard = (props: IUserTeamCardProps) => {
             {props.user?.profile?.vk_link && <a href={props.user.profile.vk_link}><FaVk className="text-xl lg:text-2xl lg:hover:text-blue-700 cursor-pointer"/></a>}
             {props.user?.profile?.instagram_link && <a href={props.user.profile.instagram_link}><RiInstagramFill className="text-xl lg:text-2xl lg:hover:text-pink-600 cursor-pointer"/></a>}
             {props.user.profile?.telegram_link && <a href={props.user?.profile?.telegram_link}><FaTelegram className="text-xl lg:text-2xl lg:hover:text-blue-300 cursor-pointer"/></a>}
+            {props.user.profile?.kinorium_link && <a href={props.user?.profile?.kinorium_link}><RiMovie2Fill className="text-xl lg:text-2xl lg:hover:text-blue-500 cursor-pointer"/></a>}
         </div>
     </div>
   )

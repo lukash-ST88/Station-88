@@ -30,5 +30,8 @@ def send_email(body: str, user_email:str):
 
 
 class ArticleTypePagination(pagination.PageNumberPagination):
-       page_size = 1000
+    page_size = 1000
+
+class ChannelPlaylistPagination(pagination.PageNumberPagination):
+    page_size = 1000
 

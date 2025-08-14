@@ -10,6 +10,7 @@ export interface IProfile {
     instagram_link?: string
     telegram_link?: string
     vk_link?: string
+    kinorium_link?: string
 }
 
 

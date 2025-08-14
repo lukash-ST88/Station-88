@@ -1,3 +1,5 @@
+import { ISearchDate } from "../interfaces/Interfaces";
+
 // export default dateTime;
 const dateTime = (timestamp: string) => {
   const date = new Date(timestamp);
@@ -30,7 +32,6 @@ const dateTime = (timestamp: string) => {
   yesterday.setDate(now.getDate() - 1);
 
   const differenceInDays = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
-  console.log(differenceInDays)
 
   let result: string[] = [formatTime(date)];
 
@@ -47,4 +48,21 @@ const dateTime = (timestamp: string) => {
   return result;
 };
 
+export function formatSearchDate(dateRange: ISearchDate){
+  let { startDate, endDate } = dateRange;
+  
+  if (startDate) {
+    startDate = new Date(startDate);
+    startDate.setHours(0, 0, 0, 0);
+  }
+  
+  if (endDate) {
+    endDate = new Date(endDate);
+    endDate.setHours(23, 59, 59, 0);
+  }
+  
+  return { startDate, endDate };
+} 
+
 export default dateTime;
+
