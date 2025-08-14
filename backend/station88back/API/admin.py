@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.utils.html import mark_safe
 from django.db.models import Q
 
-
+""" ---- Forms -----"""
 # widget for CKeditor
 class ArticleContentAdminForm(forms.ModelForm):
     content = forms.CharField(widget=CKEditorUploadingWidget)
@@ -18,6 +18,24 @@ class ArticleContentAdminForm(forms.ModelForm):
         model = Article
         fields = '__all__'
 
+class ProjectAdminForm(forms.ModelForm):
+    links = forms.Textarea(attrs={'rows': 4})
+
+    class Meta:
+        model = ST88project
+        fields = "__all__"
+        widgets = {
+            "links": forms.Textarea(attrs={'rows': 4}),
+            "outer_directors":forms.Textarea(attrs={'rows': 4}),
+            "outer_writers":forms.Textarea(attrs={'rows': 4}),
+            "outer_cinematographers":forms.Textarea(attrs={'rows': 4}),
+            "outer_designers":forms.Textarea(attrs={'rows': 4}),
+            "outer_editors": forms.Textarea(attrs={'rows': 4}),
+            "outer_actors": forms.Textarea(attrs={'rows': 4}),
+            "outer_producers": forms.Textarea(attrs={'rows': 4}),
+        }
+
+""" ----- Admin -----"""
 
 class ArticleAdmin(admin.ModelAdmin):
     form = ArticleContentAdminForm
@@ -61,9 +79,6 @@ class FrameInline(admin.TabularInline):
     get_image.short_description = 'Кадр'
 
 
-# class ST88ratingInline(admin.TabularInline):
-#     model = ST88rating
-#     extra = 0
 
 class MovieAdmin(admin.ModelAdmin):
     list_display = ['title', 'original_title', 'year']
@@ -81,6 +96,7 @@ class MovieAdmin(admin.ModelAdmin):
     poster_preview.short_description = 'Постер обзор'
 
 class ProjectAdmin(admin.ModelAdmin):
+    form = ProjectAdminForm
     inlines = [FrameInline]
     save_on_top = True
 

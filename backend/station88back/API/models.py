@@ -218,18 +218,31 @@ class ST88project(models.Model):
                            db_index=True, verbose_name='URL', null=True)
     directors = models.ManyToManyField(
         settings.AUTH_USER_MODEL, verbose_name='Режиссёр', related_name='ST88_projects_director', blank=True)
+    outer_directors = ArrayField(models.CharField(max_length=255), blank=True, null=True, verbose_name="Сторонние Режиссёры")
     writers = models.ManyToManyField(
         settings.AUTH_USER_MODEL, verbose_name='Сценарист', related_name='ST88_projects_writer',  blank=True)
+    outer_writers = ArrayField(models.CharField(max_length=255), blank=True, null=True,
+                                 verbose_name="Сторонние Сценаристы")
     cinematographers = models.ManyToManyField(
         settings.AUTH_USER_MODEL, verbose_name='Оператор', related_name='ST88_projects_cinematographer', blank=True)
+    outer_cinematographers = ArrayField(models.CharField(max_length=255), blank=True, null=True,
+                                 verbose_name="Сторонние Операторы")
     designers = models.ManyToManyField(
         settings.AUTH_USER_MODEL, verbose_name='Художник', related_name='ST88_projects_designer', blank=True)
+    outer_designers = ArrayField(models.CharField(max_length=255), blank=True, null=True,
+                                 verbose_name="Сторонние Художники")
     editors = models.ManyToManyField(
         settings.AUTH_USER_MODEL, verbose_name='Монтажёр', related_name='ST88_projects_editor', blank=True)
+    outer_editors = ArrayField(models.CharField(max_length=255), blank=True, null=True,
+                                 verbose_name="Сторонние Монтажёры")
     actors = models.ManyToManyField(
         settings.AUTH_USER_MODEL, verbose_name='Актёры', related_name='ST88_projects_actor', blank=True)
+    outer_actors = ArrayField(models.CharField(max_length=255), blank=True, null=True,
+                                 verbose_name="Сторонние Актёры")
     producers = models.ManyToManyField(
         settings.AUTH_USER_MODEL, verbose_name='Продюсер', related_name='ST88_projects_producer', blank=True)
+    outer_producers = ArrayField(models.CharField(max_length=255), blank=True, null=True,
+                                 verbose_name="Сторонние Продюсеры")
     linked_trailer = models.CharField(
         max_length=500, verbose_name='Ссылка на трейлер', null=True, blank=True)
     linked_film = models.CharField(
